@@ -30,7 +30,7 @@ const translationsData = {
         value_collaboration_desc: "Nous prospérons grâce au partenariat et à l'intelligence collective.",
         value_impact_title: "Impact",
         value_impact_desc: "Nous sommes motivés par des résultats qui comptent.",
-        read_more: "Lire plus",
+        read_more: 'Lire plus <i class="fas fa-arrow-right me-2"></i>',
         video_title: "Laoreet Nec Nisl",
         
         // Where We Operate
@@ -92,7 +92,7 @@ const translationsData = {
         news_3_title: "Duis rhoncus dui venenatis consequat porttitor. Etiam",
         news_3_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris",
         read_more_news: "Voir plus",
-        all_news: "Toutes les actualités",
+        all_news: 'Toutes les actualités <i class="fas fa-arrow-right me-2"></i>',
         
         // Footer
         footer_who_we_are: "Qui nous sommes",
@@ -141,7 +141,7 @@ const translationsData = {
         value_collaboration_desc: "We thrive on partnership and collective intelligence.",
         value_impact_title: "Impact",
         value_impact_desc: "We are driven by results that matter.",
-        read_more: "Read more",
+        read_more: 'Read more <i class="fas fa-arrow-right me-2"></i>',
         video_title: "Laoreet Nec Nisl",
         
         // Where We Operate
@@ -203,7 +203,7 @@ const translationsData = {
         news_3_title: "Duis rhoncus dui venenatis consequat porttitor. Etiam",
         news_3_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris",
         read_more_news: "Read more",
-        all_news: "All news",
+        all_news: 'All news <i class="fas fa-arrow-right me-2"></i>',
         
         // Footer
         footer_who_we_are: "Who we are",
@@ -228,7 +228,7 @@ const translationsData = {
     }
 };
 
-// Fonction de basculement de la recherche
+// Fonction de basculement de la recherche - CORRIGÉE
 function toggleSearch() {
     const searchInputContainer = document.getElementById('searchInputContainer');
     const searchTrigger = document.querySelector('.search-trigger');
@@ -238,10 +238,81 @@ function toggleSearch() {
     if (searchExpanded) {
         searchInputContainer.classList.add('active');
         searchTrigger.style.opacity = '0';
-        searchInputContainer.querySelector('.search-input').focus();
+        const searchInput = searchInputContainer.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.focus();
+        }
     } else {
         searchInputContainer.classList.remove('active');
         searchTrigger.style.opacity = '1';
+    }
+}
+
+// Fonction pour effectuer une recherche réelle
+function performSearch(query) {
+    if (query.trim().length < 2) {
+        return;
+    }
+    
+    // Simulation d'une recherche - À remplacer par une vraie implémentation
+    console.log('Recherche effectuée pour:', query);
+    
+    // Ici vous pouvez intégrer avec votre backend Symfony
+    // ou implémenter une recherche côté client
+    const results = searchInContent(query);
+    displaySearchResults(results);
+}
+
+// Fonction de recherche dans le contenu local
+function searchInContent(query) {
+    const searchableElements = document.querySelectorAll('[data-i18n]');
+    const results = [];
+    
+    searchableElements.forEach(element => {
+        const content = element.textContent.toLowerCase();
+        if (content.includes(query.toLowerCase())) {
+            results.push({
+                element: element,
+                content: content,
+                section: findParentSection(element)
+            });
+        }
+    });
+    
+    return results.slice(0, 5); // Limiter à 5 résultats
+}
+
+// Trouver la section parente d'un élément
+function findParentSection(element) {
+    let parent = element.closest('section');
+    if (parent && parent.id) {
+        return parent.id;
+    }
+    return 'content';
+}
+
+// Afficher les résultats de recherche
+function displaySearchResults(results) {
+    if (results.length === 0) {
+        showNotification('Aucun résultat trouvé');
+        return;
+    }
+    
+    // Pour le moment, naviguer vers le premier résultat
+    const firstResult = results[0];
+    if (firstResult.section) {
+        const targetElement = document.getElementById(firstResult.section);
+        if (targetElement) {
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            
+            showNotification(`${results.length} résultat(s) trouvé(s)`);
+        }
     }
 }
 
@@ -350,6 +421,8 @@ function initCounterAnimation() {
         observer.observe(indicatorsSection);
     }
 }
+
+// Fonction de traduction corrigée
 function setLanguage(lang) {
     currentLanguage = lang;
     translations = translationsData[lang];
@@ -360,18 +433,35 @@ function setLanguage(lang) {
         const key = element.getAttribute('data-i18n');
         if (translations[key]) {
             // Gérer différents types d'éléments
-            if (element.tagName === 'INPUT' && element.type === 'placeholder') {
+            if (element.tagName === 'INPUT') {
                 element.placeholder = translations[key];
             } else if (element.hasAttribute('title')) {
                 element.title = translations[key];
             } else {
-                element.textContent = translations[key];
+                // Utiliser innerHTML pour permettre les icônes HTML
+                if (translations[key].includes('<i class=')) {
+                    element.innerHTML = translations[key];
+                } else {
+                    element.textContent = translations[key];
+                }
             }
         }
     });
     
+    // Mettre à jour les placeholders avec data-i18n-placeholder
+    const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+    placeholderElements.forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (translations[key]) {
+            element.placeholder = translations[key];
+        }
+    });
+    
     // Mettre à jour le sélecteur de langue
-    document.getElementById('languageSelect').value = lang;
+    const languageSelect = document.getElementById('languageSelect');
+    if (languageSelect) {
+        languageSelect.value = lang;
+    }
     
     // Mettre à jour l'attribut lang du document
     document.documentElement.lang = lang;
@@ -462,17 +552,32 @@ function initNewsCarousel() {
     }
 }
 
-// Gestion de la recherche
+// Gestion de la recherche - FONCTION CORRIGÉE
 function initSearch() {
-    const searchContainer = document.querySelector('.search-container');
-    if (searchContainer) {
-        searchContainer.addEventListener('click', () => {
-            // Implementer la logique de recherche
-            const searchQuery = prompt(translations.search_placeholder || 'Recherche dans MK BA');
-            if (searchQuery) {
-                console.log('Recherche pour:', searchQuery);
-                // Ici, vous pourriez implémenter la logique de recherche réelle
-                // Par exemple, rediriger vers une page de résultats ou filtrer le contenu
+    const searchInput = document.querySelector('.search-input');
+    
+    if (searchInput) {
+        // Gestion de la saisie dans la barre de recherche
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            if (query.length >= 2) {
+                // Débounce pour éviter trop d'appels
+                clearTimeout(searchInput.searchTimeout);
+                searchInput.searchTimeout = setTimeout(() => {
+                    performSearch(query);
+                }, 300);
+            }
+        });
+        
+        // Gestion de la touche Entrée
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = e.target.value.trim();
+                if (query.length >= 2) {
+                    performSearch(query);
+                    toggleSearch(); // Fermer la barre après recherche
+                }
             }
         });
     }
@@ -522,13 +627,64 @@ function initMobileMenu() {
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth < 992) {
-                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                        hide: true
-                    });
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    }
                 }
             });
         });
     }
+}
+
+// Animation typewriter alternative en JavaScript pour un meilleur contrôle
+function initTypewriterAnimation() {
+    const animatedTextElement = document.getElementById('animatedText');
+    if (!animatedTextElement) return;
+    
+    const texts = [
+        translationsData[currentLanguage]?.hero_subtitle_2 || 'Duis mauris'
+    ];
+    
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 150;
+    let deleteSpeed = 100;
+    let pauseTime = 2000;
+    
+    function typeWriter() {
+        const currentText = texts[textIndex];
+        
+        if (isDeleting) {
+            // Effacement du texte
+            animatedTextElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+            
+            if (charIndex === 0) {
+                isDeleting = false;
+                setTimeout(typeWriter, 500); // Pause avant de recommencer à écrire
+                return;
+            }
+            
+            setTimeout(typeWriter, deleteSpeed);
+        } else {
+            // Écriture du texte
+            animatedTextElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+            
+            if (charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(typeWriter, pauseTime); // Pause avec texte complet
+                return;
+            }
+            
+            setTimeout(typeWriter, typeSpeed);
+        }
+    }
+    
+    // Démarrer l'animation
+    setTimeout(typeWriter, 1000);
 }
 
 // Fonction d'initialisation globale
@@ -546,11 +702,12 @@ function initWebsite() {
     initScrollAnimations();
     initProductCards();
     initNewsCarousel();
-    initSearch();
+    initSearch(); // Fonction corrigée
     initForms();
     initLazyLoading();
     initMobileMenu();
-    initCounterAnimation(); // Nouvelle fonction
+    initCounterAnimation();
+    initTypewriterAnimation(); // Nouvelle animation typewriter
     
     // Event listeners
     window.addEventListener('scroll', handleNavbarScroll);
@@ -558,7 +715,7 @@ function initWebsite() {
     // Fermer la recherche en cliquant à l'extérieur
     document.addEventListener('click', (e) => {
         const searchContainer = document.getElementById('searchContainer');
-        if (searchExpanded && !searchContainer.contains(e.target)) {
+        if (searchExpanded && searchContainer && !searchContainer.contains(e.target)) {
             toggleSearch();
         }
     });
@@ -633,5 +790,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.MKBAWebsite = {
     setLanguage,
     initWebsite,
-    translationsData
+    translationsData,
+    toggleSearch,
+    performSearch
 };
