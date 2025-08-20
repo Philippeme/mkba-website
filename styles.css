@@ -237,7 +237,6 @@ body {
 
 /* Animation typewriter corrigée pour "Duis mauris" - Écriture et effacement dynamique */
 .animated-text {
-    display: inline-block;
     overflow: hidden;
     border-right: 2px solid var(--primary-orange);
     white-space: nowrap;
