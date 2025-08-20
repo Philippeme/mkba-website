@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">MK BA - Excellence en Solutions Technologiques</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#home">
+                    <img src="./assets/images/Groupe 1@2x.png" alt="MK BA Logo" class="brand-logo">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#who-we-are" data-i18n="nav_who_we_are">Who we are</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#what-we-do" data-i18n="nav_what_we_do">What we do</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#achievements" data-i18n="nav_achievements">Achievements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#news" data-i18n="nav_news">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact-btn" href="#contact" data-i18n="nav_contact">Contact us</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="navbar-nav ms-auto d-flex align-items-center">
+                        <div class="search-container me-3" id="searchContainer">
+                            <div class="search-trigger" onclick="toggleSearch()">
+                                <i class="fas fa-search"></i>
+                                <span data-i18n="search_placeholder">Recherche dans MK BA</span>
+                            </div>
+                            <div class="search-input-container" id="searchInputContainer">
+                                <input type="text" class="search-input" placeholder="Recherche dans MK BA..." data-i18n-placeholder="search_placeholder">
+                                <button class="search-close" onclick="toggleSearch()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="language-selector">
+                            <i class="fas fa-globe"></i>
+                            <select id="languageSelect" onchange="setLanguage(this.value)">
+                                <option value="fr">FR</option>
+                                <option value="en">EN</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <h1 class="hero-title" data-i18n="hero_title">Cras gravida bibendum dolor eu varius.</h1>
+                    <div class="hero-subtitle">
+                        <span data-i18n="hero_subtitle_1">Cras gravida</span> | 
+                        <span class="highlight animated-text" id="animatedText" data-i18n="hero_subtitle_2">Duis mauris</span> | 
+                        <span data-i18n="hero_subtitle_3">Convallis tempor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section id="who-we-are" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title" data-i18n="who_we_are_title">Who are MK BA</h2>
+                    <p class="section-description" data-i18n="who_we_are_description">
+                        Aliquam in bibendum mauris. Sed vitae erat vel velit blandit pharetra vitae nec ante. Cras at est augue. Cras ut interdum elit. Ut malesuada a urna sit amet blandit. Nullam nunc lorem, aliquam at eros laoreet, feugiat bibendum ligula. Aenean congue.
+                    </p>
+                    
+                    <ul class="values-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <strong data-i18n="value_integrity_title">Integrity</strong> – 
+                            <span data-i18n="value_integrity_desc">We do the right thing, the right way, at the right time, always.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <strong data-i18n="value_collaboration_title">Collaboration</strong> – 
+                            <span data-i18n="value_collaboration_desc">We thrive on partnership and collective intelligence.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <strong data-i18n="value_impact_title">Impact</strong> – 
+                            <span data-i18n="value_impact_desc">We are driven by results that matter.</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="btn btn-outline-primary" data-i18n="read_more">Lire plus <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="video-container">
+                        <div class="video-frame">
+                            <iframe 
+                                width="100%" 
+                                height="315" 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="MK BA - Laoreet Nec Nisl" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                            <div class="video-overlay-info">
+                                <div class="mkba-logo-small">MK<span>BA</span></div>
+                                <span data-i18n="video_title">Laoreet Nec Nisl</span>
+                                <button class="copy-link-btn" onclick="copyVideoLink()" title="Copier le lien">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where We Operate Section -->
+    <section id="where-we-operate" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-i18n="where_we_operate_title">Où nous intervenons</h2>
+                <p class="section-subtitle" data-i18n="where_we_operate_subtitle">Nous intervenons dans 10 pays d'Afrique et de l'Océan Indien</p>
+            </div>
+            
+            <div class="world-map-container">
+                <div id="world-map" class="world-map"></div>
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <span class="legend-color"></span>
+                        <span data-i18n="map_legend_cameroon">Cameroun</span>
+                    </div>
+                    <div class="legend-stats">
+                        <span data-i18n="map_legend_projects">Projet : 20</span><br>
+                        <span data-i18n="map_legend_interventions">Intervenants : 70</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="what-we-do" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-4" data-i18n="services_title">Les services offert par MK BA</h2>
+            <p class="section-description text-center mb-5" data-i18n="services_description">
+                Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis ultrices eros. Curabitur sit amet eros eu arcu consectetur pulvinar. Aliquam sodales, turpis eget tristique tempor, sapien lacus facilisis diam, molestie efficitur sapien velit nec magna. Maecenas interdum efficitur tempor. Quisque scelerisque id odio nec dictum. Donec sed pulvinar tortor. Duis ut dolor consectetur, mollis lorem et, mattis est. Nullam mattis mauris quis massa consectetur dapibus. Nam ac iaculis magna. Sed eget diam mi. Sed id quam et purus luctus pretium.
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <h5 data-i18n="service_egovernance_title">E-gouvernance et transformation numérique</h5>
+                        <p data-i18n="service_egovernance_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <h5 data-i18n="service_development_title">Développement logiciel, web et mobile</h5>
+                        <p data-i18n="service_development_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <h5 data-i18n="service_erp_title">ERP et intégration</h5>
+                        <p data-i18n="service_erp_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <h5 data-i18n="service_data_title">Ingénierie des données et IA</h5>
+                        <p data-i18n="service_data_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <h5 data-i18n="service_security_title">Sécurité de l'information</h5>
+                        <p data-i18n="service_security_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <h5 data-i18n="service_network_title">Ingénierie réseau et système, cloud</h5>
+                        <p data-i18n="service_network_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <h5 data-i18n="service_support_title">Support informatique</h5>
+                        <p data-i18n="service_support_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <h5 data-i18n="service_outsourcing_title">Externalisation informatique</h5>
+                        <p data-i18n="service_outsourcing_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <h5 data-i18n="service_financial_title">Services financiers</h5>
+                        <p data-i18n="service_financial_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-4" data-i18n="products_title">Produits</h2>
+            <p class="section-description text-center mb-5" data-i18n="products_description">
+                Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis ultrices eros. Curabitur sit amet eros eu arcu consectetur pulvinar. Aliquam sodales, turpis eget tristique tempor, sapien lacus facilisis diam, molestie efficitur sapien velit nec magna. Maecenas interdum efficitur tempor. Quisque scelerisque id odio nec dictum. Donec sed pulvinar tortor. Duis ut dolor consectetur, mollis lorem et, mattis est. Nullam mattis mauris quis massa consectetur dapibus. Nam ac iaculis magna. Sed eget diam mi. Sed id quam et purus luctus pretium.
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h5 data-i18n="product_data_ai">Ingénierie des données et IA</h5>
+                        <i class="fas fa-external-link-alt product-link"></i>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card active">
+                        <div class="product-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h5 data-i18n="product_healthcare">Healthcare</h5>
+                        <i class="fas fa-external-link-alt product-link"></i>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h5 data-i18n="product_education">Education</h5>
+                        <i class="fas fa-external-link-alt product-link"></i>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h5 data-i18n="product_environment">Environnement</h5>
+                        <i class="fas fa-external-link-alt product-link"></i>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h5 data-i18n="product_business">Business management</h5>
+                        <i class="fas fa-external-link-alt product-link"></i>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h5 data-i18n="product_finance">Finance</h5>
+                        <i class="fas fa-external-link-alt product-link"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Indicators Section -->
+    <section id="indicators" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-i18n="indicators_title">Quelques indicateurs clés de MK BA</h2>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="indicator-number" data-target="999">0</div>
+                        <div class="indicator-suffix">+</div>
+                        <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="indicator-number" data-target="999">0</div>
+                        <div class="indicator-suffix">+</div>
+                        <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <div class="indicator-number" data-target="999">0</div>
+                        <div class="indicator-suffix">+</div>
+                        <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="indicator-number" data-target="999">0</div>
+                        <div class="indicator-suffix">+</div>
+                        <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="indicator-number" data-target="999">0</div>
+                        <div class="indicator-suffix">+</div>
+                        <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="indicator-card">
+                        <div class="indicator-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="indicator-number" data-target="999">0</div>
+                        <div class="indicator-suffix">+</div>
+                        <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-i18n="achievements_title">Réalisations</h2>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="achievement-card">
+                        <div class="achievement-header">
+                            <img src="./assets/icons/undp-seeklogo@2x.png" alt="UNDP" class="undp-logo">
+                            <img src="./assets/images/flags/cameroon.png" alt="Cameroun" class="country-flag">
+                        </div>
+                        <h5 data-i18n="achievement_beneficiary">Nom du bénéficiaire</h5>
+                        <p class="achievement-subtitle" data-i18n="achievement_subtitle">Nunc scelerisque tincidunt elit.</p>
+                        <p data-i18n="achievement_description">
+                            Quisque suscipit ipsum est, eu venenatis leo ornare eget. Ut porta facilisis elementum. Sed condimentum sed massa quis ullamcorper. Donec at scelerisque neque. Pellentesque sagittis, massa sodales sodales finibus, felis ligula tempus lorem, eu porttitor ex lacus vel felis. Vivamus egestas scelerisque consectetur. Vestibulum faucibus enim urna, fermentum aliquet quam
+                        </p>
+                        <div class="achievement-link-container">
+                            <div class="vertical-bar"></div>
+                            <a href="#" class="achievement-link" data-i18n="see_project">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="achievement-card">
+                        <div class="achievement-header">
+                            <img src="./assets/icons/undp-seeklogo@2x.png" alt="UNDP" class="undp-logo">
+                            <img src="./assets/images/flags/benin.png" alt="Bénin" class="country-flag">
+                        </div>
+                        <h5 data-i18n="achievement_beneficiary">Nom du bénéficiaire</h5>
+                        <p class="achievement-subtitle" data-i18n="achievement_subtitle">Nunc scelerisque tincidunt elit.</p>
+                        <p data-i18n="achievement_description">
+                            Quisque suscipit ipsum est, eu venenatis leo ornare eget. Ut porta facilisis elementum. Sed condimentum sed massa quis ullamcorper. Donec at scelerisque neque. Pellentesque sagittis, massa sodales sodales finibus, felis ligula tempus lorem, eu porttitor ex lacus vel felis. Vivamus egestas scelerisque consectetur. Vestibulum faucibus enim urna, fermentum aliquet quam
+                        </p>
+                        <div class="achievement-link-container">
+                            <div class="vertical-bar"></div>
+                            <a href="#" class="achievement-link" data-i18n="see_project">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="achievement-card">
+                        <div class="achievement-header">
+                            <img src="./assets/icons/undp-seeklogo@2x.png" alt="UNDP" class="undp-logo">
+                            <img src="./assets/images/flags/madagascar.png" alt="Madagascar" class="country-flag">
+                        </div>
+                        <h5 data-i18n="achievement_beneficiary">Nom du bénéficiaire</h5>
+                        <p class="achievement-subtitle" data-i18n="achievement_subtitle">Nunc scelerisque tincidunt elit.</p>
+                        <p data-i18n="achievement_description">
+                            Quisque suscipit ipsum est, eu venenatis leo ornare eget. Ut porta facilisis elementum. Sed condimentum sed massa quis ullamcorper. Donec at scelerisque neque. Pellentesque sagittis, massa sodales sodales finibus, felis ligula tempus lorem, eu porttitor ex lacus vel felis. Vivamus egestas scelerisque consectetur. Vestibulum faucibus enim urna, fermentum aliquet quam
+                        </p>
+                        <div class="achievement-link-container">
+                            <div class="vertical-bar"></div>
+                            <a href="#" class="achievement-link" data-i18n="see_project">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-i18n="news_title">Actualités</h2>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="./assets/images/actus/actu1.png" alt="News 1">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">20 Avril 2025</div>
+                            <h5 class="news-title" data-i18n="news_1_title">Aliquam in bibendum mauris. Sed vitae erat vel velit blandit</h5>
+                            <p class="news-excerpt" data-i18n="news_1_excerpt">
+                                Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec di. Morbi mauris
+                            </p>
+                            <a href="#" class="news-link" data-i18n="read_more_news">Voir plus <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="./assets/images/actus/actu2.png" alt="News 2">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">20 Avril 2025</div>
+                            <h5 class="news-title" data-i18n="news_2_title">Fusce at nisl eget dolor rhoncus facilisis. Mauris ante nisl,</h5>
+                            <p class="news-excerpt" data-i18n="news_2_excerpt">
+                                Aenean sed nibh a magna posuere tempor. Nunc faucibus pellentesque nunc in aliquet. Donec congue, nunc vel tempor congue, enim
+                            </p>
+                            <a href="#" class="news-link" data-i18n="read_more_news">Voir plus <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="./assets/images/actus/actu3.png" alt="News 3">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">20 Avril 2025</div>
+                            <h5 class="news-title" data-i18n="news_3_title">Duis rhoncus dui venenatis consequat porttitor. Etiam</h5>
+                            <p class="news-excerpt" data-i18n="news_3_excerpt">
+                                Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris
+                            </p>
+                            <a href="#" class="news-link" data-i18n="read_more_news">Voir plus <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary" data-i18n="all_news">
+                    <i class="fas fa-arrow-right me-2"></i>Toutes les actualités
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-brand">
+                        <img src="./assets/images/mkba-logo-footer.png" alt="MK BA Logo" class="footer-logo">
+                        <p class="footer-description">MK Business Analysis</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h6>
+                    <ul class="footer-links">
+                        <li><a href="#" data-i18n="footer_who_are_mkba">Who are MK BA</a></li>
+                        <li><a href="#" data-i18n="footer_our_team">Our Team</a></li>
+                        <li><a href="#" data-i18n="footer_sustainability">Our commitment to sustainability</a></li>
+                        <li><a href="#" data-i18n="footer_technologies">Technologies</a></li>
+                        <li><a href="#" data-i18n="footer_work_with_us">Work with us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h6>
+                    <ul class="footer-links">
+                        <li><a href="#" data-i18n="footer_industries">Industries served</a></li>
+                        <li><a href="#" data-i18n="footer_services">Services</a></li>
+                        <li><a href="#" data-i18n="footer_solutions">Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="footer-title" data-i18n="footer_achievements">Réalisations</h6>
+                    <ul class="footer-links">
+                        <li><a href="#" data-i18n="footer_achievements_link">Our achievements</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="footer-title" data-i18n="footer_contacts">Contacts</h6>
+                    <div class="contact-info">
+                        <p data-i18n="footer_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</p>
+                        <p><i class="fas fa-envelope me-2"></i> info@mk-ba.com</p>
+                        <p><i class="fas fa-phone me-2"></i> +237 695 478 987</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="footer-legal">
+                        <a href="#" data-i18n="footer_legal_mentions">Mentions légales</a>
+                        <span class="separator">|</span>
+                        <a href="#" data-i18n="footer_privacy">Politique de Confidentialité</a>
+                        <span class="separator">|</span>
+                        <a href="#" data-i18n="footer_terms">Termes et conditions</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 text-md-end">
+                    <p class="footer-copyright" data-i18n="footer_copyright">Copyright © 2025. Tous droits réservés</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <small data-i18n="footer_powered">Powered by MK BA</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
