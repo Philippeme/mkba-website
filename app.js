@@ -3,7 +3,7 @@ let currentLanguage = 'fr';
 let translations = {};
 let searchExpanded = false;
 
-// Translations data
+// Translations data - Conformes aux maquettes
 const translationsData = {
     fr: {
         // Navigation
@@ -228,7 +228,7 @@ const translationsData = {
     }
 };
 
-// Fonction de basculement de la recherche - CORRIGÉE
+// Fonction de basculement de la recherche
 function toggleSearch() {
     const searchInputContainer = document.getElementById('searchInputContainer');
     const searchTrigger = document.querySelector('.search-trigger');
@@ -248,17 +248,12 @@ function toggleSearch() {
     }
 }
 
-// Fonction pour effectuer une recherche réelle
+// Fonction pour effectuer une recherche
 function performSearch(query) {
     if (query.trim().length < 2) {
         return;
     }
     
-    // Simulation d'une recherche - À remplacer par une vraie implémentation
-    console.log('Recherche effectuée pour:', query);
-    
-    // Ici vous pouvez intégrer avec votre backend Symfony
-    // ou implémenter une recherche côté client
     const results = searchInContent(query);
     displaySearchResults(results);
 }
@@ -279,7 +274,7 @@ function searchInContent(query) {
         }
     });
     
-    return results.slice(0, 5); // Limiter à 5 résultats
+    return results.slice(0, 5);
 }
 
 // Trouver la section parente d'un élément
@@ -298,7 +293,6 @@ function displaySearchResults(results) {
         return;
     }
     
-    // Pour le moment, naviguer vers le premier résultat
     const firstResult = results[0];
     if (firstResult.section) {
         const targetElement = document.getElementById(firstResult.section);
@@ -422,23 +416,20 @@ function initCounterAnimation() {
     }
 }
 
-// Fonction de traduction corrigée
+// Fonction de traduction
 function setLanguage(lang) {
     currentLanguage = lang;
     translations = translationsData[lang];
     
-    // Mettre à jour tous les éléments avec data-i18n
     const elementsToTranslate = document.querySelectorAll('[data-i18n]');
     elementsToTranslate.forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[key]) {
-            // Gérer différents types d'éléments
             if (element.tagName === 'INPUT') {
                 element.placeholder = translations[key];
             } else if (element.hasAttribute('title')) {
                 element.title = translations[key];
             } else {
-                // Utiliser innerHTML pour permettre les icônes HTML
                 if (translations[key].includes('<i class=')) {
                     element.innerHTML = translations[key];
                 } else {
@@ -448,7 +439,6 @@ function setLanguage(lang) {
         }
     });
     
-    // Mettre à jour les placeholders avec data-i18n-placeholder
     const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
     placeholderElements.forEach(element => {
         const key = element.getAttribute('data-i18n-placeholder');
@@ -457,16 +447,13 @@ function setLanguage(lang) {
         }
     });
     
-    // Mettre à jour le sélecteur de langue
     const languageSelect = document.getElementById('languageSelect');
     if (languageSelect) {
         languageSelect.value = lang;
     }
     
-    // Mettre à jour l'attribut lang du document
     document.documentElement.lang = lang;
     
-    // Optionnel: Sauvegarder la préférence de langue
     try {
         localStorage.setItem('mkba-language', lang);
     } catch (e) {
@@ -522,46 +509,38 @@ function initScrollAnimations() {
         });
     }, observerOptions);
     
-    // Observer les éléments à animer
     const elementsToAnimate = document.querySelectorAll('.service-card, .product-card, .achievement-card, .news-card, .indicator-card');
     elementsToAnimate.forEach(el => observer.observe(el));
 }
 
-// Gestion des cards produits
+// Gestion des cards produits - CONFORME AUX MAQUETTES
 function initProductCards() {
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
         card.addEventListener('click', () => {
-            // Retirer la classe active de toutes les cartes
             productCards.forEach(c => c.classList.remove('active'));
-            // Ajouter la classe active à la carte cliquée
             card.classList.add('active');
+        });
+        
+        // Support clavier
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                productCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            }
         });
     });
 }
 
-// Carrousel des actualités (si nécessaire)
-function initNewsCarousel() {
-    // Implémentation d'un carrousel simple si plus de 3 actualités
-    const newsContainer = document.querySelector('#news .row');
-    const newsCards = document.querySelectorAll('.news-card');
-    
-    if (newsCards.length > 3) {
-        // Logique de carrousel ici si nécessaire
-        console.log('Carrousel d\'actualités activé');
-    }
-}
-
-// Gestion de la recherche - FONCTION CORRIGÉE
+// Gestion de la recherche
 function initSearch() {
     const searchInput = document.querySelector('.search-input');
     
     if (searchInput) {
-        // Gestion de la saisie dans la barre de recherche
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.trim();
             if (query.length >= 2) {
-                // Débounce pour éviter trop d'appels
                 clearTimeout(searchInput.searchTimeout);
                 searchInput.searchTimeout = setTimeout(() => {
                     performSearch(query);
@@ -569,51 +548,17 @@ function initSearch() {
             }
         });
         
-        // Gestion de la touche Entrée
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
                 const query = e.target.value.trim();
                 if (query.length >= 2) {
                     performSearch(query);
-                    toggleSearch(); // Fermer la barre après recherche
+                    toggleSearch();
                 }
             }
         });
     }
-}
-
-// Gestion des formulaires (pour une extension future)
-function initForms() {
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Logique de soumission de formulaire
-            console.log('Formulaire soumis');
-        });
-    });
-}
-
-// Fonction pour charger les images de manière lazy
-function initLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('loading');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => {
-        img.classList.add('loading');
-        imageObserver.observe(img);
-    });
 }
 
 // Gestion responsive du menu mobile
@@ -622,7 +567,6 @@ function initMobileMenu() {
     const navbarCollapse = document.querySelector('.navbar-collapse');
     
     if (navbarToggler && navbarCollapse) {
-        // Fermer le menu mobile quand on clique sur un lien
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -637,7 +581,7 @@ function initMobileMenu() {
     }
 }
 
-// Animation typewriter alternative en JavaScript pour un meilleur contrôle
+// Animation typewriter pour un meilleur contrôle
 function initTypewriterAnimation() {
     const animatedTextElement = document.getElementById('animatedText');
     if (!animatedTextElement) return;
@@ -657,25 +601,23 @@ function initTypewriterAnimation() {
         const currentText = texts[textIndex];
         
         if (isDeleting) {
-            // Effacement du texte
             animatedTextElement.textContent = currentText.substring(0, charIndex - 1);
             charIndex--;
             
             if (charIndex === 0) {
                 isDeleting = false;
-                setTimeout(typeWriter, 500); // Pause avant de recommencer à écrire
+                setTimeout(typeWriter, 500);
                 return;
             }
             
             setTimeout(typeWriter, deleteSpeed);
         } else {
-            // Écriture du texte
             animatedTextElement.textContent = currentText.substring(0, charIndex + 1);
             charIndex++;
             
             if (charIndex === currentText.length) {
                 isDeleting = true;
-                setTimeout(typeWriter, pauseTime); // Pause avec texte complet
+                setTimeout(typeWriter, pauseTime);
                 return;
             }
             
@@ -683,8 +625,18 @@ function initTypewriterAnimation() {
         }
     }
     
-    // Démarrer l'animation
     setTimeout(typeWriter, 1000);
+}
+
+// Gestion des erreurs d'images
+function initImageErrorHandling() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            this.style.display = 'none';
+            console.warn(`Image non trouvée: ${this.src}`);
+        });
+    });
 }
 
 // Fonction d'initialisation globale
@@ -701,13 +653,11 @@ function initWebsite() {
     initSmoothScroll();
     initScrollAnimations();
     initProductCards();
-    initNewsCarousel();
-    initSearch(); // Fonction corrigée
-    initForms();
-    initLazyLoading();
+    initSearch();
     initMobileMenu();
     initCounterAnimation();
-    initTypewriterAnimation(); // Nouvelle animation typewriter
+    initTypewriterAnimation();
+    initImageErrorHandling();
     
     // Event listeners
     window.addEventListener('scroll', handleNavbarScroll);
@@ -727,9 +677,19 @@ function initWebsite() {
         }
     });
     
-    // Gestion du redimensionnement de la fenêtre
+    // Support clavier pour la recherche
+    const searchTrigger = document.querySelector('.search-trigger');
+    if (searchTrigger) {
+        searchTrigger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleSearch();
+            }
+        });
+    }
+    
+    // Gestion du redimensionnement
     window.addEventListener('resize', () => {
-        // Fermer la recherche en mode mobile
         if (window.innerWidth < 768 && searchExpanded) {
             toggleSearch();
         }
@@ -740,7 +700,6 @@ function initWebsite() {
 
 // Utilitaires pour l'accessibilité
 function initAccessibility() {
-    // Gestion du focus clavier
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {
             document.body.classList.add('keyboard-navigation');
@@ -751,12 +710,10 @@ function initAccessibility() {
         document.body.classList.remove('keyboard-navigation');
     });
     
-    // Améliorer le contraste pour les utilisateurs qui en ont besoin
     if (window.matchMedia('(prefers-contrast: high)').matches) {
         document.body.classList.add('high-contrast');
     }
     
-    // Respecter les préférences de mouvement réduit
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.body.classList.add('reduced-motion');
     }
@@ -764,13 +721,11 @@ function initAccessibility() {
 
 // Performance et optimisation
 function initPerformanceOptimizations() {
-    // Prefetch des liens importants
     const importantLinks = document.querySelectorAll('a[href*="contact"], a[href*="services"]');
     importantLinks.forEach(link => {
         link.setAttribute('rel', 'prefetch');
     });
     
-    // Optimisation des images
     const images = document.querySelectorAll('img');
     images.forEach(img => {
         if (!img.hasAttribute('loading')) {
@@ -786,7 +741,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPerformanceOptimizations();
 });
 
-// Export des fonctions principales pour une utilisation externe si nécessaire
+// Export des fonctions pour utilisation externe
 window.MKBAWebsite = {
     setLanguage,
     initWebsite,
