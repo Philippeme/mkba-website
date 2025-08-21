@@ -228,6 +228,10 @@ const translationsData = {
     }
 };
 
+// ==============================================
+// FONCTIONS DE BASE - Recherche et traduction
+// ==============================================
+
 // Fonction de basculement de la recherche
 function toggleSearch() {
     const searchInputContainer = document.getElementById('searchInputContainer');
@@ -374,46 +378,341 @@ function showNotification(message) {
     }, 3000);
 }
 
-// Animation du compteur pour les indicateurs
-function animateCounters() {
-    const counters = document.querySelectorAll('.indicator-number');
+// ==============================================
+// KEY INDICATORS - Animation des compteurs optimisée
+// ==============================================
+
+function animateCountersOptimized() {
+    const counters = document.querySelectorAll('.indicator-number[data-target]');
     
-    counters.forEach(counter => {
+    counters.forEach((counter, index) => {
         const target = parseInt(counter.getAttribute('data-target'));
         const duration = 2000;
-        const increment = target / (duration / 16);
-        let current = 0;
+        const startDelay = index * 200; // Décalage pour chaque compteur
         
-        const updateCounter = () => {
-            if (current < target) {
-                current += increment;
-                counter.textContent = Math.ceil(current);
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target;
-            }
-        };
+        // Reset du compteur
+        counter.textContent = '0';
         
-        updateCounter();
+        setTimeout(() => {
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.textContent = Math.ceil(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        }, startDelay);
     });
 }
 
-// Observer pour déclencher l'animation des indicateurs
-function initCounterAnimation() {
+// Observer pour déclencher l'animation des indicateurs de façon optimisée
+function initIndicatorsAnimation() {
     const indicatorsSection = document.getElementById('indicators');
     
     if (indicatorsSection) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateCounters();
+                    // Ajouter une classe pour déclencher les animations CSS
+                    const cards = entry.target.querySelectorAll('.indicator-card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate-in');
+                        }, index * 100);
+                    });
+                    
+                    // Démarrer l'animation des compteurs
+                    setTimeout(() => {
+                        animateCountersOptimized();
+                    }, 300);
+                    
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { 
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        });
         
         observer.observe(indicatorsSection);
     }
+}
+
+// ==============================================
+// ACHIEVEMENTS - Interactions optimisées
+// ==============================================
+
+function initAchievementsInteractions() {
+    const achievementCards = document.querySelectorAll('.achievement-card');
+    
+    achievementCards.forEach((card, index) => {
+        // Animation d'apparition avec délai
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                    }, index * 200);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        observer.observe(card);
+        
+        // Effet de focus amélioré pour l'accessibilité
+        card.addEventListener('focusin', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)';
+        });
+        
+        card.addEventListener('focusout', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+        });
+        
+        // Gestion du clic sur toute la carte pour rediriger vers le lien
+        card.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'A') {
+                const link = this.querySelector('.achievement-link');
+                if (link) {
+                    // Ajouter un effet de clic
+                    this.style.transform = 'translateY(-1px) scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        link.click();
+                    }, 150);
+                }
+            }
+        });
+        
+        // Support clavier
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const link = this.querySelector('.achievement-link');
+                if (link) {
+                    link.click();
+                }
+            }
+        });
+        
+        // Améliorer l'accessibilité
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'article');
+        
+        const link = card.querySelector('.achievement-link');
+        if (link) {
+            const title = card.querySelector('h3');
+            if (title) {
+                card.setAttribute('aria-label', `Voir le projet: ${title.textContent}`);
+            }
+        }
+    });
+}
+
+// ==============================================
+// NEWS - Interactions et effets optimisés
+// ==============================================
+
+function initNewsInteractions() {
+    const newsCards = document.querySelectorAll('.news-card');
+    
+    newsCards.forEach((card, index) => {
+        // Animation d'apparition avec délai
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                    }, index * 150);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        observer.observe(card);
+        
+        // Effet parallax subtil sur l'image
+        card.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / centerY * 2;
+            const rotateY = (centerX - x) / centerX * 2;
+            
+            const image = this.querySelector('.news-image img');
+            if (image) {
+                image.style.transform = `scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            const image = this.querySelector('.news-image img');
+            if (image) {
+                image.style.transform = 'scale(1)';
+            }
+        });
+        
+        // Gestion du clic sur toute la carte pour rediriger vers le lien
+        card.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'A') {
+                const link = this.querySelector('.news-link');
+                if (link) {
+                    // Ajouter un effet de clic
+                    this.style.transform = 'translateY(-2px) scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        link.click();
+                    }, 150);
+                }
+            }
+        });
+        
+        // Support clavier
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const link = this.querySelector('.news-link');
+                if (link) {
+                    link.click();
+                }
+            }
+        });
+        
+        // Améliorer l'accessibilité
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'article');
+        
+        const link = card.querySelector('.news-link');
+        if (link) {
+            const title = card.querySelector('.news-title');
+            if (title) {
+                card.setAttribute('aria-label', `Lire l'article: ${title.textContent}`);
+            }
+        }
+    });
+}
+
+// ==============================================
+// LAZY LOADING amélioré pour les images
+// ==============================================
+
+function initLazyLoadingOptimized() {
+    const images = document.querySelectorAll('#achievements img, #news img');
+    
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                
+                // Précharger l'image
+                const tempImg = new Image();
+                tempImg.onload = () => {
+                    img.src = tempImg.src;
+                    img.classList.add('loaded');
+                };
+                
+                if (img.dataset.src) {
+                    tempImg.src = img.dataset.src;
+                } else if (img.src) {
+                    tempImg.src = img.src;
+                }
+                
+                imageObserver.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '100px 0px',
+        threshold: 0.1
+    });
+    
+    images.forEach(img => {
+        // Ajouter une classe de chargement
+        img.classList.add('loading');
+        imageObserver.observe(img);
+    });
+}
+
+// ==============================================
+// FONCTION D'INITIALISATION OPTIMISÉE
+// ==============================================
+
+function initOptimizedSections() {
+    // Initialiser les indicateurs
+    initIndicatorsAnimation();
+    
+    // Initialiser les réalisations
+    initAchievementsInteractions();
+    
+    // Initialiser les actualités
+    initNewsInteractions();
+    
+    // Initialiser le lazy loading optimisé
+    initLazyLoadingOptimized();
+    
+    // Ajouter des styles CSS dynamiques pour les animations
+    addDynamicStyles();
+    
+    console.log('Sections Key Indicators, Achievements et News optimisées initialisées');
+}
+
+// ==============================================
+// STYLES DYNAMIQUES pour les animations
+// ==============================================
+
+function addDynamicStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .indicator-card,
+        .achievement-card,
+        .news-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .indicator-card.animate-in,
+        .achievement-card.animate-in,
+        .news-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .news-image img.loading {
+            opacity: 0.7;
+            filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .news-image img.loaded {
+            opacity: 1;
+            filter: blur(0);
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .indicator-card,
+            .achievement-card,
+            .news-card {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    `;
+    
+    document.head.appendChild(style);
 }
 
 // Fonction de traduction
@@ -459,6 +758,9 @@ function setLanguage(lang) {
     } catch (e) {
         // Ignore si localStorage n'est pas disponible
     }
+    
+    // Déclencher un événement personnalisé pour les sections optimisées
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
 }
 
 // Gestion du scroll navbar
@@ -509,7 +811,7 @@ function initScrollAnimations() {
         });
     }, observerOptions);
     
-    const elementsToAnimate = document.querySelectorAll('.service-card, .product-card, .achievement-card, .news-card, .indicator-card');
+    const elementsToAnimate = document.querySelectorAll('.service-card, .product-card');
     elementsToAnimate.forEach(el => observer.observe(el));
 }
 
@@ -639,6 +941,22 @@ function initImageErrorHandling() {
     });
 }
 
+// ==============================================
+// GESTION DES ERREURS ET PERFORMANCE
+// ==============================================
+
+function handlePerformanceOptimization() {
+    // Utiliser requestIdleCallback si disponible pour les animations non critiques
+    if (window.requestIdleCallback) {
+        window.requestIdleCallback(() => {
+            initOptimizedSections();
+        });
+    } else {
+        // Fallback pour les navigateurs qui ne supportent pas requestIdleCallback
+        setTimeout(initOptimizedSections, 100);
+    }
+}
+
 // Fonction d'initialisation globale
 function initWebsite() {
     // Charger la langue préférée
@@ -649,15 +967,17 @@ function initWebsite() {
         setLanguage('fr');
     }
     
-    // Initialiser les fonctionnalités
+    // Initialiser les fonctionnalités de base
     initSmoothScroll();
     initScrollAnimations();
     initProductCards();
     initSearch();
     initMobileMenu();
-    initCounterAnimation();
     initTypewriterAnimation();
     initImageErrorHandling();
+    
+    // Initialiser les sections optimisées avec gestion de performance
+    handlePerformanceOptimization();
     
     // Event listeners
     window.addEventListener('scroll', handleNavbarScroll);
@@ -734,11 +1054,37 @@ function initPerformanceOptimizations() {
     });
 }
 
-// Événement DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
+// ==============================================
+// EVENT LISTENERS GLOBAUX
+// ==============================================
+
+// Initialiser au chargement du DOM
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        initWebsite();
+        initAccessibility();
+        initPerformanceOptimizations();
+    });
+} else {
     initWebsite();
     initAccessibility();
     initPerformanceOptimizations();
+}
+
+// Réinitialiser si la langue change
+window.addEventListener('languageChanged', () => {
+    // Réinitialiser les animations des compteurs si nécessaire
+    const indicatorsSection = document.getElementById('indicators');
+    if (indicatorsSection && indicatorsSection.classList.contains('animated')) {
+        setTimeout(() => {
+            animateCountersOptimized();
+        }, 300);
+    }
+    
+    // Mettre à jour l'animation typewriter
+    setTimeout(() => {
+        initTypewriterAnimation();
+    }, 100);
 });
 
 // Export des fonctions pour utilisation externe
@@ -747,5 +1093,10 @@ window.MKBAWebsite = {
     initWebsite,
     translationsData,
     toggleSearch,
-    performSearch
+    performSearch,
+    initOptimizedSections,
+    animateCountersOptimized,
+    initIndicatorsAnimation,
+    initAchievementsInteractions,
+    initNewsInteractions
 };

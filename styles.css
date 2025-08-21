@@ -315,30 +315,6 @@ body {
     }
 }
 
-@keyframes typewriter {
-    0% {
-        width: 0;
-    }
-    25% {
-        width: 120px;
-    }
-    75% {
-        width: 120px;
-    }
-    100% {
-        width: 0;
-    }
-}
-
-@keyframes blink-cursor {
-    0%, 50% {
-        border-right-color: var(--primary-orange);
-    }
-    51%, 100% {
-        border-right-color: transparent;
-    }
-}
-
 /* Who We Are Section - Ajout de la frange orangée */
 #who-we-are {
     padding: 4rem 0;
@@ -744,10 +720,13 @@ body {
     color: var(--primary-orange);
 }
 
-/* Key Indicators Section - Frange orangée selon logique cohérente */
+/* ==============================================
+   KEY INDICATORS SECTION - Conforme maquette
+   ============================================== */
+
 #indicators {
     padding: 4rem 0;
-    background: var(--white);
+    background: #FFF5F0;
 }
 
 #indicators .section-title {
@@ -770,27 +749,49 @@ body {
     border-radius: 2px;
 }
 
+/* Grille des indicateurs - 3 colonnes sur 2 lignes selon maquette */
+#indicators .row {
+    --bs-gutter-x: 2rem;
+    --bs-gutter-y: 2rem;
+}
+
 .indicator-card {
-    background: var(--background-light);
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
+    background: var(--white);
+    padding: 0;
+    border-radius: 0;
+    text-align: left;
     position: relative;
-    overflow: hidden;
     transition: all 0.3s ease;
-    border: 1px solid var(--border-light);
+    border: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    min-height: 120px;
 }
 
 .indicator-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px var(--shadow);
+    transform: none;
+    box-shadow: none;
     background: var(--white);
 }
 
+/* Cercle orange à gauche selon maquette */
+.indicator-card::before {
+    content: '';
+    width: 60px;
+    height: 60px;
+    background: #FF6B35;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
 .indicator-icon {
-    font-size: 3rem;
-    color: var(--primary-orange);
-    margin-bottom: 1rem;
+    display: none; /* Masquer l'icône car nous utilisons le cercle orange */
+}
+
+.indicator-content {
+    flex: 1;
 }
 
 .indicator-number {
@@ -798,8 +799,7 @@ body {
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 0;
-    position: relative;
-    z-index: 2;
+    line-height: 1;
     display: inline-block;
 }
 
@@ -812,18 +812,19 @@ body {
 }
 
 .indicator-label {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-medium);
-    position: relative;
-    z-index: 2;
-    margin-top: 0.5rem;
-    font-weight: 500;
+    margin-top: 0.3rem;
+    font-weight: 400;
 }
 
-/* Achievements Section - Frange orangée et liens toujours visibles */
+/* ==============================================
+   ACHIEVEMENTS SECTION - Alignement vertical maquette
+   ============================================== */
+
 #achievements {
     padding: 4rem 0;
-    background: var(--background-light);
+    background: var(--white);
 }
 
 #achievements .section-title {
@@ -846,37 +847,65 @@ body {
     border-radius: 2px;
 }
 
+/* Alignement vertical des réalisations selon maquette */
+#achievements .row {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#achievements .col-lg-4 {
+    flex: none;
+    width: 100%;
+    max-width: none;
+}
+
 .achievement-card {
     background: var(--light-blue);
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: all 0.3s ease;
-    height: 100%;
     position: relative;
     border: 1px solid rgba(0, 102, 204, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .achievement-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px var(--shadow);
-    background: rgba(227, 242, 253, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: rgba(227, 242, 253, 0.9);
 }
 
 .achievement-header {
     display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+    gap: 1rem;
+}
+
+.achievement-logos {
+    display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.achievement-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .undp-logo {
-    height: 40px;
-    margin-right: 1rem;
-    border-radius: 5px;
+    height: 45px;
+    width: auto;
 }
 
 .country-flag {
     width: 30px;
-    height: 20px;
+    height: 28px;
     border-radius: 3px;
     object-fit: cover;
 }
@@ -884,28 +913,36 @@ body {
 .achievement-card h3 {
     color: var(--text-dark);
     font-weight: 600;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    line-height: 1.3;
 }
 
 .achievement-subtitle {
     color: var(--text-medium);
     font-style: italic;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
     font-size: 0.95rem;
+    font-weight: 400;
 }
 
-.achievement-card p {
+.achievement-card p:not(.achievement-subtitle) {
     color: var(--text-medium);
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    flex: 1;
+    margin-left: 7rem;
+    text-indent: 0;
 }
 
 .achievement-link-container {
     display: flex;
     align-items: center;
-    opacity: 1;
-    margin-top: 1rem;
+    justify-content: flex-end;
+    margin-top: auto;
+    padding-top: 1rem;
 }
 
 .vertical-bar {
@@ -919,17 +956,38 @@ body {
     color: var(--primary-blue);
     text-decoration: none;
     font-weight: 500;
+    font-size: 1rem;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .achievement-link:hover {
     color: var(--primary-orange);
 }
 
-/* News Section - Frange orangée selon logique cohérente */
+.achievement-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-blue);
+    transition: all 0.3s ease;
+}
+
+.achievement-link:hover::after {
+    width: 100%;
+    background-color: var(--primary-orange);
+}
+
+/* ==============================================
+   NEWS SECTION - Conforme maquette
+   ============================================== */
+
 #news {
     padding: 4rem 0;
-    background: var(--white);
+    background: var(--background-light);
 }
 
 #news .section-title {
@@ -952,31 +1010,39 @@ body {
     border-radius: 2px;
 }
 
+#news .row {
+    --bs-gutter-x: 2rem;
+    --bs-gutter-y: 2rem;
+}
+
 .news-card {
     background: var(--white);
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px var(--shadow);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     height: 100%;
     border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
 }
 
 .news-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .news-image {
-    height: 200px;
+    height: 220px;
     overflow: hidden;
+    position: relative;
 }
 
 .news-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .news-card:hover .news-image img {
@@ -984,14 +1050,18 @@ body {
 }
 
 .news-content {
-    padding: 1.5rem;
+    padding: 1.8rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .news-date {
     color: var(--text-light);
     font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     font-weight: 500;
+    letter-spacing: 0.3px;
 }
 
 .news-title {
@@ -1000,15 +1070,22 @@ body {
     margin-bottom: 1rem;
     line-height: 1.4;
     font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.news-card:hover .news-title {
+    color: var(--primary-orange);
 }
 
 .news-excerpt {
     color: var(--text-medium);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
+    font-size: 0.95rem;
+    flex: 1;
 }
 
-/* EFFET SURVOL POUR LE LIEN "VOIR PLUS" AVEC LIGNE FINE */
+/* Effet survol pour le lien "Voir plus" selon maquette */
 .news-link {
     color: var(--primary-blue);
     text-decoration: none;
@@ -1016,9 +1093,22 @@ body {
     transition: all 0.3s ease;
     position: relative;
     padding-bottom: 3px;
+    display: inline-block;
+    margin-top: auto;
+    align-self: flex-start;
     opacity: 0;
     transform: translateY(10px);
-    display: inline-block;
+}
+
+.news-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-blue);
+    transition: all 0.3s ease;
 }
 
 .news-card:hover .news-link {
@@ -1026,21 +1116,8 @@ body {
     transform: translateY(0);
 }
 
-.news-link::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--primary-blue);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-}
-
 .news-card:hover .news-link::after {
-    transform: scaleX(1);
+    width: 100%;
 }
 
 .news-link:hover {
@@ -1049,6 +1126,26 @@ body {
 
 .news-link:hover::after {
     background-color: var(--primary-orange);
+}
+
+/* Bouton "Toutes les actualités" */
+#news .text-center .btn-outline-primary {
+    margin-top: 2rem;
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    border-width: 2px;
+    font-weight: 500;
+    padding: 0.75rem 2.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+#news .text-center .btn-outline-primary:hover {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
 }
 
 /* Footer - Conforme aux maquettes */
@@ -1181,7 +1278,10 @@ body {
     transform: translateY(0);
 }
 
-/* Responsive Design - Optimisé pour toutes les tailles */
+/* ==============================================
+   RESPONSIVE - Adaptations mobiles
+   ============================================== */
+
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
@@ -1276,6 +1376,55 @@ body {
             width: 0;
         }
     }
+    
+    /* Key Indicators - Stack vertical sur mobile */
+    .indicator-card {
+        margin-bottom: 1.5rem;
+        min-height: 100px;
+    }
+    
+    .indicator-card::before {
+        width: 50px;
+        height: 50px;
+        margin-right: 1rem;
+    }
+    
+    .indicator-number,
+    .indicator-suffix {
+        font-size: 2.5rem;
+    }
+    
+    /* Achievements - Maintenir l'alignement vertical */
+    #achievements .row {
+        gap: 1.5rem;
+    }
+    
+    .achievement-card {
+        padding: 1.5rem;
+    }
+    
+    .undp-logo {
+        height: 35px;
+    }
+    
+    .country-flag {
+        width: 30px;
+        height: 20px;
+    }
+    
+    /* News - Ajustements mobiles */
+    .news-image {
+        height: 180px;
+    }
+    
+    .news-content {
+        padding: 1.5rem;
+    }
+    
+    #news .row {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1.5rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1325,7 +1474,95 @@ body {
             width: 0;
         }
     }
+    
+    /* Key Indicators - Optimisation très petits écrans */
+    .indicator-card::before {
+        width: 40px;
+        height: 40px;
+        margin-right: 0.8rem;
+    }
+    
+    .indicator-number,
+    .indicator-suffix {
+        font-size: 2rem;
+    }
+    
+    .indicator-label {
+        font-size: 0.9rem;
+    }
+    
+    /* Achievements - Optimisation mobile */
+    .achievement-header {
+        margin-bottom: 1rem;
+        gap: 0.8rem;
+    }
+    
+    .undp-logo {
+        height: 30px;
+    }
+    
+    .country-flag {
+        width: 25px;
+        height: 17px;
+    }
+    
+    .achievement-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* News - Optimisation mobile */
+    .news-image {
+        height: 160px;
+    }
+    
+    .news-content {
+        padding: 1.2rem;
+    }
+    
+    .news-title {
+        font-size: 1rem;
+    }
+    
+    .news-excerpt {
+        font-size: 0.9rem;
+    }
 }
+
+/* ==============================================
+   ANIMATIONS ET TRANSITIONS
+   ============================================== */
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.indicator-card,
+.achievement-card,
+.news-card {
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.indicator-card:nth-child(1) { animation-delay: 0.1s; }
+.indicator-card:nth-child(2) { animation-delay: 0.2s; }
+.indicator-card:nth-child(3) { animation-delay: 0.3s; }
+.indicator-card:nth-child(4) { animation-delay: 0.4s; }
+.indicator-card:nth-child(5) { animation-delay: 0.5s; }
+.indicator-card:nth-child(6) { animation-delay: 0.6s; }
+
+.achievement-card:nth-child(1) { animation-delay: 0.1s; }
+.achievement-card:nth-child(2) { animation-delay: 0.3s; }
+.achievement-card:nth-child(3) { animation-delay: 0.5s; }
+
+.news-card:nth-child(1) { animation-delay: 0.1s; }
+.news-card:nth-child(2) { animation-delay: 0.3s; }
+.news-card:nth-child(3) { animation-delay: 0.5s; }
 
 /* Animations - Conformes aux maquettes */
 @keyframes fadeInUp {
@@ -1394,6 +1631,14 @@ html {
         transition: none !important;
         animation: none !important;
     }
+    
+    .indicator-card,
+    .achievement-card,
+    .news-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 /* Notification système */
@@ -1423,4 +1668,31 @@ html {
 .reduced-motion * {
     transition: none !important;
     animation: none !important;
+}
+
+/* Styles dynamiques pour les animations */
+.indicator-card,
+.achievement-card,
+.news-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.indicator-card.animate-in,
+.achievement-card.animate-in,
+.news-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.news-image img.loading {
+    opacity: 0.7;
+    filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.news-image img.loaded {
+    opacity: 1;
+    filter: blur(0);
 }
