@@ -115,8 +115,8 @@ body {
 }
 
 .contact-btn:hover {
-    background-color: var(--white);
-    color: var(--text-dark) !important;
+    background-color: var(--primary-orange);
+    color: var(--white) !important;
     border-color: var(--white);
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
@@ -273,7 +273,7 @@ body {
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Animation typewriter pour "Duis mauris" avec fond correct selon maquette */
+/* Animation typewriter pour "Duis mauris" */
 .animated-text {
     background: rgba(0, 0, 0, 0.4);
     color: var(--primary-orange);
@@ -1150,8 +1150,8 @@ body {
 
 /* Footer - Conforme aux maquettes */
 .footer {
-    background: var(--text-dark);
-    color: var(--white);
+    background: #F8F9FA;
+    color: var(--text-dark);
     padding: 3rem 0 1rem;
     margin-top: 4rem;
 }
@@ -1173,12 +1173,9 @@ body {
 }
 
 .footer-title {
-    color: var(--white);
+    color: var(--text-dark);
     font-weight: 600;
     margin-bottom: 1rem;
-    border-bottom: 2px solid var(--primary-orange);
-    padding-bottom: 0.5rem;
-    display: inline-block;
     font-size: 1.1rem;
 }
 
@@ -1192,15 +1189,14 @@ body {
 }
 
 .footer-links a {
-    color: var(--text-light);
+    color: var(--text-medium);
     text-decoration: none;
     transition: all 0.3s ease;
     font-size: 0.9rem;
 }
 
 .footer-links a:hover {
-    color: var(--primary-orange);
-    padding-left: 5px;
+    color: var(--primary-blue);
 }
 
 .contact-info p {
