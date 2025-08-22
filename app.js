@@ -1081,10 +1081,6 @@ window.addEventListener('languageChanged', () => {
         }, 300);
     }
     
-    // Mettre à jour l'animation typewriter
-    setTimeout(() => {
-        initTypewriterAnimation();
-    }, 100);
 });
 
 // Export des fonctions pour utilisation externe
