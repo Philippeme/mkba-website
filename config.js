@@ -322,12 +322,12 @@ const MKBAConfig = {
         phone: '+237 695 478 987',
         email: 'info@mk-ba.com',
         workingHours: {
-            monday: '08:00-17:00',
-            tuesday: '08:00-17:00', 
-            wednesday: '08:00-17:00',
-            thursday: '08:00-17:00',
-            friday: '08:00-17:00',
-            saturday: 'Fermé',
+            monday: '07:30-18:00',
+            tuesday: '07:30-18:00', 
+            wednesday: '07:30-18:00',
+            thursday: '07:30-18:00',
+            friday: '07:30-18:00',
+            saturday: '09:00-14:00',
             sunday: 'Fermé'
         }
     },
