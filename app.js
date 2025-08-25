@@ -2,6 +2,7 @@
 let currentLanguage = 'fr';
 let translations = {};
 let searchExpanded = false;
+let lastScrollTop = 0;
 
 // Translations data - Conformes aux maquettes
 const translationsData = {
@@ -30,7 +31,7 @@ const translationsData = {
         value_collaboration_desc: "Nous prospérons grâce au partenariat et à l'intelligence collective.",
         value_impact_title: "Impact",
         value_impact_desc: "Nous sommes motivés par des résultats qui comptent.",
-        read_more: 'Lire plus <i class="fas fa-arrow-right me-2"></i>',
+        read_more: 'Lire plus <i class="fas fa-arrow-right"></i>',
         video_title: "Laoreet Nec Nisl",
         
         // Where We Operate
@@ -92,7 +93,7 @@ const translationsData = {
         news_3_title: "Duis rhoncus dui venenatis consequat porttitor. Etiam",
         news_3_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris",
         read_more_news: "Voir plus",
-        all_news: 'Toutes les actualités <i class="fas fa-arrow-right me-2"></i>',
+        all_news: 'Toutes les actualités <i class="fas fa-arrow-right ms-2"></i>',
         
         // Footer
         footer_who_we_are: "Qui nous sommes",
@@ -141,7 +142,7 @@ const translationsData = {
         value_collaboration_desc: "We thrive on partnership and collective intelligence.",
         value_impact_title: "Impact",
         value_impact_desc: "We are driven by results that matter.",
-        read_more: 'Read more <i class="fas fa-arrow-right me-2"></i>',
+        read_more: 'Read more <i class="fas fa-arrow-right"></i>',
         video_title: "Laoreet Nec Nisl",
         
         // Where We Operate
@@ -203,7 +204,7 @@ const translationsData = {
         news_3_title: "Duis rhoncus dui venenatis consequat porttitor. Etiam",
         news_3_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris",
         read_more_news: "Read more",
-        all_news: 'All news <i class="fas fa-arrow-right me-2"></i>',
+        all_news: 'All news <i class="fas fa-arrow-right ms-2"></i>',
         
         // Footer
         footer_who_we_are: "Who we are",
@@ -229,13 +230,13 @@ const translationsData = {
 };
 
 // ==============================================
-// FONCTIONS DE BASE - Recherche et traduction
+// GESTION DE LA BANNIÈRE ET DE LA RECHERCHE
 // ==============================================
 
-// Fonction de basculement de la recherche
+// Fonction de basculement de la recherche pour la nouvelle bannière
 function toggleSearch() {
     const searchInputContainer = document.getElementById('searchInputContainer');
-    const searchTrigger = document.querySelector('.search-trigger');
+    const searchTrigger = document.querySelector('.top-banner .search-trigger');
     
     searchExpanded = !searchExpanded;
     
@@ -301,8 +302,12 @@ function displaySearchResults(results) {
     if (firstResult.section) {
         const targetElement = document.getElementById(firstResult.section);
         if (targetElement) {
-            const navbarHeight = document.querySelector('.navbar').offsetHeight;
-            const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+            // Calculer la position avec les nouvelles hauteurs (bannière + navbar)
+            const topBanner = document.querySelector('.top-banner');
+            const navbar = document.querySelector('.navbar');
+            const totalHeaderHeight = (topBanner ? topBanner.offsetHeight : 0) + 
+                                    (navbar ? navbar.offsetHeight : 0);
+            const targetPosition = targetElement.offsetTop - totalHeaderHeight - 20;
             
             window.scrollTo({
                 top: targetPosition,
@@ -312,6 +317,30 @@ function displaySearchResults(results) {
             showNotification(`${results.length} résultat(s) trouvé(s)`);
         }
     }
+}
+
+// Gestion du scroll pour cacher/montrer la bannière (desktop uniquement)
+function handleTopBannerScroll() {
+    if (window.innerWidth <= 768) return; // Pas de masquage sur mobile
+    
+    const topBanner = document.querySelector('.top-banner');
+    const navbar = document.querySelector('.navbar');
+    const body = document.body;
+    const st = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (st > lastScrollTop && st > 100) {
+        // Scroll vers le bas - masquer la bannière
+        topBanner.classList.add('hide-on-scroll');
+        navbar.classList.add('banner-hidden');
+        body.classList.add('banner-hidden');
+    } else {
+        // Scroll vers le haut - montrer la bannière
+        topBanner.classList.remove('hide-on-scroll');
+        navbar.classList.remove('banner-hidden');
+        body.classList.remove('banner-hidden');
+    }
+    
+    lastScrollTop = st <= 0 ? 0 : st;
 }
 
 // Fonction pour copier le lien de la vidéo
@@ -348,14 +377,14 @@ function fallbackCopyText(text) {
     document.body.removeChild(textArea);
 }
 
-// Fonction pour afficher les notifications
+// Fonction pour afficher les notifications (ajustée pour la bannière)
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.className = 'notification';
     notification.textContent = message;
     notification.style.cssText = `
         position: fixed;
-        top: 20px;
+        top: 70px;
         right: 20px;
         background: var(--primary-orange);
         color: white;
@@ -388,9 +417,8 @@ function animateCountersOptimized() {
     counters.forEach((counter, index) => {
         const target = parseInt(counter.getAttribute('data-target'));
         const duration = 2000;
-        const startDelay = index * 200; // Décalage pour chaque compteur
+        const startDelay = index * 200;
         
-        // Reset du compteur
         counter.textContent = '0';
         
         setTimeout(() => {
@@ -412,7 +440,7 @@ function animateCountersOptimized() {
     });
 }
 
-// Observer pour déclencher l'animation des indicateurs de façon optimisée
+// Observer pour déclencher l'animation des indicateurs
 function initIndicatorsAnimation() {
     const indicatorsSection = document.getElementById('indicators');
     
@@ -420,7 +448,6 @@ function initIndicatorsAnimation() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Ajouter une classe pour déclencher les animations CSS
                     const cards = entry.target.querySelectorAll('.indicator-card');
                     cards.forEach((card, index) => {
                         setTimeout(() => {
@@ -428,7 +455,6 @@ function initIndicatorsAnimation() {
                         }, index * 100);
                     });
                     
-                    // Démarrer l'animation des compteurs
                     setTimeout(() => {
                         animateCountersOptimized();
                     }, 300);
@@ -453,7 +479,6 @@ function initAchievementsInteractions() {
     const achievementCards = document.querySelectorAll('.achievement-card');
     
     achievementCards.forEach((card, index) => {
-        // Animation d'apparition avec délai
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -467,7 +492,6 @@ function initAchievementsInteractions() {
         
         observer.observe(card);
         
-        // Effet de focus amélioré pour l'accessibilité
         card.addEventListener('focusin', function() {
             this.style.transform = 'translateY(-3px)';
             this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)';
@@ -478,12 +502,10 @@ function initAchievementsInteractions() {
             this.style.boxShadow = '';
         });
         
-        // Gestion du clic sur toute la carte pour rediriger vers le lien
         card.addEventListener('click', function(e) {
             if (e.target.tagName !== 'A') {
                 const link = this.querySelector('.achievement-link');
                 if (link) {
-                    // Ajouter un effet de clic
                     this.style.transform = 'translateY(-1px) scale(0.98)';
                     setTimeout(() => {
                         this.style.transform = '';
@@ -493,7 +515,6 @@ function initAchievementsInteractions() {
             }
         });
         
-        // Support clavier
         card.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -504,7 +525,6 @@ function initAchievementsInteractions() {
             }
         });
         
-        // Améliorer l'accessibilité
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'article');
         
@@ -526,7 +546,6 @@ function initNewsInteractions() {
     const newsCards = document.querySelectorAll('.news-card');
     
     newsCards.forEach((card, index) => {
-        // Animation d'apparition avec délai
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -540,7 +559,6 @@ function initNewsInteractions() {
         
         observer.observe(card);
         
-        // Effet parallax subtil sur l'image
         card.addEventListener('mousemove', function(e) {
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -565,12 +583,10 @@ function initNewsInteractions() {
             }
         });
         
-        // Gestion du clic sur toute la carte pour rediriger vers le lien
         card.addEventListener('click', function(e) {
             if (e.target.tagName !== 'A') {
                 const link = this.querySelector('.news-link');
                 if (link) {
-                    // Ajouter un effet de clic
                     this.style.transform = 'translateY(-2px) scale(0.98)';
                     setTimeout(() => {
                         this.style.transform = '';
@@ -580,7 +596,6 @@ function initNewsInteractions() {
             }
         });
         
-        // Support clavier
         card.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -591,7 +606,6 @@ function initNewsInteractions() {
             }
         });
         
-        // Améliorer l'accessibilité
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'article');
         
@@ -617,7 +631,6 @@ function initLazyLoadingOptimized() {
             if (entry.isIntersecting) {
                 const img = entry.target;
                 
-                // Précharger l'image
                 const tempImg = new Image();
                 tempImg.onload = () => {
                     img.src = tempImg.src;
@@ -639,7 +652,6 @@ function initLazyLoadingOptimized() {
     });
     
     images.forEach(img => {
-        // Ajouter une classe de chargement
         img.classList.add('loading');
         imageObserver.observe(img);
     });
@@ -650,22 +662,13 @@ function initLazyLoadingOptimized() {
 // ==============================================
 
 function initOptimizedSections() {
-    // Initialiser les indicateurs
     initIndicatorsAnimation();
-    
-    // Initialiser les réalisations
     initAchievementsInteractions();
-    
-    // Initialiser les actualités
     initNewsInteractions();
-    
-    // Initialiser le lazy loading optimisé
     initLazyLoadingOptimized();
-    
-    // Ajouter des styles CSS dynamiques pour les animations
     addDynamicStyles();
     
-    console.log('Sections Key Indicators, Achievements et News optimisées initialisées');
+    console.log('Sections optimisées initialisées avec succès');
 }
 
 // ==============================================
@@ -715,7 +718,7 @@ function addDynamicStyles() {
     document.head.appendChild(style);
 }
 
-// Fonction de traduction
+// Fonction de traduction mise à jour
 function setLanguage(lang) {
     currentLanguage = lang;
     translations = translationsData[lang];
@@ -759,21 +762,25 @@ function setLanguage(lang) {
         // Ignore si localStorage n'est pas disponible
     }
     
-    // Déclencher un événement personnalisé pour les sections optimisées
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
 }
 
-// Gestion du scroll navbar
+// Gestion du scroll navbar (ajustée pour la bannière)
 function handleNavbarScroll() {
     const navbar = document.querySelector('.navbar');
+    const topBanner = document.querySelector('.top-banner');
+    
     if (window.scrollY > 100) {
         navbar.classList.add('navbar-scrolled');
     } else {
         navbar.classList.remove('navbar-scrolled');
     }
+    
+    // Gérer la bannière
+    handleTopBannerScroll();
 }
 
-// Smooth scroll pour les liens d'ancrage
+// Smooth scroll pour les liens d'ancrage (ajusté pour la bannière)
 function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
@@ -783,8 +790,11 @@ function initSmoothScroll() {
             const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                const topBanner = document.querySelector('.top-banner');
+                const navbar = document.querySelector('.navbar');
+                const totalHeaderHeight = (topBanner ? topBanner.offsetHeight : 0) + 
+                                        (navbar ? navbar.offsetHeight : 0);
+                const targetPosition = targetElement.offsetTop - totalHeaderHeight - 20;
                 
                 window.scrollTo({
                     top: targetPosition,
@@ -815,7 +825,7 @@ function initScrollAnimations() {
     elementsToAnimate.forEach(el => observer.observe(el));
 }
 
-// Gestion des cards produits - CONFORME AUX MAQUETTES
+// Gestion des cards produits
 function initProductCards() {
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
@@ -824,7 +834,6 @@ function initProductCards() {
             card.classList.add('active');
         });
         
-        // Support clavier
         card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -835,9 +844,9 @@ function initProductCards() {
     });
 }
 
-// Gestion de la recherche
+// Gestion de la recherche (mise à jour pour la bannière)
 function initSearch() {
-    const searchInput = document.querySelector('.search-input');
+    const searchInput = document.querySelector('.top-banner .search-input');
     
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -883,7 +892,7 @@ function initMobileMenu() {
     }
 }
 
-// Animation typewriter pour un meilleur contrôle
+// Animation typewriter améliorée
 function initTypewriterAnimation() {
     const animatedTextElement = document.getElementById('animatedText');
     if (!animatedTextElement) return;
@@ -941,23 +950,18 @@ function initImageErrorHandling() {
     });
 }
 
-// ==============================================
-// GESTION DES ERREURS ET PERFORMANCE
-// ==============================================
-
+// Gestion de performance optimisée
 function handlePerformanceOptimization() {
-    // Utiliser requestIdleCallback si disponible pour les animations non critiques
     if (window.requestIdleCallback) {
         window.requestIdleCallback(() => {
             initOptimizedSections();
         });
     } else {
-        // Fallback pour les navigateurs qui ne supportent pas requestIdleCallback
         setTimeout(initOptimizedSections, 100);
     }
 }
 
-// Fonction d'initialisation globale
+// Fonction d'initialisation globale mise à jour
 function initWebsite() {
     // Charger la langue préférée
     try {
@@ -976,13 +980,13 @@ function initWebsite() {
     initTypewriterAnimation();
     initImageErrorHandling();
     
-    // Initialiser les sections optimisées avec gestion de performance
+    // Initialiser les sections optimisées
     handlePerformanceOptimization();
     
-    // Event listeners
+    // Event listeners mis à jour
     window.addEventListener('scroll', handleNavbarScroll);
     
-    // Fermer la recherche en cliquant à l'extérieur
+    // Fermer la recherche en cliquant à l'extérieur (mis à jour)
     document.addEventListener('click', (e) => {
         const searchContainer = document.getElementById('searchContainer');
         if (searchExpanded && searchContainer && !searchContainer.contains(e.target)) {
@@ -997,8 +1001,8 @@ function initWebsite() {
         }
     });
     
-    // Support clavier pour la recherche
-    const searchTrigger = document.querySelector('.search-trigger');
+    // Support clavier pour la recherche (mis à jour)
+    const searchTrigger = document.querySelector('.top-banner .search-trigger');
     if (searchTrigger) {
         searchTrigger.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -1073,14 +1077,12 @@ if (document.readyState === 'loading') {
 
 // Réinitialiser si la langue change
 window.addEventListener('languageChanged', () => {
-    // Réinitialiser les animations des compteurs si nécessaire
     const indicatorsSection = document.getElementById('indicators');
     if (indicatorsSection && indicatorsSection.classList.contains('animated')) {
         setTimeout(() => {
             animateCountersOptimized();
         }, 300);
     }
-    
 });
 
 // Export des fonctions pour utilisation externe
@@ -1094,5 +1096,6 @@ window.MKBAWebsite = {
     animateCountersOptimized,
     initIndicatorsAnimation,
     initAchievementsInteractions,
-    initNewsInteractions
+    initNewsInteractions,
+    handleTopBannerScroll
 };

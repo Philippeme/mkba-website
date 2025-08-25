@@ -8,6 +8,7 @@
     --text-medium: #666666;
     --text-light: #999999;
     --background-light: #F8F9FA;
+    --background-gray: #F5F5F5;
     --white: #FFFFFF;
     --border-light: #E9ECEF;
     --shadow: rgba(0, 0, 0, 0.1);
@@ -26,6 +27,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--white);
+    padding-top: 50px; /* Espace pour la bannière fixe */
 }
 
 /* Utilitaires */
@@ -53,18 +55,144 @@ body {
     font-weight: 600;
 }
 
-/* Header & Navigation - EXACT selon maquette */
-.navbar {
-    background: rgba(0, 0, 0, 0.3) !important;
+/* ==============================================
+   TOP BANNER - NOUVELLE BANNIÈRE DE RECHERCHE
+   ============================================== */
+
+.top-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(5px);
-    padding: 1rem 0;
+    z-index: 1055; /* Au-dessus de la navbar Bootstrap (1050) */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 0;
+}
+
+.top-banner-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.search-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.top-banner .search-container {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.top-banner .search-trigger {
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.3rem 0.8rem;
+    opacity: 0.9;
+}
+
+.top-banner .search-trigger:hover {
+    opacity: 1;
+    color: var(--primary-orange);
+}
+
+.top-banner .search-trigger i {
+    margin-right: 0.7rem;
+    font-size: 1rem;
+}
+
+.top-banner .search-input-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    background: var(--white);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.top-banner .search-input-container.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.top-banner .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.top-banner .search-close {
+    background: none;
+    border: none;
+    color: var(--text-medium);
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.top-banner .search-close:hover {
+    color: var(--primary-orange);
+}
+
+.top-banner .language-selector {
+    display: flex;
+    align-items: center;
+    color: var(--white);
+}
+
+.top-banner .language-selector i {
+    margin-right: 0.5rem;
+}
+
+.top-banner .language-selector select {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    outline: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.top-banner .language-selector select option {
+    background: var(--text-dark);
+    color: var(--white);
+}
+
+/* Header & Navigation - Ajustement pour la bannière */
+.navbar {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(5px);
+    padding: -1rem 0;
     transition: all 0.3s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px; /* Espace pour la bannière */
 }
 
 .navbar-scrolled {
     background: rgba(0, 0, 0, 0.8) !important;
-    padding: 0.75rem 0;
+    padding: -1.25rem 0;
+    margin-top: 0; /* Quand on scrolle, la bannière disparaît */
 }
 
 .brand-logo {
@@ -122,115 +250,11 @@ body {
     box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
 }
 
-.search-container {
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.search-trigger {
-    display: flex;
-    align-items: center;
-    color: var(--white);
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0.3rem 0.8rem;
-    opacity: 0.9;
-}
-
-.search-trigger i {
-    margin-right: 0.7rem;
-    font-size: 1rem;
-}
-
-.language-selector {
-    display: flex;
-    align-items: center;
-    color: var(--white);
-    margin-left: 2rem;
-}
-
-.language-selector i {
-    margin-right: 0.5rem;
-}
-
-.search-input-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(100%);
-    transition: all 0.3s ease;
-    background: var(--white);
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    box-shadow: 0 5px 15px var(--shadow);
-}
-
-.search-input-container.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-}
-
-.search-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--text-dark);
-}
-
-.search-close {
-    background: none;
-    border: none;
-    color: var(--text-medium);
-    cursor: pointer;
-    font-size: 1rem;
-    margin-left: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.search-close:hover {
-    color: var(--primary-orange);
-}
-
-.language-selector {
-    display: flex;
-    align-items: center;
-    color: var(--white);
-    margin-left: 2rem;
-}
-
-.language-selector i {
-    margin-right: 0.5rem;
-}
-
-.language-selector select {
-    background: transparent;
-    border: none;
-    color: var(--white);
-    outline: none;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.language-selector select option {
-    background: var(--text-dark);
-    color: var(--white);
-}
-
-/* Hero Section - EXACT selon maquette */
+/* Hero Section - Ajustement pour la bannière */
 .hero-section {
     position: relative;
     height: 100vh;
-    background:
-                url('./assets/images/hero-bg.png');
+    background: url('./assets/images/hero-bg.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -241,7 +265,7 @@ body {
 
 .hero-title {
     font-size: 3.2rem;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--white);
     text-align: center;
     margin-bottom: 2.5rem;
@@ -306,96 +330,161 @@ body {
     }
 }
 
-/* Who We Are Section - Ajout de la frange orangée */
-#who-we-are {
-    padding: 4rem 0;
+/* ==============================================
+   WHO WE ARE SECTION - REFONTE SELON MAQUETTE
+   ============================================== */
+
+.who-we-are-section {
+    padding: 4rem 0;    
     background: var(--white);
+    margin: 0;
 }
 
-#who-we-are .section-title {
+.who-we-are-container {
+    background: var(--background-gray);
+    padding: 2.5rem 4rem;
+    margin: 0;
+    width: 100%;
+}
+
+.who-we-are-content {
+    padding: 0 2rem 0 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.who-we-are-title {
     font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 1.5rem;
     line-height: 1.3;
-    position: relative;
 }
 
-#who-we-are .section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 60px;
-    height: 3px;
-    background: var(--primary-orange);
-    border-radius: 2px;
-}
-
-#who-we-are .section-description {
+.who-we-are-description {
     font-size: 1rem;
     color: var(--text-medium);
     line-height: 1.6;
     margin-bottom: 2rem;
+    text-align: justify;
 }
 
-.values-list {
+/* Liste des valeurs avec puces bleues carrées */
+.values-list-new {
     list-style: none;
     padding: 0;
     margin: 2rem 0;
 }
 
-.values-list li {
+.values-list-new li {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     font-size: 1rem;
     line-height: 1.5;
 }
 
-.values-list i {
-    color: var(--primary-blue);
-    margin-right: 0.8rem;
-    margin-top: 0.1rem;
-    font-size: 1rem;
+.value-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-blue);
+    margin-right: 1rem;
+    margin-top: 0.3rem;
     flex-shrink: 0;
 }
 
-.video-container {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    background: var(--text-dark);
+.value-content {
+    flex: 1;
 }
 
-.video-frame {
+.value-content strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* Bouton "Lire plus" stylisé selon maquette */
+.read-more-section {
+    margin-top: -1rem;
+}
+
+.btn-read-more {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    border: 2px solid var(--primary-blue);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    gap: 0.8rem;
+}
+
+.btn-read-more:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.btn-read-more i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-read-more:hover i {
+    transform: translateX(3px);
+}
+
+/* Conteneur vidéo selon maquette */
+.video-container-new {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+.video-frame-new {
     position: relative;
-    height: 315px;
+    width: 100%;
     background: var(--text-dark);
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    aspect-ratio: 16/9;
 }
 
-.video-frame iframe {
+.video-frame-new iframe {
     width: 100%;
     height: 100%;
     border: none;
     border-radius: 8px;
 }
 
-.video-overlay-info {
+/* Overlay d'information vidéo selon maquette */
+.video-overlay-info-new {
     position: absolute;
     top: 12px;
+    left: 12px;
     right: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--white);
+    z-index: 10;
+}
+
+.video-info-left {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--white);
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
-    font-size: 0.85rem;
     backdrop-filter: blur(4px);
 }
 
@@ -409,24 +498,32 @@ body {
     color: var(--primary-orange);
 }
 
-.copy-link-btn {
-    background: transparent;
+.video-title-small {
+    font-size: 0.85rem;
+    color: var(--white);
+    font-weight: 400;
+}
+
+.copy-link-btn-new {
+    background: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: var(--white);
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+    backdrop-filter: blur(4px);
 }
 
-.copy-link-btn:hover {
+.copy-link-btn-new:hover {
     background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
 }
 
 /* Where We Operate Section - Alignement à gauche selon maquette */
@@ -1270,6 +1367,27 @@ body {
    ============================================== */
 
 @media (max-width: 768px) {
+    body {
+        padding-top: 40px; /* Réduire l'espace pour la bannière sur mobile */
+    }
+    
+    .top-banner {
+        padding: 0.3rem 0;
+    }
+    
+    .top-banner .search-input-container {
+        width: 250px;
+    }
+    
+    .navbar {
+        margin-top: 40px;
+    }
+    
+    .hero-section {
+        margin-top: -40px;
+        padding-top: 40px;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
     }
@@ -1292,27 +1410,24 @@ body {
         margin-top: 0.5rem;
     }
     
-    .search-container,
-    .language-selector {
+    .search-section {
         justify-content: center;
         margin-top: 1rem;
+        gap: 1rem;
     }
     
-    .search-input-container {
-        width: 250px;
-    }
-    
-    .video-container {
+    .video-container-new {
         margin-top: 2rem;
+        padding-left: 0;
+    }
+    
+    .who-we-are-content {
+        padding-right: 0;
+        margin-bottom: 2rem;
     }
     
     .world-map {
         height: 250px;
-    }
-    
-    .world-map::after {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
     }
     
     .map-legend {
@@ -1415,6 +1530,23 @@ body {
 }
 
 @media (max-width: 576px) {
+    body {
+        padding-top: 35px;
+    }
+    
+    .top-banner {
+        padding: 0.2rem 0;
+    }
+    
+    .navbar {
+        margin-top: 35px;
+    }
+    
+    .hero-section {
+        margin-top: -35px;
+        padding-top: 35px;
+    }
+    
     .hero-title {
         font-size: 2rem;
     }
@@ -1423,8 +1555,17 @@ body {
         font-size: 1.8rem;
     }
     
-    .values-list li {
+    .who-we-are-title {
+        font-size: 1.8rem;
+    }
+    
+    .values-list-new li {
         font-size: 1rem;
+    }
+    
+    .btn-read-more {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
     }
     
     .service-card,
@@ -1434,12 +1575,7 @@ body {
         margin-bottom: 1rem;
     }
     
-    .world-map::after {
-        font-size: 0.9rem;
-        padding: 0.5rem;
-    }
-    
-    .search-input-container {
+    .top-banner .search-input-container {
         width: 200px;
     }
     
@@ -1515,6 +1651,24 @@ body {
     }
 }
 
+/* Gestion du scroll pour cacher/montrer la bannière */
+@media (min-width: 769px) {
+    .top-banner.hide-on-scroll {
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .navbar.banner-hidden {
+        margin-top: 0;
+        transition: margin-top 0.3s ease;
+    }
+    
+    body.banner-hidden {
+        padding-top: 0;
+        transition: padding-top 0.3s ease;
+    }
+}
+
 /* ==============================================
    ANIMATIONS ET TRANSITIONS
    ============================================== */
@@ -1581,12 +1735,13 @@ html {
 /* Focus states for accessibility */
 .nav-link:focus,
 .btn:focus,
+.btn-read-more:focus,
 .product-card:focus,
 .news-link:focus,
 .achievement-link:focus,
 .footer-links a:focus,
-.search-trigger:focus,
-.search-input:focus {
+.top-banner .search-trigger:focus,
+.top-banner .search-input:focus {
     outline: 2px solid var(--primary-orange);
     outline-offset: 2px;
 }
@@ -1631,7 +1786,7 @@ html {
 /* Notification système */
 .notification {
     position: fixed;
-    top: 20px;
+    top: 70px; /* Ajusté pour la bannière */
     right: 20px;
     background: var(--primary-orange);
     color: white;
