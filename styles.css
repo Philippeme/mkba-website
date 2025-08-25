@@ -647,7 +647,7 @@ body {
 
 /* Grille de services avec fond bleu clair */
 .services-grid {
-    background: rgba(227, 242, 253, 0.6);
+    background: var(--light-blue);
     padding: 3rem 2rem;
     border-radius: 8px;
     margin-top: 2rem;
@@ -951,7 +951,6 @@ body {
 .achievement-card {
     background: var(--light-blue);
     padding: 2rem;
-    border-radius: 12px;
     transition: all 0.3s ease;
     position: relative;
     border: 1px solid rgba(0, 102, 204, 0.1);
