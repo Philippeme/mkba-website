@@ -230,10 +230,10 @@ const translationsData = {
 };
 
 // ==============================================
-// GESTION DE LA BANNIÈRE ET DE LA RECHERCHE
+// GESTION DE LA RECHERCHE (TOP BANNER)
 // ==============================================
 
-// Fonction de basculement de la recherche pour la nouvelle bannière
+// Fonction de basculement de la recherche
 function toggleSearch() {
     const searchInputContainer = document.getElementById('searchInputContainer');
     const searchTrigger = document.querySelector('.top-banner .search-trigger');
@@ -718,6 +718,10 @@ function addDynamicStyles() {
     document.head.appendChild(style);
 }
 
+// ==============================================
+// GESTION DE LA LANGUE - SYSTÈME BOOTSTRAP DROPDOWN
+// ==============================================
+
 // Fonction de traduction mise à jour
 function setLanguage(lang) {
     currentLanguage = lang;
@@ -749,11 +753,6 @@ function setLanguage(lang) {
         }
     });
     
-    const languageSelect = document.getElementById('languageSelect');
-    if (languageSelect) {
-        languageSelect.value = lang;
-    }
-    
     document.documentElement.lang = lang;
     
     try {
@@ -762,7 +761,18 @@ function setLanguage(lang) {
         // Ignore si localStorage n'est pas disponible
     }
     
+    // Fermer le dropdown après sélection
+    const dropdowns = document.querySelectorAll('.dropdown-menu.show');
+    dropdowns.forEach(dropdown => {
+        const bsDropdown = bootstrap.Dropdown.getInstance(dropdown.previousElementSibling);
+        if (bsDropdown) {
+            bsDropdown.hide();
+        }
+    });
+    
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+    
+    console.log(`Langue changée vers : ${lang}`);
 }
 
 // Gestion du scroll navbar (ajustée pour la bannière)
@@ -878,7 +888,7 @@ function initMobileMenu() {
     const navbarCollapse = document.querySelector('.navbar-collapse');
     
     if (navbarToggler && navbarCollapse) {
-        const navLinks = document.querySelectorAll('.nav-link');
+        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth < 992) {

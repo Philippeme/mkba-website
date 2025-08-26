@@ -36,14 +36,14 @@
     <link rel="preload" href="./assets/images/Groupe 1@2x.png" as="image">
 </head>
 <body>
-    <!-- Top Banner with Search - NEW -->
+    <!-- Top Banner with Search Only -->
     <div class="top-banner">
         <div class="container">
             <div class="top-banner-content">
                 <div class="search-section">
                     <div class="search-container" id="searchContainer">
                         <div class="search-trigger" onclick="toggleSearch()" tabindex="0" role="button" aria-label="Ouvrir la recherche">
-                            <i class="fas fa-search" aria-hidden="true"></i>
+                            <i class="fas fa-search search-icon-right" aria-hidden="true"></i>
                             <span data-i18n="search_placeholder">Recherche dans MK BA</span>
                         </div>
                         <div class="search-input-container" id="searchInputContainer">
@@ -52,14 +52,6 @@
                                 <i class="fas fa-times" aria-hidden="true"></i>
                             </button>
                         </div>
-                    </div>
-                    <div class="language-selector">
-                        <i class="fas fa-globe" aria-hidden="true"></i>
-                        <label for="languageSelect" class="visually-hidden">Choisir la langue</label>
-                        <select id="languageSelect" onchange="setLanguage(this.value)" aria-label="Sélection de langue">
-                            <option value="fr">FR</option>
-                            <option value="en">EN</option>
-                        </select>
                     </div>
                 </div>
             </div>
@@ -70,6 +62,7 @@
     <header class="header-section">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Navigation principale">
             <div class="container">
+                <!-- Logo à gauche -->
                 <a class="navbar-brand" href="#home" aria-label="Retour à l'accueil MK BA">
                     <img src="./assets/images/Groupe 1@2x.png" alt="Logo MK BA" class="brand-logo">
                 </a>
@@ -79,6 +72,7 @@
                 </button>
                 
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Navigation au centre -->
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="#who-we-are" data-i18n="nav_who_we_are">Qui nous sommes</a>
@@ -96,6 +90,19 @@
                             <a class="nav-link contact-btn" href="#contact" data-i18n="nav_contact">Nous contacter</a>
                         </li>
                     </ul>
+                    
+                    <!-- Sélecteur de langue à l'extrémité droite -->
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link language-selector-nav" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Sélection de langue">
+                                <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
