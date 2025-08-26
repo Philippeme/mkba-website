@@ -774,7 +774,7 @@ body {
     align-items: center;
     justify-content: center;
     background: rgba(0, 102, 204, 0.1);
-    border-radius: 8px;
+    border-radius: 4px;
 }
 
 .product-icon i {
@@ -786,7 +786,7 @@ body {
 .product-card h3 {
     font-weight: 600;
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.1rem;  
     line-height: 1.3;
     color: var(--text-dark);
 }
@@ -913,7 +913,7 @@ body {
 #achievements {
     padding: 4rem 0;
     background: var(--white);
-}
+}   
 
 #achievements .section-title {
     font-size: 2.2rem;
@@ -950,7 +950,7 @@ body {
 
 .achievement-card {
     background: var(--light-blue);
-    padding: 2rem;
+    padding: 1rem;
     transition: all 0.3s ease;
     position: relative;
     border: 1px solid rgba(0, 102, 204, 0.1);
