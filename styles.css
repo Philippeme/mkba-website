@@ -75,11 +75,13 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-right: 1.5rem;
 }
 
 .search-section {
     display: flex;
     align-items: center;
+    margin-right: -17rem;
 }
 
 .top-banner .search-container {
@@ -94,7 +96,7 @@ body {
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    padding: 0.3rem 0.8rem;
+    padding: 0.3rem 0.5rem;
     opacity: 0.9;
 }
 
@@ -193,6 +195,24 @@ body {
     letter-spacing: 0.3px;
 }
 
+/* Logo repositionné plus à gauche */
+.navbar-brand {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10rem; /* Plus d'espace à gauche */
+    z-index: 10;
+}
+
+/* Navigation centrée avec espace pour le logo */
+.navbar-nav {
+    flex: 1;
+    justify-content: center;
+    margin-left: 120px; /* Espace pour le logo */
+    margin-right: 120px; /* Espace pour la langue */
+}
+
 .nav-link:hover {
     color: var(--primary-orange) !important;
     transform: translateY(-1px);
@@ -236,6 +256,17 @@ body {
    SÉLECTEUR DE LANGUE À L'EXTRÉMITÉ DROITE DU HEADER
    ============================================== */
 
+
+.navbar-nav.ms-auto {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 3rem; 
+    margin-left: 0 !important;
+    flex: none;
+}
+
 /* Sélecteur de langue dans la navbar */
 .language-selector-nav {
     color: var(--white) !important;
@@ -251,11 +282,14 @@ body {
     background: transparent !important;
 }
 
-/* Icône de langue selon maquette */
+/* Icône de langue selon maquette - globe simple */
 .language-icon {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--white);
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .language-selector-nav:hover .language-icon {
@@ -273,6 +307,8 @@ body {
     padding: 0.5rem 0;
     margin-top: 0.5rem;
     min-width: 140px;
+    right: 0 !important; 
+    left: auto !important;
 }
 
 .language-dropdown .dropdown-item {
