@@ -1065,7 +1065,7 @@ body {
 
 .achievement-link:hover::after {
     width: 100%;
-    background-color: var(--primary-orange);
+    background-color: var(--primary-blue);
 }
 
 /* ==============================================
