@@ -1074,7 +1074,6 @@ body {
 
 #news {
     padding: 4rem 0;
-    background: var(--background-light);
 }
 
 #news .section-title {
@@ -1103,8 +1102,8 @@ body {
 }
 
 .news-card {
-    background: var(--white);
-    border-radius: 12px;
+    background: var(--background-gray);
+    border-radius: 7px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
@@ -1217,13 +1216,13 @@ body {
 
 /* Bouton "Toutes les actualités" */
 #news .text-center .btn-outline-primary {
-    margin-top: 2rem;
+    margin-top: -1rem;
     border-color: var(--primary-blue);
     color: var(--primary-blue);
     border-width: 2px;
     font-weight: 500;
     padding: 0.75rem 2.5rem;
-    border-radius: 25px;
+    border-radius: 6px;
     transition: all 0.3s ease;
 }
 
@@ -1237,10 +1236,10 @@ body {
 
 /* Footer - Conforme aux maquettes */
 .footer {
-    background: #F8F9FA;
+    background: var(--background-gray);
     color: var(--text-dark);
     padding: 3rem 0 1rem;
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 
 .footer-brand {
