@@ -731,7 +731,7 @@ body {
 /* Grille de services avec fond bleu clair */
 .services-grid {
     background: var(--light-blue);
-    padding: 3rem 2rem;
+    padding: 3rem 9rem;
     margin: 2rem -10rem 0 -10rem;
     margin-top: 2rem;
 }
@@ -902,7 +902,7 @@ body {
 
 .indicators-grid {
     background: #FFF5F0;
-    padding: 3rem 4rem;
+    padding: 3rem 10rem;
     margin: 2rem -10rem 0 -10rem;
 }
 
@@ -1009,7 +1009,7 @@ body {
 
 #achievements .section-title::before {
     content: '';
-    position: absolute;
+    position: absolute;                                             
     left: 0;
     bottom: -5px;
     width: 60px;
