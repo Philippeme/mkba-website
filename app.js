@@ -249,7 +249,7 @@ function toggleSearch() {
         }
     } else {
         searchInputContainer.classList.remove('active');
-        searchTrigger.style.opacity = '1';
+        searchTrigger.style.opacity = '0.6';
     }
 }
 

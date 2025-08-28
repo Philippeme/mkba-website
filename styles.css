@@ -97,7 +97,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0.3rem 0.5rem;
-    opacity: 0.9;
+    opacity: 0.6;
 }
 
 .top-banner .search-trigger:hover {
@@ -187,7 +187,7 @@ body {
 /* Navigation au centre */
 .nav-link {
     color: var(--white) !important;
-    font-weight: 400;
+    font-weight: 350;
     font-size: 1rem;
     padding: 0.5rem 1.5rem !important;
     transition: all 0.3s ease;
@@ -245,7 +245,7 @@ body {
 }
 
 .contact-btn:hover {
-    background-color: var(--primary-orange);
+    background-color: #F08A5D;
     color: var(--white) !important;
     border-color: var(--white);
     transform: translateY(-1px);
@@ -458,7 +458,7 @@ body {
 .values-list-new {
     list-style: none;
     padding: 0;
-    margin: 2rem 0;
+    margin: -1rem 0;
 }
 
 .values-list-new li {
@@ -489,7 +489,7 @@ body {
 
 /* Bouton "Lire plus" stylisé selon maquette */
 .read-more-section {
-    margin-top: -1rem;
+    margin-top: 1rem;
 }
 
 .btn-read-more {
@@ -497,7 +497,6 @@ body {
     align-items: center;
     padding: 0.75rem 2rem;
     border: 2px solid var(--primary-blue);
-    border-radius: 6px;
     background: transparent;
     color: var(--primary-blue);
     text-decoration: none;
@@ -1304,7 +1303,7 @@ body {
     border-width: 2px;
     font-weight: 500;
     padding: 0.75rem 2.5rem;
-    border-radius: 6px;
+    border-radius: 2px;
     transition: all 0.3s ease;
 }
 
