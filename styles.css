@@ -122,7 +122,6 @@ body {
     transform: translateX(100%);
     transition: all 0.3s ease;
     background: var(--white);
-    border-radius: 25px;
     display: flex;
     align-items: center;
     padding: 0.5rem 1rem;
@@ -240,7 +239,7 @@ body {
     padding: 0.4rem 1.2rem !important;
     margin-left: 1rem;
     background: transparent;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 400;
 }
 
@@ -623,17 +622,6 @@ body {
     text-align: left;
 }
 
-#where-we-operate .section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 60px;
-    height: 3px;
-    background: var(--primary-orange);
-    border-radius: 2px;
-}
-
 #where-we-operate .section-subtitle {
     font-size: 1.1rem;
     color: var(--text-dark);
@@ -705,17 +693,6 @@ body {
     margin-bottom: 1.5rem;
     position: relative;
     text-align: left;
-}
-
-#what-we-do .section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 60px;
-    height: 3px;
-    background: var(--primary-orange);
-    border-radius: 2px;
 }
 
 #what-we-do .section-description {
@@ -790,17 +767,6 @@ body {
     margin-bottom: 1.5rem;
     text-align: left;
     position: relative;
-}
-
-#products .section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 60px;
-    height: 3px;
-    background: var(--primary-orange);
-    border-radius: 2px;
 }
 
 #products .section-description {
@@ -901,7 +867,7 @@ body {
 
 .indicators-grid {
     background: #FFF5F0;
-    padding: 3rem 10rem;
+    padding: 2rem 10rem;
     margin: 2rem -10rem 0 -10rem;
 }
 
@@ -912,17 +878,6 @@ body {
     margin-bottom: 3rem;
     text-align: left;
     position: relative; 
-}
-
-#indicators .section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 60px;
-    height: 3px;
-    background: #FFF5F0;
-    border-radius: 2px;
 }
 
 /* Grille des indicateurs - 3 colonnes sur 2 lignes selon maquette */
@@ -937,6 +892,7 @@ body {
     border-radius: 0;
     text-align: left;
     position: relative;
+    bottom: 2rem;
     transition: all 0.3s ease;
     border: none;
     box-shadow: none;
@@ -1004,17 +960,6 @@ body {
     margin-bottom: 3rem;
     text-align: left;
     position: relative;
-}
-
-#achievements .section-title::before {
-    content: '';
-    position: absolute;                                             
-    left: 0;
-    bottom: -5px;
-    width: 60px;
-    height: 3px;
-    background: var(--primary-orange)   ;
-    border-radius: 2px;
 }
 
 /* Alignement vertical des réalisations selon maquette */
@@ -1164,17 +1109,6 @@ body {
     margin-bottom: 3rem;
     text-align: left;
     position: relative;
-}
-
-#news .section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 60px;
-    height: 3px;
-    background: var(--primary-orange);
-    border-radius: 2px;
 }
 
 #news .row {
