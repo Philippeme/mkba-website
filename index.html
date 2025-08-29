@@ -33,6 +33,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
+    <!-- Leaflet CSS pour la carte interactive - Chargé dynamiquement si nécessaire -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
     <!-- Preload des ressources critiques -->
     <link rel="preload" href="./assets/images/hero-bg.png" as="image">
     <link rel="preload" href="./assets/images/Groupe 1@2x.png" as="image">
@@ -213,7 +216,7 @@
         </div>
     </section>
 
-    <!-- Where We Operate Section -->
+    <!-- Where We Operate Section - CARTE INTERACTIVE -->
     <section id="where-we-operate" class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
@@ -222,17 +225,39 @@
                     d'Afrique et de l'Océan Indien</p>
             </div>
 
+            <!-- Conteneur de la carte interactive -->
             <div class="world-map-container">
-                <div id="world-map" class="world-map" role="img"
-                    aria-label="Carte des zones d'intervention de MK BA en Afrique et Océan Indien"></div>
+                <!-- Carte Leaflet interactive -->
+                <div id="interactive-map" role="img" 
+                     aria-label="Carte interactive des zones d'intervention de MK BA en Afrique et Océan Indien">
+                    <!-- La carte sera initialisée par JavaScript -->
+                    <div style="
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        height: 450px; 
+                        background: #f0f0f0;
+                        color: #666;
+                        font-size: 1.1rem;
+                        border-radius: 8px;
+                    ">
+                        <div style="text-align: center;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem; color: #F37C1F;"></i>
+                            <div>Chargement de la carte interactive...</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Légende de la carte -->
                 <div class="map-legend" role="complementary" aria-label="Légende de la carte">
+                    <div class="legend-title" data-i18n="where_we_operate_title">Zones d'intervention</div>
                     <div class="legend-item">
                         <span class="legend-color" aria-hidden="true"></span>
-                        <span data-i18n="map_legend_cameroon">Cameroun</span>
+                        <span class="legend-text">Pays d'intervention MK BA</span>
                     </div>
-                    <div class="legend-stats">
-                        <span data-i18n="map_legend_projects">Projet : 20</span><br>
-                        <span data-i18n="map_legend_interventions">Intervenants : 70</span>
+                    <div class="legend-stats" style="margin-top: 8px; font-size: 0.85rem; color: #666;">
+                        <div><strong>10 pays</strong> en Afrique et Océan Indien</div>
+                        <div style="margin-top: 2px;"><em>Survolez les marqueurs pour plus d'informations</em></div>
                     </div>
                 </div>
             </div>
@@ -751,6 +776,7 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <!-- Leaflet JS chargé dynamiquement par app.js si nécessaire -->
     <script src="app.js" defer></script>
 
     <!-- Schema.org structured data pour le SEO -->

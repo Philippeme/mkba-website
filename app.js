@@ -3,6 +3,7 @@ let currentLanguage = 'fr';
 let translations = {};
 let searchExpanded = false;
 let lastScrollTop = 0;
+let interactiveMap = null; // Variable pour la carte Leaflet
 
 // Translations data - Conformes aux maquettes
 const translationsData = {
@@ -38,8 +39,8 @@ const translationsData = {
         where_we_operate_title: "Où nous intervenons",
         where_we_operate_subtitle: "Nous intervenons dans 10 pays d'Afrique et de l'Océan Indien",
         map_legend_cameroon: "Cameroun",
-        map_legend_projects: "Projet : 20",
-        map_legend_interventions: "Intervenants : 70",
+        map_legend_projects: "Projets",
+        map_legend_interventions: "Intervenants",
         
         // Services Section
         services_title: "Les services offerts par MK BA",
@@ -149,8 +150,8 @@ const translationsData = {
         where_we_operate_title: "Where we operate",
         where_we_operate_subtitle: "We operate in 10 countries in Africa and the Indian Ocean",
         map_legend_cameroon: "Cameroon",
-        map_legend_projects: "Projects: 20",
-        map_legend_interventions: "Interventions: 70",
+        map_legend_projects: "Projects",
+        map_legend_interventions: "Interventions",
         
         // Services Section
         services_title: "Services offered by MK BA",
@@ -302,12 +303,10 @@ function displaySearchResults(results) {
     if (firstResult.section) {
         const targetElement = document.getElementById(firstResult.section);
         if (targetElement) {
-            // Calculer la position avec les nouvelles hauteurs (bannière + navbar)
-            const topBanner = document.querySelector('.top-banner');
-            const navbar = document.querySelector('.navbar');
-            const totalHeaderHeight = (topBanner ? topBanner.offsetHeight : 0) + 
-                                    (navbar ? navbar.offsetHeight : 0);
-            const targetPosition = targetElement.offsetTop - totalHeaderHeight - 20;
+            // Calculer la position avec la nouvelle hauteur fixe
+            const headerHeight = getComputedStyle(document.documentElement).getPropertyValue('--total-header-height');
+            const headerHeightPx = parseInt(headerHeight) || 130;
+            const targetPosition = targetElement.offsetTop - headerHeightPx - 20;
             
             window.scrollTo({
                 top: targetPosition,
@@ -319,7 +318,11 @@ function displaySearchResults(results) {
     }
 }
 
-// Gestion du scroll pour cacher/montrer la bannière (desktop uniquement)
+// ==============================================
+// GESTION DU SCROLL SYNCHRONISÉ - CORRECTION MAJEURE
+// ==============================================
+
+// Gestion du scroll pour masquer/montrer la bannière avec synchronisation
 function handleTopBannerScroll() {
     if (window.innerWidth <= 768) return; // Pas de masquage sur mobile
     
@@ -329,18 +332,335 @@ function handleTopBannerScroll() {
     const st = window.pageYOffset || document.documentElement.scrollTop;
     
     if (st > lastScrollTop && st > 100) {
-        // Scroll vers le bas - masquer la bannière
+        // Scroll vers le bas - masquer la bannière ET repositionner la navbar
         topBanner.classList.add('hide-on-scroll');
         navbar.classList.add('banner-hidden');
         body.classList.add('banner-hidden');
     } else {
-        // Scroll vers le haut - montrer la bannière
+        // Scroll vers le haut - montrer la bannière ET remettre la navbar
         topBanner.classList.remove('hide-on-scroll');
         navbar.classList.remove('banner-hidden');
         body.classList.remove('banner-hidden');
     }
     
     lastScrollTop = st <= 0 ? 0 : st;
+}
+
+// Gestion du scroll navbar avec synchronisation parfaite
+function handleNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    
+    // Ajouter l'effet scrolled sans modifier la position
+    if (window.scrollY > 100) {
+        navbar.classList.add('navbar-scrolled');
+    } else {
+        navbar.classList.remove('navbar-scrolled');
+    }
+    
+    // Gérer la bannière de manière synchronisée
+    handleTopBannerScroll();
+}
+
+// ==============================================
+// CARTE INTERACTIVE AVEC LEAFLET.JS
+// ==============================================
+
+// Données des pays d'intervention avec coordonnées et statistiques
+const operatingCountries = [
+    {
+        name: "Cameroun",
+        nameEn: "Cameroon",
+        coordinates: [3.848, 11.5021],
+        projects: 20,
+        interventions: 70,
+        flagUrl: "./assets/images/flags/cameroon.png",
+        bounds: [[2.0, 8.0], [13.0, 16.0]]
+    },
+    {
+        name: "Bénin",
+        nameEn: "Benin", 
+        coordinates: [9.30769, 2.31583],
+        projects: 8,
+        interventions: 25,
+        flagUrl: "./assets/images/flags/benin.png",
+        bounds: [[6.0, 0.5], [12.5, 4.0]]
+    },
+    {
+        name: "Madagascar",
+        nameEn: "Madagascar",
+        coordinates: [-18.8792, 47.5079],
+        projects: 12,
+        interventions: 40,
+        flagUrl: "./assets/images/flags/madagascar.png",
+        bounds: [[-25.5, 43.0], [-12.0, 50.5]]
+    },
+    {
+        name: "Sénégal",
+        nameEn: "Senegal",
+        coordinates: [14.497, -14.452],
+        projects: 6,
+        interventions: 18,
+        flagUrl: "./assets/images/flags/senegal.png",
+        bounds: [[12.0, -17.5], [16.5, -11.0]]
+    },
+    {
+        name: "Mali",
+        nameEn: "Mali",
+        coordinates: [17.570692, -3.996166],
+        projects: 7,
+        interventions: 20,
+        flagUrl: "./assets/images/flags/mali.png",
+        bounds: [[10.0, -12.0], [25.0, 4.0]]
+    },
+    {
+        name: "Maurice",
+        nameEn: "Mauritius",
+        coordinates: [-20.348404, 57.552152],
+        projects: 5,
+        interventions: 15,
+        flagUrl: "./assets/images/flags/mauritius.png",
+        bounds: [[-20.5, 57.3], [-20.0, 57.8]]
+    },
+    {
+        name: "Comores",
+        nameEn: "Comoros",
+        coordinates: [-11.875001, 43.872219],
+        projects: 2,
+        interventions: 6,
+        flagUrl: "./assets/images/flags/comoros.png",
+        bounds: [[-12.5, 43.0], [-11.3, 44.5]]
+    }
+];
+
+// Fonction pour initialiser la carte interactive
+function initInteractiveMap() {
+    // Vérifier si Leaflet est disponible
+    if (typeof L === 'undefined') {
+        console.warn('Leaflet non disponible - Chargement depuis CDN...');
+        loadLeafletAndInitMap();
+        return;
+    }
+
+    const mapContainer = document.getElementById('interactive-map');
+    if (!mapContainer) {
+        console.warn('Conteneur de carte non trouvé');
+        return;
+    }
+
+    try {
+        // Créer la carte centrée sur l'Afrique
+        interactiveMap = L.map('interactive-map', {
+            center: [0, 20], // Centré sur l'Afrique
+            zoom: 2,
+            minZoom: 2,
+            maxZoom: 7,
+            zoomControl: true,
+            scrollWheelZoom: true,
+            doubleClickZoom: true,
+            dragging: true
+        });
+
+        // Ajouter la couche de fond OpenStreetMap avec style personnalisé
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '',
+            maxZoom: 18,
+            className: 'map-tiles'
+        }).addTo(interactiveMap);
+
+        // Ajouter les marqueurs pour chaque pays d'intervention
+        operatingCountries.forEach(country => {
+            // Créer le marqueur avec icône personnalisée - Position fixe
+            const marker = L.marker(country.coordinates, {
+                icon: L.divIcon({
+                    className: 'custom-marker',
+                    html: `<div class="marker-pin" style="
+                        width: 20px; 
+                        height: 20px; 
+                        background: #F37C1F; 
+                        border: 2px solid #E85A00;
+                        border-radius: 50%; 
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        transform-origin: center center;
+                        position: relative;
+                    "></div>`,
+                    iconSize: [20, 20],
+                    iconAnchor: [10, 10], // Centre exact du marqueur
+                    popupAnchor: [0, -10]
+                })
+            }).addTo(interactiveMap);
+
+            // Créer le contenu de l'infobulle
+            const tooltipContent = `
+                <div class="custom-tooltip">
+                    <div class="tooltip-header">
+                        <img src="${country.flagUrl}" alt="Drapeau ${country.name}" class="tooltip-flag" 
+                             onerror="this.style.display='none'">
+                        <span class="tooltip-country">${currentLanguage === 'fr' ? country.name : country.nameEn}</span>
+                    </div>
+                    <div class="tooltip-stats">
+                        <div><strong>${translations.map_legend_projects || 'Projets'} :</strong> ${country.projects}</div>
+                        <div><strong>${translations.map_legend_interventions || 'Intervenants'} :</strong> ${country.interventions}</div>
+                    </div>
+                </div>
+            `;
+
+            // Ajouter l'infobulle qui apparaît au survol - Position fixe
+            marker.bindTooltip(tooltipContent, {
+                permanent: false,
+                direction: 'top',
+                offset: [0, -25], // Position fixe au-dessus du marqueur
+                className: 'leaflet-custom-tooltip',
+                sticky: false, // Désactiver sticky pour éviter le mouvement
+                interactive: false,
+                opacity: 1
+            });
+
+            // Événements de survol pour l'effet visuel - Position statique
+            marker.on('mouseover', function(e) {
+                const pin = this.getElement().querySelector('.marker-pin');
+                if (pin) {
+                    pin.style.transform = 'scale(1.2)';
+                    pin.style.zIndex = '1000';
+                    pin.style.background = '#FF8C42';
+                }
+                // Ouvrir le tooltip manuellement
+                this.openTooltip();
+            });
+
+            marker.on('mouseout', function(e) {
+                const pin = this.getElement().querySelector('.marker-pin');
+                if (pin) {
+                    pin.style.transform = 'scale(1)';
+                    pin.style.zIndex = '999';
+                    pin.style.background = '#F37C1F';
+                }
+                // Fermer le tooltip avec un délai pour éviter le scintillement
+                setTimeout(() => {
+                    if (!this.isTooltipOpen()) return;
+                    this.closeTooltip();
+                }, 100);
+            });
+
+            // Événement de clic pour zoomer sur le pays
+            marker.on('click', function() {
+                interactiveMap.fitBounds(country.bounds, {
+                    padding: [50, 50],
+                    maxZoom: 6
+                });
+            });
+        });
+
+        // Ajouter des styles CSS dynamiques pour les tooltips
+        const tooltipStyles = document.createElement('style');
+        tooltipStyles.textContent = `
+            .leaflet-custom-tooltip {
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
+            
+            .leaflet-tooltip-top:before {
+                display: none !important;
+            }
+            
+            .custom-marker:hover {
+                transform: scale(1.2);
+            }
+        `;
+        document.head.appendChild(tooltipStyles);
+
+        console.log('Carte interactive initialisée avec succès');
+
+    } catch (error) {
+        console.error('Erreur lors de l\'initialisation de la carte:', error);
+        // Fallback vers la carte statique
+        showStaticMapFallback();
+    }
+}
+
+// Fonction pour charger Leaflet depuis CDN et initialiser la carte
+function loadLeafletAndInitMap() {
+    // Charger le CSS de Leaflet
+    const leafletCSS = document.createElement('link');
+    leafletCSS.rel = 'stylesheet';
+    leafletCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
+    document.head.appendChild(leafletCSS);
+
+    // Charger le JS de Leaflet
+    const leafletJS = document.createElement('script');
+    leafletJS.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+    leafletJS.onload = () => {
+        // Attendre un peu pour que tout soit chargé
+        setTimeout(initInteractiveMap, 100);
+    };
+    leafletJS.onerror = () => {
+        console.warn('Impossible de charger Leaflet - Utilisation de la carte statique');
+        showStaticMapFallback();
+    };
+    document.head.appendChild(leafletJS);
+}
+
+// Fonction de fallback vers la carte statique
+function showStaticMapFallback() {
+    const mapContainer = document.getElementById('interactive-map');
+    if (mapContainer) {
+        mapContainer.innerHTML = `
+            <div style="
+                background: #f0f0f0; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                height: 100%; 
+                font-size: 1.1rem; 
+                color: #666;
+                border-radius: 6px;
+            ">
+                <div style="text-align: center;">
+                    <i class="fas fa-globe-africa" style="font-size: 3rem; margin-bottom: 1rem; color: #F37C1F;"></i>
+                    <div>Carte des zones d'intervention MK BA</div>
+                    <div style="font-size: 0.9rem; margin-top: 0.5rem;">10 pays en Afrique et Océan Indien</div>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Fonction pour mettre à jour les traductions de la carte
+function updateMapTranslations() {
+    if (!interactiveMap) return;
+
+    // Mettre à jour les tooltips existants
+    interactiveMap.eachLayer(layer => {
+        if (layer.getTooltip) {
+            const tooltip = layer.getTooltip();
+            if (tooltip) {
+                // Recréer le contenu du tooltip avec la nouvelle langue
+                const countryData = operatingCountries.find(c => 
+                    tooltip._content.includes(c.name) || tooltip._content.includes(c.nameEn)
+                );
+                
+                if (countryData) {
+                    const newContent = `
+                        <div class="custom-tooltip">
+                            <div class="tooltip-header">
+                                <img src="${countryData.flagUrl}" alt="Drapeau ${countryData.name}" class="tooltip-flag" 
+                                     onerror="this.style.display='none'">
+                                <span class="tooltip-country">${currentLanguage === 'fr' ? countryData.name : countryData.nameEn}</span>
+                            </div>
+                            <div class="tooltip-stats">
+                                <div><strong>${translations.map_legend_projects || 'Projets'} :</strong> ${countryData.projects}</div>
+                                <div><strong>${translations.map_legend_interventions || 'Intervenants'} :</strong> ${countryData.interventions}</div>
+                            </div>
+                        </div>
+                    `;
+                    layer.setTooltipContent(newContent);
+                }
+            }
+        }
+    });
 }
 
 // Fonction pour copier le lien de la vidéo
@@ -377,23 +697,11 @@ function fallbackCopyText(text) {
     document.body.removeChild(textArea);
 }
 
-// Fonction pour afficher les notifications (ajustée pour la bannière)
+// Fonction pour afficher les notifications (ajustée pour le header fixe)
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.className = 'notification';
     notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 70px;
-        right: 20px;
-        background: var(--primary-orange);
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 5px;
-        z-index: 9999;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        transition: all 0.3s ease;
-    `;
     
     document.body.appendChild(notification);
     
@@ -753,6 +1061,9 @@ function setLanguage(lang) {
         }
     });
     
+    // Mettre à jour la carte si elle existe
+    updateMapTranslations();
+    
     document.documentElement.lang = lang;
     
     try {
@@ -775,22 +1086,7 @@ function setLanguage(lang) {
     console.log(`Langue changée vers : ${lang}`);
 }
 
-// Gestion du scroll navbar (ajustée pour la bannière)
-function handleNavbarScroll() {
-    const navbar = document.querySelector('.navbar');
-    const topBanner = document.querySelector('.top-banner');
-    
-    if (window.scrollY > 100) {
-        navbar.classList.add('navbar-scrolled');
-    } else {
-        navbar.classList.remove('navbar-scrolled');
-    }
-    
-    // Gérer la bannière
-    handleTopBannerScroll();
-}
-
-// Smooth scroll pour les liens d'ancrage (ajusté pour la bannière)
+// Smooth scroll pour les liens d'ancrage (ajusté pour le header fixe)
 function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
@@ -800,11 +1096,9 @@ function initSmoothScroll() {
             const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                const topBanner = document.querySelector('.top-banner');
-                const navbar = document.querySelector('.navbar');
-                const totalHeaderHeight = (topBanner ? topBanner.offsetHeight : 0) + 
-                                        (navbar ? navbar.offsetHeight : 0);
-                const targetPosition = targetElement.offsetTop - totalHeaderHeight - 20;
+                const headerHeight = getComputedStyle(document.documentElement).getPropertyValue('--total-header-height');
+                const headerHeightPx = parseInt(headerHeight) || 130;
+                const targetPosition = targetElement.offsetTop - headerHeightPx - 20;
                 
                 window.scrollTo({
                     top: targetPosition,
@@ -854,7 +1148,7 @@ function initProductCards() {
     });
 }
 
-// Gestion de la recherche (mise à jour pour la bannière)
+// Gestion de la recherche
 function initSearch() {
     const searchInput = document.querySelector('.top-banner .search-input');
     
@@ -990,13 +1284,16 @@ function initWebsite() {
     initTypewriterAnimation();
     initImageErrorHandling();
     
+    // Initialiser la carte interactive
+    initInteractiveMap();
+    
     // Initialiser les sections optimisées
     handlePerformanceOptimization();
     
     // Event listeners mis à jour
     window.addEventListener('scroll', handleNavbarScroll);
     
-    // Fermer la recherche en cliquant à l'extérieur (mis à jour)
+    // Fermer la recherche en cliquant à l'extérieur
     document.addEventListener('click', (e) => {
         const searchContainer = document.getElementById('searchContainer');
         if (searchExpanded && searchContainer && !searchContainer.contains(e.target)) {
@@ -1011,7 +1308,7 @@ function initWebsite() {
         }
     });
     
-    // Support clavier pour la recherche (mis à jour)
+    // Support clavier pour la recherche
     const searchTrigger = document.querySelector('.top-banner .search-trigger');
     if (searchTrigger) {
         searchTrigger.addEventListener('keydown', (e) => {
@@ -1026,6 +1323,13 @@ function initWebsite() {
     window.addEventListener('resize', () => {
         if (window.innerWidth < 768 && searchExpanded) {
             toggleSearch();
+        }
+        
+        // Redimensionner la carte si nécessaire
+        if (interactiveMap) {
+            setTimeout(() => {
+                interactiveMap.invalidateSize();
+            }, 250);
         }
     });
     
@@ -1107,5 +1411,7 @@ window.MKBAWebsite = {
     initIndicatorsAnimation,
     initAchievementsInteractions,
     initNewsInteractions,
-    handleTopBannerScroll
+    handleTopBannerScroll,
+    initInteractiveMap,
+    operatingCountries
 };

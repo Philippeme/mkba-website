@@ -9,11 +9,16 @@
     --text-medium: #666666;
     --text-light: #999999;
     --background-light: #F8F9FA;
-    --background-gray: #F5F5F5;
+    --background-gray: #F8F8F8;
     --white: #FFFFFF;
     --border-light: #E9ECEF;
     --shadow: rgba(0, 0, 0, 0.1);
     --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Variables pour les hauteurs fixes */
+    --banner-height: 50px;
+    --navbar-height: 80px;
+    --total-header-height: 130px; /* banner + navbar */
 }
 
 /* Reset et base */
@@ -28,7 +33,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--white);
-    padding-top: 50px; /* Espace pour la bannière fixe */
+    padding-top: var(--total-header-height); /* Espace fixe pour header complet */
 }
 
 /* Utilitaires */
@@ -37,7 +42,6 @@ body {
     font-weight: 600;
     color: var(--text-dark);
     margin-bottom: 1rem;
-
 }
 
 /* Titres de sections avec carré beige décoratif selon maquettes */
@@ -54,7 +58,7 @@ body {
 .section-title-with-highlight::after {
     content: '';
     position: absolute;
-    left: 1ch; /* 1 caractères depuis le début du titre */
+    left: 1ch;
     top: 0;
     bottom: 0;
     width: 60px;
@@ -82,7 +86,7 @@ body {
 }
 
 /* ==============================================
-   TOP BANNER - UNIQUEMENT RECHERCHE À DROITE
+   TOP BANNER - SYNCHRONISATION SCROLL
    ============================================== */
 
 .top-banner {
@@ -90,11 +94,14 @@ body {
     top: 0;
     left: 0;
     right: 0;
+    height: var(--banner-height);
     background: #2C2C2C;
     backdrop-filter: blur(5px);
-    z-index: 1050;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1051; /* Plus élevé que navbar pour rester au-dessus */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);  
     padding: 0.5rem 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(0);
 }
 
 .top-banner-content {
@@ -102,6 +109,7 @@ body {
     justify-content: flex-end;
     align-items: center;
     padding-right: 1.5rem;
+    height: 100%;
 }
 
 .search-section {
@@ -131,11 +139,10 @@ body {
     color: var(--primary-orange);
 }
 
-/* Icône de recherche tournée vers la droite selon maquette */
 .top-banner .search-trigger i.search-icon-right {
     margin-right: 0.4rem;
     font-size: 1rem;
-    transform: scaleX(-1); /* Miroir horizontal pour tourner vers la droite */
+    transform: scaleX(-1);
 }
 
 .top-banner .search-input-container {
@@ -184,22 +191,28 @@ body {
 }
 
 /* ==============================================
-   HEADER & NAVIGATION - CONFORME À LA MAQUETTE
+   HEADER & NAVIGATION - CORRECTION SYNCHRONISATION
    ============================================== */
 
 .navbar {
+    position: fixed;
+    top: var(--banner-height); /* Positionné juste sous la bannière */
+    left: 0;
+    right: 0;
+    height: var(--navbar-height);
     background: rgba(0, 0, 0, 0.6) !important;
     backdrop-filter: blur(5px);
     padding: 1rem 0;
     transition: all 0.3s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 50px; /* Espace pour la bannière */
+    z-index: 1050;
+    margin: 0; /* Supprimer le margin-top */
 }
 
 .navbar-scrolled {
     background: rgba(0, 0, 0, 0.8) !important;
     padding: 0.75rem 0;
-    margin-top: 0; /* Quand on scrolle, la bannière disparaît */
+    /* Pas de changement de position lors du scroll */
 }
 
 /* Logo à gauche */
@@ -226,7 +239,7 @@ body {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    margin-left: 10rem; /* Plus d'espace à gauche */
+    margin-left: 10rem;
     z-index: 10;
 }
 
@@ -234,8 +247,8 @@ body {
 .navbar-nav {
     flex: 1;
     justify-content: center;
-    margin-left: 120px; /* Espace pour le logo */
-    margin-right: 120px; /* Espace pour la langue */
+    margin-left: 120px;
+    margin-right: 120px;
 }
 
 .nav-link:hover {
@@ -291,7 +304,6 @@ body {
     flex: none;
 }
 
-/* Sélecteur de langue dans la navbar */
 .language-selector-nav {
     color: var(--white) !important;
     padding: 0.5rem 0.7rem !important;
@@ -306,7 +318,6 @@ body {
     background: transparent !important;
 }
 
-/* Icône de langue selon maquette - globe simple */
 .language-icon {
     font-size: 1.1rem;
     color: var(--white);
@@ -321,7 +332,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Dropdown de langue */
 .language-dropdown {
     background: rgba(0, 0, 0, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -357,7 +367,32 @@ body {
     color: var(--primary-orange);
 }
 
-/* Hero Section - Ajustement pour la bannière */
+/* ==============================================
+   GESTION SCROLL - SYNCHRONISATION PARFAITE
+   ============================================== */
+
+/* États de scroll - Banner et Navbar bougent ensemble */
+@media (min-width: 769px) {
+    /* Masquer la bannière ET repositionner la navbar ensemble */
+    .top-banner.hide-on-scroll {
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    /* Quand la bannière est masquée, la navbar remonte */
+    .navbar.banner-hidden {
+        top: 0; /* Remonte complètement en haut */
+        transition: top 0.3s ease;
+    }
+    
+    /* Ajuster le padding du body quand la bannière est masquée */
+    body.banner-hidden {
+        padding-top: var(--navbar-height); /* Seulement la hauteur de la navbar */
+        transition: padding-top 0.3s ease;
+    }
+}
+
+/* Hero Section - Ajustement pour le header fixe */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -368,6 +403,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: calc(-1 * var(--total-header-height)); /* Compenser le padding du body */
+    padding-top: var(--total-header-height); /* Ajouter l'espace en haut */
 }
 
 .hero-title {
@@ -384,7 +421,7 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.4rem;
+    font-size: 2.7rem;
     color: var(--white);
     white-space: nowrap;
     overflow: visible;
@@ -646,7 +683,11 @@ body {
     transform: scale(1.05);
 }
 
-/* Where We Operate Section - Alignement à gauche selon maquette */
+/* ==============================================
+   NOUVELLE CARTE INTERACTIVE - SECTION MODIFIÉE
+   ============================================== */
+
+/* Where We Operate Section - Carte Interactive */
 #where-we-operate {
     padding: 4rem 0 2rem 0;
     background: var(--background-light);
@@ -672,51 +713,120 @@ body {
 .world-map-container {
     position: relative;
     margin: 2rem 0;
-}
-
-.world-map {
-    background: var(--white);
-    height: 400px;
+    background: #f0f0f0; /* Fond gris clair selon maquette */
     border-radius: 8px;
-    position: relative;
     overflow: hidden;
-    border: 1px solid var(--border-light);
-    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500"%3E%3C!-- Afrique --%3E%3Cpath d="M450,150 L500,150 L520,180 L540,200 L560,230 L580,250 L590,280 L580,310 L560,340 L540,360 L520,380 L500,390 L480,390 L460,380 L440,360 L430,340 L420,320 L410,290 L420,260 L430,230 L440,200 L450,170 Z" fill="%23FF6B35"/%3E%3C!-- Cameroun --%3E%3Cpath d="M480,280 L500,280 L510,295 L505,310 L490,315 L475,310 L470,295 Z" fill="%23FF6B35"/%3E%3C!-- Madagascar --%3E%3Cpath d="M580,320 L590,320 L595,340 L590,360 L580,365 L575,360 L575,340 Z" fill="%23FF6B35"/%3E%3C!-- Autres pays africains --%3E%3Cpath d="M440,250 L460,250 L465,265 L460,280 L440,285 L435,270 Z" fill="%23FF6B35"/%3E%3Cpath d="M520,240 L540,240 L545,255 L540,270 L520,275 L515,260 Z" fill="%23FF6B35"/%3E%3C!-- Reste du monde en gris --%3E%3Cpath d="M100,100 L200,100 L250,150 L300,180 L350,200 L380,180 L390,150 L380,120 L350,100 L300,90 L250,95 L200,90 L150,95 L100,100 Z" fill="%23999999"/%3E%3Cpath d="M600,120 L700,120 L750,150 L800,180 L850,200 L880,180 L890,150 L880,120 L850,100 L800,90 L750,95 L700,90 L650,95 L600,100 Z" fill="%23999999"/%3E%3C/svg%3E');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 85%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* Conteneur pour la carte Leaflet */
+#interactive-map {
+    height: 450px;
+    width: 100%;
+    background: #f0f0f0;
+    z-index: 1;
+}
+
+/* Styles pour les infobulles personnalisées */
+.custom-tooltip {
+    background: white;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-family: var(--font-primary);
+    min-width: 200px;
+}
+
+.tooltip-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 10px;
+}
+
+.tooltip-flag {
+    width: 28px;
+    height: 24px;
+    border-radius: 3px;
+}
+
+.tooltip-country {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1rem;
+}
+
+.tooltip-stats {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    line-height: 1.4;
+}
+
+.tooltip-stats div {
+    margin-bottom: 2px;
+}
+
+/* Style pour les pays en orange */
+.country-highlight {
+    fill: #F37C1F !important;
+    stroke: #E85A00 !important;
+    stroke-width: 1.5px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.country-highlight:hover {
+    fill: #FF8C42 !important;
+    stroke: #CC4A00 !important;
+    stroke-width: 2px !important;
+}
+
+/* Légende repositionnée */
 .map-legend {
     position: absolute;
     bottom: 15px;
-    left: 15px;
+    right: 15px; /* Déplacée à droite selon maquette */
     background: var(--white);
-    padding: 0.8rem;
-    border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-light);
-    font-size: 0.85rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #F37C1F;
+    font-size: 0.9rem;
+    z-index: 1000;
+}
+
+.legend-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-size: 1rem;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    margin-bottom: 0.4rem;
+    margin-bottom: 6px;
 }
 
 .legend-color {
     width: 16px;
     height: 16px;
-    background: var(--primary-orange);
-    border-radius: 2px;
+    background: #F37C1F;
+    border-radius: 3px;
     margin-right: 8px;
 }
 
-.legend-stats {
-    font-size: 0.8rem;
-    color: var(--text-medium);
-    line-height: 1.3;
+.legend-text {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* Styles pour assurer la compatibilité Leaflet */
+.leaflet-container {
+    background: #f0f0f0 !important;
+}
+
+.leaflet-control-attribution {
+    display: none !important; /* Masquer l'attribution par défaut */
 }
 
 /* ==============================================
@@ -987,7 +1097,7 @@ body {
 .indicator-label {
     font-size: 1rem;
     color: var(--text-dark);
-    margin-top: 0.3rem;
+    margin-bottom: 1rem;
     font-weight: 400;
 }
 
@@ -1294,7 +1404,7 @@ body {
 
 /* Footer - Conforme à la maquette exacte */
 .footer {
-    background: #f8f9fa; /* Fond gris très clair */
+    background: #F5F5F5; /* Fond gris clair */
     color: var(--text-dark);
     padding: 3rem 0 0;
     margin-top: 1rem;
@@ -1487,19 +1597,32 @@ body {
 
 @media (max-width: 768px) {
     body {
-        padding-top: 40px; /* Réduire l'espace pour la bannière sur mobile */
+        padding-top: var(--total-header-height); /* Maintenir l'espace fixe */
     }
     
     .top-banner {
+        height: 40px;
         padding: 0.3rem 0;
+    }
+    
+    .navbar {
+        height: 70px;
+        top: 40px; /* Ajuster selon la nouvelle hauteur de bannière */
+    }
+    
+    :root {
+        --banner-height: 40px;
+        --navbar-height: 70px;
+        --total-header-height: 110px;
+    }
+    
+    .hero-section {
+        margin-top: calc(-1 * var(--total-header-height));
+        padding-top: var(--total-header-height);
     }
     
     .top-banner .search-input-container {
         width: 250px;
-    }
-    
-    .navbar {
-        margin-top: 40px;
     }
     
     /* Responsive - Titres avec carré beige */
@@ -1533,11 +1656,6 @@ body {
         justify-content: center;
     }
     
-    .hero-section {
-        margin-top: -40px;
-        padding-top: 40px;
-    }
-    
     .hero-title {
         font-size: 2.5rem;
     }
@@ -1561,6 +1679,23 @@ body {
         padding-left: 0;
     }
     
+    /* Carte interactive mobile */
+    #interactive-map {
+        height: 300px;
+    }
+    
+    .custom-tooltip {
+        min-width: 150px;
+        font-size: 0.8rem;
+    }
+    
+    .map-legend {
+        bottom: 10px;
+        right: 10px;
+        padding: 0.8rem;
+        font-size: 0.8rem;
+    }
+    
     /* Logo dans cercle blanc - version mobile */
     .logo-circle-white {
         width: 28px;
@@ -1572,8 +1707,7 @@ body {
         font-size: 0.75rem;
     }
     
-    .copy-link-btn-new,
-    .youtube-btn-new {
+    .copy-link-btn-new {
         width: 28px;
         height: 28px;
         font-size: 0.7rem;
@@ -1582,17 +1716,6 @@ body {
     .who-we-are-content {
         padding-right: 0;
         margin-bottom: 2rem;
-    }
-    
-    .world-map {
-        height: 250px;
-    }
-    
-    .map-legend {
-        position: relative;
-        margin-top: 1rem;
-        left: 0;
-        bottom: auto;
     }
     
     /* Products - Responsive pour alignement 4+2 */
@@ -1699,21 +1822,25 @@ body {
 }
 
 @media (max-width: 576px) {
-    body {
-        padding-top: 35px;
+    :root {
+        --banner-height: 35px;
+        --navbar-height: 65px;
+        --total-header-height: 100px;
     }
     
     .top-banner {
+        height: 35px;
         padding: 0.2rem 0;
     }
     
     .navbar {
-        margin-top: 35px;
+        height: 65px;
+        top: 35px;
     }
     
     .hero-section {
-        margin-top: -35px;
-        padding-top: 35px;
+        margin-top: calc(-1 * var(--total-header-height));
+        padding-top: var(--total-header-height);
     }
     
     .hero-title {
@@ -1776,6 +1903,22 @@ body {
         }
     }
     
+    /* Carte interactive très petits écrans */
+    #interactive-map {
+        height: 250px;
+    }
+    
+    .custom-tooltip {
+        min-width: 120px;
+        padding: 8px;
+        font-size: 0.75rem;
+    }
+    
+    .tooltip-flag {
+        width: 20px;
+        height: 15px;
+    }
+    
     /* Logo dans cercle blanc - très petits écrans */
     .logo-circle-white {
         width: 25px;
@@ -1787,8 +1930,7 @@ body {
         font-size: 0.7rem;
     }
     
-    .copy-link-btn-new,
-    .youtube-btn-new {
+    .copy-link-btn-new {
         width: 25px;
         height: 25px;
         font-size: 0.6rem;
@@ -1850,24 +1992,6 @@ body {
     
     .news-excerpt {
         font-size: 0.9rem;
-    }
-}
-
-/* Gestion du scroll pour cacher/montrer la bannière */
-@media (min-width: 769px) {
-    .top-banner.hide-on-scroll {
-        transform: translateY(-100%);
-        transition: transform 0.3s ease;
-    }
-    
-    .navbar.banner-hidden {
-        margin-top: 0;
-        transition: margin-top 0.3s ease;
-    }
-    
-    body.banner-hidden {
-        padding-top: 0;
-        transition: padding-top 0.3s ease;
     }
 }
 
@@ -1989,7 +2113,7 @@ html {
 /* Notification système */
 .notification {
     position: fixed;
-    top: 70px; /* Ajusté pour la bannière */
+    top: calc(var(--total-header-height) + 10px); /* Ajusté pour le header complet */
     right: 20px;
     background: var(--primary-orange);
     color: white;

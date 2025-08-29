@@ -54,8 +54,8 @@ const MKBAConfig = {
             madagascar: {
                 name: 'Madagascar',
                 coordinates: [-18.7669, 46.8691],
-                projects: 5,
-                interventions: 15,
+                projects: 12,
+                interventions: 40,
                 color: '#FF6B35'
             }
             // Ajouter d'autres pays selon les besoins
