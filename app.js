@@ -92,7 +92,7 @@ const translationsData = {
         news_2_excerpt: "Aenean sed nibh a magna posuere tempor. Nunc faucibus pellentesque nunc in aliquet. Donec congue, nunc vel tempor congue, enim",
         news_3_title: "Duis rhoncus dui venenatis consequat porttitor. Etiam",
         news_3_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris",
-        read_more_news: "Voir plus",
+        read_more_news: 'Voir plus  <i class="fas fa-arrow-right"></i>',
         all_news: 'Toutes les actualités <i class="fas fa-arrow-right ms-2"></i>',
         
         // Footer
@@ -203,7 +203,7 @@ const translationsData = {
         news_2_excerpt: "Aenean sed nibh a magna posuere tempor. Nunc faucibus pellentesque nunc in aliquet. Donec congue, nunc vel tempor congue, enim",
         news_3_title: "Duis rhoncus dui venenatis consequat porttitor. Etiam",
         news_3_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris",
-        read_more_news: "Read more",
+        read_more_news: 'Read more  <i class="fas fa-arrow-right"></i>',
         all_news: 'All news <i class="fas fa-arrow-right ms-2"></i>',
         
         // Footer

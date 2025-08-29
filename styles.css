@@ -4,7 +4,8 @@
     --primary-blue: #0066CC;
     --dark-blue: #003366;
     --light-blue: #EAF4FB;
-    --text-dark: #333333;
+    --highlight-beige: #FDE6D4;
+    --text-dark: #222222;
     --text-medium: #666666;
     --text-light: #999999;
     --background-light: #F8F9FA;
@@ -33,9 +34,34 @@ body {
 /* Utilitaires */
 .section-title {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--text-dark);
     margin-bottom: 1rem;
+
+}
+
+/* Titres de sections avec carré beige décoratif selon maquettes */
+.section-title-with-highlight {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 0;
+    line-height: 1.2;
+}
+
+.section-title-with-highlight::after {
+    content: '';
+    position: absolute;
+    left: 1ch; /* 1 caractères depuis le début du titre */
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    height: 100%;
+    background-color: var(--highlight-beige);
+    border-radius: 0;
+    z-index: -1;
 }
 
 .section-subtitle {
@@ -252,9 +278,8 @@ body {
 }
 
 /* ==============================================
-   SÉLECTEUR DE LANGUE À L'EXTRÉMITÉ DROITE DU HEADER
+   SÉLECTEUR DE LANGUE - ICÔNE GLOBE OUTLINE
    ============================================== */
-
 
 .navbar-nav.ms-auto {
     position: absolute;
@@ -521,7 +546,10 @@ body {
     transform: translateX(3px);
 }
 
-/* Conteneur vidéo selon maquette */
+/* ==============================================
+   CONTENEUR VIDÉO SELON MAQUETTE
+   ============================================== */
+
 .video-container-new {
     height: 100%;
     display: flex;
@@ -562,27 +590,38 @@ body {
 .video-info-left {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    backdrop-filter: blur(4px);
+    gap: 12px;
 }
 
-.mkba-logo-small {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--white);
+/* Logo MK BA dans cercle blanc selon maquette */
+.logo-circle-white {
+    width: 45px;
+    height: 45px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
 }
 
-.mkba-logo-small span {
-    color: var(--primary-orange);
+.mkba-logo-video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .video-title-small {
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: var(--white);
-    font-weight: 400;
+    font-weight: 250;
+}
+
+/* Contrôles vidéo à droite */
+.video-controls-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .copy-link-btn-new {
@@ -613,7 +652,7 @@ body {
     background: var(--background-light);
 }
 
-#where-we-operate .section-title {
+#where-we-operate .section-title-with-highlight {
     font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-dark);
@@ -680,13 +719,16 @@ body {
     line-height: 1.3;
 }
 
-/* Services Section - Alignement à gauche selon maquette */
+/* ==============================================
+   SERVICES SECTION - DESCRIPTIONS ÉTENDUES
+   ============================================== */
+
 #what-we-do {
     padding: 4rem 0;
     background: var(--white);
 }
 
-#what-we-do .section-title {
+#what-we-do .section-title-with-highlight {
     font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-dark);
@@ -701,7 +743,8 @@ body {
     line-height: 1.6;
     margin-bottom: 3rem;
     text-align: left;
-    max-width: 900px;
+    max-width: none;
+    width: 100%;
 }
 
 /* Grille de services avec fond bleu clair */
@@ -754,13 +797,16 @@ body {
     margin-bottom: 0;
 }
 
-/* Products Section */
+/* ==============================================
+   PRODUCTS SECTION - FOND BLANC ET ALIGNEMENT 4+2
+   ============================================== */
+
 #products {
     padding: 4rem 0;
-    background: var(--white);
+    background: var(--white); 
 }
 
-#products .section-title {
+#products .section-title-with-highlight {
     font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-dark);
@@ -775,7 +821,8 @@ body {
     line-height: 1.6;
     margin-bottom: 3rem;
     text-align: left;
-    max-width: 900px;
+    max-width: none;
+    width: 100%;
 }
 
 .product-card {
@@ -953,7 +1000,7 @@ body {
     background: var(--white);
 }   
 
-#achievements .section-title {
+#achievements .section-title-with-highlight {
     font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-dark);
@@ -1095,14 +1142,14 @@ body {
 }
 
 /* ==============================================
-   NEWS SECTION - Conforme maquette
+   NEWS SECTION - LIEN EN BAS À DROITE + BORDURE BLEUE
    ============================================== */
 
 #news {
     padding: 4rem 0;
 }
 
-#news .section-title {
+#news .section-title-with-highlight {
     font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-dark);
@@ -1118,19 +1165,23 @@ body {
 
 .news-card {
     background: var(--background-gray);
-    border-radius: 7px;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     height: 100%;
     border: 1px solid var(--border-light);
+    border-bottom: 3px solid transparent;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
+/* Bordure bleue fine au survol de la carte */
 .news-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    border-bottom: 3px solid var(--primary-blue);
 }
 
 .news-image {
@@ -1155,6 +1206,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .news-date {
@@ -1186,7 +1238,16 @@ body {
     flex: 1;
 }
 
-/* Effet survol pour le lien "Voir plus" selon maquette */
+/* Container pour le lien "Voir plus" positionné en bas à droite */
+.news-link-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+/* Lien "Voir plus" en bas à droite au survol */
 .news-link {
     color: var(--primary-blue);
     text-decoration: none;
@@ -1194,22 +1255,8 @@ body {
     transition: all 0.3s ease;
     position: relative;
     padding-bottom: 3px;
-    display: inline-block;
-    margin-top: auto;
-    align-self: flex-start;
     opacity: 0;
     transform: translateY(10px);
-}
-
-.news-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--primary-blue);
-    transition: all 0.3s ease;
 }
 
 .news-card:hover .news-link {
@@ -1223,10 +1270,6 @@ body {
 
 .news-link:hover {
     color: var(--primary-orange);
-}
-
-.news-link:hover::after {
-    background-color: var(--primary-orange);
 }
 
 /* Bouton "Toutes les actualités" */
@@ -1402,7 +1445,7 @@ body {
 
 /* Bas de page - Bande grise foncée */
 .footer-bottom-band {
-    background: #6c757d; /* Gris foncé */
+    background: #999999; /* Gris foncé */
     padding: 1rem 0;
     margin-top: 0;
 }
@@ -1459,6 +1502,16 @@ body {
         margin-top: 40px;
     }
     
+    /* Responsive - Titres avec carré beige */
+    .section-title-with-highlight {
+        font-size: 1.8rem;
+    }
+    
+    .section-title-with-highlight::after {
+        left: 2.5ch;
+        width: 30px;
+    }
+    
     /* Mobile - Navigation */
     .navbar-nav {
         text-align: center;
@@ -1508,6 +1561,24 @@ body {
         padding-left: 0;
     }
     
+    /* Logo dans cercle blanc - version mobile */
+    .logo-circle-white {
+        width: 28px;
+        height: 28px;
+        padding: 4px;
+    }
+    
+    .video-title-small {
+        font-size: 0.75rem;
+    }
+    
+    .copy-link-btn-new,
+    .youtube-btn-new {
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+    }
+    
     .who-we-are-content {
         padding-right: 0;
         margin-bottom: 2rem;
@@ -1522,6 +1593,17 @@ body {
         margin-top: 1rem;
         left: 0;
         bottom: auto;
+    }
+    
+    /* Products - Responsive pour alignement 4+2 */
+    #products .row:first-child .col-lg-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+    #products .row:last-child .col-lg-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
     
     .product-card {
@@ -1642,6 +1724,15 @@ body {
         font-size: 1.8rem;
     }
     
+    .section-title-with-highlight {
+        font-size: 1.6rem;
+    }
+    
+    .section-title-with-highlight::after {
+        left: 2ch;
+        width: 25px;
+    }
+    
     .who-we-are-title {
         font-size: 1.8rem;
     }
@@ -1683,6 +1774,30 @@ body {
         100% {
             width: 0;
         }
+    }
+    
+    /* Logo dans cercle blanc - très petits écrans */
+    .logo-circle-white {
+        width: 25px;
+        height: 25px;
+        padding: 3px;
+    }
+    
+    .video-title-small {
+        font-size: 0.7rem;
+    }
+    
+    .copy-link-btn-new,
+    .youtube-btn-new {
+        width: 25px;
+        height: 25px;
+        font-size: 0.6rem;
+    }
+    
+    /* Products - Stack vertical sur très petits écrans */
+    #products .row .col-lg-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
     
     /* Key Indicators - Optimisation très petits écrans */
@@ -1925,4 +2040,4 @@ html {
 .news-image img.loaded {
     opacity: 1;
     filter: blur(0);
-}   
+}

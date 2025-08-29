@@ -193,13 +193,17 @@
                                 </iframe>
                                 <div class="video-overlay-info-new">
                                     <div class="video-info-left">
-                                        <div class="mkba-logo-small">MK<span>BA</span></div>
+                                        <div class="logo-circle-white">
+                                            <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="mkba-logo-video">
+                                        </div>
                                         <span class="video-title-small" data-i18n="video_title">Laoreet Nec Nisl</span>
                                     </div>
-                                    <button class="copy-link-btn-new" onclick="copyVideoLink()"
-                                        title="Copier le lien de la vidéo" aria-label="Copier le lien de la vidéo">
-                                        <i class="fas fa-copy" aria-hidden="true"></i>
-                                    </button>
+                                    <div class="video-controls-right">
+                                        <button class="copy-link-btn-new" onclick="copyVideoLink()"
+                                            title="Copier le lien de la vidéo" aria-label="Copier le lien de la vidéo">
+                                            <i class="fas fa-copy" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -213,7 +217,7 @@
     <section id="where-we-operate" class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title" data-i18n="where_we_operate_title">Où nous intervenons</h2>
+                <h2 class="section-title-with-highlight" data-i18n="where_we_operate_title">Où nous intervenons</h2>
                 <p class="section-subtitle" data-i18n="where_we_operate_subtitle">Nous intervenons dans 10 pays
                     d'Afrique et de l'Océan Indien</p>
             </div>
@@ -238,7 +242,7 @@
     <!-- Services Section -->
     <section id="what-we-do" class="py-5">
         <div class="container">
-            <h2 class="section-title mb-4" data-i18n="services_title">Les services offerts par MK BA</h2>
+            <h2 class="section-title-with-highlight mb-4" data-i18n="services_title">Les services offerts par MK BA</h2>
             <p class="section-description mb-5" data-i18n="services_description">
                 Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem.
                 Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis ultrices eros.
@@ -337,9 +341,9 @@
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="py-5 bg-light">
+    <section id="products" class="py-5">
         <div class="container">
-            <h2 class="section-title mb-4" data-i18n="products_title">Produits</h2>
+            <h2 class="section-title-with-highlight mb-4" data-i18n="products_title">Produits</h2>
             <p class="section-description mb-5" data-i18n="products_description">
                 Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem.
                 Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis ultrices eros.
@@ -350,8 +354,9 @@
                 Sed eget diam mi. Sed id quam et purus luctus pretium.
             </p>
 
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
+            <!-- Première rangée: 4 produits -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
                     <div class="product-card" tabindex="0" role="button"
                         aria-label="Produit Ingénierie des données et IA">
                         <div class="product-icon">
@@ -362,7 +367,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="product-card active" tabindex="0" role="button" aria-label="Produit Santé">
                         <div class="product-icon">
                             <i class="fas fa-heartbeat" aria-hidden="true"></i>
@@ -372,7 +377,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="product-card" tabindex="0" role="button" aria-label="Produit Éducation">
                         <div class="product-icon">
                             <i class="fas fa-graduation-cap" aria-hidden="true"></i>
@@ -382,7 +387,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="product-card" tabindex="0" role="button" aria-label="Produit Environnement">
                         <div class="product-icon">
                             <i class="fas fa-leaf" aria-hidden="true"></i>
@@ -391,8 +396,11 @@
                         <i class="fas fa-external-link-alt product-link" aria-hidden="true"></i>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-4 col-md-6">
+            <!-- Deuxième rangée: 2 produits -->
+            <div class="row g-4 justify-content-start">
+                <div class="col-lg-3 col-md-6">
                     <div class="product-card" tabindex="0" role="button" aria-label="Produit Gestion d'entreprise">
                         <div class="product-icon">
                             <i class="fas fa-briefcase" aria-hidden="true"></i>
@@ -402,7 +410,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="product-card" tabindex="0" role="button" aria-label="Produit Finance">
                         <div class="product-icon">
                             <i class="fas fa-chart-line" aria-hidden="true"></i>
@@ -490,7 +498,7 @@
     <!-- Achievements Section -->
     <section id="achievements" class="py-5 bg-light">
         <div class="container">
-            <h2 class="section-title mb-5" data-i18n="achievements_title">Réalisations</h2>
+            <h2 class="section-title-with-highlight mb-5" data-i18n="achievements_title">Réalisations</h2>
 
             <div class="row">
                 <div class="col-lg-4 col-md-6">
@@ -585,7 +593,7 @@
     <!-- News Section -->
     <section id="news" class="py-5">
         <div class="container">
-            <h2 class="section-title mb-5" data-i18n="news_title">Actualités</h2>
+            <h2 class="section-title-with-highlight mb-5" data-i18n="news_title">Actualités</h2>
 
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
@@ -602,8 +610,10 @@
                                 Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in,
                                 tincidunt nec di. Morbi mauris
                             </p>
-                            <a href="#" class="news-link" data-i18n="read_more_news"
-                                aria-label="Lire la suite de l'article">Voir plus</a>
+                            <div class="news-link-container">
+                                <a href="#" class="news-link" data-i18n="read_more_news"
+                                    aria-label="Lire la suite de l'article">Voir plus</a>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -622,8 +632,10 @@
                                 Aenean sed nibh a magna posuere tempor. Nunc faucibus pellentesque nunc in aliquet.
                                 Donec congue, nunc vel tempor congue, enim
                             </p>
-                            <a href="#" class="news-link" data-i18n="read_more_news"
-                                aria-label="Lire la suite de l'article">Voir plus</a>
+                            <div class="news-link-container">
+                                <a href="#" class="news-link" data-i18n="read_more_news"
+                                    aria-label="Lire la suite de l'article">Voir plus</a>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -642,8 +654,10 @@
                                 Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in,
                                 tincidunt nec dui. Morbi mauris
                             </p>
-                            <a href="#" class="news-link" data-i18n="read_more_news"
-                                aria-label="Lire la suite de l'article">Voir plus</a>
+                            <div class="news-link-container">
+                                <a href="#" class="news-link" data-i18n="read_more_news"
+                                    aria-label="Lire la suite de l'article">Voir plus</a>
+                            </div>
                         </div>
                     </article>
                 </div>
