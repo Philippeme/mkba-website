@@ -34,7 +34,8 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Leaflet CSS pour la carte interactive - Chargé dynamiquement si nécessaire -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- Preload des ressources critiques -->
     <link rel="preload" href="./assets/images/hero-bg.png" as="image">
@@ -83,8 +84,30 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <!-- Navigation au centre -->
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#who-we-are" data-i18n="nav_who_we_are">Qui nous sommes</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="whoWeAreDropdownHome" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_who_we_are">
+                                Qui nous sommes
+                            </a>
+                            <div class="dropdown-menu who-we-are-dropdown" aria-labelledby="whoWeAreDropdownHome">
+                                <div class="dropdown-content">
+                                    <div class="dropdown-left">
+                                        <h5 data-i18n="dropdown_title">Qui nous sommes</h5>
+                                        <p data-i18n="dropdown_description">Découvrez notre équipe, nos valeurs et notre
+                                            engagement pour l'excellence technologique en Afrique.</p>
+                                    </div>
+                                    <div class="dropdown-right">
+                                        <a class="dropdown-item" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">We
+                                            are MK BA</a>
+                                        <a class="dropdown-item" href="#" data-i18n="nav_our_team">Notre équipe</a>
+                                        <a class="dropdown-item" href="#" data-i18n="nav_sustainability">Notre
+                                            engagement pour la durabilité</a>
+                                        <a class="dropdown-item" href="#" data-i18n="nav_technologies">Technologies</a>
+                                        <a class="dropdown-item" href="#" data-i18n="nav_work_with_us">Travailler avec
+                                            nous</a>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#what-we-do" data-i18n="nav_what_we_do">Ce que nous faisons</a>
@@ -197,7 +220,8 @@
                                 <div class="video-overlay-info-new">
                                     <div class="video-info-left">
                                         <div class="logo-circle-white">
-                                            <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="mkba-logo-video">
+                                            <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA"
+                                                class="mkba-logo-video">
                                         </div>
                                         <span class="video-title-small" data-i18n="video_title">Laoreet Nec Nisl</span>
                                     </div>
@@ -228,8 +252,8 @@
             <!-- Conteneur de la carte interactive -->
             <div class="world-map-container">
                 <!-- Carte Leaflet interactive -->
-                <div id="interactive-map" role="img" 
-                     aria-label="Carte interactive des zones d'intervention de MK BA en Afrique et Océan Indien">
+                <div id="interactive-map" role="img"
+                    aria-label="Carte interactive des zones d'intervention de MK BA en Afrique et Océan Indien">
                     <!-- La carte sera initialisée par JavaScript -->
                     <div style="
                         display: flex; 
@@ -242,12 +266,13 @@
                         border-radius: 8px;
                     ">
                         <div style="text-align: center;">
-                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem; color: #F37C1F;"></i>
+                            <i class="fas fa-spinner fa-spin"
+                                style="font-size: 2rem; margin-bottom: 1rem; color: #F37C1F;"></i>
                             <div>Chargement de la carte interactive...</div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Légende de la carte -->
                 <div class="map-legend" role="complementary" aria-label="Légende de la carte">
                     <div class="legend-title" data-i18n="where_we_operate_title">Zones d'intervention</div>

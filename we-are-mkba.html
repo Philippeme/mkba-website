@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title_who_we_are">Nous sommes MK BA - Excellence en Solutions Technologiques</title>
+    <meta name="description"
+        content="Découvrez qui nous sommes chez MK BA, notre équipe, nos valeurs et notre engagement pour la durabilité. Excellence en solutions technologiques en Afrique.">
+    <meta name="keywords" content="MK BA, qui nous sommes, équipe, valeurs, engagement, technologie, Afrique">
+    <meta name="author" content="MK Business Analysis">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mk-ba.com/we-are-mkba">
+    <meta property="og:title" content="Nous sommes MK BA - Excellence en Solutions Technologiques">
+    <meta property="og:description" content="Découvrez qui nous sommes chez MK BA">
+    <meta property="og:image" content="./assets/images/mkba-og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="we-are-mkba.css">
+
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./assets/images/we-are-hero-bg.png" as="image">
+    <link rel="preload" href="./assets/images/Groupe 1@2x.png" as="image">
+</head>
+
+<body class="we-are-page">
+    <!-- Top Banner with Search Only -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="top-banner-content">
+                <div class="search-section">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-trigger" onclick="toggleSearch()" tabindex="0" role="button"
+                            aria-label="Ouvrir la recherche">
+                            <i class="fas fa-search search-icon-right" aria-hidden="true"></i>
+                            <span data-i18n="search_placeholder">Recherche dans MK BA</span>
+                        </div>
+                        <div class="search-input-container" id="searchInputContainer">
+                            <input type="search" class="search-input" placeholder="Recherche dans MK BA..."
+                                data-i18n-placeholder="search_placeholder" aria-label="Champ de recherche">
+                            <button class="search-close" onclick="toggleSearch()" aria-label="Fermer la recherche">
+                                <i class="fas fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation with Dropdown -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top who-we-are-nav" role="navigation" aria-label="Navigation principale">
+            <div class="container">
+                <!-- Logo à gauche -->
+                <a class="navbar-brand" href="index.html" aria-label="Retour à l'accueil MK BA">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="brand-logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Navigation au centre -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="whoWeAreDropdown" role="button" 
+                               data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_who_we_are">
+                                Qui nous sommes
+                            </a>
+                            <div class="dropdown-menu who-we-are-dropdown" aria-labelledby="whoWeAreDropdown">
+                                <div class="dropdown-content">
+                                    <div class="dropdown-left">
+                                        <h5 data-i18n="dropdown_title">Qui nous sommes</h5>
+                                        <p data-i18n="dropdown_description">Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence technologique en Afrique.</p>
+                                    </div>
+                                    <div class="dropdown-right">
+                                        <a class="dropdown-item active" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">We are MK BA</a>
+                                        <a class="dropdown-item" href="#" data-i18n="nav_our_team">Our team</a>
+                                        <a class="dropdown-item" href="#" data-i18n="nav_sustainability">Our commitment to sustainability</a>
+                                        <a class="dropdown-item" href="#" data-i18n="nav_technologies">Technologies</a>
+                                        <a class="dropdown-item" href="#" data-i18n="nav_work_with_us">Work with us</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#what-we-do" data-i18n="nav_what_we_do">Ce que nous faisons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#achievements" data-i18n="nav_achievements">Réalisations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#news" data-i18n="nav_news">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact-btn" href="index.html#contact" data-i18n="nav_contact">Nous contacter</a>
+                        </li>
+                    </ul>
+
+                    <!-- Sélecteur de langue à l'extrémité droite -->
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link language-selector-nav" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="Sélection de langue">
+                                <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bannière Fil d'Ariane -->
+    <section class="breadcrumb-banner">
+        <div class="container">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html" data-i18n="breadcrumb_home">Accueil</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page" data-i18n="breadcrumb_we_are">
+                        Nous sommes MK BA
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Hero Section "We are MK BA" -->
+    <section id="home" class="hero-section we-are-hero" role="banner">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <h1 class="hero-title" data-i18n="we_are_hero_title">We are MK BA</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Titre & Who we are" -->
+    <section id="title-who-we-are" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="content-left">
+                        <!-- Titre Section -->
+                        <h2 class="section-title-bold" data-i18n="section_title">Titre</h2>
+                        <p class="section-text" data-i18n="title_description">
+                            Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son île intérieure, à côté de l'alcôve ovoïde, où les bûches se consument dans l'âtre.
+                        </p>
+
+                        <!-- Who we are Section -->
+                        <h2 class="section-title-bold mt-4" data-i18n="who_we_are_title_section">Who we are</h2>
+                        <p class="section-text" data-i18n="who_we_are_description_section">
+                            Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son île.
+                        </p>
+
+                        <div class="discover-more-section mt-4">
+                            <a href="#why-mkba" class="btn btn-primary discover-btn" data-i18n="discover_more">
+                                Discover more
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="content-right">
+                        <img src="./assets/images/we-are-content-image.png" alt="MK BA Team" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Why MK BA" -->
+    <section id="why-mkba" class="py-5">
+        <div class="container">
+            <h2 class="section-title-bold mb-4" data-i18n="why_mkba_title">Why MK BA</h2>
+            <p class="section-subtitle mb-5" data-i18n="why_mkba_description">
+                Voyez ce jeu exquis wallon, de graphie en kit mais
+            </p>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="why-card card-blue">
+                        <div class="why-icon">
+                            <i class="fas fa-user-check" aria-hidden="true"></i>
+                        </div>
+                        <h3 data-i18n="why_card_1_title">Voyez ce jeu exquis wallon...</h3>
+                        <p data-i18n="why_card_1_description">
+                            Etiam facilisis ligula nec velit posuere egestas. Nunc dictum lectus sem, vel dignissim purus luctus quis. Vestibulum et ligula suscipit, hendrerit erat a, ultricies velit. Praesent
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="why-card card-purple">
+                        <div class="why-icon">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        </div>
+                        <h3 data-i18n="why_card_2_title">Aenean sed lorem est. Sed quis neque ut nibh suscipit</h3>
+                        <p data-i18n="why_card_2_description">
+                            Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="why-card card-cyan">
+                        <div class="why-icon">
+                            <i class="fas fa-lock" aria-hidden="true"></i>
+                        </div>
+                        <h3 data-i18n="why_card_3_title">Etiam facilisis ligula nec velit posuere egestas. Nunc dictum</h3>
+                        <p data-i18n="why_card_3_description">
+                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut arcu libero, pulvinar non
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "So you can..." (FAQ / Accordéon) -->
+    <section id="so-you-can" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title-bold mb-4" data-i18n="so_you_can_title">So you can...</h2>
+
+            <div class="accordion" id="soYouCanAccordion">
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <span data-i18n="accordion_item_1">Phasellus finibus enim nulla, quis ornare</span>
+                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                        </button>
+                    </h3>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#soYouCanAccordion">
+                        <div class="accordion-body" data-i18n="accordion_content_1">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus enim nulla, quis ornare lorem cursus in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <span data-i18n="accordion_item_2">Duis mauris augue, efficitur eu arcu sit amet</span>
+                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                        </button>
+                    </h3>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#soYouCanAccordion">
+                        <div class="accordion-body" data-i18n="accordion_content_2">
+                            Duis mauris augue, efficitur eu arcu sit amet, tempus dignissim mauris. Sed consectetur blandit ex, at tincidunt nulla facilisis vel.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <span data-i18n="accordion_item_3">Mauris neque nisi, faucibus non elementum</span>
+                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                        </button>
+                    </h3>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#soYouCanAccordion">
+                        <div class="accordion-body" data-i18n="accordion_content_3">
+                            Mauris neque nisi, faucibus non elementum in, cursus vel magna. Donec volutpat consectetur ante, et facilisis nulla.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <span data-i18n="accordion_item_4">Aenean non accumsan ante. Duis et risus</span>
+                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                        </button>
+                    </h3>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#soYouCanAccordion">
+                        <div class="accordion-body" data-i18n="accordion_content_4">
+                            Aenean non accumsan ante. Duis et risus consectetur, tempor lorem vel, rutrum magna. Pellentesque habitant morbi tristique.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Nos clients" -->
+    <section id="our-clients" class="py-5">
+        <div class="container">
+            <h2 class="section-title-bold mb-5" data-i18n="our_clients_title">Nos clients</h2>
+
+            <div class="clients-grid">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="client-card card-blue">
+                            <h3 data-i18n="client_card_1_title">Prestataires de services</h3>
+                            <p data-i18n="client_card_1_description">In at iaculis lorem. Praesent</p>
+                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="client-card card-purple">
+                            <h3 data-i18n="client_card_2_title">Entreprises</h3>
+                            <p data-i18n="client_card_2_description">Duis pretium gravida enim, vel maximus ligula</p>
+                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="client-card card-cyan">
+                            <h3 data-i18n="client_card_3_title">Gouvernements</h3>
+                            <p data-i18n="client_card_3_description">Integer ac interdum lacus. Nunc porta</p>
+                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="client-card card-blue">
+                            <h3 data-i18n="client_card_4_title">Hyperscaler</h3>
+                            <p data-i18n="client_card_4_description">s, Aliquam faucibus, odio nec commodo aliquam, neque</p>
+                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="client-card card-purple">
+                            <h3 data-i18n="client_card_5_title">Défense</h3>
+                            <p data-i18n="client_card_5_description">Sed a magna semper, porta purus eu,</p>
+                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="client-card card-cyan">
+                            <h3 data-i18n="client_card_6_title">Titulaire de license de technologie</h3>
+                            <p data-i18n="client_card_6_description">Etiam convallis</p>
+                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Indicators Section - Identique à la page d'accueil -->
+    <section id="indicators" class="py-5">
+        <div class="container">
+            <div class="indicators-grid">
+                <h2 class="section-title mb-5" data-i18n="indicators_title">Quelques indicateurs clés de MK BA</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Identique à la page d'accueil -->
+    <footer id="contact" class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Colonne 1: Logo + slogan -->
+                <div class="footer-brand-section">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA Footer" class="footer-logo">
+                    <p class="footer-description">MK Business Analysis</p>
+                </div>
+
+                <!-- Colonne 2: Qui nous sommes -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="we-are-mkba.html" data-i18n="footer_who_are_mkba">Who are MK BA</a></li>
+                        <li><a href="#" data-i18n="footer_our_team">Our Team</a></li>
+                        <li><a href="#" data-i18n="footer_sustainability">Our commitment to sustainability</a></li>
+                        <li><a href="#" data-i18n="footer_technologies">Technologies</a></li>
+                        <li><a href="#" data-i18n="footer_work_with_us">Work with us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Ce que nous faisons -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="#" data-i18n="footer_industries">Industries served</a></li>
+                        <li><a href="index.html#what-we-do" data-i18n="footer_services">Services</a></li>
+                        <li><a href="index.html#products" data-i18n="footer_solutions">Solutions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Réalisations -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_achievements">Réalisations</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="index.html#achievements" data-i18n="footer_achievements_link">Nos réalisations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5: Contacts -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_contacts">Contacts</h4>
+                    <address class="contact-info">
+                        <p data-i18n="footer_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a
+                                href="mailto:info@mk-ba.com">info@mk-ba.com</a></p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+237695478987">+237 695 478
+                                987</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom-section">
+                <nav class="footer-legal" aria-label="Liens légaux">
+                    <a href="#" data-i18n="footer_legal_mentions">Mentions légales</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_privacy">Politique de Confidentialité</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_terms">Termes et conditions</a>
+                </nav>
+
+                <p class="footer-copyright" data-i18n="footer_copyright">Copyright © 2025. Tous droits réservés</p>
+            </div>
+        </div>
+
+        <!-- Bas de page (bande grise foncée) -->
+        <div class="footer-bottom-band">
+            <div class="container">
+                <small data-i18n="footer_powered">Powered by MK BA</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="we-are-mkba.js" defer></script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "Nous sommes MK BA",
+        "description": "Découvrez qui nous sommes chez MK BA, notre équipe, nos valeurs et notre engagement",
+        "url": "https://mk-ba.com/we-are-mkba",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "MK Business Analysis"
+        }
+    }
+    </script>
+</body>
+
+</html>

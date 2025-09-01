@@ -1592,6 +1592,320 @@ body {
 }
 
 /* ==============================================
+   DROPDOWN MENU "WHO WE ARE" - STYLES GÉNÉRAUX
+   ============================================== */
+
+.who-we-are-dropdown {
+    background: var(--white);
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    margin-top: 0;
+    min-width: 500px;
+    max-width: 600px;
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+
+.dropdown-content {
+    display: flex;
+    align-items: stretch;
+    min-height: 180px;
+}
+
+.dropdown-left {
+    flex: 1;
+    padding: 2rem;
+    background: var(--background-gray);
+    border-right: 1px solid var(--border-light);
+}
+
+.dropdown-left h5 {
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.dropdown-left p {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.dropdown-right {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.who-we-are-dropdown .dropdown-item {
+    color: var(--text-dark) !important;
+    padding: 0.75rem 0;
+    font-size: 0.95rem;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+    background: transparent;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.who-we-are-dropdown .dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.who-we-are-dropdown .dropdown-item:hover,
+.who-we-are-dropdown .dropdown-item:focus {
+    background-color: rgba(0, 102, 204, 0.05);
+    color: var(--primary-blue) !important;
+    transform: translateX(3px);
+}
+
+.who-we-are-dropdown .dropdown-item.active {
+    background-color: rgba(0, 102, 204, 0.1);
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+    border-left: 3px solid var(--primary-blue);
+    padding-left: 0.75rem;
+}
+
+/* ==============================================
+   ÉTATS DE NAVIGATION AVEC DROPDOWN OUVERT
+   ============================================== */
+
+/* État normal de la navbar */
+.navbar {
+    transition: all 0.3s ease;
+}
+
+/* État when dropdown is open - pour page d'accueil */
+.navbar.dropdown-open {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+}
+
+.navbar.dropdown-open .nav-link {
+    color: var(--primary-blue) !important;
+}
+
+.navbar.dropdown-open .nav-link:hover {
+    color: var(--primary-orange) !important;
+}
+
+.navbar.dropdown-open .nav-link.dropdown-toggle {
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+}
+
+.navbar.dropdown-open .contact-btn {
+    border-color: var(--primary-blue) !important;
+    color: var(--primary-blue) !important;
+}
+
+.navbar.dropdown-open .contact-btn:hover {
+    background-color: var(--primary-blue) !important;
+    color: var(--white) !important;
+}
+
+.navbar.dropdown-open .language-icon {
+    color: var(--primary-blue) !important;
+}
+
+.navbar.dropdown-open .language-selector-nav:hover .language-icon {
+    color: var(--primary-orange) !important;
+}
+
+/* Adaptation de la top banner quand dropdown ouvert */
+.top-banner.dropdown-open .search-trigger:hover {
+    color: var(--primary-blue) !important;
+}
+
+.top-banner.dropdown-open .search-close:hover {
+    color: var(--primary-blue) !important;
+}
+
+/* ==============================================
+   RESPONSIVE - DROPDOWN "WHO WE ARE"
+   ============================================== */
+
+@media (max-width: 768px) {
+    .who-we-are-dropdown {
+        min-width: 280px;
+        max-width: 320px;
+        left: 0 !important;
+        transform: none;
+        margin-left: 1rem;
+    }
+
+    .dropdown-content {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .dropdown-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 1.5rem;
+    }
+
+    .dropdown-right {
+        padding: 1rem 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .who-we-are-dropdown {
+        min-width: 260px;
+        max-width: 280px;
+    }
+
+    .dropdown-left h5 {
+        font-size: 1.1rem;
+    }
+
+    .dropdown-left p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ==============================================
+   NAVIGATION ACTIVE STATES
+   ============================================== */
+
+/* État actif pour les liens de navigation */
+.nav-link.active {
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background-color: var(--primary-blue);
+    transform: translateX(-50%);
+}
+
+/* Adaptation pour les dropdowns */
+.nav-link.dropdown-toggle.active {
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 0.3rem !important;
+}
+
+.nav-link.dropdown-toggle.active::after {
+    display: none;
+}
+
+/* ==============================================
+   ANIMATION ET TRANSITIONS
+   ============================================== */
+
+/* Animation d'ouverture du dropdown */
+.who-we-are-dropdown {
+    animation: dropdownSlideIn 0.3s ease forwards;
+}
+
+@keyframes dropdownSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Animation des éléments du dropdown */
+.dropdown-item {
+    transition: all 0.3s ease;
+}
+
+/* Transition fluide entre les états de la navbar */
+.navbar,
+.nav-link,
+.contact-btn,
+.language-icon {
+    transition: all 0.3s ease;
+}
+
+/* ==============================================
+   FOCUS STATES POUR L'ACCESSIBILITÉ
+   ============================================== */
+
+.who-we-are-dropdown .dropdown-item:focus {
+    outline: 2px solid var(--primary-orange);
+    outline-offset: 2px;
+}
+
+.nav-link.dropdown-toggle:focus {
+    outline: 2px solid var(--primary-orange);
+    outline-offset: 2px;
+}
+
+/* ==============================================
+   SUPPORT HIGH CONTRAST
+   ============================================== */
+
+@media (prefers-contrast: high) {
+    .who-we-are-dropdown {
+        border: 2px solid var(--text-dark);
+    }
+    
+    .dropdown-left {
+        border-right: 2px solid var(--text-dark);
+    }
+    
+    .who-we-are-dropdown .dropdown-item {
+        border-bottom: 2px solid rgba(0, 102, 204, 0.3);
+    }
+}
+
+/* ==============================================
+   RÉDUCTION DU MOUVEMENT
+   ============================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .who-we-are-dropdown {
+        animation: none;
+    }
+    
+    .dropdown-item,
+    .navbar,
+    .nav-link {
+        transition: none !important;
+    }
+}
+
+/* ==============================================
+   Z-INDEX MANAGEMENT
+   ============================================== */
+
+/* S'assurer que le dropdown apparaît au-dessus des autres éléments */
+.dropdown-menu.who-we-are-dropdown {
+    z-index: 1060;
+}
+
+/* Navigation doit être sous le dropdown mais au-dessus du contenu */
+.navbar {
+    z-index: 1040;
+}
+
+/* Top banner sous la navigation mais au-dessus du contenu */
+.top-banner {
+    z-index: 1050;
+}
+
+/* ==============================================
    RESPONSIVE - Adaptations mobiles
    ============================================== */
 

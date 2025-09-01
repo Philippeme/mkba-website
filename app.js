@@ -16,6 +16,15 @@ const translationsData = {
         nav_news: "Actualités",
         nav_contact: "Nous contacter",
         search_placeholder: "Recherche dans MK BA",
+
+        // Navigation dropdown
+        nav_we_are_mkba: "Nous sommes MK BA",
+        nav_our_team: "Notre équipe", 
+        nav_sustainability: "Notre engagement pour la durabilité",
+        nav_technologies: "Technologies",
+        nav_work_with_us: "Travailler avec nous",
+        dropdown_title: "Qui nous sommes",
+        dropdown_description: "Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence technologique en Afrique.",
         
         // Hero Section
         hero_title: "Cras gravida bibendum dolor eu varius.",
@@ -127,6 +136,15 @@ const translationsData = {
         nav_news: "News",
         nav_contact: "Contact us",
         search_placeholder: "Search in MK BA",
+
+        // Navigation dropdown
+        nav_we_are_mkba: "We are MK BA",
+        nav_our_team: "Our team",
+        nav_sustainability: "Our commitment to sustainability",
+        nav_technologies: "Technologies", 
+        nav_work_with_us: "Work with us",
+        dropdown_title: "Who we are",
+        dropdown_description: "Discover our team, our values and our commitment to technological excellence in Africa.",
         
         // Hero Section
         hero_title: "Cras gravida bibendum dolor eu varius.",
@@ -229,6 +247,94 @@ const translationsData = {
         footer_powered: "Powered by MK BA"
     }
 };
+
+
+// ==============================================
+// FONCTION DE NAVIGATION INTER-PAGES
+// ==============================================
+
+function initInterPageNavigation() {
+    // Gérer la navigation depuis la page d'accueil vers la page We are MK BA
+    const whoWeAreLinks = document.querySelectorAll('a[href*="we-are-mkba"]');
+    whoWeAreLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Animation de transition douce
+            this.style.color = 'var(--primary-orange)';
+            
+            // Preload de la page suivante si possible
+            if (link.href && !link.href.includes('#')) {
+                const prefetchLink = document.createElement('link');
+                prefetchLink.rel = 'prefetch';
+                prefetchLink.href = link.href;
+                document.head.appendChild(prefetchLink);
+            }
+        });
+    });
+    
+    // Gérer la navigation de retour vers l'accueil
+    const homeLinks = document.querySelectorAll('a[href="index.html"], a[href="/"], a[href="#home"]');
+    homeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (this.href.includes('index.html') || this.href.endsWith('/')) {
+                this.style.color = 'var(--primary-orange)';
+            }
+        });
+    });
+}
+
+// ==============================================
+// GESTION DU SOUS-MENU "WHO WE ARE" SUR INDEX.HTML
+// ==============================================
+
+function initWhoWeAreDropdownHomePage() {
+    const whoWeAreNavItem = document.querySelector('.nav-item:has(.nav-link[data-i18n="nav_who_we_are"])');
+    
+    if (whoWeAreNavItem && !document.querySelector('.who-we-are-dropdown')) {
+        // Convertir le lien simple en dropdown sur la page d'accueil
+        const originalLink = whoWeAreNavItem.querySelector('.nav-link');
+        
+        if (originalLink) {
+            // Créer le dropdown toggle
+            originalLink.classList.add('dropdown-toggle');
+            originalLink.setAttribute('data-bs-toggle', 'dropdown');
+            originalLink.setAttribute('role', 'button');
+            originalLink.setAttribute('aria-expanded', 'false');
+            originalLink.setAttribute('id', 'whoWeAreDropdownHome');
+            originalLink.href = '#';
+            
+            // Ajouter la classe dropdown à l'élément parent
+            whoWeAreNavItem.classList.add('dropdown');
+            
+            // Créer le menu dropdown
+            const dropdownMenu = document.createElement('div');
+            dropdownMenu.className = 'dropdown-menu who-we-are-dropdown';
+            dropdownMenu.setAttribute('aria-labelledby', 'whoWeAreDropdownHome');
+            
+            dropdownMenu.innerHTML = `
+                <div class="dropdown-content">
+                    <div class="dropdown-left">
+                        <h5 data-i18n="dropdown_title">Qui nous sommes</h5>
+                        <p data-i18n="dropdown_description">Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence technologique en Afrique.</p>
+                    </div>
+                    <div class="dropdown-right">
+                        <a class="dropdown-item" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">We are MK BA</a>
+                        <a class="dropdown-item" href="#" data-i18n="nav_our_team">Notre équipe</a>
+                        <a class="dropdown-item" href="#" data-i18n="nav_sustainability">Notre engagement pour la durabilité</a>
+                        <a class="dropdown-item" href="#" data-i18n="nav_technologies">Technologies</a>
+                        <a class="dropdown-item" href="#" data-i18n="nav_work_with_us">Travailler avec nous</a>
+                    </div>
+                </div>
+            `;
+            
+            whoWeAreNavItem.appendChild(dropdownMenu);
+            
+            // Appliquer les traductions
+            if (currentLanguage) {
+                setLanguage(currentLanguage);
+            }
+        }
+    }
+}
 
 // ==============================================
 // GESTION DE LA RECHERCHE (TOP BANNER)
@@ -1086,6 +1192,40 @@ function setLanguage(lang) {
     console.log(`Langue changée vers : ${lang}`);
 }
 
+
+// ==============================================
+// GESTION DE L'ÉTAT DE NAVIGATION
+// ==============================================
+
+function updateNavigationState() {
+    // Mettre à jour l'état actif des liens de navigation
+    const currentPage = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        
+        if (currentPage.includes('we-are-mkba.html') && link.getAttribute('data-i18n') === 'nav_who_we_are') {
+            link.classList.add('active');
+        } else if (currentPage.includes('index.html') || currentPage === '/') {
+            // Logique pour la page d'accueil
+            if (link.getAttribute('href') === '#home' || link.getAttribute('href') === 'index.html') {
+                link.classList.add('active');
+            }
+        }
+    });
+    
+    // Mettre à jour les liens du dropdown
+    const dropdownItems = document.querySelectorAll('.who-we-are-dropdown .dropdown-item');
+    dropdownItems.forEach(item => {
+        item.classList.remove('active');
+        
+        if (currentPage.includes('we-are-mkba.html') && item.getAttribute('href') === 'we-are-mkba.html') {
+            item.classList.add('active');
+        }
+    });
+}
+
 // Smooth scroll pour les liens d'ancrage (ajusté pour le header fixe)
 function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
@@ -1408,6 +1548,9 @@ window.MKBAWebsite = {
     performSearch,
     initOptimizedSections,
     animateCountersOptimized,
+    initInterPageNavigation,
+    initWhoWeAreDropdownHomePage,
+    updateNavigationState,
     initIndicatorsAnimation,
     initAchievementsInteractions,
     initNewsInteractions,
