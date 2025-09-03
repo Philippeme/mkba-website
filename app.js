@@ -1557,4 +1557,5 @@ window.MKBAWebsite = {
     handleTopBannerScroll,
     initInteractiveMap,
     operatingCountries
+
 };

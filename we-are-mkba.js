@@ -62,8 +62,8 @@ const weAreMKBATranslations = {
         client_card_2_description: "Duis pretium gravida enim, vel maximus ligula",
         client_card_3_title: "Gouvernements",
         client_card_3_description: "Integer ac interdum lacus. Nunc porta",
-        client_card_4_title: "Hyperscaler",
-        client_card_4_description: "s, Aliquam faucibus, odio nec commodo aliquam, neque",
+        client_card_4_title: "Hyperscalers",
+        client_card_4_description: "Aliquam faucibus, odio nec commodo aliquam, neque",
         client_card_5_title: "Défense",
         client_card_5_description: "Sed a magna semper, porta purus eu,",
         client_card_6_title: "Titulaire de license de technologie",
@@ -124,8 +124,8 @@ const weAreMKBATranslations = {
         client_card_2_description: "Duis pretium gravida enim, vel maximus ligula",
         client_card_3_title: "Governments",
         client_card_3_description: "Integer ac interdum lacus. Nunc porta",
-        client_card_4_title: "Hyperscaler",
-        client_card_4_description: "s, Aliquam faucibus, odio nec commodo aliquam, neque",
+        client_card_4_title: "Hyperscalers",
+        client_card_4_description: "Aliquam faucibus, odio nec commodo aliquam, neque",
         client_card_5_title: "Defense",
         client_card_5_description: "Sed a magna semper, porta purus eu,",
         client_card_6_title: "Technology license holder",
@@ -553,7 +553,7 @@ function initAccessibilityWeArePage() {
 // INITIALISATION AU CHARGEMENT
 // ==============================================
 
-// Initialiser quand le DOM est prêt
+// Initialiser quand le DOM est prêt 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         initWeAreMKBAPage();
