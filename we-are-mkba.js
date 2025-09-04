@@ -172,7 +172,7 @@ function updateHeaderStyles(isOpen) {
     const topBanner = document.querySelector('.top-banner');
     
     if (isOpen) {
-        // Styles quand le dropdown est ouvert
+        // Styles quand le mega menu est ouvert
         document.body.classList.add('who-we-are-dropdown-open');
         if (topBanner) {
             topBanner.classList.add('dropdown-open');
@@ -187,13 +187,21 @@ function updateHeaderStyles(isOpen) {
 }
 
 // ==============================================
-// GESTION DE L'ACCORDÉON "SO YOU CAN..."
+// GESTION DE L'ACCORDÉON "SO YOU CAN..." - CORRIGÉ
 // ==============================================
 
 function initAccordionInteractions() {
     const accordionButtons = document.querySelectorAll('.accordion-button');
     
     accordionButtons.forEach(button => {
+        // Enlever l'icône par défaut et ajouter notre classe personnalisée
+        const existingIcon = button.querySelector('.accordion-icon');
+        if (!existingIcon) {
+            const icon = document.createElement('i');
+            icon.className = 'fas accordion-icon';
+            button.appendChild(icon);
+        }
+
         button.addEventListener('click', function(e) {
             if (accordionAnimating) {
                 e.preventDefault();
@@ -202,13 +210,20 @@ function initAccordionInteractions() {
             
             accordionAnimating = true;
             
-            // Animer l'icône
+            // Animer l'icône - gestion des états + et ×
             const icon = this.querySelector('.accordion-icon');
             if (icon) {
-                if (this.classList.contains('collapsed')) {
-                    icon.style.transform = 'rotate(45deg)';
+                // Déterminer l'état après le clic
+                const willBeOpen = this.classList.contains('collapsed');
+                
+                if (willBeOpen) {
+                    // Va s'ouvrir : changer vers ×
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-times');
                 } else {
-                    icon.style.transform = 'rotate(0deg)';
+                    // Va se fermer : changer vers +
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-plus');
                 }
             }
             
@@ -217,6 +232,16 @@ function initAccordionInteractions() {
                 accordionAnimating = false;
             }, 350);
         });
+
+        // Initialiser l'état des icônes au chargement
+        const icon = button.querySelector('.accordion-icon');
+        if (icon) {
+            if (button.classList.contains('collapsed')) {
+                icon.classList.add('fa-plus');
+            } else {
+                icon.classList.add('fa-times');
+            }
+        }
         
         // Support du clavier
         button.addEventListener('keydown', function(e) {
@@ -501,6 +526,18 @@ function initWeAreMKBAPage() {
         setLanguageWeArePage(e.detail.language);
     });
     
+    // Intégrer avec le système de traduction principal
+    if (window.MKBAWebsite && window.MKBAWebsite.setLanguage) {
+        // Surcharger la fonction setLanguage pour inclure nos traductions
+        const originalSetLanguage = window.MKBAWebsite.setLanguage;
+        window.setLanguage = function(lang) {
+            // Appeler la fonction originale
+            originalSetLanguage(lang);
+            // Appliquer nos traductions spécifiques
+            setLanguageWeArePage(lang);
+        };
+    }
+    
     console.log('Page We are MK BA initialisée avec succès');
 }
 
@@ -512,7 +549,7 @@ function initAccessibilityWeArePage() {
     // Gestion de la navigation au clavier
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            // Fermer le dropdown si ouvert
+            // Fermer le mega menu si ouvert
             if (whoWeAreDropdownOpen) {
                 const dropdownToggle = document.getElementById('whoWeAreDropdown');
                 const bsDropdown = bootstrap.Dropdown.getInstance(dropdownToggle);

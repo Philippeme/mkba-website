@@ -2,7 +2,7 @@
    STYLES SPÉCIFIQUES POUR LA PAGE WE ARE MK BA
    ============================================== */
 
-/* Header adapté - fond blanc avec liens bleus quand sous-menu actif */
+/* Header adapté - fond blanc avec liens bleus + EFFETS BLEUS UNIQUEMENT */
 .we-are-page .navbar.who-we-are-nav {
     background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(10px);
@@ -16,7 +16,8 @@
 }
 
 .we-are-page .navbar.who-we-are-nav .nav-link:hover {
-    color: var(--primary-orange) !important;
+    color: var(--primary-blue) !important; /* BLEU au lieu d'orange */
+    opacity: 0.8;
 }
 
 .we-are-page .navbar.who-we-are-nav .nav-link.active {
@@ -41,16 +42,18 @@
 }
 
 .we-are-page .navbar.who-we-are-nav .language-selector-nav:hover .language-icon {
-    color: var(--primary-orange) !important;
+    color: var(--primary-blue) !important; /* BLEU au lieu d'orange */
+    opacity: 0.8;
 }
 
-/* Top banner adaptation pour la page We are */
+/* Top banner adaptation pour la page We are - EFFETS BLEUS UNIQUEMENT */
 .we-are-page .top-banner .search-trigger:hover {
-    color: var(--primary-blue) !important;
+    color: var(--primary-blue) !important; /* BLEU au lieu d'orange */
+    opacity: 1;
 }
 
 .we-are-page .top-banner .search-close:hover {
-    color: var(--primary-blue) !important;
+    color: var(--primary-blue) !important; /* BLEU au lieu d'orange */
 }
 
 /* ==============================================
@@ -212,47 +215,66 @@
 }
 
 /* ==============================================
-   SECTION TITRE & WHO WE ARE
+   NOUVELLES SECTIONS "TITRE" ET "WHO WE ARE"
    ============================================== */
 
-#title-who-we-are {
-    padding: 4rem 0;
+/* Section Titre - Bloc 1 selon maquette */
+#title-section {
+    padding: 4rem 0 2rem 0;
     background: var(--background-light);
 }
 
-#title-who-we-are .row {
-    align-items: flex-start;
+.title-block-header {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: left;
 }
 
-.content-left {
+.title-block-text {
+    font-size: 18px;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: -6rem;
+    text-align: left;
+}
+
+/* Section Who we are - Bloc 2 selon maquette */
+#who-we-are-section {
+    padding: 2rem 0 4rem 0;
+    background: var(--background-light);
+}
+
+.who-we-are-left {
     padding-right: 2rem;
 }
 
-.content-right {
-    position: relative;
-    margin-top: 2rem;
-}
-
-.content-right img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-}
-
-.section-title-bold {
-    font-size: 1.8rem;
+.who-we-are-block-header {
+    font-size: 16px;
     font-weight: 700;
-    color: var(--text-dark);
+    color: #333;
     margin-bottom: 1rem;
-    line-height: 1.3;
+    text-align: left;
 }
 
-.section-text {
-    font-size: 1rem;
+.who-we-are-block-text {
+    font-size: 18px;
     color: var(--text-dark);
     line-height: 1.6;
-    text-align: justify;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.who-we-are-right {
+    padding-left: 2rem;
+}
+
+.who-we-are-right img {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
 }
 
 .discover-more-section {
@@ -284,6 +306,20 @@
 #why-mkba {
     padding: 4rem 0;
     background: var(--white);
+}
+
+.section-title-bold {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin-bottom: 2rem;
 }
 
 .why-card {
@@ -372,7 +408,7 @@
 }
 
 /* ==============================================
-   SECTION ACCORDÉON "SO YOU CAN..."
+   SECTION ACCORDÉON "SO YOU CAN..." - BOUTONS RAPPROCHÉS
    ============================================== */
 
 #so-you-can {
@@ -415,6 +451,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+    gap: 1rem; /* Réduire l'écart entre le texte et l'icône */
 }
 
 .accordion-button:not(.collapsed) {
@@ -425,14 +462,27 @@
     display: none;
 }
 
+/* Icône + repositionnée plus près du titre */
 .accordion-icon {
     color: var(--primary-blue);
     font-size: 1.2rem;
     transition: all 0.3s ease;
+    margin-left: 1rem; /* Réduire la marge pour rapprocher */
+    flex-shrink: 0;
+}
+
+/* État fermé : afficher + */
+.accordion-button.collapsed .accordion-icon::before {
+    content: "\f067"; /* fa-plus */
+}
+
+/* État ouvert : afficher × */
+.accordion-button:not(.collapsed) .accordion-icon::before {
+    content: "\f00d"; /* fa-times */
+    color: var(--primary-orange);
 }
 
 .accordion-button:not(.collapsed) .accordion-icon {
-    transform: rotate(45deg);
     color: var(--primary-orange);
 }
 
@@ -553,6 +603,34 @@
     .breadcrumb-banner {
         padding: 0.5rem 0;
     }
+
+    /* Sections Titre et Who we are mobile */
+    .title-block {
+        max-width: 100%; /* Pleine largeur sur mobile */
+    }
+
+    .title-block-header,
+    .who-we-are-block-header {
+        font-size: 14px;
+    }
+
+    .title-block-text,
+    .who-we-are-block-text {
+        font-size: 16px;
+    }
+
+    .who-we-are-left {
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+    
+    .who-we-are-right {
+        padding-left: 0;
+    }
+    
+    .who-we-are-right img {
+        height: 220px;
+    }
     
     /* Dropdown adaptation mobile */
     .who-we-are-dropdown {
@@ -586,16 +664,6 @@
     
     .we-are-hero .hero-title {
         font-size: 2.8rem;
-    }
-
-    /* Content section mobile */
-    .content-left {
-        padding-right: 0;
-        margin-bottom: 2rem;
-    }
-    
-    .content-right img {
-        height: 220px;
     }
 
     .section-title-bold {
@@ -648,27 +716,20 @@
         font-size: 0.9rem;
     }
 
-    /* Dropdown très petit écran */
-    .who-we-are-dropdown {
-        min-width: 260px;
-        max-width: 280px;
+    /* Sections titre et who we are */
+    .title-block-header,
+    .who-we-are-block-header {
+        font-size: 13px;
     }
 
-    .dropdown-left h5 {
-        font-size: 1.1rem;
-    }
-
-    .dropdown-left p {
-        font-size: 0.85rem;
+    .title-block-text,
+    .who-we-are-block-text {
+        font-size: 15px;
     }
 
     /* Content adaptations */
     .section-title-bold {
         font-size: 1.3rem;
-    }
-
-    .section-text {
-        font-size: 0.9rem;
     }
 
     /* Why cards optimisation */
