@@ -3,7 +3,7 @@
 // ==============================================
 
 // Variables globales pour la page We are MK BA
-let whoWeAreDropdownOpen = false;
+let megaMenuOpen = false;
 let accordionAnimating = false;
 
 // Traductions spécifiques à la page We are MK BA
@@ -11,7 +11,7 @@ const weAreMKBATranslations = {
     fr: {
         // Meta et navigation
         page_title_who_we_are: "Nous sommes MK BA - Excellence en Solutions Technologiques",
-        nav_we_are_mkba: "We are MK BA",
+        nav_we_are_mkba: "Nous sommes MK BA",
         nav_our_team: "Notre équipe",
         nav_sustainability: "Notre engagement pour la durabilité",
         nav_technologies: "Technologies",
@@ -134,54 +134,68 @@ const weAreMKBATranslations = {
 };
 
 // ==============================================
-// GESTION DU DROPDOWN "WHO WE ARE"
+// GESTION DU MEGA MENU "WHO WE ARE"
 // ==============================================
 
-function initWhoWeAreDropdown() {
-    const dropdownToggle = document.getElementById('whoWeAreDropdown');
-    const navbar = document.querySelector('.navbar.who-we-are-nav');
+function initMegaMenuWeArePage() {
+    const megaMenuDropdown = document.querySelector('.mega-menu-dropdown');
+    const navbar = document.querySelector('.navbar');
     
-    if (dropdownToggle && navbar) {
-        // Utiliser les événements Bootstrap pour gérer l'ouverture/fermeture
-        dropdownToggle.addEventListener('show.bs.dropdown', function() {
-            whoWeAreDropdownOpen = true;
-            navbar.classList.add('dropdown-open');
-            updateHeaderStyles(true);
-        });
+    if (megaMenuDropdown) {
+        const dropdownToggle = megaMenuDropdown.querySelector('.dropdown-toggle');
+        const dropdownMenu = megaMenuDropdown.querySelector('.who-we-are-mega-menu');
         
-        dropdownToggle.addEventListener('hide.bs.dropdown', function() {
-            whoWeAreDropdownOpen = false;
-            navbar.classList.remove('dropdown-open');
-            updateHeaderStyles(false);
-        });
-        
-        // Fermer le dropdown en cliquant à l'extérieur
-        document.addEventListener('click', function(e) {
-            const dropdown = document.querySelector('.who-we-are-dropdown');
-            if (whoWeAreDropdownOpen && dropdown && !dropdown.contains(e.target) && !dropdownToggle.contains(e.target)) {
-                const bsDropdown = bootstrap.Dropdown.getInstance(dropdownToggle);
-                if (bsDropdown) {
-                    bsDropdown.hide();
+        if (dropdownToggle && dropdownMenu) {
+            // Supprimer l'attribut data-bs-toggle pour désactiver Bootstrap
+            dropdownToggle.removeAttribute('data-bs-toggle');
+            
+            // Système hover personnalisé
+            megaMenuDropdown.addEventListener('mouseenter', function() {
+                megaMenuOpen = true;
+                dropdownMenu.classList.add('show');
+                navbar.classList.add('mega-menu-open');
+                updateMegaMenuStyles(true);
+            });
+            
+            megaMenuDropdown.addEventListener('mouseleave', function() {
+                megaMenuOpen = false;
+                dropdownMenu.classList.remove('show');
+                navbar.classList.remove('mega-menu-open');
+                updateMegaMenuStyles(false);
+            });
+            
+            // Fermer seulement en cliquant à l'extérieur
+            document.addEventListener('click', function(e) {
+                if (megaMenuOpen && !megaMenuDropdown.contains(e.target)) {
+                    megaMenuOpen = false;
+                    dropdownMenu.classList.remove('show');
+                    navbar.classList.remove('mega-menu-open');
+                    updateMegaMenuStyles(false);
                 }
-            }
-        });
+            });
+            
+            // Empêcher la fermeture lors du clic dans le menu
+            dropdownMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
     }
 }
 
-function updateHeaderStyles(isOpen) {
+function updateMegaMenuStyles(isOpen) {
     const topBanner = document.querySelector('.top-banner');
     
     if (isOpen) {
         // Styles quand le mega menu est ouvert
-        document.body.classList.add('who-we-are-dropdown-open');
+        document.body.classList.add('mega-menu-open');
         if (topBanner) {
-            topBanner.classList.add('dropdown-open');
+            topBanner.classList.add('mega-menu-open');
         }
     } else {
         // Styles par défaut
-        document.body.classList.remove('who-we-are-dropdown-open');
+        document.body.classList.remove('mega-menu-open');
         if (topBanner) {
-            topBanner.classList.remove('dropdown-open');
+            topBanner.classList.remove('mega-menu-open');
         }
     }
 }
@@ -506,7 +520,7 @@ function initSmoothScrollWeArePage() {
 
 function initWeAreMKBAPage() {
     // Initialiser toutes les fonctionnalités spécifiques
-    initWhoWeAreDropdown();
+    initMegaMenuWeArePage();
     initAccordionInteractions();
     initCardHoverEffects();
     initScrollAnimations();
@@ -546,26 +560,6 @@ function initWeAreMKBAPage() {
 // ==============================================
 
 function initAccessibilityWeArePage() {
-    // Gestion de la navigation au clavier
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            // Fermer le mega menu si ouvert
-            if (whoWeAreDropdownOpen) {
-                const dropdownToggle = document.getElementById('whoWeAreDropdown');
-                const bsDropdown = bootstrap.Dropdown.getInstance(dropdownToggle);
-                if (bsDropdown) {
-                    bsDropdown.hide();
-                }
-            }
-            
-            // Fermer tous les éléments d'accordéon
-            const openAccordionButtons = document.querySelectorAll('.accordion-button:not(.collapsed)');
-            openAccordionButtons.forEach(button => {
-                button.click();
-            });
-        }
-    });
-    
     // Améliorer l'accessibilité des cartes
     const interactiveCards = document.querySelectorAll('.why-card, .client-card');
     interactiveCards.forEach(card => {
@@ -615,7 +609,7 @@ window.addEventListener('languageChanged', () => {
 window.WeAreMKBAPage = {
     initWeAreMKBAPage,
     setLanguageWeArePage,
-    initWhoWeAreDropdown,
+    initMegaMenuWeArePage,
     initAccordionInteractions,
     initCardHoverEffects,
     weAreMKBATranslations

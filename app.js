@@ -4,6 +4,7 @@ let translations = {};
 let searchExpanded = false;
 let lastScrollTop = 0;
 let interactiveMap = null; // Variable pour la carte Leaflet
+let megaMenuOpen = false;
 
 // Translations data - Conformes aux maquettes
 const translationsData = {
@@ -283,55 +284,68 @@ function initInterPageNavigation() {
 }
 
 // ==============================================
-// GESTION DU SOUS-MENU "WHO WE ARE" SUR INDEX.HTML
+// GESTION DU MEGA MENU "WHO WE ARE" - MISE À JOUR
 // ==============================================
 
-function initWhoWeAreDropdownHomePage() {
-    const whoWeAreNavItem = document.querySelector('.nav-item:has(.nav-link[data-i18n="nav_who_we_are"])');
+function initMegaMenuHomePage() {
+    const megaMenuDropdown = document.querySelector('.mega-menu-dropdown');
+    const navbar = document.querySelector('.navbar');
     
-    if (whoWeAreNavItem && !document.querySelector('.who-we-are-dropdown')) {
-        // Convertir le lien simple en dropdown sur la page d'accueil
-        const originalLink = whoWeAreNavItem.querySelector('.nav-link');
+    if (megaMenuDropdown) {
+        const dropdownToggle = megaMenuDropdown.querySelector('.dropdown-toggle');
+        const dropdownMenu = megaMenuDropdown.querySelector('.who-we-are-mega-menu');
         
-        if (originalLink) {
-            // Créer le dropdown toggle
-            originalLink.classList.add('dropdown-toggle');
-            originalLink.setAttribute('data-bs-toggle', 'dropdown');
-            originalLink.setAttribute('role', 'button');
-            originalLink.setAttribute('aria-expanded', 'false');
-            originalLink.setAttribute('id', 'whoWeAreDropdownHome');
-            originalLink.href = '#';
+        if (dropdownToggle && dropdownMenu) {
+            // Supprimer l'attribut data-bs-toggle pour désactiver Bootstrap
+            dropdownToggle.removeAttribute('data-bs-toggle');
             
-            // Ajouter la classe dropdown à l'élément parent
-            whoWeAreNavItem.classList.add('dropdown');
+            // Système hover personnalisé
+            megaMenuDropdown.addEventListener('mouseenter', function() {
+                megaMenuOpen = true;
+                dropdownMenu.classList.add('show');
+                navbar.classList.add('mega-menu-open');
+                updateMegaMenuStyles(true);
+            });
             
-            // Créer le menu dropdown
-            const dropdownMenu = document.createElement('div');
-            dropdownMenu.className = 'dropdown-menu who-we-are-dropdown';
-            dropdownMenu.setAttribute('aria-labelledby', 'whoWeAreDropdownHome');
+            megaMenuDropdown.addEventListener('mouseleave', function() {
+                megaMenuOpen = false;
+                dropdownMenu.classList.remove('show');
+                navbar.classList.remove('mega-menu-open');
+                updateMegaMenuStyles(false);
+            });
             
-            dropdownMenu.innerHTML = `
-                <div class="dropdown-content">
-                    <div class="dropdown-left">
-                        <h5 data-i18n="dropdown_title">Qui nous sommes</h5>
-                        <p data-i18n="dropdown_description">Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence technologique en Afrique.</p>
-                    </div>
-                    <div class="dropdown-right">
-                        <a class="dropdown-item" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">We are MK BA</a>
-                        <a class="dropdown-item" href="#" data-i18n="nav_our_team">Notre équipe</a>
-                        <a class="dropdown-item" href="#" data-i18n="nav_sustainability">Notre engagement pour la durabilité</a>
-                        <a class="dropdown-item" href="#" data-i18n="nav_technologies">Technologies</a>
-                        <a class="dropdown-item" href="#" data-i18n="nav_work_with_us">Travailler avec nous</a>
-                    </div>
-                </div>
-            `;
+            // Fermer seulement en cliquant à l'extérieur
+            document.addEventListener('click', function(e) {
+                if (megaMenuOpen && !megaMenuDropdown.contains(e.target)) {
+                    megaMenuOpen = false;
+                    dropdownMenu.classList.remove('show');
+                    navbar.classList.remove('mega-menu-open');
+                    updateMegaMenuStyles(false);
+                }
+            });
             
-            whoWeAreNavItem.appendChild(dropdownMenu);
-            
-            // Appliquer les traductions
-            if (currentLanguage) {
-                setLanguage(currentLanguage);
-            }
+            // Empêcher la fermeture lors du clic dans le menu
+            dropdownMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    }
+}
+
+function updateMegaMenuStyles(isOpen) {
+    const topBanner = document.querySelector('.top-banner');
+    
+    if (isOpen) {
+        // Styles quand le mega menu est ouvert
+        document.body.classList.add('mega-menu-open');
+        if (topBanner) {
+            topBanner.classList.add('mega-menu-open');
+        }
+    } else {
+        // Styles par défaut
+        document.body.classList.remove('mega-menu-open');
+        if (topBanner) {
+            topBanner.classList.remove('mega-menu-open');
         }
     }
 }
@@ -1215,9 +1229,9 @@ function updateNavigationState() {
         }
     });
     
-    // Mettre à jour les liens du dropdown
-    const dropdownItems = document.querySelectorAll('.who-we-are-dropdown .dropdown-item');
-    dropdownItems.forEach(item => {
+    // Mettre à jour les liens du mega menu
+    const megaMenuItems = document.querySelectorAll('.mega-menu-item');
+    megaMenuItems.forEach(item => {
         item.classList.remove('active');
         
         if (currentPage.includes('we-are-mkba.html') && item.getAttribute('href') === 'we-are-mkba.html') {
@@ -1424,6 +1438,9 @@ function initWebsite() {
     initTypewriterAnimation();
     initImageErrorHandling();
     
+    // Initialiser le mega menu pour la page d'accueil
+    initMegaMenuHomePage();
+    
     // Initialiser la carte interactive
     initInteractiveMap();
     
@@ -1549,7 +1566,7 @@ window.MKBAWebsite = {
     initOptimizedSections,
     animateCountersOptimized,
     initInterPageNavigation,
-    initWhoWeAreDropdownHomePage,
+    initMegaMenuHomePage,
     updateNavigationState,
     initIndicatorsAnimation,
     initAchievementsInteractions,
@@ -1558,4 +1575,4 @@ window.MKBAWebsite = {
     initInteractiveMap,
     operatingCountries
 
-};
+};             
