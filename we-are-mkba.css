@@ -24,7 +24,8 @@
     color: var(--primary-blue) !important;
     font-weight: 600;
     border-bottom: 2px solid var(--primary-blue);
-    padding-bottom: 0.3rem !important;
+    padding-bottom: 1.7rem !important;
+    margin-bottom: -19rem;
 }
 
 .we-are-page .navbar.who-we-are-nav .contact-btn {
@@ -66,7 +67,7 @@
     border-radius: 0;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
-    margin-top: 5px;
+    margin-top: 19px;
     min-width: 132vw;
     left: 50% !important;
     transform: translateX(-50%);
@@ -300,7 +301,7 @@
 
 .title-block-header {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 500;
     color: #333;
     margin-bottom: 1rem;
     text-align: left;
@@ -326,7 +327,7 @@
 
 .who-we-are-block-header {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 500;
     color: #333;
     margin-bottom: 1rem;
     text-align: left;
@@ -483,7 +484,7 @@
 }
 
 /* ==============================================
-   SECTION ACCORDÉON "SO YOU CAN..." - BOUTONS RAPPROCHÉS
+   SECTION ACCORDÉON "SO YOU CAN..." - MODIFICATIONS
    ============================================== */
 
 #so-you-can {
@@ -491,8 +492,14 @@
     background: var(--background-light);
 }
 
+/* MODIFICATION 1: Adapter le titre "So you can..." pour avoir le même style que les sections "Titre" et "Who we are" */
 #so-you-can .section-title-bold {
-    margin-bottom: 3rem;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: left;
+    line-height: 1.3;
 }
 
 .accordion {
@@ -537,13 +544,19 @@
     display: none;
 }
 
-/* Icône + repositionnée plus près du titre */
+/* MODIFICATION 2: Rapprocher les boutons + des accordéons vers la gauche (moitié de l'espace actuel) */
 .accordion-icon {
     color: var(--primary-blue);
     font-size: 1.2rem;
     transition: all 0.3s ease;
-    margin-left: 0.5rem; /* RÉDUIT de 1rem à 0.5rem pour rapprocher */
+    margin-left: 0.25rem; /* RÉDUIT de 0.5rem à 0.25rem pour rapprocher davantage */
     flex-shrink: 0;
+}
+
+.accordion-button span {
+    font-size: 1.5rem; 
+    font-weight: 430;
+    line-height: 1.4;
 }
 
 /* État fermé : afficher + */
@@ -564,7 +577,7 @@
 .accordion-body {
     background: transparent;
     color: var(--text-medium);
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     line-height: 1.6;
     padding: 0 0 1.5rem 0;
 }
@@ -752,13 +765,19 @@
         font-size: 1.5rem;
     }
 
+    /* MODIFICATIONS MOBILE */
+    /* Titre "So you can..." version mobile */
+    #so-you-can .section-title-bold {
+        font-size: 14px;
+    }
+
     /* Why MK BA cards mobile */
     .why-card {
         min-height: 250px;
         margin-bottom: 1.5rem;
     }
 
-    /* Accordion mobile */
+    /* Accordion mobile - rapprochement encore plus important */
     .accordion-button {
         font-size: 1rem;
         padding: 1.2rem 0;
@@ -766,7 +785,12 @@
     }
 
     .accordion-icon {
-        margin-left: 0.3rem; /* Encore plus proche sur mobile */
+        margin-left: 0.15rem; /* Encore plus proche sur mobile */
+    }
+
+    /* Items span mobile */
+    .accordion-button span {
+        font-size: 1.1rem; /* Légèrement réduit sur mobile */
     }
 
     /* Client cards mobile */
@@ -817,6 +841,20 @@
     /* Content adaptations */
     .section-title-bold {
         font-size: 1.3rem;
+    }
+
+    /* MODIFICATIONS TRÈS PETITS ÉCRANS */
+    /* Très petits écrans */
+    #so-you-can .section-title-bold {
+        font-size: 13px;
+    }
+
+    .accordion-icon {
+        margin-left: 0.1rem; /* Très proche sur très petits écrans */
+    }
+
+    .accordion-button span {
+        font-size: 1rem;
     }
 
     /* Why cards optimisation */

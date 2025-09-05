@@ -258,18 +258,14 @@ body {
 
 .nav-link::after {
     content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 50%;
-    background-color: var(--primary-orange);
+    position: relative;
     transition: all 0.3s ease;
-    transform: translateX(-50%);
 }
 
 .nav-link:hover::after {
-    width: 70%;
+    width: 84%;
+    bottom: -20px;
+    right: 90%;
 }
 
 .contact-btn {
@@ -1024,8 +1020,8 @@ body {
 
 .indicators-grid {
     background: #FFF5F0;
-    padding: 2rem 10rem;
-    margin: 2rem -10rem 0 -10rem;
+    padding: 2rem 0 0 10rem; 
+    margin: 0.5rem -10rem 0 -10rem;
 }
 
 #indicators .section-title {
@@ -1039,7 +1035,7 @@ body {
 
 /* Grille des indicateurs - 3 colonnes sur 2 lignes selon maquette */
 #indicators .row {
-    --bs-gutter-x: 2rem;
+    --bs-gutter-x: 12rem;
     --bs-gutter-y: 2rem;
 }
 
