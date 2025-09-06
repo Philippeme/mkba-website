@@ -1594,7 +1594,8 @@ body {
 /* Remplacer les anciens styles .who-we-are-dropdown par ces nouveaux styles */
 
 .who-we-are-mega-menu {
-    background: var(--white);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
     border: none;
     border-radius: 0;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -1665,7 +1666,7 @@ body {
 }
 
 .mega-menu-item {
-    color: var(--text-dark) !important;
+    color: var(--white) !important;
     padding: 0.5rem 0;
     font-size: 0.95rem;
     font-weight: 400;
@@ -1673,7 +1674,7 @@ body {
     transition: all 0.3s ease;
     border-radius: 0;
     text-decoration: none;
-    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mega-menu-item:last-child {
