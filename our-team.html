@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title_our_team">Notre équipe - Excellence en Solutions Technologiques</title>
+    <meta name="description"
+        content="Découvrez l'équipe MK BA - des innovateurs, collaborateurs et réalisateurs unis par la passion pour l'excellence technologique en Afrique.">
+    <meta name="keywords" content="MK BA, équipe, team, innovateurs, collaborateurs, talents, technologie, Afrique">
+    <meta name="author" content="MK Business Analysis">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mk-ba.com/our-team">
+    <meta property="og:title" content="Notre équipe - Excellence en Solutions Technologiques">
+    <meta property="og:description" content="Découvrez l'équipe MK BA">
+    <meta property="og:image" content="./assets/images/mkba-og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="our-team.css">
+
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./assets/images/Groupe 1@2x.png" as="image">
+</head>
+
+<body class="our-team-page">
+    <!-- Top Banner with Search Only -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="top-banner-content">
+                <div class="search-section">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-trigger" onclick="toggleSearch()" tabindex="0" role="button"
+                            aria-label="Ouvrir la recherche">
+                            <i class="fas fa-search search-icon-right" aria-hidden="true"></i>
+                            <span data-i18n="search_placeholder">Recherche dans MK BA</span>
+                        </div>
+                        <div class="search-input-container" id="searchInputContainer">
+                            <input type="search" class="search-input" placeholder="Recherche dans MK BA..."
+                                data-i18n-placeholder="search_placeholder" aria-label="Champ de recherche">
+                            <button class="search-close" onclick="toggleSearch()" aria-label="Fermer la recherche">
+                                <i class="fas fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation with Mega Menu Dropdown -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top our-team-nav" role="navigation" aria-label="Navigation principale">
+            <div class="container">
+                <!-- Logo à gauche -->
+                <a class="navbar-brand" href="index.html" aria-label="Retour à l'accueil MK BA">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="brand-logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Navigation au centre -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown mega-menu-dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="whoWeAreDropdown" role="button" 
+                               data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_who_we_are">
+                                Qui nous sommes
+                            </a>
+                            <div class="dropdown-menu who-we-are-mega-menu" aria-labelledby="whoWeAreDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="dropdown_title">Qui nous sommes</h5>
+                                            <p class="mega-menu-description" data-i18n="dropdown_description">
+                                                Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence 
+                                                technologique en Afrique.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">
+                                                        We are MK BA
+                                                    </a>
+                                                    <a class="mega-menu-item active" href="our-team.html" data-i18n="nav_our_team">
+                                                        Our team
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_sustainability">
+                                                        Our commitment to sustainability
+                                                    </a>
+                                                </div>
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_technologies">
+                                                        Technologies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_work_with_us">
+                                                        Work with us
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#what-we-do" data-i18n="nav_what_we_do">Ce que nous faisons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#achievements" data-i18n="nav_achievements">Réalisations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#news" data-i18n="nav_news">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact-btn" href="index.html#contact" data-i18n="nav_contact">Nous contacter</a>
+                        </li>
+                    </ul>
+
+                    <!-- Sélecteur de langue à l'extrémité droite -->
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link language-selector-nav" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="Sélection de langue">
+                                <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bannière Fil d'Ariane -->
+    <section class="breadcrumb-banner">
+        <div class="container">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html" data-i18n="breadcrumb_home">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page" data-i18n="breadcrumb_our_team">
+                        Our Team
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="hero" class="our-team-hero" role="banner">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <h1 class="hero-title" data-i18n="hero_title1">Innovators. Collaborators. Achievers.</h1>
+                    <p class="hero-description" data-i18n="hero_description">
+                        At MK BA, our success is driven by the exceptional people behind our solutions. We are a diverse team of experts intervening in our different fields of competency and united by a passion for excellence and impact.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Your Success Is Our Collective Effort" -->
+    <section id="collective-effort" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="section-title-with-badge mb-4" data-i18n="collective_effort_title">Your Success Is Our Collective Effort</h2>
+            
+            <div class="collective-effort-content">
+                <div class="bullet-point">
+                    <span class="bullet-square"></span>
+                    <p data-i18n="collective_effort_description">
+                        We provide tech experts, project managers and support functions to deliver outstanding results. We deliver quality software with our tech specialists that are supported by business domain experts (healthcare, government, environment, justice, etc.).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Quelques indicateurs clés de MK BA -->
+    <section id="indicators" class="py-5">
+        <div class="container">
+            <div class="indicators-grid-full">
+                <h2 class="section-title mb-5" data-i18n="indicators_title">Quelques indicateurs clés de MK BA</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="indicator-card">
+                            <div class="indicator-content">
+                                <div class="indicator-number" data-target="999">999</div>
+                                <div class="indicator-suffix">+</div>
+                                <div class="indicator-label" data-i18n="indicator_label">Etiam convallis</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "WHERE EXPERTISE MEETS PASSION" -->
+    <section id="expertise-passion" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="section-title mb-3" data-i18n="expertise_title">Where Expertise Meets Passion</h2>
+            <p class="section-subtitle mb-5" data-i18n="expertise_subtitle">
+                Our team members hold industry-leading certifications, that confirm, with their experience, their ability to deliver effectively.
+            </p>
+
+            <!-- Carrousel de logos partenaires -->
+            <div class="partners-carousel-container">
+                <div class="partners-carousel" id="partnersCarousel">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/cordaid.png" alt="Cordaid" loading="lazy">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/cfi.png" alt="CFI Development" loading="lazy">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/world-vision.png" alt="World Vision" loading="lazy">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/invisible-children.png" alt="Invisible Children" loading="lazy">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/solidarites.png" alt="Solidarités International" loading="lazy">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="./assets/images/partners/oxfam.png" alt="Oxfam" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controls du carrousel -->
+                <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Précédent">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Suivant">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "OUR VALUES" -->
+    <section id="our-values" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title-with-badge mb-5" data-i18n="values_title">Our values</h2>
+
+            <div class="values-grid">
+                <div class="row g-4">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="value-item">
+                            <div class="value-content">
+                                <span class="value-bullet"></span>
+                                <div class="value-text">
+                                    <h3 data-i18n="value_integrity_title">Integrity</h3>
+                                    <p data-i18n="value_integrity_desc">We do the right thing, the right way, at the right time, always.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="value-item">
+                            <div class="value-content">
+                                <span class="value-bullet"></span>
+                                <div class="value-text">
+                                    <h3 data-i18n="value_collaboration_title">Collaboration</h3>
+                                    <p data-i18n="value_collaboration_desc">We thrive on partnership and collective intelligence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="value-item">
+                            <div class="value-content">
+                                <span class="value-bullet"></span>
+                                <div class="value-text">
+                                    <h3 data-i18n="value_impact_title">Impact</h3>
+                                    <p data-i18n="value_impact_desc">We are driven by results that matter.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="value-item">
+                            <div class="value-content">
+                                <span class="value-bullet"></span>
+                                <div class="value-text">
+                                    <h3 data-i18n="value_innovation_title">Innovation</h3>
+                                    <p data-i18n="value_innovation_desc">We embrace change and seek smarter ways to solve challenges.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "JOIN US" -->
+    <section id="join-us" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="section-title-with-badge mb-3" data-i18n="join_us_title">Join Us</h2>
+            <p class="join-us-description" data-i18n="join_us_description">
+                Join an organization that will help you bring out the best of your potential and lead you create the best impact
+            </p>
+        </div>
+    </section>
+
+    <!-- Formulaire "CANDIDATURE SPONTANÉE" -->
+    <section id="application-form" class="py-5 bg-white">
+        <div class="container">
+            <div class="application-form-container">
+                <!-- Header du formulaire -->
+                <div class="form-header">
+                    <h3 class="form-title-with-badge" data-i18n="form_title">Candidature spontanée</h3>
+                    <div class="form-instructions">
+                        <p class="required-note" data-i18n="required_fields">Les champs marqués d'un * sont obligatoires</p>
+                        <p class="special-chars-note" data-i18n="special_chars_note">
+                            Veuillez éviter d'utiliser des caractères spéciaux (par exemple des parenthèses) dans les champs de nom.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Corps du formulaire -->
+                <div class="form-body">
+                    <div id="applicationForm">
+                        <div class="row g-3">
+                            <!-- Nom -->
+                            <div class="col-lg-6 col-md-6">
+                                <label for="lastName" class="form-label" data-i18n="label_last_name">Nom *</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <!-- Prénom -->
+                            <div class="col-lg-6 col-md-6">
+                                <label for="firstName" class="form-label" data-i18n="label_first_name">Prénom *</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-lg-6 col-md-6">
+                                <label for="email" class="form-label" data-i18n="label_email">Email *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <!-- Téléphone -->
+                            <div class="col-lg-6 col-md-6">
+                                <label for="phone" class="form-label" data-i18n="label_phone">Téléphone *</label>
+                                <div class="phone-input-group">
+                                    <select class="form-select country-code" id="countryCode" name="countryCode">
+                                        <option value="+243" selected>+243</option>
+                                        <option value="+237">+237</option>
+                                        <option value="+33">+33</option>
+                                        <option value="+1">+1</option>
+                                    </select>
+                                    <input type="tel" class="form-control phone-number" id="phone" name="phone" required>
+                                </div>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <!-- WhatsApp -->
+                            <div class="col-lg-6 col-md-6">
+                                <label for="whatsapp" class="form-label" data-i18n="label_whatsapp">WhatsApp *</label>
+                                <input type="tel" class="form-control" id="whatsapp" name="whatsapp" required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <!-- Compte Skype -->
+                            <div class="col-lg-6 col-md-6">
+                                <label for="skype" class="form-label" data-i18n="label_skype">Compte Skype</label>
+                                <input type="text" class="form-control" id="skype" name="skype">
+                            </div>
+
+                            <!-- Statut Matrimonial -->
+                            <div class="col-lg-6 col-md-6">
+                                <label for="maritalStatus" class="form-label" data-i18n="label_marital_status">Statut Matrimonial</label>
+                                <select class="form-select" id="maritalStatus" name="maritalStatus">
+                                    <option value="married" selected data-i18n="marital_married">Marié</option>
+                                    <option value="single" data-i18n="marital_single">Célibataire</option>
+                                    <option value="divorced" data-i18n="marital_divorced">Divorcé</option>
+                                    <option value="widowed" data-i18n="marital_widowed">Veuf/Veuve</option>
+                                </select>
+                            </div>
+
+                            <!-- Votre Sexe -->
+                            <div class="col-lg-6 col-md-6">
+                                <label class="form-label" data-i18n="label_gender">Votre Sexe</label>
+                                <div class="gender-options">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" checked>
+                                        <label class="form-check-label" for="genderMale" data-i18n="gender_male">
+                                            Homme
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female">
+                                        <label class="form-check-label" for="genderFemale" data-i18n="gender_female">
+                                            Femme
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nationalité -->
+                            <div class="col-lg-6 col-md-6">
+                                <label for="nationality" class="form-label" data-i18n="label_nationality">Quel est votre nationalité</label>
+                                <select class="form-select nationality-select" id="nationality" name="nationality">
+                                    <option value="camerounaise" selected>
+                                        <img src="./assets/images/flags/cameroon.png" alt="Cameroun"> Camerounaise
+                                    </option>
+                                    <option value="francaise">
+                                        <img src="./assets/images/flags/france.png" alt="France"> Française
+                                    </option>
+                                    <option value="senegalaise">
+                                        <img src="./assets/images/flags/senegal.png" alt="Sénégal"> Sénégalaise
+                                    </option>
+                                </select>
+                            </div>
+
+                            <!-- Pays de résidence -->
+                            <div class="col-lg-6 col-md-6">
+                                <label for="residence" class="form-label" data-i18n="label_residence">Pays de résidence</label>
+                                <select class="form-select nationality-select" id="residence" name="residence">
+                                    <option value="francaise" selected>
+                                        <img src="./assets/images/flags/france.png" alt="France"> Française
+                                    </option>
+                                    <option value="camerounaise">
+                                        <img src="./assets/images/flags/cameroon.png" alt="Cameroun"> Camerounaise
+                                    </option>
+                                    <option value="senegalaise">
+                                        <img src="./assets/images/flags/senegal.png" alt="Sénégal"> Sénégalaise
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Section Upload de fichiers -->
+                        <div class="file-upload-section">
+                            <div class="upload-header">
+                                <h4 class="upload-title" data-i18n="upload_title">Téléverser votre Cv lettre de motivation</h4>
+                                <div class="upload-specs">
+                                    <p data-i18n="upload_format">Format : Docx, pdf</p>
+                                    <p data-i18n="upload_size">Taille : Mo Maximum</p>
+                                </div>
+                            </div>
+
+                            <!-- Zone de drop -->
+                            <div class="drop-zone" id="dropZone">
+                                <div class="drop-zone-content">
+                                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                    <p class="drop-zone-text" data-i18n="drop_zone_text">Depuis l'appareil</p>
+                                </div>
+                                <input type="file" id="fileInput" class="file-input" multiple accept=".pdf,.docx,.doc">
+                            </div>
+
+                            <!-- Fichiers uploadés -->
+                            <div class="uploaded-files" id="uploadedFiles">
+                                <!-- Les fichiers uploadés apparaîtront ici -->
+                            </div>
+                        </div>
+
+                        <!-- Boutons d'action -->
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-cancel" id="cancelBtn" data-i18n="btn_cancel">
+                                Annuler la candidature
+                            </button>
+                            <button type="submit" class="btn btn-submit" id="submitBtn" data-i18n="btn_submit">
+                                Enregistrer et continuer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Identique aux autres pages -->
+    <footer id="contact" class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Colonne 1: Logo + slogan -->
+                <div class="footer-brand-section">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA Footer" class="footer-logo">
+                    <p class="footer-description">MK Business Analysis</p>
+                </div>
+
+                <!-- Colonne 2: Qui nous sommes -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="we-are-mkba.html" data-i18n="footer_who_are_mkba">Who are MK BA</a></li>
+                        <li><a href="our-team.html" data-i18n="footer_our_team">Our Team</a></li>
+                        <li><a href="#" data-i18n="footer_sustainability">Our commitment to sustainability</a></li>
+                        <li><a href="#" data-i18n="footer_technologies">Technologies</a></li>
+                        <li><a href="#" data-i18n="footer_work_with_us">Work with us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Ce que nous faisons -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="#" data-i18n="footer_industries">Industries served</a></li>
+                        <li><a href="index.html#what-we-do" data-i18n="footer_services">Services</a></li>
+                        <li><a href="index.html#products" data-i18n="footer_solutions">Solutions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Réalisations -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_achievements">Réalisations</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="index.html#achievements" data-i18n="footer_achievements_link">Nos réalisations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5: Contacts -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_contacts">Contacts</h4>
+                    <address class="contact-info">
+                        <p data-i18n="footer_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a
+                                href="mailto:info@mk-ba.com">info@mk-ba.com</a></p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+237695478987">+237 695 478
+                                987</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom-section">
+                <nav class="footer-legal" aria-label="Liens légaux">
+                    <a href="#" data-i18n="footer_legal_mentions">Mentions légales</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_privacy">Politique de Confidentialité</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_terms">Termes et conditions</a>
+                </nav>
+
+                <p class="footer-copyright" data-i18n="footer_copyright">Copyright © 2025. Tous droits réservés</p>
+            </div>
+        </div>
+
+        <!-- Bas de page (bande grise foncée) -->
+        <div class="footer-bottom-band">
+            <div class="container">
+                <small data-i18n="footer_powered">Powered by MK BA</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="our-team.js" defer></script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TeamPage",
+        "name": "Notre équipe - MK BA",
+        "description": "Découvrez l'équipe MK BA - des innovateurs, collaborateurs et réalisateurs unis par la passion pour l'excellence technologique en Afrique",
+        "url": "https://mk-ba.com/our-team",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "MK Business Analysis"
+        }
+    }
+    </script>
+</body>
+
+</html>
