@@ -1,5 +1,5 @@
 /* ==============================================
-   STYLES SPÉCIFIQUES POUR LA PAGE OUR TEAM
+   STYLES COMPLETS POUR LA PAGE OUR TEAM
    ============================================== */
 
 /* Variables CSS spécifiques */
@@ -10,6 +10,7 @@
     --values-bg-tinted: #FEFEFE;
     --form-header-bg: linear-gradient(135deg, #EBF4FD 0%, #FFFFFF 100%);
     --file-upload-bg: #FAFBFC;
+    --highlighted-label-bg: #F5F5F5;
 }
 
 /* Header adapté - fond blanc avec liens bleus + EFFETS BLEUS UNIQUEMENT */
@@ -269,7 +270,7 @@
 }
 
 /* ==============================================
-   HERO SECTION "OUR TEAM"
+   HERO SECTION "OUR TEAM" - CORRECTIONS ALIGNEMENT
    ============================================== */
 
 .our-team-hero {
@@ -291,15 +292,22 @@
     letter-spacing: -0.5px;
 }
 
+/* CORRECTION 1: ALIGNEMENT ET EXTENSION DU PARAGRAPHE HERO */
 .our-team-hero .hero-description {
     font-size: 1.1rem;
     color: var(--text-dark);
-    text-align: center;
+    text-align: left; /* Alignement à gauche */
     line-height: 1.6;
     margin-bottom: 0;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 200%; /* Extension vers la droite */
+    margin-left: -4rem; /* Alignement au niveau du titre suivant */
+    margin-right: -4rem;
+}
+
+/* Mise en évidence de "MK BA" dans le paragraphe hero */
+.our-team-hero .hero-description .highlight-mkba {
+    color: #1B4F72; /* Couleur du titre hero */
+    font-weight: 600;
 }
 
 /* ==============================================
@@ -446,7 +454,7 @@
 }
 
 /* ==============================================
-   SECTION "WHERE EXPERTISE MEETS PASSION"
+   SECTION "WHERE EXPERTISE MEETS PASSION" - CORRECTIONS
    ============================================== */
 
 #expertise-passion {
@@ -462,13 +470,16 @@
     text-align: left;
 }
 
+/* CORRECTION 2: EXTENSION DU PARAGRAPHE VERS LA DROITE */
 #expertise-passion .section-subtitle {
     font-size: 1.1rem;
     color: var(--text-dark);
     line-height: 1.6;
     margin-bottom: 3rem;
     text-align: left;
-    max-width: 600px;
+    max-width: 200%; /* Extension vers la droite */
+    margin-left: 0;
+    margin-right: auto;
 }
 
 /* Carrousel de logos partenaires */
@@ -476,7 +487,8 @@
     position: relative;
     overflow: hidden;
     background: var(--white);
-    padding: -2rem 0;
+    padding: 2rem 0;
+    margin-top: -2rem;
 }
 
 .partners-carousel {
@@ -487,10 +499,10 @@
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease;
-    gap: 3rem;
+    gap: 4rem;
     align-items: center;
     justify-content: center;
-    min-width: 100%;
+    min-width: 120%;
 }
 
 .partner-logo {
@@ -519,7 +531,7 @@
     transform: scale(1.05);
 }
 
-/* Contrôles du carrousel */
+/* CORRECTION 3: BOUTONS DU CARROUSEL RAPPROCHÉS */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -544,12 +556,13 @@
     transform: translateY(-50%) scale(1.1);
 }
 
+/* Boutons rapprochés de moitié */
 .carousel-prev {
-    left: 1rem;
+    left: 2%; /* Rapproché du centre */
 }
 
 .carousel-next {
-    right: 1rem;
+    right: 2%; /* Rapproché du centre */
 }
 
 /* ==============================================
@@ -618,7 +631,7 @@
 }
 
 /* ==============================================
-   SECTION "JOIN US"
+   SECTION "JOIN US" - CORRECTIONS
    ============================================== */
 
 #join-us {
@@ -636,16 +649,19 @@
     line-height: 1.2;
 }
 
+/* CORRECTION 2: EXTENSION DU PARAGRAPHE VERS LA DROITE */
 .join-us-description {
     font-size: 1.1rem;
     color: var(--text-dark);
     line-height: 1.6;
     margin-bottom: 0;
-    max-width: 600px;
+    max-width: 200%; /* Extension vers la droite */
+    margin-left: 0;
+    margin-right: auto;
 }
 
 /* ==============================================
-   FORMULAIRE "CANDIDATURE SPONTANÉE"
+   FORMULAIRE "CANDIDATURE SPONTANÉE" - CORRECTIONS COMPLÈTES
    ============================================== */
 
 #application-form {
@@ -719,7 +735,7 @@
     border-top: none;
 }
 
-/* Champs de formulaire */
+/* CORRECTION 4: LABELS AVEC FOND GRIS LÉGER */
 .form-label {
     font-size: 1rem;
     font-weight: 500;
@@ -727,6 +743,7 @@
     margin-bottom: 0.5rem;
 }
 
+/* Champs de formulaire */
 .form-control,
 .form-select {
     height: 45px;
@@ -758,18 +775,31 @@
     color: #e74c3c;
 }
 
-/* Champ téléphone avec indicatif */
+/* CORRECTION 4: CHAMP TÉLÉPHONE AVEC DROPDOWN D'INDICATIF */
 .phone-input-group {
     display: flex;
     gap: 0;
+    align-items: center;
 }
 
-.country-code {
-    width: 80px;
-    background: #F8F9FA;
+.country-code-dropdown {
+    width: 120px;
+    background: #E5E5E5;
     border-right: none;
     border-radius: 4px 0 0 4px;
     flex-shrink: 0;
+    position: relative;
+}
+
+.country-code-dropdown::after {
+    content: '▼';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 0.8rem;
+    pointer-events: none;
 }
 
 .phone-number {
@@ -811,21 +841,107 @@
     cursor: pointer;
 }
 
-/* Sélecteurs avec drapeaux */
-.nationality-select {
+/* ==============================================
+   CUSTOM SELECTS AVEC DRAPEAUX - NOUVELLE FONCTIONNALITÉ
+   ============================================== */
+
+.nationality-select-container,
+.residence-select-container {
     position: relative;
 }
 
-.nationality-select option {
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.custom-select {
+    position: relative;
+    display: block;
 }
 
-/* Section upload de fichiers */
+.custom-select-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 16px;
+    background: #E5E5E5;
+    border: 1px solid #D5D8DC;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-select-trigger:hover {
+    border-color: #3498DB;
+}
+
+.custom-select-trigger.active {
+    border-color: #3498DB;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.custom-select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border: 1px solid #D5D8DC;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.custom-select-options.show {
+    display: block;
+}
+
+.custom-select-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.custom-select-option:hover,
+.custom-select-option.focused {
+    background-color: #F8F9FA;
+}
+
+.custom-select-option.selected {
+    background-color: #EBF3FD;
+    color: #3498DB;
+}
+
+.custom-select-flag {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+}
+
+.custom-select-text {
+    flex: 1;
+}
+
+.custom-select-arrow {
+    margin-left: auto;
+    color: #666;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.custom-select-trigger.active .custom-select-arrow {
+    transform: rotate(180deg);
+}
+
+/* ==============================================
+   SECTION UPLOAD DE FICHIERS - CORRECTIONS POSITIONNEMENT
+   ============================================== */
+
 .file-upload-section {
-    background: #FAFBFC;
+    background: #f8f9fa;
     padding: 2rem;
     border-top: 1px solid #E5E5E5;
     margin-top: 2rem;
@@ -853,12 +969,84 @@
     line-height: 1.4;
 }
 
+/* CORRECTION 5: FICHIERS UPLOADÉS SOUS LE LABEL */
+.uploaded-files-under-label {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    display: none; /* Masqué par défaut */
+}
+
+.uploaded-file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--white);
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.uploaded-file-item:hover {
+    border-color: #3498DB;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.uploaded-file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.uploaded-file-icon {
+    color: #3498DB;
+    font-size: 1.2rem;
+}
+
+.uploaded-file-details {
+    flex: 1;
+}
+
+.uploaded-file-name {
+    font-size: 0.9rem;
+    color: #2C3E50;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.uploaded-file-size {
+    font-size: 0.8rem;
+    color: #7F8C8D;
+}
+
+.uploaded-file-remove {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uploaded-file-remove:hover {
+    background: rgba(231, 76, 60, 0.1);
+    transform: scale(1.1);
+}
+
 /* Zone de drop */
 .drop-zone {
     height: 200px;
     width: 100%;
     border: 2px dashed #BDC3C7;
-    background: #FFFFFF;
+    background: #E5E5E5;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -866,6 +1054,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    margin-top: 1rem;
 }
 
 .drop-zone:hover,
@@ -899,49 +1088,6 @@
     height: 100%;
     opacity: 0;
     cursor: pointer;
-}
-
-/* Fichiers uploadés */
-.uploaded-files {
-    margin-top: 1rem;
-}
-
-.uploaded-file {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 1rem;
-    background: var(--white);
-    border: 1px solid #E5E5E5;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-}
-
-.file-info {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.file-name {
-    font-size: 0.875rem;
-    color: #2C3E50;
-    font-weight: 500;
-}
-
-.file-remove {
-    background: none;
-    border: none;
-    color: #e74c3c;
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 0.25rem;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-.file-remove:hover {
-    background: rgba(231, 76, 60, 0.1);
 }
 
 /* Boutons d'action */
@@ -1022,6 +1168,15 @@
 
     .our-team-hero .hero-description {
         font-size: 1rem;
+        max-width: 100%;
+        text-align: left;
+    }
+
+    /* Sections mobiles - paragraphes */
+    #expertise-passion .section-subtitle,
+    #join-us .join-us-description {
+        max-width: 100%;
+        text-align: left;
     }
 
     /* Sections mobiles */
@@ -1032,6 +1187,15 @@
     .section-title-with-badge::after {
         left: 2.5ch;
         width: 40px;
+    }
+
+    /* Boutons carrousel mobiles */
+    .carousel-prev {
+        left: 10px;
+    }
+
+    .carousel-next {
+        right: 10px;
     }
 
     /* Mega menu mobile */
@@ -1071,14 +1235,6 @@
         font-size: 0.8rem;
     }
 
-    .carousel-prev {
-        left: -15px;
-    }
-
-    .carousel-next {
-        right: -15px;
-    }
-
     .partner-logo {
         min-width: 100px;
     }
@@ -1112,6 +1268,26 @@
         width: 35px;
     }
 
+    /* Labels avec fond gris - version mobile */
+    .form-label.highlighted-label {
+        min-width: 100%;
+        padding: 0.4rem 0.6rem;
+    }
+
+    /* Custom selects mobiles */
+    .custom-select-options {
+        max-height: 150px;
+    }
+
+    .custom-select-option {
+        padding: 8px 12px;
+    }
+
+    .custom-select-flag {
+        width: 20px;
+        height: 15px;
+    }
+
     .gender-options {
         gap: 1rem;
     }
@@ -1134,6 +1310,19 @@
 
     .upload-icon {
         font-size: 2rem;
+    }
+
+    /* Fichiers uploadés mobile */
+    .uploaded-file-item {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .uploaded-file-name {
+        font-size: 0.85rem;
+    }
+
+    .uploaded-file-size {
+        font-size: 0.75rem;
     }
 
     /* Indicateurs mobile */
@@ -1169,6 +1358,15 @@
         width: 30px;
     }
 
+    /* Boutons carrousel très petits écrans */
+    .carousel-prev {
+        left: 5px;
+    }
+
+    .carousel-next {
+        right: 5px;
+    }
+
     /* Formulaire très petit écran */
     .form-header,
     .form-body {
@@ -1179,8 +1377,34 @@
         font-size: 1.3rem;
     }
 
+    .form-label.highlighted-label {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .custom-select-trigger {
+        padding: 10px 12px;
+    }
+
+    .custom-select-flag {
+        width: 18px;
+        height: 13px;
+    }
+
     .upload-specs p {
         font-size: 0.8rem;
+    }
+
+    .drop-zone {
+        height: 130px;
+    }
+
+    .upload-icon {
+        font-size: 1.8rem;
+    }
+
+    .drop-zone-text {
+        font-size: 0.9rem;
     }
 
     /* Mega menu très petit écran */
@@ -1267,6 +1491,17 @@
     }
 }
 
+@keyframes slideDownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .value-item {
     animation: slideInFromLeft 0.6s ease forwards;
 }
@@ -1285,6 +1520,14 @@
 .partner-logo:nth-child(4) { animation-delay: 0.4s; }
 .partner-logo:nth-child(5) { animation-delay: 0.5s; }
 .partner-logo:nth-child(6) { animation-delay: 0.6s; }
+
+.custom-select-options.show {
+    animation: slideDownFadeIn 0.3s ease forwards;
+}
+
+.uploaded-file-item {
+    animation: slideDownFadeIn 0.4s ease forwards;
+}
 
 /* Animation d'ouverture du mega menu */
 .our-team-page .who-we-are-mega-menu {
@@ -1312,6 +1555,8 @@
 .btn-cancel:focus,
 .btn-submit:focus,
 .carousel-btn:focus,
+.custom-select-trigger:focus,
+.uploaded-file-remove:focus,
 .our-team-page .mega-menu-item:focus {
     outline: 2px solid var(--primary-orange);
     outline-offset: 2px;
@@ -1327,15 +1572,24 @@
     }
     
     .form-control,
-    .form-select {
+    .form-select,
+    .custom-select-trigger,
+    .uploaded-file-item {
         border-width: 2px;
+    }
+
+    .form-label.highlighted-label {
+        background-color: #E0E0E0;
+        border: 1px solid #333;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .our-team-page .who-we-are-mega-menu,
     .value-item,
-    .partner-logo {
+    .partner-logo,
+    .custom-select-options.show,
+    .uploaded-file-item {
         animation: none;
         opacity: 1;
         transform: none;
@@ -1346,7 +1600,10 @@
     .form-select,
     .btn-cancel,
     .btn-submit,
-    .carousel-btn {
+    .carousel-btn,
+    .custom-select-trigger,
+    .uploaded-file-remove,
+    .drop-zone {
         transition: none !important;
     }
 

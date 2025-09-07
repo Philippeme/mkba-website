@@ -1,5 +1,5 @@
 // ==============================================
-// JAVASCRIPT SPÉCIFIQUE POUR LA PAGE OUR TEAM
+// JAVASCRIPT CORRIGÉ POUR LA PAGE OUR TEAM
 // ==============================================
 
 // Variables globales pour la page Our team
@@ -9,7 +9,7 @@ let carouselAutoplay = null;
 let carouselPaused = false;
 let uploadedFiles = [];
 
-// Traductions spécifiques à la page Our team
+// Traductions spécifiques à la page Our team (inchangées)
 const ourTeamTranslations = {
     fr: {
         // Meta et navigation
@@ -193,77 +193,283 @@ const ourTeamTranslations = {
 };
 
 // ==============================================
-// GESTION DU MEGA MENU "WHO WE ARE"
+// CUSTOM SELECTS AVEC DRAPEAUX - NOUVELLE FONCTIONNALITÉ
 // ==============================================
 
-function initMegaMenuOurTeamPage() {
-    const megaMenuDropdown = document.querySelector('.mega-menu-dropdown');
-    const navbar = document.querySelector('.navbar');
+function initCustomSelects() {
+    const nationalitySelect = document.getElementById('nationalityTrigger');
+    const nationalityOptions = document.getElementById('nationalityOptions');
+    const nationalityInput = document.getElementById('nationality');
     
-    if (megaMenuDropdown) {
-        const dropdownToggle = megaMenuDropdown.querySelector('.dropdown-toggle');
-        const dropdownMenu = megaMenuDropdown.querySelector('.who-we-are-mega-menu');
+    const residenceSelect = document.getElementById('residenceTrigger');
+    const residenceOptions = document.getElementById('residenceOptions');
+    const residenceInput = document.getElementById('residence');
+    
+    // Fonction générique pour initialiser un custom select
+    function initCustomSelect(trigger, options, input) {
+        if (!trigger || !options || !input) return;
         
-        if (dropdownToggle && dropdownMenu) {
-            // Supprimer l'attribut data-bs-toggle pour désactiver Bootstrap
-            dropdownToggle.removeAttribute('data-bs-toggle');
+        // Toggle des options
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             
-            // Système hover personnalisé
-            megaMenuDropdown.addEventListener('mouseenter', function() {
-                megaMenuOpen = true;
-                dropdownMenu.classList.add('show');
-                navbar.classList.add('mega-menu-open');
-                updateMegaMenuStyles(true);
-            });
-            
-            megaMenuDropdown.addEventListener('mouseleave', function() {
-                megaMenuOpen = false;
-                dropdownMenu.classList.remove('show');
-                navbar.classList.remove('mega-menu-open');
-                updateMegaMenuStyles(false);
-            });
-            
-            // Fermer seulement en cliquant à l'extérieur
-            document.addEventListener('click', function(e) {
-                if (megaMenuOpen && !megaMenuDropdown.contains(e.target)) {
-                    megaMenuOpen = false;
-                    dropdownMenu.classList.remove('show');
-                    navbar.classList.remove('mega-menu-open');
-                    updateMegaMenuStyles(false);
+            // Fermer tous les autres selects
+            document.querySelectorAll('.custom-select-options.show').forEach(opt => {
+                if (opt !== options) {
+                    opt.classList.remove('show');
+                    opt.previousElementSibling.classList.remove('active');
                 }
             });
             
-            // Empêcher la fermeture lors du clic dans le menu
-            dropdownMenu.addEventListener('click', function(e) {
-                e.stopPropagation();
+            // Toggle du select actuel
+            options.classList.toggle('show');
+            trigger.classList.toggle('active');
+        });
+        
+        // Sélection d'une option
+        options.addEventListener('click', function(e) {
+            const option = e.target.closest('.custom-select-option');
+            if (!option) return;
+            
+            // Mettre à jour la sélection
+            options.querySelectorAll('.custom-select-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+            
+            // Mettre à jour l'affichage
+            const flag = option.querySelector('.custom-select-flag').cloneNode(true);
+            const text = option.querySelector('span').textContent;
+            const value = option.getAttribute('data-value');
+            
+            trigger.querySelector('.custom-select-flag').src = flag.src;
+            trigger.querySelector('.custom-select-text').textContent = text;
+            input.value = value;
+            
+            // Fermer le dropdown
+            options.classList.remove('show');
+            trigger.classList.remove('active');
+            
+            // Déclencher l'événement change
+            input.dispatchEvent(new Event('change'));
+        });
+        
+        // Support clavier
+        trigger.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                trigger.click();
+            } else if (e.key === 'Escape') {
+                options.classList.remove('show');
+                trigger.classList.remove('active');
+            }
+        });
+        
+        // Navigation au clavier dans les options
+        options.addEventListener('keydown', function(e) {
+            const visibleOptions = options.querySelectorAll('.custom-select-option');
+            const currentIndex = Array.from(visibleOptions).findIndex(opt => opt.classList.contains('focused'));
+            
+            switch (e.key) {
+                case 'ArrowDown':
+                    e.preventDefault();
+                    const nextIndex = currentIndex < visibleOptions.length - 1 ? currentIndex + 1 : 0;
+                    updateFocusedOption(visibleOptions, nextIndex);
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    const prevIndex = currentIndex > 0 ? currentIndex - 1 : visibleOptions.length - 1;
+                    updateFocusedOption(visibleOptions, prevIndex);
+                    break;
+                case 'Enter':
+                    e.preventDefault();
+                    if (currentIndex >= 0) {
+                        visibleOptions[currentIndex].click();
+                    }
+                    break;
+                case 'Escape':
+                    e.preventDefault();
+                    options.classList.remove('show');
+                    trigger.classList.remove('active');
+                    trigger.focus();
+                    break;
+            }
+        });
+    }
+    
+    // Helper pour mettre à jour l'option focusée
+    function updateFocusedOption(options, index) {
+        options.forEach(opt => opt.classList.remove('focused'));
+        if (options[index]) {
+            options[index].classList.add('focused');
+            options[index].scrollIntoView({ block: 'nearest' });
+        }
+    }
+    
+    // Initialiser les deux selects
+    initCustomSelect(nationalitySelect, nationalityOptions, nationalityInput);
+    initCustomSelect(residenceSelect, residenceOptions, residenceInput);
+    
+    // Fermer tous les dropdowns en cliquant à l'extérieur
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.custom-select')) {
+            document.querySelectorAll('.custom-select-options.show').forEach(options => {
+                options.classList.remove('show');
+                options.previousElementSibling.classList.remove('active');
             });
         }
-    }
-}
-
-function updateMegaMenuStyles(isOpen) {
-    const topBanner = document.querySelector('.top-banner');
+    });
     
-    if (isOpen) {
-        // Styles quand le mega menu est ouvert
-        document.body.classList.add('mega-menu-open');
-        if (topBanner) {
-            topBanner.classList.add('mega-menu-open');
-        }
-    } else {
-        // Styles par défaut
-        document.body.classList.remove('mega-menu-open');
-        if (topBanner) {
-            topBanner.classList.remove('mega-menu-open');
-        }
-    }
+    console.log('Custom selects avec drapeaux initialisés');
 }
 
 // ==============================================
-// CARROUSEL DE LOGOS PARTENAIRES
+// UPLOAD DE FICHIERS CORRIGÉ - AFFICHAGE SOUS LE LABEL
 // ==============================================
 
-function initPartnersCarousel() {
+function initFileUploadCorrected() {
+    const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
+    const uploadedFilesContainer = document.getElementById('uploadedFilesUnderLabel');
+    
+    if (!fileInput || !dropZone) return;
+    
+    // Configuration des fichiers acceptés
+    const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
+    const maxFileSize = 1024 * 1024; // 1MB
+    
+    // Click sur la zone de drop
+    dropZone.addEventListener('click', function() {
+        fileInput.click();
+    });
+    
+    // Drag & Drop
+    dropZone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.classList.add('drag-over');
+    });
+    
+    dropZone.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        this.classList.remove('drag-over');
+    });
+    
+    dropZone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.classList.remove('drag-over');
+        
+        const files = Array.from(e.dataTransfer.files);
+        handleFiles(files);
+    });
+    
+    // Sélection de fichiers
+    fileInput.addEventListener('change', function(e) {
+        const files = Array.from(e.target.files);
+        handleFiles(files);
+    });
+    
+    // Traitement des fichiers
+    function handleFiles(files) {
+        files.forEach(file => {
+            if (validateFile(file)) {
+                addFileToList(file);
+            }
+        });
+    }
+    
+    // Validation d'un fichier
+    function validateFile(file) {
+        // Vérifier le type
+        if (!allowedTypes.includes(file.type)) {
+            showNotification(getTranslation('validation_file_type'), 'error');
+            return false;
+        }
+        
+        // Vérifier la taille
+        if (file.size > maxFileSize) {
+            showNotification(getTranslation('validation_file_size'), 'error');
+            return false;
+        }
+        
+        // Vérifier les doublons
+        if (uploadedFiles.some(f => f.name === file.name && f.size === file.size)) {
+            showNotification('Ce fichier a déjà été ajouté', 'error');
+            return false;
+        }
+        
+        return true;
+    }
+    
+    // Ajouter un fichier à la liste
+    function addFileToList(file) {
+        const fileData = {
+            file: file,
+            name: file.name,
+            size: formatFileSize(file.size),
+            id: Date.now() + Math.random()
+        };
+        
+        uploadedFiles.push(fileData);
+        updateUploadedFilesDisplay();
+        showNotification(getTranslation('file_uploaded'));
+    }
+    
+    // Mettre à jour l'affichage des fichiers sous le label
+    function updateUploadedFilesDisplay() {
+        if (!uploadedFilesContainer) return;
+        
+        uploadedFilesContainer.innerHTML = '';
+        
+        uploadedFiles.forEach((fileData, index) => {
+            const fileElement = document.createElement('div');
+            fileElement.className = 'uploaded-file-item';
+            fileElement.innerHTML = `
+                <div class="uploaded-file-info">
+                    <i class="fas fa-file-pdf uploaded-file-icon" aria-hidden="true"></i>
+                    <div class="uploaded-file-details">
+                        <div class="uploaded-file-name">${fileData.name}</div>
+                        <div class="uploaded-file-size">${fileData.size}</div>
+                    </div>
+                </div>
+                <button type="button" class="uploaded-file-remove" onclick="removeFileFromList(${index})" 
+                        aria-label="Supprimer ${fileData.name}" title="Supprimer ce fichier">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            `;
+            uploadedFilesContainer.appendChild(fileElement);
+        });
+        
+        // Masquer/afficher le container selon le contenu
+        uploadedFilesContainer.style.display = uploadedFiles.length > 0 ? 'block' : 'none';
+    }
+    
+    // Supprimer un fichier (fonction globale)
+    window.removeFileFromList = function(index) {
+        if (index >= 0 && index < uploadedFiles.length) {
+            uploadedFiles.splice(index, 1);
+            updateUploadedFilesDisplay();
+            showNotification(getTranslation('file_removed'));
+        }
+    };
+    
+    // Formater la taille du fichier
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    console.log('Upload de fichiers corrigé initialisé');
+}
+
+// ==============================================
+// CARROUSEL DE LOGOS PARTENAIRES - BOUTONS RAPPROCHÉS
+// ==============================================
+
+function initPartnersCarouselCorrected() {
     const carouselTrack = document.getElementById('carouselTrack');
     const prevBtn = document.getElementById('carouselPrev');
     const nextBtn = document.getElementById('carouselNext');
@@ -369,18 +575,82 @@ function initPartnersCarousel() {
     updateCarouselPosition();
     startAutoplay();
     
-    console.log('Carrousel de partenaires initialisé');
+    console.log('Carrousel de partenaires avec boutons rapprochés initialisé');
 }
 
 // ==============================================
-// FORMULAIRE DE CANDIDATURE - VALIDATION
+// GESTION DU MEGA MENU "WHO WE ARE" - INCHANGÉ
 // ==============================================
 
-function initApplicationForm() {
+function initMegaMenuOurTeamPage() {
+    const megaMenuDropdown = document.querySelector('.mega-menu-dropdown');
+    const navbar = document.querySelector('.navbar');
+    
+    if (megaMenuDropdown) {
+        const dropdownToggle = megaMenuDropdown.querySelector('.dropdown-toggle');
+        const dropdownMenu = megaMenuDropdown.querySelector('.who-we-are-mega-menu');
+        
+        if (dropdownToggle && dropdownMenu) {
+            // Supprimer l'attribut data-bs-toggle pour désactiver Bootstrap
+            dropdownToggle.removeAttribute('data-bs-toggle');
+            
+            // Système hover personnalisé
+            megaMenuDropdown.addEventListener('mouseenter', function() {
+                megaMenuOpen = true;
+                dropdownMenu.classList.add('show');
+                navbar.classList.add('mega-menu-open');
+                updateMegaMenuStyles(true);
+            });
+            
+            megaMenuDropdown.addEventListener('mouseleave', function() {
+                megaMenuOpen = false;
+                dropdownMenu.classList.remove('show');
+                navbar.classList.remove('mega-menu-open');
+                updateMegaMenuStyles(false);
+            });
+            
+            // Fermer seulement en cliquant à l'extérieur
+            document.addEventListener('click', function(e) {
+                if (megaMenuOpen && !megaMenuDropdown.contains(e.target)) {
+                    megaMenuOpen = false;
+                    dropdownMenu.classList.remove('show');
+                    navbar.classList.remove('mega-menu-open');
+                    updateMegaMenuStyles(false);
+                }
+            });
+            
+            // Empêcher la fermeture lors du clic dans le menu
+            dropdownMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    }
+}
+
+function updateMegaMenuStyles(isOpen) {
+    const topBanner = document.querySelector('.top-banner');
+    
+    if (isOpen) {
+        // Styles quand le mega menu est ouvert
+        document.body.classList.add('mega-menu-open');
+        if (topBanner) {
+            topBanner.classList.add('mega-menu-open');
+        }
+    } else {
+        // Styles par défaut
+        document.body.classList.remove('mega-menu-open');
+        if (topBanner) {
+            topBanner.classList.remove('mega-menu-open');
+        }
+    }
+}
+
+// ==============================================
+// FORMULAIRE DE CANDIDATURE - VALIDATION AMÉLIORÉE
+// ==============================================
+
+function initApplicationFormCorrected() {
     const form = document.getElementById('applicationForm');
-    const fileInput = document.getElementById('fileInput');
-    const dropZone = document.getElementById('dropZone');
-    const uploadedFilesContainer = document.getElementById('uploadedFiles');
     const submitBtn = document.getElementById('submitBtn');
     const cancelBtn = document.getElementById('cancelBtn');
     
@@ -487,133 +757,66 @@ function initApplicationForm() {
         if (confirm('Êtes-vous sûr de vouloir annuler votre candidature ?')) {
             form.reset();
             uploadedFiles = [];
-            updateUploadedFilesList();
+            updateUploadedFilesDisplay();
+            
+            // Réinitialiser les custom selects
+            resetCustomSelects();
         }
     });
     
-    console.log('Formulaire de candidature initialisé');
+    console.log('Formulaire de candidature corrigé initialisé');
+}
+
+// Fonction pour réinitialiser les custom selects
+function resetCustomSelects() {
+    // Réinitialiser nationalité (première option)
+    const nationalityTrigger = document.getElementById('nationalityTrigger');
+    const nationalityInput = document.getElementById('nationality');
+    const nationalityFirstOption = document.querySelector('#nationalityOptions .custom-select-option:first-child');
+    
+    if (nationalityTrigger && nationalityInput && nationalityFirstOption) {
+        const flag = nationalityFirstOption.querySelector('.custom-select-flag').cloneNode(true);
+        const text = nationalityFirstOption.querySelector('span').textContent;
+        const value = nationalityFirstOption.getAttribute('data-value');
+        
+        nationalityTrigger.querySelector('.custom-select-flag').src = flag.src;
+        nationalityTrigger.querySelector('.custom-select-text').textContent = text;
+        nationalityInput.value = value;
+        
+        // Mettre à jour les classes selected
+        document.querySelectorAll('#nationalityOptions .custom-select-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        nationalityFirstOption.classList.add('selected');
+    }
+    
+    // Réinitialiser résidence (première option)
+    const residenceTrigger = document.getElementById('residenceTrigger');
+    const residenceInput = document.getElementById('residence');
+    const residenceFirstOption = document.querySelector('#residenceOptions .custom-select-option:first-child');
+    
+    if (residenceTrigger && residenceInput && residenceFirstOption) {
+        const flag = residenceFirstOption.querySelector('.custom-select-flag').cloneNode(true);
+        const text = residenceFirstOption.querySelector('span').textContent;
+        const value = residenceFirstOption.getAttribute('data-value');
+        
+        residenceTrigger.querySelector('.custom-select-flag').src = flag.src;
+        residenceTrigger.querySelector('.custom-select-text').textContent = text;
+        residenceInput.value = value;
+        
+        // Mettre à jour les classes selected
+        document.querySelectorAll('#residenceOptions .custom-select-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        residenceFirstOption.classList.add('selected');
+    }
 }
 
 // ==============================================
-// UPLOAD DE FICHIERS AVEC DRAG & DROP
+// AUTRES FONCTIONS INCHANGÉES
 // ==============================================
 
-function initFileUpload() {
-    const fileInput = document.getElementById('fileInput');
-    const dropZone = document.getElementById('dropZone');
-    const uploadedFilesContainer = document.getElementById('uploadedFiles');
-    
-    if (!fileInput || !dropZone) return;
-    
-    // Configuration des fichiers acceptés
-    const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
-    const maxFileSize = 1024 * 1024; // 1MB
-    
-    // Click sur la zone de drop
-    dropZone.addEventListener('click', function() {
-        fileInput.click();
-    });
-    
-    // Drag & Drop
-    dropZone.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        this.classList.add('drag-over');
-    });
-    
-    dropZone.addEventListener('dragleave', function(e) {
-        e.preventDefault();
-        this.classList.remove('drag-over');
-    });
-    
-    dropZone.addEventListener('drop', function(e) {
-        e.preventDefault();
-        this.classList.remove('drag-over');
-        
-        const files = Array.from(e.dataTransfer.files);
-        handleFiles(files);
-    });
-    
-    // Sélection de fichiers
-    fileInput.addEventListener('change', function(e) {
-        const files = Array.from(e.target.files);
-        handleFiles(files);
-    });
-    
-    // Traitement des fichiers
-    function handleFiles(files) {
-        files.forEach(file => {
-            if (validateFile(file)) {
-                addFileToList(file);
-            }
-        });
-    }
-    
-    // Validation d'un fichier
-    function validateFile(file) {
-        // Vérifier le type
-        if (!allowedTypes.includes(file.type)) {
-            showNotification(getTranslation('validation_file_type'), 'error');
-            return false;
-        }
-        
-        // Vérifier la taille
-        if (file.size > maxFileSize) {
-            showNotification(getTranslation('validation_file_size'), 'error');
-            return false;
-        }
-        
-        // Vérifier les doublons
-        if (uploadedFiles.some(f => f.name === file.name && f.size === file.size)) {
-            showNotification('Ce fichier a déjà été ajouté', 'error');
-            return false;
-        }
-        
-        return true;
-    }
-    
-    // Ajouter un fichier à la liste
-    function addFileToList(file) {
-        uploadedFiles.push(file);
-        updateUploadedFilesList();
-        showNotification(getTranslation('file_uploaded'));
-    }
-    
-    // Mettre à jour l'affichage des fichiers
-    function updateUploadedFilesList() {
-        if (!uploadedFilesContainer) return;
-        
-        uploadedFilesContainer.innerHTML = '';
-        
-        uploadedFiles.forEach((file, index) => {
-            const fileElement = document.createElement('div');
-            fileElement.className = 'uploaded-file';
-            fileElement.innerHTML = `
-                <div class="file-info">
-                    <i class="fas fa-file-pdf file-icon"></i>
-                    <span class="file-name">${file.name}</span>
-                </div>
-                <button type="button" class="file-remove" onclick="removeFile(${index})" aria-label="Supprimer ${file.name}">
-                    <i class="fas fa-times"></i>
-                </button>
-            `;
-            uploadedFilesContainer.appendChild(fileElement);
-        });
-    }
-    
-    // Supprimer un fichier (fonction globale)
-    window.removeFile = function(index) {
-        uploadedFiles.splice(index, 1);
-        updateUploadedFilesList();
-        showNotification(getTranslation('file_removed'));
-    };
-    
-    console.log('Upload de fichiers initialisé');
-}
-
-// ==============================================
-// ANIMATIONS AU SCROLL
-// ==============================================
-
+// Animations au scroll (inchangées)
 function initScrollAnimations() {
     // Animation des indicateurs (réutilise la fonction existante)
     if (window.MKBAWebsite && window.MKBAWebsite.initIndicatorsAnimation) {
@@ -657,10 +860,7 @@ function initScrollAnimations() {
     });
 }
 
-// ==============================================
-// GESTION DES TRADUCTIONS POUR LA PAGE
-// ==============================================
-
+// Gestion des traductions (inchangée)
 function setLanguageOurTeamPage(lang) {
     const pageTranslations = ourTeamTranslations[lang];
     
@@ -760,10 +960,7 @@ function updateSelectOptions(lang) {
     });
 }
 
-// ==============================================
-// GESTION DU FIL D'ARIANE
-// ==============================================
-
+// Gestion du fil d'Ariane (inchangée)
 function initBreadcrumbNavigation() {
     const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
     
@@ -782,10 +979,7 @@ function initBreadcrumbNavigation() {
     });
 }
 
-// ==============================================
-// SMOOTH SCROLL ADAPTÉ POUR LA PAGE
-// ==============================================
-
+// Smooth scroll adapté (inchangé)
 function initSmoothScrollOurTeamPage() {
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
@@ -810,10 +1004,7 @@ function initSmoothScrollOurTeamPage() {
     });
 }
 
-// ==============================================
-// NOTIFICATION SYSTÈME
-// ==============================================
-
+// Notification système (inchangée)
 function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
@@ -867,9 +1058,10 @@ function showNotification(message, type = 'success') {
 function initOurTeamPage() {
     // Initialiser toutes les fonctionnalités spécifiques
     initMegaMenuOurTeamPage();
-    initPartnersCarousel();
-    initApplicationForm();
-    initFileUpload();
+    initPartnersCarouselCorrected(); // Version corrigée
+    initApplicationFormCorrected(); // Version corrigée
+    initFileUploadCorrected(); // Version corrigée
+    initCustomSelects(); // Nouvelle fonctionnalité
     initScrollAnimations();
     initBreadcrumbNavigation();
     initSmoothScrollOurTeamPage();
@@ -903,7 +1095,7 @@ function initOurTeamPage() {
 }
 
 // ==============================================
-// UTILITAIRES D'ACCESSIBILITÉ
+// GESTION RESPONSIVE ET ACCESSIBILITÉ
 // ==============================================
 
 function initAccessibilityOurTeamPage() {
@@ -938,6 +1130,23 @@ function initAccessibilityOurTeamPage() {
         });
     }
     
+    // Améliorer l'accessibilité des custom selects
+    const customSelectTriggers = document.querySelectorAll('.custom-select-trigger');
+    customSelectTriggers.forEach(trigger => {
+        trigger.setAttribute('role', 'combobox');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.setAttribute('tabindex', '0');
+        
+        // Mettre à jour aria-expanded lors des interactions
+        const options = trigger.nextElementSibling;
+        if (options) {
+            const observer = new MutationObserver(() => {
+                trigger.setAttribute('aria-expanded', options.classList.contains('show'));
+            });
+            observer.observe(options, { attributes: true, attributeFilter: ['class'] });
+        }
+    });
+    
     // Support du mode contraste élevé
     if (window.matchMedia('(prefers-contrast: high)').matches) {
         document.body.classList.add('high-contrast');
@@ -952,10 +1161,6 @@ function initAccessibilityOurTeamPage() {
         }
     }
 }
-
-// ==============================================
-// GESTION RESPONSIVE
-// ==============================================
 
 function initResponsiveFeatures() {
     // Adaptation mobile du formulaire
@@ -977,11 +1182,6 @@ function initResponsiveFeatures() {
     // Écouter les changements de taille d'écran
     window.addEventListener('resize', function() {
         handleFormResponsive();
-        
-        // Réinitialiser le carrousel sur changement de breakpoint
-        if (window.initPartnersCarousel) {
-            // Le carrousel gère déjà le responsive dans sa propre fonction
-        }
     });
     
     // Initialiser
@@ -1020,10 +1220,11 @@ window.OurTeamPage = {
     initOurTeamPage,
     setLanguageOurTeamPage,
     initMegaMenuOurTeamPage,
-    initPartnersCarousel,
-    initApplicationForm,
-    initFileUpload,
+    initPartnersCarouselCorrected,
+    initApplicationFormCorrected,
+    initFileUploadCorrected,
+    initCustomSelects,
     ourTeamTranslations,
     showNotification,
-    removeFile: window.removeFile
+    removeFileFromList: window.removeFileFromList
 };

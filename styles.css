@@ -1684,7 +1684,7 @@ body {
 .mega-menu-item:hover,
 .mega-menu-item:focus {
     background-color: rgba(0, 102, 204, 0.05);
-    color: var(--primary-blue) !important;
+    color: var(--primary-orange) !important;
     transform: translateX(3px);
 }
 
