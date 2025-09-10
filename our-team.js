@@ -1,5 +1,5 @@
 // ==============================================
-// JAVASCRIPT CORRIGÉ POUR LA PAGE OUR TEAM
+// JAVASCRIPT COMPLET CORRIGÉ POUR LA PAGE OUR TEAM
 // ==============================================
 
 // Variables globales pour la page Our team
@@ -9,7 +9,7 @@ let carouselAutoplay = null;
 let carouselPaused = false;
 let uploadedFiles = [];
 
-// Traductions spécifiques à la page Our team (inchangées)
+// Traductions spécifiques à la page Our team
 const ourTeamTranslations = {
     fr: {
         // Meta et navigation
@@ -83,6 +83,7 @@ const ourTeamTranslations = {
         upload_format: "Format : Docx, pdf",
         upload_size: "Taille : Mo Maximum",
         drop_zone_text: "Depuis l'appareil",
+        uploaded_files_title: "Depuis l'appareil",
         
         // Boutons
         btn_cancel: "Annuler la candidature",
@@ -173,6 +174,7 @@ const ourTeamTranslations = {
         upload_format: "Format: Docx, pdf",
         upload_size: "Size: Mo Maximum",
         drop_zone_text: "From device",
+        uploaded_files_title: "From device",
         
         // Boutons
         btn_cancel: "Cancel application",
@@ -193,147 +195,190 @@ const ourTeamTranslations = {
 };
 
 // ==============================================
-// CUSTOM SELECTS AVEC DRAPEAUX - NOUVELLE FONCTIONNALITÉ
+// CARROUSEL DE LOGOS PARTENAIRES CORRIGÉ
 // ==============================================
 
-function initCustomSelects() {
-    const nationalitySelect = document.getElementById('nationalityTrigger');
-    const nationalityOptions = document.getElementById('nationalityOptions');
-    const nationalityInput = document.getElementById('nationality');
+function initPartnersCarouselFixed() {
+    const carouselTrack = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const partnersCarousel = document.getElementById('partnersCarousel');
     
-    const residenceSelect = document.getElementById('residenceTrigger');
-    const residenceOptions = document.getElementById('residenceOptions');
-    const residenceInput = document.getElementById('residence');
-    
-    // Fonction générique pour initialiser un custom select
-    function initCustomSelect(trigger, options, input) {
-        if (!trigger || !options || !input) return;
-        
-        // Toggle des options
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Fermer tous les autres selects
-            document.querySelectorAll('.custom-select-options.show').forEach(opt => {
-                if (opt !== options) {
-                    opt.classList.remove('show');
-                    opt.previousElementSibling.classList.remove('active');
-                }
-            });
-            
-            // Toggle du select actuel
-            options.classList.toggle('show');
-            trigger.classList.toggle('active');
-        });
-        
-        // Sélection d'une option
-        options.addEventListener('click', function(e) {
-            const option = e.target.closest('.custom-select-option');
-            if (!option) return;
-            
-            // Mettre à jour la sélection
-            options.querySelectorAll('.custom-select-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            option.classList.add('selected');
-            
-            // Mettre à jour l'affichage
-            const flag = option.querySelector('.custom-select-flag').cloneNode(true);
-            const text = option.querySelector('span').textContent;
-            const value = option.getAttribute('data-value');
-            
-            trigger.querySelector('.custom-select-flag').src = flag.src;
-            trigger.querySelector('.custom-select-text').textContent = text;
-            input.value = value;
-            
-            // Fermer le dropdown
-            options.classList.remove('show');
-            trigger.classList.remove('active');
-            
-            // Déclencher l'événement change
-            input.dispatchEvent(new Event('change'));
-        });
-        
-        // Support clavier
-        trigger.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                trigger.click();
-            } else if (e.key === 'Escape') {
-                options.classList.remove('show');
-                trigger.classList.remove('active');
-            }
-        });
-        
-        // Navigation au clavier dans les options
-        options.addEventListener('keydown', function(e) {
-            const visibleOptions = options.querySelectorAll('.custom-select-option');
-            const currentIndex = Array.from(visibleOptions).findIndex(opt => opt.classList.contains('focused'));
-            
-            switch (e.key) {
-                case 'ArrowDown':
-                    e.preventDefault();
-                    const nextIndex = currentIndex < visibleOptions.length - 1 ? currentIndex + 1 : 0;
-                    updateFocusedOption(visibleOptions, nextIndex);
-                    break;
-                case 'ArrowUp':
-                    e.preventDefault();
-                    const prevIndex = currentIndex > 0 ? currentIndex - 1 : visibleOptions.length - 1;
-                    updateFocusedOption(visibleOptions, prevIndex);
-                    break;
-                case 'Enter':
-                    e.preventDefault();
-                    if (currentIndex >= 0) {
-                        visibleOptions[currentIndex].click();
-                    }
-                    break;
-                case 'Escape':
-                    e.preventDefault();
-                    options.classList.remove('show');
-                    trigger.classList.remove('active');
-                    trigger.focus();
-                    break;
-            }
-        });
+    if (!carouselTrack || !prevBtn || !nextBtn) {
+        console.error('Éléments du carrousel non trouvés');
+        return;
     }
     
-    // Helper pour mettre à jour l'option focusée
-    function updateFocusedOption(options, index) {
-        options.forEach(opt => opt.classList.remove('focused'));
-        if (options[index]) {
-            options[index].classList.add('focused');
-            options[index].scrollIntoView({ block: 'nearest' });
-        }
+    const logos = carouselTrack.querySelectorAll('.partner-logo');
+    const totalLogos = logos.length;
+    
+    if (totalLogos === 0) {
+        console.error('Aucun logo trouvé dans le carrousel');
+        return;
     }
     
-    // Initialiser les deux selects
-    initCustomSelect(nationalitySelect, nationalityOptions, nationalityInput);
-    initCustomSelect(residenceSelect, residenceOptions, residenceInput);
+    // Configuration responsive
+    function getVisibleLogos() {
+        if (window.innerWidth <= 576) return 1;
+        if (window.innerWidth <= 768) return 2;
+        if (window.innerWidth <= 992) return 3;
+        return 5;
+    }
     
-    // Fermer tous les dropdowns en cliquant à l'extérieur
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.custom-select')) {
-            document.querySelectorAll('.custom-select-options.show').forEach(options => {
-                options.classList.remove('show');
-                options.previousElementSibling.classList.remove('active');
-            });
+    let visibleLogos = getVisibleLogos();
+    let maxIndex = Math.max(0, totalLogos - visibleLogos);
+    
+    // Réinitialiser l'index si nécessaire
+    carouselCurrentIndex = 0;
+    
+    // Fonction pour mettre à jour la position du carrousel
+    function updateCarouselPosition() {
+        const logoWidth = 100 / visibleLogos;
+        const translateX = -(carouselCurrentIndex * logoWidth);
+        carouselTrack.style.transform = `translateX(${translateX}%)`;
+        
+        // Mettre à jour l'état des boutons
+        prevBtn.disabled = carouselCurrentIndex <= 0;
+        nextBtn.disabled = carouselCurrentIndex >= maxIndex;
+        
+        prevBtn.style.opacity = carouselCurrentIndex <= 0 ? '0.5' : '1';
+        nextBtn.style.opacity = carouselCurrentIndex >= maxIndex ? '0.5' : '1';
+    }
+    
+    // Navigation précédent
+    prevBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (carouselCurrentIndex > 0) {
+            carouselCurrentIndex--;
+            updateCarouselPosition();
+            resetAutoplay();
         }
     });
     
-    console.log('Custom selects avec drapeaux initialisés');
+    // Navigation suivant
+    nextBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (carouselCurrentIndex < maxIndex) {
+            carouselCurrentIndex++;
+            updateCarouselPosition();
+            resetAutoplay();
+        }
+    });
+    
+    // Auto-scroll
+    function startAutoplay() {
+        if (carouselAutoplay) clearInterval(carouselAutoplay);
+        
+        carouselAutoplay = setInterval(() => {
+            if (!carouselPaused) {
+                if (carouselCurrentIndex >= maxIndex) {
+                    carouselCurrentIndex = 0;
+                } else {
+                    carouselCurrentIndex++;
+                }
+                updateCarouselPosition();
+            }
+        }, 3000);
+    }
+    
+    // Réinitialiser l'autoplay après interaction
+    function resetAutoplay() {
+        if (carouselAutoplay) {
+            clearInterval(carouselAutoplay);
+            startAutoplay();
+        }
+    }
+    
+    // Pause au hover
+    if (partnersCarousel) {
+        partnersCarousel.addEventListener('mouseenter', function() {
+            carouselPaused = true;
+        });
+        
+        partnersCarousel.addEventListener('mouseleave', function() {
+            carouselPaused = false;
+        });
+    }
+    
+    // Touch support pour mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carouselTrack.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    carouselTrack.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0 && carouselCurrentIndex < maxIndex) {
+                // Swipe gauche = suivant
+                carouselCurrentIndex++;
+                updateCarouselPosition();
+                resetAutoplay();
+            } else if (diff < 0 && carouselCurrentIndex > 0) {
+                // Swipe droite = précédent
+                carouselCurrentIndex--;
+                updateCarouselPosition();
+                resetAutoplay();
+            }
+        }
+    }
+    
+    // Responsive: recalculer lors du redimensionnement
+    window.addEventListener('resize', function() {
+        const newVisibleLogos = getVisibleLogos();
+        if (newVisibleLogos !== visibleLogos) {
+            visibleLogos = newVisibleLogos;
+            maxIndex = Math.max(0, totalLogos - visibleLogos);
+            carouselCurrentIndex = Math.min(carouselCurrentIndex, maxIndex);
+            updateCarouselPosition();
+        }
+    });
+    
+    // Support clavier
+    document.addEventListener('keydown', function(e) {
+        if (document.activeElement === prevBtn || document.activeElement === nextBtn) {
+            if (e.key === 'ArrowLeft' && carouselCurrentIndex > 0) {
+                carouselCurrentIndex--;
+                updateCarouselPosition();
+                resetAutoplay();
+            } else if (e.key === 'ArrowRight' && carouselCurrentIndex < maxIndex) {
+                carouselCurrentIndex++;
+                updateCarouselPosition();
+                resetAutoplay();
+            }
+        }
+    });
+    
+    // Initialiser
+    updateCarouselPosition();
+    startAutoplay();
+    
+    console.log('Carrousel de partenaires initialisé avec succès');
 }
 
 // ==============================================
-// UPLOAD DE FICHIERS CORRIGÉ - AFFICHAGE SOUS LE LABEL
+// UPLOAD DE FICHIERS CORRIGÉ - AFFICHAGE SOUS LA ZONE DE DROP
 // ==============================================
 
-function initFileUploadCorrected() {
+function initFileUploadFixed() {
     const fileInput = document.getElementById('fileInput');
     const dropZone = document.getElementById('dropZone');
-    const uploadedFilesContainer = document.getElementById('uploadedFilesUnderLabel');
+    const uploadedFilesDisplay = document.getElementById('uploadedFilesDisplay');
+    const uploadedFilesList = document.getElementById('uploadedFilesList');
     
-    if (!fileInput || !dropZone) return;
+    if (!fileInput || !dropZone || !uploadedFilesDisplay || !uploadedFilesList) {
+        console.error('Éléments upload non trouvés');
+        return;
+    }
     
     // Configuration des fichiers acceptés
     const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
@@ -415,43 +460,57 @@ function initFileUploadCorrected() {
         showNotification(getTranslation('file_uploaded'));
     }
     
-    // Mettre à jour l'affichage des fichiers sous le label
+    // Mettre à jour l'affichage des fichiers
     function updateUploadedFilesDisplay() {
-        if (!uploadedFilesContainer) return;
+        uploadedFilesList.innerHTML = '';
         
-        uploadedFilesContainer.innerHTML = '';
-        
-        uploadedFiles.forEach((fileData, index) => {
-            const fileElement = document.createElement('div');
-            fileElement.className = 'uploaded-file-item';
-            fileElement.innerHTML = `
-                <div class="uploaded-file-info">
-                    <i class="fas fa-file-pdf uploaded-file-icon" aria-hidden="true"></i>
-                    <div class="uploaded-file-details">
-                        <div class="uploaded-file-name">${fileData.name}</div>
-                        <div class="uploaded-file-size">${fileData.size}</div>
+        if (uploadedFiles.length > 0) {
+            uploadedFilesDisplay.classList.add('has-files');
+            
+            uploadedFiles.forEach((fileData, index) => {
+                const fileElement = document.createElement('div');
+                fileElement.className = 'uploaded-file-item';
+                fileElement.innerHTML = `
+                    <div class="uploaded-file-info">
+                        <i class="fas fa-file-${getFileIcon(fileData.name)} uploaded-file-icon" aria-hidden="true"></i>
+                        <div class="uploaded-file-details">
+                            <div class="uploaded-file-name">${fileData.name}</div>
+                        </div>
                     </div>
-                </div>
-                <button type="button" class="uploaded-file-remove" onclick="removeFileFromList(${index})" 
-                        aria-label="Supprimer ${fileData.name}" title="Supprimer ce fichier">
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
-            `;
-            uploadedFilesContainer.appendChild(fileElement);
-        });
-        
-        // Masquer/afficher le container selon le contenu
-        uploadedFilesContainer.style.display = uploadedFiles.length > 0 ? 'block' : 'none';
+                    <button type="button" class="uploaded-file-remove" data-index="${index}"
+                            aria-label="Supprimer ${fileData.name}" title="Supprimer ce fichier">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                `;
+                uploadedFilesList.appendChild(fileElement);
+                
+                // Ajouter l'événement de suppression
+                const removeBtn = fileElement.querySelector('.uploaded-file-remove');
+                removeBtn.addEventListener('click', function() {
+                    removeFileFromList(index);
+                });
+            });
+        } else {
+            uploadedFilesDisplay.classList.remove('has-files');
+        }
     }
     
-    // Supprimer un fichier (fonction globale)
-    window.removeFileFromList = function(index) {
+    // Supprimer un fichier
+    function removeFileFromList(index) {
         if (index >= 0 && index < uploadedFiles.length) {
             uploadedFiles.splice(index, 1);
             updateUploadedFilesDisplay();
             showNotification(getTranslation('file_removed'));
         }
-    };
+    }
+    
+    // Obtenir l'icône selon le type de fichier
+    function getFileIcon(filename) {
+        const extension = filename.split('.').pop().toLowerCase();
+        if (extension === 'pdf') return 'pdf';
+        if (['doc', 'docx'].includes(extension)) return 'word';
+        return 'alt';
+    }
     
     // Formater la taille du fichier
     function formatFileSize(bytes) {
@@ -462,124 +521,11 @@ function initFileUploadCorrected() {
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
     
-    console.log('Upload de fichiers corrigé initialisé');
+    console.log('Upload de fichiers initialisé avec succès');
 }
 
 // ==============================================
-// CARROUSEL DE LOGOS PARTENAIRES - BOUTONS RAPPROCHÉS
-// ==============================================
-
-function initPartnersCarouselCorrected() {
-    const carouselTrack = document.getElementById('carouselTrack');
-    const prevBtn = document.getElementById('carouselPrev');
-    const nextBtn = document.getElementById('carouselNext');
-    const partnersCarousel = document.getElementById('partnersCarousel');
-    
-    if (!carouselTrack || !prevBtn || !nextBtn) return;
-    
-    const logos = carouselTrack.querySelectorAll('.partner-logo');
-    const totalLogos = logos.length;
-    
-    // Configuration responsive
-    function getVisibleLogos() {
-        if (window.innerWidth <= 576) return 1; // Mobile
-        if (window.innerWidth <= 992) return 3; // Tablette
-        return 5; // Desktop
-    }
-    
-    let visibleLogos = getVisibleLogos();
-    let maxIndex = Math.max(0, totalLogos - visibleLogos);
-    
-    // Fonction pour mettre à jour la position du carrousel
-    function updateCarouselPosition() {
-        const logoWidth = 100 / visibleLogos;
-        const translateX = -(carouselCurrentIndex * logoWidth);
-        carouselTrack.style.transform = `translateX(${translateX}%)`;
-        
-        // Mettre à jour l'état des boutons
-        prevBtn.disabled = carouselCurrentIndex <= 0;
-        nextBtn.disabled = carouselCurrentIndex >= maxIndex;
-        
-        prevBtn.style.opacity = carouselCurrentIndex <= 0 ? '0.5' : '1';
-        nextBtn.style.opacity = carouselCurrentIndex >= maxIndex ? '0.5' : '1';
-    }
-    
-    // Navigation précédent
-    prevBtn.addEventListener('click', function() {
-        if (carouselCurrentIndex > 0) {
-            carouselCurrentIndex--;
-            updateCarouselPosition();
-        }
-    });
-    
-    // Navigation suivant
-    nextBtn.addEventListener('click', function() {
-        if (carouselCurrentIndex < maxIndex) {
-            carouselCurrentIndex++;
-            updateCarouselPosition();
-        }
-    });
-    
-    // Auto-scroll toutes les 3 secondes
-    function startAutoplay() {
-        if (carouselAutoplay) clearInterval(carouselAutoplay);
-        
-        carouselAutoplay = setInterval(() => {
-            if (!carouselPaused) {
-                if (carouselCurrentIndex >= maxIndex) {
-                    carouselCurrentIndex = 0;
-                } else {
-                    carouselCurrentIndex++;
-                }
-                updateCarouselPosition();
-            }
-        }, 3000);
-    }
-    
-    // Pause au hover
-    partnersCarousel.addEventListener('mouseenter', function() {
-        carouselPaused = true;
-    });
-    
-    partnersCarousel.addEventListener('mouseleave', function() {
-        carouselPaused = false;
-    });
-    
-    // Responsive: recalculer lors du redimensionnement
-    window.addEventListener('resize', function() {
-        const newVisibleLogos = getVisibleLogos();
-        if (newVisibleLogos !== visibleLogos) {
-            visibleLogos = newVisibleLogos;
-            maxIndex = Math.max(0, totalLogos - visibleLogos);
-            carouselCurrentIndex = Math.min(carouselCurrentIndex, maxIndex);
-            updateCarouselPosition();
-        }
-    });
-    
-    // Support clavier
-    prevBtn.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.click();
-        }
-    });
-    
-    nextBtn.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.click();
-        }
-    });
-    
-    // Initialiser
-    updateCarouselPosition();
-    startAutoplay();
-    
-    console.log('Carrousel de partenaires avec boutons rapprochés initialisé');
-}
-
-// ==============================================
-// GESTION DU MEGA MENU "WHO WE ARE" - INCHANGÉ
+// GESTION DU MEGA MENU "WHO WE ARE"
 // ==============================================
 
 function initMegaMenuOurTeamPage() {
@@ -631,13 +577,11 @@ function updateMegaMenuStyles(isOpen) {
     const topBanner = document.querySelector('.top-banner');
     
     if (isOpen) {
-        // Styles quand le mega menu est ouvert
         document.body.classList.add('mega-menu-open');
         if (topBanner) {
             topBanner.classList.add('mega-menu-open');
         }
     } else {
-        // Styles par défaut
         document.body.classList.remove('mega-menu-open');
         if (topBanner) {
             topBanner.classList.remove('mega-menu-open');
@@ -649,7 +593,7 @@ function updateMegaMenuStyles(isOpen) {
 // FORMULAIRE DE CANDIDATURE - VALIDATION AMÉLIORÉE
 // ==============================================
 
-function initApplicationFormCorrected() {
+function initApplicationFormFixed() {
     const form = document.getElementById('applicationForm');
     const submitBtn = document.getElementById('submitBtn');
     const cancelBtn = document.getElementById('cancelBtn');
@@ -658,30 +602,64 @@ function initApplicationFormCorrected() {
     
     // Configuration de validation
     const validationRules = {
-        lastName: { required: true, pattern: /^[a-zA-ZÀ-ÿ\s-]+$/ },
-        firstName: { required: true, pattern: /^[a-zA-ZÀ-ÿ\s-]+$/ },
-        email: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
-        phone: { required: true, pattern: /^[0-9+\s-()]+$/ },
-        whatsapp: { required: true, pattern: /^[0-9+\s-()]+$/ }
+        lastName: { 
+            required: true, 
+            pattern: /^[a-zA-ZÀ-ÿ\s-]+$/, 
+            minLength: 2 
+        },
+        firstName: { 
+            required: true, 
+            pattern: /^[a-zA-ZÀ-ÿ\s-]+$/, 
+            minLength: 2 
+        },
+        email: { 
+            required: true, 
+            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ 
+        },
+        phone: { 
+            required: true, 
+            pattern: /^[0-9+\s-()]+$/, 
+            minLength: 6 
+        },
+        whatsapp: { 
+            required: true, 
+            pattern: /^[0-9+\s-()]+$/, 
+            minLength: 6 
+        }
     };
     
     // Validation en temps réel
     Object.keys(validationRules).forEach(fieldName => {
         const field = document.getElementById(fieldName);
         if (field) {
+            // Validation sur blur
             field.addEventListener('blur', () => validateField(field));
-            field.addEventListener('input', () => clearFieldError(field));
+            
+            // Suppression des erreurs en temps réel
+            field.addEventListener('input', () => {
+                if (field.classList.contains('is-invalid')) {
+                    clearFieldError(field);
+                }
+            });
         }
     });
     
     // Fonction de validation d'un champ
     function validateField(field) {
         const rule = validationRules[field.name];
+        if (!rule) return true;
+        
         const value = field.value.trim();
         
         // Vérifier si requis
         if (rule.required && !value) {
             showFieldError(field, getTranslation('validation_required'));
+            return false;
+        }
+        
+        // Vérifier la longueur minimale
+        if (value && rule.minLength && value.length < rule.minLength) {
+            showFieldError(field, `Minimum ${rule.minLength} caractères requis`);
             return false;
         }
         
@@ -691,8 +669,10 @@ function initApplicationFormCorrected() {
             
             if (field.type === 'email') {
                 errorMessage = getTranslation('validation_email');
-            } else if (field.type === 'tel' || field.name.includes('phone')) {
+            } else if (field.type === 'tel' || field.name.includes('phone') || field.name === 'whatsapp') {
                 errorMessage = getTranslation('validation_phone');
+            } else if (field.name === 'lastName' || field.name === 'firstName') {
+                errorMessage = 'Caractères spéciaux non autorisés';
             }
             
             showFieldError(field, errorMessage);
@@ -706,18 +686,22 @@ function initApplicationFormCorrected() {
     // Afficher une erreur sur un champ
     function showFieldError(field, message) {
         field.classList.add('is-invalid');
-        const feedback = field.parentElement.querySelector('.invalid-feedback');
+        const feedback = field.parentElement.querySelector('.invalid-feedback') || 
+                        field.parentElement.parentElement.querySelector('.invalid-feedback');
         if (feedback) {
             feedback.textContent = message;
+            feedback.style.display = 'block';
         }
     }
     
     // Effacer l'erreur d'un champ
     function clearFieldError(field) {
         field.classList.remove('is-invalid');
-        const feedback = field.parentElement.querySelector('.invalid-feedback');
+        const feedback = field.parentElement.querySelector('.invalid-feedback') || 
+                        field.parentElement.parentElement.querySelector('.invalid-feedback');
         if (feedback) {
             feedback.textContent = '';
+            feedback.style.display = 'none';
         }
     }
     
@@ -732,6 +716,12 @@ function initApplicationFormCorrected() {
             }
         });
         
+        // Vérifier qu'au moins un fichier est uploadé
+        if (uploadedFiles.length === 0) {
+            showNotification('Veuillez télécharger votre CV et lettre de motivation', 'error');
+            isValid = false;
+        }
+        
         return isValid;
     }
     
@@ -744,8 +734,15 @@ function initApplicationFormCorrected() {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Envoi en cours...';
             
+            // Simuler un envoi au serveur
             setTimeout(() => {
-                showNotification(getTranslation('file_uploaded'));
+                showNotification('Candidature envoyée avec succès !', 'success');
+                
+                // Réinitialiser le formulaire après succès
+                form.reset();
+                uploadedFiles = [];
+                updateUploadedFilesDisplay();
+                
                 submitBtn.disabled = false;
                 submitBtn.textContent = getTranslation('btn_submit');
             }, 2000);
@@ -757,68 +754,33 @@ function initApplicationFormCorrected() {
         if (confirm('Êtes-vous sûr de vouloir annuler votre candidature ?')) {
             form.reset();
             uploadedFiles = [];
-            updateUploadedFilesDisplay();
             
-            // Réinitialiser les custom selects
-            resetCustomSelects();
+            // Mettre à jour l'affichage des fichiers
+            const uploadedFilesDisplay = document.getElementById('uploadedFilesDisplay');
+            const uploadedFilesList = document.getElementById('uploadedFilesList');
+            if (uploadedFilesDisplay && uploadedFilesList) {
+                uploadedFilesList.innerHTML = '';
+                uploadedFilesDisplay.classList.remove('has-files');
+            }
+            
+            // Effacer toutes les erreurs
+            document.querySelectorAll('.is-invalid').forEach(field => {
+                clearFieldError(field);
+            });
+            
+            showNotification('Candidature annulée', 'info');
         }
     });
     
-    console.log('Formulaire de candidature corrigé initialisé');
-}
-
-// Fonction pour réinitialiser les custom selects
-function resetCustomSelects() {
-    // Réinitialiser nationalité (première option)
-    const nationalityTrigger = document.getElementById('nationalityTrigger');
-    const nationalityInput = document.getElementById('nationality');
-    const nationalityFirstOption = document.querySelector('#nationalityOptions .custom-select-option:first-child');
-    
-    if (nationalityTrigger && nationalityInput && nationalityFirstOption) {
-        const flag = nationalityFirstOption.querySelector('.custom-select-flag').cloneNode(true);
-        const text = nationalityFirstOption.querySelector('span').textContent;
-        const value = nationalityFirstOption.getAttribute('data-value');
-        
-        nationalityTrigger.querySelector('.custom-select-flag').src = flag.src;
-        nationalityTrigger.querySelector('.custom-select-text').textContent = text;
-        nationalityInput.value = value;
-        
-        // Mettre à jour les classes selected
-        document.querySelectorAll('#nationalityOptions .custom-select-option').forEach(opt => {
-            opt.classList.remove('selected');
-        });
-        nationalityFirstOption.classList.add('selected');
-    }
-    
-    // Réinitialiser résidence (première option)
-    const residenceTrigger = document.getElementById('residenceTrigger');
-    const residenceInput = document.getElementById('residence');
-    const residenceFirstOption = document.querySelector('#residenceOptions .custom-select-option:first-child');
-    
-    if (residenceTrigger && residenceInput && residenceFirstOption) {
-        const flag = residenceFirstOption.querySelector('.custom-select-flag').cloneNode(true);
-        const text = residenceFirstOption.querySelector('span').textContent;
-        const value = residenceFirstOption.getAttribute('data-value');
-        
-        residenceTrigger.querySelector('.custom-select-flag').src = flag.src;
-        residenceTrigger.querySelector('.custom-select-text').textContent = text;
-        residenceInput.value = value;
-        
-        // Mettre à jour les classes selected
-        document.querySelectorAll('#residenceOptions .custom-select-option').forEach(opt => {
-            opt.classList.remove('selected');
-        });
-        residenceFirstOption.classList.add('selected');
-    }
+    console.log('Formulaire de candidature initialisé avec validation');
 }
 
 // ==============================================
-// AUTRES FONCTIONS INCHANGÉES
+// ANIMATIONS AU SCROLL
 // ==============================================
 
-// Animations au scroll (inchangées)
 function initScrollAnimations() {
-    // Animation des indicateurs (réutilise la fonction existante)
+    // Animation des indicateurs
     if (window.MKBAWebsite && window.MKBAWebsite.initIndicatorsAnimation) {
         window.MKBAWebsite.initIndicatorsAnimation();
     }
@@ -860,7 +822,10 @@ function initScrollAnimations() {
     });
 }
 
-// Gestion des traductions (inchangée)
+// ==============================================
+// GESTION DES TRADUCTIONS
+// ==============================================
+
 function setLanguageOurTeamPage(lang) {
     const pageTranslations = ourTeamTranslations[lang];
     
@@ -871,33 +836,24 @@ function setLanguageOurTeamPage(lang) {
     elementsToTranslate.forEach(element => {
         const key = element.getAttribute('data-i18n');
         
-        // Vérifier d'abord les traductions spécifiques à cette page
         if (pageTranslations[key]) {
             if (element.tagName === 'INPUT') {
                 element.placeholder = pageTranslations[key];
             } else if (element.hasAttribute('title')) {
                 element.title = pageTranslations[key];
             } else {
-                if (pageTranslations[key].includes('<i class=')) {
-                    element.innerHTML = pageTranslations[key];
-                } else {
-                    element.textContent = pageTranslations[key];
-                }
+                element.textContent = pageTranslations[key];
             }
         }
         // Sinon utiliser les traductions générales si disponibles
-        else if (window.MKBAWebsite && window.MKBAWebsite.translationsData[lang] && window.MKBAWebsite.translationsData[lang][key]) {
+        else if (window.MKBAWebsite && window.MKBAWebsite.translationsData && 
+                 window.MKBAWebsite.translationsData[lang] && 
+                 window.MKBAWebsite.translationsData[lang][key]) {
             const generalTranslation = window.MKBAWebsite.translationsData[lang][key];
             if (element.tagName === 'INPUT') {
                 element.placeholder = generalTranslation;
-            } else if (element.hasAttribute('title')) {
-                element.title = generalTranslation;
             } else {
-                if (generalTranslation.includes('<i class=')) {
-                    element.innerHTML = generalTranslation;
-                } else {
-                    element.textContent = generalTranslation;
-                }
+                element.textContent = generalTranslation;
             }
         }
     });
@@ -921,11 +877,13 @@ function getTranslation(key) {
     }
     
     // Fallback vers les traductions générales
-    if (window.MKBAWebsite && window.MKBAWebsite.translationsData[currentLang] && window.MKBAWebsite.translationsData[currentLang][key]) {
+    if (window.MKBAWebsite && window.MKBAWebsite.translationsData && 
+        window.MKBAWebsite.translationsData[currentLang] && 
+        window.MKBAWebsite.translationsData[currentLang][key]) {
         return window.MKBAWebsite.translationsData[currentLang][key];
     }
     
-    return key; // Fallback vers la clé si aucune traduction trouvée
+    return key;
 }
 
 // Fonction pour obtenir la langue courante
@@ -960,51 +918,57 @@ function updateSelectOptions(lang) {
     });
 }
 
-// Gestion du fil d'Ariane (inchangée)
+// ==============================================
+// AUTRES FONCTIONS UTILITAIRES
+// ==============================================
+
+// Gestion du fil d'Ariane
 function initBreadcrumbNavigation() {
     const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
     
     breadcrumbLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
             const href = this.getAttribute('href');
-            
-            // Animation de transition douce
-            this.style.color = 'var(--primary-orange)';
-            
-            setTimeout(() => {
-                window.location.href = href;
-            }, 200);
-        });
-    });
-}
-
-// Smooth scroll adapté (inchangé)
-function initSmoothScrollOurTeamPage() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                const topBanner = document.querySelector('.top-banner');
-                const navbar = document.querySelector('.navbar');
-                const totalHeaderHeight = (topBanner ? topBanner.offsetHeight : 0) + 
-                                        (navbar ? navbar.offsetHeight : 0);
-                const targetPosition = targetElement.offsetTop - totalHeaderHeight - 20;
+            if (href && href !== '#') {
+                // Animation de transition douce
+                this.style.color = 'var(--primary-orange)';
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 200);
             }
         });
     });
 }
 
-// Notification système (inchangée)
+// Smooth scroll adapté
+function initSmoothScrollOurTeamPage() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href').substring(1);
+            if (targetId) {
+                e.preventDefault();
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    const topBanner = document.querySelector('.top-banner');
+                    const navbar = document.querySelector('.navbar');
+                    const totalHeaderHeight = (topBanner ? topBanner.offsetHeight : 0) + 
+                                            (navbar ? navbar.offsetHeight : 0);
+                    const targetPosition = targetElement.offsetTop - totalHeaderHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+}
+
+// Notification système
 function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
@@ -1019,7 +983,7 @@ function showNotification(message, type = 'success') {
     
     Object.assign(notification.style, {
         position: 'fixed',
-        top: 'calc(var(--total-header-height) + 10px)',
+        top: '100px',
         right: '20px',
         padding: '1rem 2rem',
         borderRadius: '5px',
@@ -1049,49 +1013,6 @@ function showNotification(message, type = 'success') {
             }
         }, 300);
     }, 3000);
-}
-
-// ==============================================
-// FONCTION D'INITIALISATION PRINCIPALE
-// ==============================================
-
-function initOurTeamPage() {
-    // Initialiser toutes les fonctionnalités spécifiques
-    initMegaMenuOurTeamPage();
-    initPartnersCarouselCorrected(); // Version corrigée
-    initApplicationFormCorrected(); // Version corrigée
-    initFileUploadCorrected(); // Version corrigée
-    initCustomSelects(); // Nouvelle fonctionnalité
-    initScrollAnimations();
-    initBreadcrumbNavigation();
-    initSmoothScrollOurTeamPage();
-    
-    // Charger la langue sauvegardée ou française par défaut
-    try {
-        const savedLanguage = localStorage.getItem('mkba-language') || 'fr';
-        setLanguageOurTeamPage(savedLanguage);
-    } catch (e) {
-        setLanguageOurTeamPage('fr');
-    }
-    
-    // Écouter les changements de langue
-    window.addEventListener('languageChanged', (e) => {
-        setLanguageOurTeamPage(e.detail.language);
-    });
-    
-    // Intégrer avec le système de traduction principal
-    if (window.MKBAWebsite && window.MKBAWebsite.setLanguage) {
-        // Surcharger la fonction setLanguage pour inclure nos traductions
-        const originalSetLanguage = window.MKBAWebsite.setLanguage;
-        window.setLanguage = function(lang) {
-            // Appeler la fonction originale
-            originalSetLanguage(lang);
-            // Appliquer nos traductions spécifiques
-            setLanguageOurTeamPage(lang);
-        };
-    }
-    
-    console.log('Page Our Team initialisée avec succès');
 }
 
 // ==============================================
@@ -1130,23 +1051,6 @@ function initAccessibilityOurTeamPage() {
         });
     }
     
-    // Améliorer l'accessibilité des custom selects
-    const customSelectTriggers = document.querySelectorAll('.custom-select-trigger');
-    customSelectTriggers.forEach(trigger => {
-        trigger.setAttribute('role', 'combobox');
-        trigger.setAttribute('aria-expanded', 'false');
-        trigger.setAttribute('tabindex', '0');
-        
-        // Mettre à jour aria-expanded lors des interactions
-        const options = trigger.nextElementSibling;
-        if (options) {
-            const observer = new MutationObserver(() => {
-                trigger.setAttribute('aria-expanded', options.classList.contains('show'));
-            });
-            observer.observe(options, { attributes: true, attributeFilter: ['class'] });
-        }
-    });
-    
     // Support du mode contraste élevé
     if (window.matchMedia('(prefers-contrast: high)').matches) {
         document.body.classList.add('high-contrast');
@@ -1155,7 +1059,6 @@ function initAccessibilityOurTeamPage() {
     // Support du mode mouvement réduit
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.body.classList.add('reduced-motion');
-        // Désactiver l'autoplay du carrousel
         if (carouselAutoplay) {
             clearInterval(carouselAutoplay);
         }
@@ -1189,42 +1092,67 @@ function initResponsiveFeatures() {
 }
 
 // ==============================================
+// FONCTION D'INITIALISATION PRINCIPALE
+// ==============================================
+
+function initOurTeamPage() {
+    console.log('Initialisation de la page Our Team...');
+    
+    // Initialiser toutes les fonctionnalités
+    initMegaMenuOurTeamPage();
+    initPartnersCarouselFixed(); // Version corrigée
+    initApplicationFormFixed(); // Version corrigée
+    initFileUploadFixed(); // Version corrigée
+    initScrollAnimations();
+    initBreadcrumbNavigation();
+    initSmoothScrollOurTeamPage();
+    initAccessibilityOurTeamPage();
+    initResponsiveFeatures();
+    
+    // Charger la langue sauvegardée
+    try {
+        const savedLanguage = localStorage.getItem('mkba-language') || 'fr';
+        setLanguageOurTeamPage(savedLanguage);
+    } catch (e) {
+        setLanguageOurTeamPage('fr');
+    }
+    
+    // Écouter les changements de langue
+    window.addEventListener('languageChanged', (e) => {
+        setLanguageOurTeamPage(e.detail.language);
+    });
+    
+    // Intégrer avec le système de traduction principal
+    if (window.MKBAWebsite && window.MKBAWebsite.setLanguage) {
+        const originalSetLanguage = window.MKBAWebsite.setLanguage;
+        window.setLanguage = function(lang) {
+            originalSetLanguage(lang);
+            setLanguageOurTeamPage(lang);
+        };
+    }
+    
+    console.log('Page Our Team initialisée avec succès');
+}
+
+// ==============================================
 // INITIALISATION AU CHARGEMENT
 // ==============================================
 
-// Initialiser quand le DOM est prêt 
+// Initialiser quand le DOM est prêt
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        initOurTeamPage();
-        initAccessibilityOurTeamPage();
-        initResponsiveFeatures();
-    });
+    document.addEventListener('DOMContentLoaded', initOurTeamPage);
 } else {
     initOurTeamPage();
-    initAccessibilityOurTeamPage();
-    initResponsiveFeatures();
 }
-
-// Réinitialiser les animations des indicateurs si elles existent sur cette page
-window.addEventListener('languageChanged', () => {
-    const indicatorsSection = document.getElementById('indicators');
-    if (indicatorsSection && window.MKBAWebsite && window.MKBAWebsite.animateCountersOptimized) {
-        setTimeout(() => {
-            window.MKBAWebsite.animateCountersOptimized();
-        }, 300);
-    }
-});
 
 // Export des fonctions pour utilisation externe
 window.OurTeamPage = {
     initOurTeamPage,
     setLanguageOurTeamPage,
     initMegaMenuOurTeamPage,
-    initPartnersCarouselCorrected,
-    initApplicationFormCorrected,
-    initFileUploadCorrected,
-    initCustomSelects,
+    initPartnersCarouselFixed,
+    initApplicationFormFixed,
+    initFileUploadFixed,
     ourTeamTranslations,
-    showNotification,
-    removeFileFromList: window.removeFileFromList
+    showNotification
 };

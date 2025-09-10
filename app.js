@@ -1237,6 +1237,10 @@ function updateNavigationState() {
         if (currentPage.includes('we-are-mkba.html') && item.getAttribute('href') === 'we-are-mkba.html') {
             item.classList.add('active');
         }
+
+        if (currentPage.includes('our-team.html') && item.getAttribute('href') === 'our-team.html') {
+            item.classList.add('active');
+        }
     });
 }
 

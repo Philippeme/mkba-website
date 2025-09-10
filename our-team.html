@@ -396,7 +396,7 @@
 
                 <!-- Corps du formulaire -->
                 <div class="form-body">
-                    <div id="applicationForm">
+                    <form id="applicationForm">
                         <div class="row g-3">
                             <!-- Nom -->
                             <div class="col-lg-6 col-md-6">
@@ -423,12 +423,15 @@
                             <div class="col-lg-6 col-md-6">
                                 <label for="phone" class="form-label" data-i18n="label_phone">Téléphone *</label>
                                 <div class="phone-input-group">
-                                    <select class="form-select country-code-dropdown" id="countryCode" name="countryCode">
-                                        <option value="+243" selected>🇨🇩 +243</option>
-                                        <option value="+237">🇨🇲 +237</option>
-                                        <option value="+33">🇫🇷 +33</option>
-                                        <option value="+1">🇺🇸 +1</option>
-                                    </select>
+                                    <div class="country-code-wrapper">
+                                        <select class="form-select country-code-dropdown" id="countryCode" name="countryCode">
+                                            <option value="+243" selected>+243</option>
+                                            <option value="+237">+237</option>
+                                            <option value="+33">+33</option>
+                                            <option value="+1">+1</option>
+                                        </select>
+                                        <span class="fas fa-chevron-down dropdown-arrow"></span>
+                                    </div>
                                     <input type="tel" class="form-control phone-number" id="phone" name="phone" required>
                                 </div>
                                 <div class="invalid-feedback"></div>
@@ -447,15 +450,18 @@
                                 <input type="text" class="form-control" id="skype" name="skype">
                             </div>
 
-                            <!-- Statut Matrimonial avec fond gris -->
+                            <!-- Statut Matrimonial avec dropdown visuel -->
                             <div class="col-lg-6 col-md-6">
                                 <label for="maritalStatus" class="form-label" data-i18n="label_marital_status">Statut Matrimonial</label>
-                                <select class="form-select" id="maritalStatus" name="maritalStatus">
-                                    <option value="married" selected data-i18n="marital_married">Marié</option>
-                                    <option value="single" data-i18n="marital_single">Célibataire</option>
-                                    <option value="divorced" data-i18n="marital_divorced">Divorcé</option>
-                                    <option value="widowed" data-i18n="marital_widowed">Veuf/Veuve</option>
-                                </select>
+                                <div class="select-wrapper">
+                                    <select class="form-select styled-select" id="maritalStatus" name="maritalStatus">
+                                        <option value="married" selected data-i18n="marital_married">Marié</option>
+                                        <option value="single" data-i18n="marital_single">Célibataire</option>
+                                        <option value="divorced" data-i18n="marital_divorced">Divorcé</option>
+                                        <option value="widowed" data-i18n="marital_widowed">Veuf/Veuve</option>
+                                    </select>
+                                    <span class="fas fa-chevron-down select-arrow"></span>
+                                </div>
                             </div>
 
                             <!-- Votre Sexe -->
@@ -477,57 +483,33 @@
                                 </div>
                             </div>
 
-                            <!-- Nationalité avec fond gris et drapeaux -->
+                            <!-- Nationalité avec select HTML/CSS pur -->
                             <div class="col-lg-6 col-md-6">
                                 <label for="nationality" class="form-label" data-i18n="label_nationality">Quel est votre nationalité</label>
-                                <div class="custom-select nationality-select-container">
-                                    <div class="custom-select-trigger" id="nationalityTrigger">
-                                        <img src="./assets/images/flags/cameroon.png" alt="Cameroun" class="custom-select-flag">
-                                        <span class="custom-select-text">Camerounaise</span>
-                                        <span class="custom-select-arrow">▼</span>
-                                    </div>
-                                    <div class="custom-select-options" id="nationalityOptions">
-                                        <div class="custom-select-option selected" data-value="camerounaise">
-                                            <img src="./assets/images/flags/cameroon.png" alt="Cameroun" class="custom-select-flag">
-                                            <span>Camerounaise</span>
-                                        </div>
-                                        <div class="custom-select-option" data-value="francaise">
-                                            <img src="./assets/images/flags/france.png" alt="France" class="custom-select-flag">
-                                            <span>Française</span>
-                                        </div>
-                                        <div class="custom-select-option" data-value="senegalaise">
-                                            <img src="./assets/images/flags/senegal.png" alt="Sénégal" class="custom-select-flag">
-                                            <span>Sénégalaise</span>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="nationality" id="nationality" value="camerounaise">
+                                <div class="select-wrapper">
+                                    <select class="form-select flag-select" id="nationality" name="nationality">
+                                        <option value="camerounaise" selected>🇨🇲 Camerounaise</option>
+                                        <option value="francaise">🇫🇷 Française</option>
+                                        <option value="senegalaise">🇸🇳 Sénégalaise</option>
+                                        <option value="congolaise">🇨🇩 Congolaise</option>
+                                        <option value="ivoirienne">🇨🇮 Ivoirienne</option>
+                                    </select>
+                                    <span class="fas fa-chevron-down select-arrow"></span>
                                 </div>
                             </div>
 
-                            <!-- Pays de résidence avec fond gris et drapeaux -->
+                            <!-- Pays de résidence avec select HTML/CSS pur -->
                             <div class="col-lg-6 col-md-6">
                                 <label for="residence" class="form-label" data-i18n="label_residence">Pays de résidence</label>
-                                <div class="custom-select residence-select-container">
-                                    <div class="custom-select-trigger" id="residenceTrigger">
-                                        <img src="./assets/images/flags/france.png" alt="France" class="custom-select-flag">
-                                        <span class="custom-select-text">Française</span>
-                                        <span class="custom-select-arrow">▼</span>
-                                    </div>
-                                    <div class="custom-select-options" id="residenceOptions">
-                                        <div class="custom-select-option selected" data-value="francaise">
-                                            <img src="./assets/images/flags/france.png" alt="France" class="custom-select-flag">
-                                            <span>Française</span>
-                                        </div>
-                                        <div class="custom-select-option" data-value="camerounaise">
-                                            <img src="./assets/images/flags/cameroon.png" alt="Cameroun" class="custom-select-flag">
-                                            <span>Camerounaise</span>
-                                        </div>
-                                        <div class="custom-select-option" data-value="senegalaise">
-                                            <img src="./assets/images/flags/senegal.png" alt="Sénégal" class="custom-select-flag">
-                                            <span>Sénégalaise</span>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="residence" id="residence" value="francaise">
+                                <div class="select-wrapper">
+                                    <select class="form-select flag-select" id="residence" name="residence">
+                                        <option value="france" selected>🇫🇷 France</option>
+                                        <option value="cameroun">🇨🇲 Cameroun</option>
+                                        <option value="senegal">🇸🇳 Sénégal</option>
+                                        <option value="congo">🇨🇩 Congo</option>
+                                        <option value="cotedivoire">🇨🇮 Côte d'Ivoire</option>
+                                    </select>
+                                    <span class="fas fa-chevron-down select-arrow"></span>
                                 </div>
                             </div>
                         </div>
@@ -535,7 +517,7 @@
                         <!-- Section Upload de fichiers -->
                         <div class="file-upload-section">
                             <div class="upload-header">
-                                <h4 class="upload-title highlighted-label" data-i18n="upload_title">Téléverser votre Cv lettre de motivation</h4>
+                                <h4 class="upload-title" data-i18n="upload_title">Téléverser votre Cv lettre de motivation</h4>
                                 <div class="upload-specs">
                                     <p data-i18n="upload_format">Format : Docx, pdf</p>
                                     <p data-i18n="upload_size">Taille : Mo Maximum</p>
@@ -551,9 +533,12 @@
                                 <input type="file" id="fileInput" class="file-input" multiple accept=".pdf,.docx,.doc">
                             </div>
 
-                            <!-- Fichiers uploadés sous le label -->
-                            <div class="uploaded-files-under-label" id="uploadedFilesUnderLabel">
-                                <!-- Les fichiers uploadés apparaîtront ici -->
+                            <!-- Zone d'affichage "Depuis l'appareil" -->
+                            <div class="uploaded-files-display" id="uploadedFilesDisplay">
+                                <p class="uploaded-files-title" data-i18n="uploaded_files_title">Depuis l'appareil</p>
+                                <div class="uploaded-files-list" id="uploadedFilesList">
+                                    <!-- Les fichiers uploadés apparaîtront ici -->
+                                </div>
                             </div>
                         </div>
 
@@ -566,7 +551,7 @@
                                 Enregistrer et continuer
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

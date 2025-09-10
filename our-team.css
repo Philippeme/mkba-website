@@ -1,5 +1,5 @@
 /* ==============================================
-   STYLES COMPLETS POUR LA PAGE OUR TEAM
+   STYLES COMPLETS CORRIGÉS POUR LA PAGE OUR TEAM
    ============================================== */
 
 /* Variables CSS spécifiques */
@@ -11,6 +11,7 @@
     --form-header-bg: linear-gradient(135deg, #EBF4FD 0%, #FFFFFF 100%);
     --file-upload-bg: #FAFBFC;
     --highlighted-label-bg: #F5F5F5;
+    --select-bg-color: #E5E5E5;
 }
 
 /* Header adapté - fond blanc avec liens bleus + EFFETS BLEUS UNIQUEMENT */
@@ -296,17 +297,17 @@
 .our-team-hero .hero-description {
     font-size: 1.1rem;
     color: var(--text-dark);
-    text-align: left; /* Alignement à gauche */
+    text-align: left;
     line-height: 1.6;
     margin-bottom: 0;
-    max-width: 200%; /* Extension vers la droite */
-    margin-left: -4rem; /* Alignement au niveau du titre suivant */
+    max-width: 200%;
+    margin-left: -4rem;
     margin-right: -4rem;
 }
 
 /* Mise en évidence de "MK BA" dans le paragraphe hero */
 .our-team-hero .hero-description .highlight-mkba {
-    color: #1B4F72; /* Couleur du titre hero */
+    color: #1B4F72;
     font-weight: 600;
 }
 
@@ -477,12 +478,12 @@
     line-height: 1.6;
     margin-bottom: 3rem;
     text-align: left;
-    max-width: 200%; /* Extension vers la droite */
+    max-width: 200%;
     margin-left: 0;
     margin-right: auto;
 }
 
-/* Carrousel de logos partenaires */
+/* Carrousel de logos partenaires CORRIGÉ */
 .partners-carousel-container {
     position: relative;
     overflow: hidden;
@@ -494,6 +495,7 @@
 .partners-carousel {
     overflow: hidden;
     position: relative;
+    width: 100%;
 }
 
 .carousel-track {
@@ -501,8 +503,7 @@
     transition: transform 0.5s ease;
     gap: 4rem;
     align-items: center;
-    justify-content: center;
-    min-width: 120%;
+    will-change: transform;
 }
 
 .partner-logo {
@@ -511,7 +512,7 @@
     align-items: center;
     justify-content: center;
     height: 80px;
-    min-width: 120px;
+    min-width: 150px;
     transition: all 0.3s ease;
 }
 
@@ -531,7 +532,7 @@
     transform: scale(1.05);
 }
 
-/* CORRECTION 3: BOUTONS DU CARROUSEL RAPPROCHÉS */
+/* CORRECTION 3: BOUTONS DU CARROUSEL FONCTIONNELS */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -551,18 +552,23 @@
     font-size: 0.9rem;
 }
 
-.carousel-btn:hover {
+.carousel-btn:hover:not(:disabled) {
     background: rgba(0, 0, 0, 0.9);
     transform: translateY(-50%) scale(1.1);
 }
 
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /* Boutons rapprochés de moitié */
 .carousel-prev {
-    left: 2%; /* Rapproché du centre */
+    left: 2%;
 }
 
 .carousel-next {
-    right: 2%; /* Rapproché du centre */
+    right: 2%;
 }
 
 /* ==============================================
@@ -655,7 +661,7 @@
     color: var(--text-dark);
     line-height: 1.6;
     margin-bottom: 0;
-    max-width: 200%; /* Extension vers la droite */
+    max-width: 200%;
     margin-left: 0;
     margin-right: auto;
 }
@@ -735,7 +741,7 @@
     border-top: none;
 }
 
-/* CORRECTION 4: LABELS AVEC FOND GRIS LÉGER */
+/* Labels du formulaire */
 .form-label {
     font-size: 1rem;
     font-weight: 500;
@@ -775,26 +781,36 @@
     color: #e74c3c;
 }
 
-/* CORRECTION 4: CHAMP TÉLÉPHONE AVEC DROPDOWN D'INDICATIF */
+/* ==============================================
+   DROPDOWN TELEPHONE CORRIGÉ
+   ============================================== */
+
 .phone-input-group {
     display: flex;
     gap: 0;
-    align-items: center;
+    align-items: stretch;
+}
+
+.country-code-wrapper {
+    position: relative;
+    width: 120px;
+    flex-shrink: 0;
 }
 
 .country-code-dropdown {
-    width: 120px;
-    background: #E5E5E5;
+    width: 100%;
+    background: var(--select-bg-color);
     border-right: none;
     border-radius: 4px 0 0 4px;
-    flex-shrink: 0;
-    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px;
 }
 
-.country-code-dropdown::after {
-    content: '▼';
+.country-code-wrapper .dropdown-arrow {
     position: absolute;
-    right: 8px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     color: #666;
@@ -805,7 +821,72 @@
 .phone-number {
     flex: 1;
     border-radius: 0 4px 4px 0;
-    border-left: none;
+    border-left: 1px solid #D5D8DC;
+}
+
+/* ==============================================
+   SELECTS STYLISÉS AVEC DROPDOWNS VISUELS - CSS PUR
+   ============================================== */
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.styled-select,
+.flag-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: 45px;
+    padding: 12px 40px 12px 16px;
+    background: var(--select-bg-color);
+    border: 1px solid #D5D8DC;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.styled-select {
+    background: var(--white);
+}
+
+.styled-select:hover,
+.flag-select:hover {
+    border-color: #3498DB;
+}
+
+.styled-select:focus,
+.flag-select:focus {
+    border-color: #3498DB;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    outline: none;
+}
+
+.select-wrapper .select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 0.8rem;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.styled-select:focus + .select-arrow,
+.flag-select:focus + .select-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Style pour les options avec drapeaux */
+.flag-select option {
+    padding: 10px;
+    background: var(--white);
+    color: var(--text-dark);
 }
 
 /* Options de genre */
@@ -842,102 +923,7 @@
 }
 
 /* ==============================================
-   CUSTOM SELECTS AVEC DRAPEAUX - NOUVELLE FONCTIONNALITÉ
-   ============================================== */
-
-.nationality-select-container,
-.residence-select-container {
-    position: relative;
-}
-
-.custom-select {
-    position: relative;
-    display: block;
-}
-
-.custom-select-trigger {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 12px 16px;
-    background: #E5E5E5;
-    border: 1px solid #D5D8DC;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.custom-select-trigger:hover {
-    border-color: #3498DB;
-}
-
-.custom-select-trigger.active {
-    border-color: #3498DB;
-    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
-}
-
-.custom-select-options {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    border: 1px solid #D5D8DC;
-    border-top: none;
-    border-radius: 0 0 4px 4px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 1000;
-    display: none;
-}
-
-.custom-select-options.show {
-    display: block;
-}
-
-.custom-select-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 16px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.custom-select-option:hover,
-.custom-select-option.focused {
-    background-color: #F8F9FA;
-}
-
-.custom-select-option.selected {
-    background-color: #EBF3FD;
-    color: #3498DB;
-}
-
-.custom-select-flag {
-    width: 24px;
-    height: 24px;
-    object-fit: cover;
-}
-
-.custom-select-text {
-    flex: 1;
-}
-
-.custom-select-arrow {
-    margin-left: auto;
-    color: #666;
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
-}
-
-.custom-select-trigger.active .custom-select-arrow {
-    transform: rotate(180deg);
-}
-
-/* ==============================================
-   SECTION UPLOAD DE FICHIERS - CORRECTIONS POSITIONNEMENT
+   SECTION UPLOAD DE FICHIERS CORRIGÉE
    ============================================== */
 
 .file-upload-section {
@@ -956,6 +942,10 @@
     font-weight: 600;
     color: #2C3E50;
     margin-bottom: 0.5rem;
+    background: var(--highlighted-label-bg);
+    padding: 0.5rem 0.75rem;
+    display: inline-block;
+    border-radius: 4px;
 }
 
 .upload-specs {
@@ -969,84 +959,12 @@
     line-height: 1.4;
 }
 
-/* CORRECTION 5: FICHIERS UPLOADÉS SOUS LE LABEL */
-.uploaded-files-under-label {
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 0;
-    display: none; /* Masqué par défaut */
-}
-
-.uploaded-file-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 1rem;
-    background: var(--white);
-    border: 1px solid #E5E5E5;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.uploaded-file-item:hover {
-    border-color: #3498DB;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.uploaded-file-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex: 1;
-}
-
-.uploaded-file-icon {
-    color: #3498DB;
-    font-size: 1.2rem;
-}
-
-.uploaded-file-details {
-    flex: 1;
-}
-
-.uploaded-file-name {
-    font-size: 0.9rem;
-    color: #2C3E50;
-    font-weight: 500;
-    margin-bottom: 0.2rem;
-}
-
-.uploaded-file-size {
-    font-size: 0.8rem;
-    color: #7F8C8D;
-}
-
-.uploaded-file-remove {
-    background: none;
-    border: none;
-    color: #e74c3c;
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 0.5rem;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.uploaded-file-remove:hover {
-    background: rgba(231, 76, 60, 0.1);
-    transform: scale(1.1);
-}
-
 /* Zone de drop */
 .drop-zone {
     height: 200px;
     width: 100%;
     border: 2px dashed #BDC3C7;
-    background: #E5E5E5;
+    background: var(--select-bg-color);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -1088,6 +1006,91 @@
     height: 100%;
     opacity: 0;
     cursor: pointer;
+}
+
+/* CORRECTION 5: AFFICHAGE DES FICHIERS UPLOADÉS SOUS LA ZONE DE DROP */
+.uploaded-files-display {
+    margin-top: 1.5rem;
+    padding: 1rem 0;
+    display: none;
+}
+
+.uploaded-files-display.has-files {
+    display: block;
+}
+
+.uploaded-files-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2C3E50;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.uploaded-files-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.uploaded-file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--white);
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    animation: slideDownFadeIn 0.4s ease forwards;
+}
+
+.uploaded-file-item:hover {
+    border-color: #3498DB;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.uploaded-file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.uploaded-file-icon {
+    color: #3498DB;
+    font-size: 1.2rem;
+}
+
+.uploaded-file-details {
+    flex: 1;
+}
+
+.uploaded-file-name {
+    font-size: 0.9rem;
+    color: #2C3E50;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.uploaded-file-remove {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uploaded-file-remove:hover {
+    background: rgba(231, 76, 60, 0.1);
+    transform: scale(1.1);
 }
 
 /* Boutons d'action */
@@ -1170,6 +1173,8 @@
         font-size: 1rem;
         max-width: 100%;
         text-align: left;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     /* Sections mobiles - paragraphes */
@@ -1211,6 +1216,8 @@
         flex-direction: column;
         min-height: auto;
         padding: 1rem 0;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .our-team-page .mega-menu-left {
@@ -1268,24 +1275,9 @@
         width: 35px;
     }
 
-    /* Labels avec fond gris - version mobile */
-    .form-label.highlighted-label {
-        min-width: 100%;
-        padding: 0.4rem 0.6rem;
-    }
-
-    /* Custom selects mobiles */
-    .custom-select-options {
-        max-height: 150px;
-    }
-
-    .custom-select-option {
-        padding: 8px 12px;
-    }
-
-    .custom-select-flag {
-        width: 20px;
-        height: 15px;
+    /* Selects mobiles */
+    .country-code-wrapper {
+        width: 100px;
     }
 
     .gender-options {
@@ -1319,10 +1311,6 @@
 
     .uploaded-file-name {
         font-size: 0.85rem;
-    }
-
-    .uploaded-file-size {
-        font-size: 0.75rem;
     }
 
     /* Indicateurs mobile */
@@ -1377,18 +1365,9 @@
         font-size: 1.3rem;
     }
 
-    .form-label.highlighted-label {
-        font-size: 0.9rem;
+    .upload-title {
+        font-size: 1rem;
         padding: 0.3rem 0.5rem;
-    }
-
-    .custom-select-trigger {
-        padding: 10px 12px;
-    }
-
-    .custom-select-flag {
-        width: 18px;
-        height: 13px;
     }
 
     .upload-specs p {
@@ -1521,14 +1500,6 @@
 .partner-logo:nth-child(5) { animation-delay: 0.5s; }
 .partner-logo:nth-child(6) { animation-delay: 0.6s; }
 
-.custom-select-options.show {
-    animation: slideDownFadeIn 0.3s ease forwards;
-}
-
-.uploaded-file-item {
-    animation: slideDownFadeIn 0.4s ease forwards;
-}
-
 /* Animation d'ouverture du mega menu */
 .our-team-page .who-we-are-mega-menu {
     animation: megaMenuSlideIn 0.3s ease forwards;
@@ -1555,7 +1526,6 @@
 .btn-cancel:focus,
 .btn-submit:focus,
 .carousel-btn:focus,
-.custom-select-trigger:focus,
 .uploaded-file-remove:focus,
 .our-team-page .mega-menu-item:focus {
     outline: 2px solid var(--primary-orange);
@@ -1573,12 +1543,11 @@
     
     .form-control,
     .form-select,
-    .custom-select-trigger,
     .uploaded-file-item {
         border-width: 2px;
     }
 
-    .form-label.highlighted-label {
+    .upload-title {
         background-color: #E0E0E0;
         border: 1px solid #333;
     }
@@ -1588,7 +1557,6 @@
     .our-team-page .who-we-are-mega-menu,
     .value-item,
     .partner-logo,
-    .custom-select-options.show,
     .uploaded-file-item {
         animation: none;
         opacity: 1;
@@ -1601,7 +1569,6 @@
     .btn-cancel,
     .btn-submit,
     .carousel-btn,
-    .custom-select-trigger,
     .uploaded-file-remove,
     .drop-zone {
         transition: none !important;
