@@ -148,15 +148,15 @@
         </nav>
     </header>
 
-    <!-- Bannière Fil d'Ariane -->
+    <!-- Bannière Fil d'Ariane - CORRIGÉ -->
     <section class="breadcrumb-banner">
         <div class="container">
             <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="index.html" data-i18n="breadcrumb_home">Accueil</a>
+                        <span data-i18n="breadcrumb_we_are">Qui nous sommes</span>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page" data-i18n="breadcrumb_we_are">
+                    <li class="breadcrumb-item active" aria-current="page" data-i18n="breadcrumb_current_page">
                         Nous sommes MK BA
                     </li>
                 </ol>
@@ -177,7 +177,7 @@
     </section>
 
     <!-- Section "Titre" - Bloc 1 -->
-    <section id="title-section" class="py-5 bg-light">
+    <section id="title-section" class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -193,7 +193,7 @@
     </section>
 
     <!-- Section "Who we are" - Bloc 2 -->
-    <section id="who-we-are-section" class="py-5 bg-light">
+    <section id="who-we-are-section" class="py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -213,55 +213,79 @@
 
                 <div class="col-lg-6">
                     <div class="who-we-are-right">
-                        <img src="./assets/images/we-are-content-image.png" alt="MK BA Team" class="img-fluid rounded">
+                        <img src="./assets/images/we-are-content-image.png" alt="MK BA Team" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section "Why MK BA" -->
+    <!-- Section "Why MK BA" - MISE À JOUR SELON MAQUETTE -->
     <section id="why-mkba" class="py-5">
         <div class="container">
-            <h2 class="section-title-bold mb-4" data-i18n="why_mkba_title">Why MK BA</h2>
-            <p class="section-subtitle mb-5" data-i18n="why_mkba_description">
+            <!-- Sous-titre en haut à gauche -->
+            <h5 class="section-subtitle-left" data-i18n="why_mkba_subtitle">Why MK BA</h5>
+            
+            <!-- Titre principal -->
+            <p class="section-main-title" data-i18n="why_mkba_main_title">
                 Voyez ce jeu exquis wallon, de graphie en kit mais
             </p>
 
-            <div class="row g-4">
+            <div class="row g-4 mb-5">
                 <div class="col-lg-4 col-md-6">
-                    <div class="why-card card-blue">
-                        <div class="why-icon">
-                            <i class="fas fa-user-check" aria-hidden="true"></i>
+                    <div class="why-card-new">
+                        <!-- Carte colorée avec icône -->
+                        <div class="why-card-visual card-blue-gradient">
+                            <img src="./assets/icons/why-mkba/icon-user-check.png" alt="Icône Validation" class="why-icon-img">
                         </div>
-                        <h3 data-i18n="why_card_1_title">Voyez ce jeu exquis wallon...</h3>
-                        <p data-i18n="why_card_1_description">
-                            Etiam facilisis ligula nec velit posuere egestas. Nunc dictum lectus sem, vel dignissim purus luctus quis. Vestibulum et ligula suscipit, hendrerit erat a, ultricies velit. Praesent
-                        </p>
+                        
+                        <!-- Texte sous la carte -->
+                        <div class="why-card-content">
+                            <h3 class="why-card-title" data-i18n="why_card_1_title">
+                                Voyez ce jeu exquis wallon, de graphie en kit mais bref.
+                            </h3>
+                            <p class="why-card-description" data-i18n="why_card_1_description">
+                                Etiam facilisis ligula nec velit posuere egestas. Nunc dictum lectus sem, vel dignissim purus luctus quis. Vestibulum et ligula suscipit, hendrerit erat a, ultricies velit. Praesent
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
-                    <div class="why-card card-purple">
-                        <div class="why-icon">
-                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                    <div class="why-card-new">
+                        <!-- Carte colorée avec icône -->
+                        <div class="why-card-visual card-purple-gradient">
+                            <img src="./assets/icons/why-mkba/icon-chart-line.png" alt="Icône Graphique" class="why-icon-img">
                         </div>
-                        <h3 data-i18n="why_card_2_title">Aenean sed lorem est. Sed quis neque ut nibh suscipit</h3>
-                        <p data-i18n="why_card_2_description">
-                            Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit
-                        </p>
+                        
+                        <!-- Texte sous la carte -->
+                        <div class="why-card-content">
+                            <h3 class="why-card-title" data-i18n="why_card_2_title">
+                                Aenean sed lorem est. Sed quis neque ut nibh suscipit
+                            </h3>
+                            <p class="why-card-description" data-i18n="why_card_2_description">
+                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
-                    <div class="why-card card-cyan">
-                        <div class="why-icon">
-                            <i class="fas fa-lock" aria-hidden="true"></i>
+                    <div class="why-card-new">
+                        <!-- Carte colorée avec icône -->
+                        <div class="why-card-visual card-cyan-gradient">
+                            <img src="./assets/icons/why-mkba/icon-lock.png" alt="Icône Sécurité" class="why-icon-img">
                         </div>
-                        <h3 data-i18n="why_card_3_title">Etiam facilisis ligula nec velit posuere egestas. Nunc dictum</h3>
-                        <p data-i18n="why_card_3_description">
-                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut arcu libero, pulvinar non
-                        </p>
+                        
+                        <!-- Texte sous la carte -->
+                        <div class="why-card-content">
+                            <h3 class="why-card-title" data-i18n="why_card_3_title">
+                                Etiam facilisis ligula nec velit posuere egestas. Nunc dictum
+                            </h3>
+                            <p class="why-card-description" data-i18n="why_card_3_description">
+                                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut arcu libero, pulvinar non
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -341,72 +365,116 @@
         </div>
     </section>
 
-    <!-- Section "Nos clients" -->
+    <!-- Section "Nos clients" - MISE À JOUR SELON MAQUETTE -->
     <section id="our-clients" class="py-5">
         <div class="container">
             <h2 class="section-title-bold mb-5" data-i18n="our_clients_title">Nos clients</h2>
 
-            <div class="clients-grid">
+            <div class="clients-grid-new">
                 <div class="row g-4">
+                    <!-- Première rangée -->
                     <div class="col-lg-4 col-md-6">
-                        <div class="client-card card-blue">
-                            <h3 data-i18n="client_card_1_title">Prestataires de services</h3>
-                            <p data-i18n="client_card_1_description">In at iaculis lorem. Praesent</p>
-                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
-                        </div>
+                        <a href="#" class="client-card-new" aria-label="En savoir plus sur nos services aux prestataires de services">
+                            <!-- Zone rectangulaire colorée -->
+                            <div class="client-card-visual card-blue-gradient"></div>
+                            
+                            <!-- Contenu textuel -->
+                            <div class="client-card-content">
+                                <h3 class="client-card-title" data-i18n="client_card_1_title">Prestataires de services</h3>
+                                <p class="client-card-description" data-i18n="client_card_1_description">
+                                    In at iaculis lorem. Praesent <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <div class="client-card card-purple">
-                            <h3 data-i18n="client_card_2_title">Entreprises</h3>
-                            <p data-i18n="client_card_2_description">Duis pretium gravida enim, vel maximus ligula</p>
-                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
-                        </div>
+                        <a href="#" class="client-card-new" aria-label="En savoir plus sur nos services aux entreprises">
+                            <!-- Zone rectangulaire colorée -->
+                            <div class="client-card-visual card-purple-gradient"></div>
+                            
+                            <!-- Contenu textuel -->
+                            <div class="client-card-content">
+                                <h3 class="client-card-title" data-i18n="client_card_2_title">Entreprises</h3>
+                                <p class="client-card-description" data-i18n="client_card_2_description">
+                                    Duis pretium gravida enim, vel maximus ligula <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <div class="client-card card-cyan">
-                            <h3 data-i18n="client_card_3_title">Gouvernements</h3>
-                            <p data-i18n="client_card_3_description">Integer ac interdum lacus. Nunc porta</p>
-                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
-                        </div>
+                        <a href="#" class="client-card-new" aria-label="En savoir plus sur nos services aux gouvernements">
+                            <!-- Zone rectangulaire colorée -->
+                            <div class="client-card-visual card-cyan-gradient"></div>
+                            
+                            <!-- Contenu textuel -->
+                            <div class="client-card-content">
+                                <h3 class="client-card-title" data-i18n="client_card_3_title">Gouvernements</h3>
+                                <p class="client-card-description" data-i18n="client_card_3_description">
+                                    Integer ac interdum lacus. Nunc porta <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Deuxième rangée -->
+                    <div class="col-lg-4 col-md-6">
+                        <a href="#" class="client-card-new" aria-label="En savoir plus sur nos services aux hyperscalers">
+                            <!-- Zone rectangulaire colorée -->
+                            <div class="client-card-visual card-blue-gradient"></div>
+                            
+                            <!-- Contenu textuel -->
+                            <div class="client-card-content">
+                                <h3 class="client-card-title" data-i18n="client_card_4_title">Hyperscalers</h3>
+                                <p class="client-card-description" data-i18n="client_card_4_description">
+                                    Aliquam faucibus, odio nec commodo aliquam, neque <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <div class="client-card card-blue">
-                            <h3 data-i18n="client_card_4_title">Hyperscalers</h3>
-                            <p data-i18n="client_card_4_description">Aliquam faucibus, odio nec commodo aliquam, neque</p>
-                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
-                        </div>
+                        <a href="#" class="client-card-new" aria-label="En savoir plus sur nos services de défense">
+                            <!-- Zone rectangulaire colorée -->
+                            <div class="client-card-visual card-purple-gradient"></div>
+                            
+                            <!-- Contenu textuel -->
+                            <div class="client-card-content">
+                                <h3 class="client-card-title" data-i18n="client_card_5_title">Défense</h3>
+                                <p class="client-card-description" data-i18n="client_card_5_description">
+                                    Sed a magna semper, porta purus eu, <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <div class="client-card card-purple">
-                            <h3 data-i18n="client_card_5_title">Défense</h3>
-                            <p data-i18n="client_card_5_description">Sed a magna semper, porta purus eu,</p>
-                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="client-card card-cyan">
-                            <h3 data-i18n="client_card_6_title">Titulaire de license de technologie</h3>
-                            <p data-i18n="client_card_6_description">Etiam convallis</p>
-                            <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
-                        </div>
+                        <a href="#" class="client-card-new" aria-label="En savoir plus sur nos services aux titulaires de licence de technologie">
+                            <!-- Zone rectangulaire colorée -->
+                            <div class="client-card-visual card-cyan-gradient"></div>
+                            
+                            <!-- Contenu textuel -->
+                            <div class="client-card-content">
+                                <h3 class="client-card-title" data-i18n="client_card_6_title">Titulaire de license de technologie</h3>
+                                <p class="client-card-description" data-i18n="client_card_6_description">
+                                    Etiam convallis <i class="fas fa-arrow-right client-arrow" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Key Indicators Section - Identique à la page d'accueil -->
+    <!-- Key Indicators Section -->
     <section id="indicators" class="py-5">
-        <div class="container">
-            <div class="indicators-grid">
+        <div class="full-width-indicators-section">
+            <div class="container-fluid px-3">
                 <h2 class="section-title mb-5" data-i18n="indicators_title">Quelques indicateurs clés de MK BA</h2>
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -416,7 +484,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -426,7 +494,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -436,7 +504,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -446,7 +514,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -456,7 +524,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -470,7 +538,7 @@
         </div>
     </section>
 
-    <!-- Footer - Identique à la page d'accueil -->
+    <!-- Footer -->
     <footer id="contact" class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
@@ -566,6 +634,5 @@
     }
     </script>
 </body>
-
 
 </html>

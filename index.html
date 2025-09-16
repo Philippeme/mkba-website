@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
     <title data-i18n="page_title">MK BA - Excellence en Solutions Technologiques</title>
     <meta name="description"
         content="MK BA, société de conseil en solutions technologiques en Afrique. E-gouvernance, développement logiciel, IA, cybersécurité et transformation numérique.">
@@ -42,10 +42,10 @@
     <link rel="preload" href="./assets/images/Groupe 1@2x.png" as="image">
 </head>
 
-<body>
+<body class="zoom-optimized">
     <!-- Top Banner with Search Only -->
     <div class="top-banner">
-        <div class="container">
+        <div class="container-fluid px-3">
             <div class="top-banner-content">
                 <div class="search-section">
                     <div class="search-container" id="searchContainer">
@@ -70,7 +70,7 @@
     <!-- Header & Navigation -->
     <header class="header-section">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Navigation principale">
-            <div class="container">
+            <div class="container-fluid px-3">
                 <!-- Logo à gauche -->
                 <a class="navbar-brand" href="#home" aria-label="Retour à l'accueil MK BA">
                     <img src="./assets/images/Groupe 1@2x.png" alt="Logo MK BA" class="brand-logo">
@@ -81,7 +81,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <!-- Navigation au centre -->
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item dropdown mega-menu-dropdown">
@@ -95,14 +95,16 @@
                                         <div class="mega-menu-left">
                                             <h5 class="mega-menu-title" data-i18n="dropdown_title">Qui nous sommes</h5>
                                             <p class="mega-menu-description" data-i18n="dropdown_description">
-                                                Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence 
+                                                Découvrez notre équipe, nos valeurs et notre engagement pour
+                                                l'excellence
                                                 technologique en Afrique.
                                             </p>
                                         </div>
                                         <div class="mega-menu-right">
                                             <div class="mega-menu-links">
                                                 <div class="mega-menu-column">
-                                                    <a class="mega-menu-item" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">
+                                                    <a class="mega-menu-item" href="we-are-mkba.html"
+                                                        data-i18n="nav_we_are_mkba">
                                                         Who are MK BA
                                                     </a>
                                                     <a class="mega-menu-item" href="#" data-i18n="nav_our_team">
@@ -161,9 +163,9 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section" role="banner">
         <div class="hero-overlay"></div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row justify-content-center text-center">
-                <div class="col-lg-10">
+                <div class="col-12 col-lg-10 col-xl-8">
                     <h1 class="hero-title" data-i18n="hero_title">Cras gravida bibendum dolor eu varius.</h1>
                     <div class="hero-subtitle">
                         <span data-i18n="hero_subtitle_1">Cras gravida</span>
@@ -178,10 +180,10 @@
 
     <!-- Who We Are Section -->
     <section id="who-we-are" class="who-we-are-section" role="main">
-        <div class="container">
+        <div class="container-fluid px-0">
             <div class="who-we-are-container">
-                <div class="row align-items-stretch">
-                    <div class="col-lg-6">
+                <div class="row align-items-stretch g-0">
+                    <div class="col-lg-6 col-12">
                         <div class="who-we-are-content">
                             <h2 class="who-we-are-title" data-i18n="who_we_are_title">Who are MK BA</h2>
                             <p class="who-we-are-description" data-i18n="who_we_are_description">
@@ -225,7 +227,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-12">
                         <div class="video-container-new">
                             <div class="video-frame-new">
                                 <iframe width="100%" height="315"
@@ -257,58 +259,48 @@
         </div>
     </section>
 
-    <!-- Where We Operate Section - CARTE INTERACTIVE -->
-    <section id="where-we-operate" class="py-5 bg-light">
-        <div class="container">
+    <!-- Where We Operate Section - STRUCTURE ADAPTÉE POUR ZOOM -->
+    <section id="where-we-operate" class="py-5">
+        <!-- Titre et sous-titre dans un conteneur -->
+        <div class="container-fluid px-3">
             <div class="text-center mb-5">
                 <h2 class="section-title-with-highlight" data-i18n="where_we_operate_title">Où nous intervenons</h2>
                 <p class="section-subtitle" data-i18n="where_we_operate_subtitle">Nous intervenons dans 10 pays
                     d'Afrique et de l'Océan Indien</p>
             </div>
+        </div>
 
-            <!-- Conteneur de la carte interactive -->
-            <div class="world-map-container">
-                <!-- Carte Leaflet interactive -->
-                <div id="interactive-map" role="img"
-                    aria-label="Carte interactive des zones d'intervention de MK BA en Afrique et Océan Indien">
-                    <!-- La carte sera initialisée par JavaScript -->
-                    <div style="
-                        display: flex; 
-                        align-items: center; 
-                        justify-content: center; 
-                        height: 450px; 
-                        background: #f0f0f0;
-                        color: #666;
-                        font-size: 1.1rem;
-                        border-radius: 8px;
-                    ">
-                        <div style="text-align: center;">
-                            <i class="fas fa-spinner fa-spin"
-                                style="font-size: 3rem; margin-bottom: 1rem; color: #F37C1F;"></i>
-                            <div>Chargement de la carte interactive...</div>
-                        </div>
+        <!-- Carte sur toute la largeur adaptée au zoom -->
+        <div class="full-width-map-section">
+            <div id="interactive-map" role="img"
+                aria-label="Carte interactive des zones d'intervention de MK BA en Afrique et Océan Indien">
+                <div class="map-loading-state">
+                    <div class="loading-content">
+                        <i class="fas fa-spinner fa-spin loading-spinner"></i>
+                        <div class="loading-text">Chargement de la carte interactive...</div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Légende de la carte -->
-                <div class="map-legend" role="complementary" aria-label="Légende de la carte">
-                    <div class="legend-title" data-i18n="where_we_operate_title">Zones d'intervention</div>
-                    <div class="legend-item">
-                        <span class="legend-color" aria-hidden="true"></span>
-                        <span class="legend-text">Pays d'intervention MK BA</span>
-                    </div>
-                    <div class="legend-stats" style="margin-top: 8px; font-size: 0.85rem; color: #666;">
-                        <div><strong>10 pays</strong> en Afrique et Océan Indien</div>
-                        <div style="margin-top: 2px;"><em>Survolez les marqueurs pour plus d'informations</em></div>
-                    </div>
+            <!-- Légende de la carte -->
+            <div class="map-legend" role="complementary" aria-label="Légende de la carte">
+                <div class="legend-title" data-i18n="where_we_operate_title">Zones d'intervention</div>
+                <div class="legend-item">
+                    <span class="legend-color" aria-hidden="true"></span>
+                    <span class="legend-text">Pays d'intervention MK BA</span>
+                </div>
+                <div class="legend-stats">
+                    <div><strong>10 pays</strong> en Afrique et Océan Indien</div>
+                    <div class="legend-hint"><em>Survolez les marqueurs pour plus d'informations</em></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section - STRUCTURE ADAPTÉE POUR ZOOM -->
     <section id="what-we-do" class="py-5">
-        <div class="container">
+        <!-- Titre et description dans un conteneur -->
+        <div class="container-fluid px-3">
             <h2 class="section-title-with-highlight mb-4" data-i18n="services_title">Les services offerts par MK BA</h2>
             <p class="section-description mb-5" data-i18n="services_description">
                 Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem.
@@ -319,10 +311,13 @@
                 mollis lorem et, mattis est. Nullam mattis mauris quis massa consectetur dapibus. Nam ac iaculis magna.
                 Sed eget diam mi. Sed id quam et purus luctus pretium.
             </p>
+        </div>
 
-            <div class="services-grid">
+        <!-- Grille de services adaptée au zoom -->
+        <div class="full-width-services-section">
+            <div class="container-fluid px-3">
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="service-card" tabindex="0">
                             <h3 data-i18n="service_egovernance_title">E-gouvernance et transformation numérique</h3>
                             <p data-i18n="service_egovernance_desc">Duis porta, ligula rhoncus euismod pretium, nisl
@@ -331,7 +326,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="service-card" tabindex="0">
                             <h3 data-i18n="service_development_title">Développement logiciel, web et mobile</h3>
                             <p data-i18n="service_development_desc">Duis porta, ligula rhoncus euismod pretium, nisl
@@ -340,7 +335,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="service-card" tabindex="0">
                             <h3 data-i18n="service_erp_title">ERP et intégration</h3>
                             <p data-i18n="service_erp_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus
@@ -349,7 +344,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="service-card" tabindex="0">
                             <h3 data-i18n="service_data_title">Ingénierie des données et IA</h3>
                             <p data-i18n="service_data_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus
@@ -358,7 +353,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="service-card" tabindex="0">
                             <h3 data-i18n="service_security_title">Sécurité de l'information</h3>
                             <p data-i18n="service_security_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus
@@ -367,7 +362,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="service-card" tabindex="0">
                             <h3 data-i18n="service_network_title">Ingénierie réseau et système, cloud</h3>
                             <p data-i18n="service_network_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus
@@ -376,7 +371,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="service-card" tabindex="0">
                             <h3 data-i18n="service_support_title">Support informatique</h3>
                             <p data-i18n="service_support_desc">Duis porta, ligula rhoncus euismod pretium, nisl tellus
@@ -385,7 +380,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="service-card" tabindex="0">
                             <h3 data-i18n="service_outsourcing_title">Externalisation informatique</h3>
                             <p data-i18n="service_outsourcing_desc">Duis porta, ligula rhoncus euismod pretium, nisl
@@ -394,7 +389,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="service-card" tabindex="0">
                             <h3 data-i18n="service_financial_title">Services financiers</h3>
                             <p data-i18n="service_financial_desc">Duis porta, ligula rhoncus euismod pretium, nisl
@@ -409,7 +404,7 @@
 
     <!-- Products Section -->
     <section id="products" class="py-5">
-        <div class="container">
+        <div class="container-fluid px-3">
             <h2 class="section-title-with-highlight mb-4" data-i18n="products_title">Produits</h2>
             <p class="section-description mb-5" data-i18n="products_description">
                 Duis porta, ligula rhoncus euismod pretium, nisl tellus eleifend odio, luctus viverra sem dolor id sem.
@@ -423,80 +418,94 @@
 
             <!-- Première rangée: 4 produits -->
             <div class="row g-4 mb-4">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                     <div class="product-card" tabindex="0" role="button"
                         aria-label="Produit Ingénierie des données et IA">
                         <div class="product-icon">
-                            <i class="fas fa-brain" aria-hidden="true"></i>
+                            <img src="./assets/icons/products/brain-icon.png" alt="Icône Ingénierie des données et IA"
+                                class="product-icon-img">
                         </div>
                         <h3 data-i18n="product_data_ai">Ingénierie des données et IA</h3>
-                        <i class="fas fa-external-link-alt product-link" aria-hidden="true"></i>
+                        <img src="./assets/icons/products/external-link.png" alt="Lien externe"
+                            class="product-link-img">
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                     <div class="product-card active" tabindex="0" role="button" aria-label="Produit Santé">
                         <div class="product-icon">
-                            <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                            <img src="./assets/icons/products/heartbeat-icon.png" alt="Icône Santé"
+                                class="product-icon-img">
                         </div>
                         <h3 data-i18n="product_healthcare">Santé</h3>
-                        <i class="fas fa-external-link-alt product-link" aria-hidden="true"></i>
+                        <img src="./assets/icons/products/external-link.png" alt="Lien externe"
+                            class="product-link-img">
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                     <div class="product-card" tabindex="0" role="button" aria-label="Produit Éducation">
                         <div class="product-icon">
-                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                            <img src="./assets/icons/products/graduation-cap-icon.png" alt="Icône Éducation"
+                                class="product-icon-img">
                         </div>
                         <h3 data-i18n="product_education">Éducation</h3>
-                        <i class="fas fa-external-link-alt product-link" aria-hidden="true"></i>
+                        <img src="./assets/icons/products/external-link.png" alt="Lien externe"
+                            class="product-link-img">
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                     <div class="product-card" tabindex="0" role="button" aria-label="Produit Environnement">
                         <div class="product-icon">
-                            <i class="fas fa-leaf" aria-hidden="true"></i>
+                            <img src="./assets/icons/products/leaf-icon.png" alt="Icône Environnement"
+                                class="product-icon-img">
                         </div>
                         <h3 data-i18n="product_environment">Environnement</h3>
-                        <i class="fas fa-external-link-alt product-link" aria-hidden="true"></i>
+                        <img src="./assets/icons/products/external-link.png" alt="Lien externe"
+                            class="product-link-img">
                     </div>
                 </div>
             </div>
 
             <!-- Deuxième rangée: 2 produits -->
             <div class="row g-4 justify-content-start">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                     <div class="product-card" tabindex="0" role="button" aria-label="Produit Gestion d'entreprise">
                         <div class="product-icon">
-                            <i class="fas fa-briefcase" aria-hidden="true"></i>
+                            <img src="./assets/icons/products/briefcase-icon.png" alt="Icône Gestion d'entreprise"
+                                class="product-icon-img">
                         </div>
                         <h3 data-i18n="product_business">Gestion d'entreprise</h3>
-                        <i class="fas fa-external-link-alt product-link" aria-hidden="true"></i>
+                        <img src="./assets/icons/products/external-link.png" alt="Lien externe"
+                            class="product-link-img">
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                     <div class="product-card" tabindex="0" role="button" aria-label="Produit Finance">
                         <div class="product-icon">
-                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                            <img src="./assets/icons/products/chart-line-icon.png" alt="Icône Finance"
+                                class="product-icon-img">
                         </div>
                         <h3 data-i18n="product_finance">Finance</h3>
-                        <i class="fas fa-external-link-alt product-link" aria-hidden="true"></i>
+                        <img src="./assets/icons/products/external-link.png" alt="Lien externe"
+                            class="product-link-img">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Key Indicators Section -->
+    <!-- Key Indicators Section - STRUCTURE ADAPTÉE POUR ZOOM -->
     <section id="indicators" class="py-5">
-        <div class="container">
-            <div class="indicators-grid">
+        
+        <!-- Grille des indicateurs adaptée au zoom -->
+        <div class="full-width-indicators-section">
+            <div class="container-fluid px-3">
                 <h2 class="section-title mb-5" data-i18n="indicators_title">Quelques indicateurs clés de MK BA</h2>
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -506,7 +515,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -516,7 +525,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -526,7 +535,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -536,7 +545,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -546,7 +555,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                         <div class="indicator-card">
                             <div class="indicator-content">
                                 <div class="indicator-number" data-target="999">999</div>
@@ -557,19 +566,17 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements" class="py-5 bg-light">
-        <div class="container">
+    <section id="achievements" class="py-5">
+        <div class="container-fluid px-3">
             <h2 class="section-title-with-highlight mb-5" data-i18n="achievements_title">Réalisations</h2>
 
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <article class="achievement-card">
+                <div class="col-12">
+                    <article class="achievement-card mb-4">
                         <div class="achievement-header">
                             <div class="achievement-logos">
                                 <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="undp-logo">
@@ -597,8 +604,8 @@
                     </article>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <article class="achievement-card">
+                <div class="col-12">
+                    <article class="achievement-card mb-4">
                         <div class="achievement-header">
                             <div class="achievement-logos">
                                 <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="undp-logo">
@@ -625,8 +632,8 @@
                     </article>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <article class="achievement-card">
+                <div class="col-12">
+                    <article class="achievement-card mb-4">
                         <div class="achievement-header">
                             <div class="achievement-logos">
                                 <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="undp-logo">
@@ -659,11 +666,11 @@
 
     <!-- News Section -->
     <section id="news" class="py-5">
-        <div class="container">
+        <div class="container-fluid px-3">
             <h2 class="section-title-with-highlight mb-5" data-i18n="news_title">Actualités</h2>
 
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                     <article class="news-card">
                         <div class="news-image">
                             <img src="./assets/images/actus/actu1.png" alt="Actualité 1 - Aliquam in bibendum mauris"
@@ -685,7 +692,7 @@
                     </article>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                     <article class="news-card">
                         <div class="news-image">
                             <img src="./assets/images/actus/actu2.png" alt="Actualité 2 - Fusce at nisl eget dolor"
@@ -707,7 +714,7 @@
                     </article>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
                     <article class="news-card">
                         <div class="news-image">
                             <img src="./assets/images/actus/actu3.png" alt="Actualité 3 - Duis rhoncus dui venenatis"
@@ -742,7 +749,7 @@
 
     <!-- Footer -->
     <footer id="contact" class="footer" role="contentinfo">
-        <div class="container">
+        <div class="container-fluid px-3">
             <div class="footer-content">
                 <!-- Colonne 1: Logo + slogan -->
                 <div class="footer-brand-section">
@@ -810,7 +817,7 @@
 
         <!-- Bas de page (bande grise foncée) -->
         <div class="footer-bottom-band">
-            <div class="container">
+            <div class="container-fluid px-3">
                 <small data-i18n="footer_powered">Powered by MK BA</small>
             </div>
         </div>

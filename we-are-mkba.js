@@ -1,12 +1,12 @@
 // ==============================================
-// JAVASCRIPT SPÉCIFIQUE POUR LA PAGE WE ARE MK BA
+// JAVASCRIPT SPÉCIFIQUE POUR LA PAGE WE ARE MK BA - MIS À JOUR
 // ==============================================
 
 // Variables globales pour la page We are MK BA
 let megaMenuOpen = false;
 let accordionAnimating = false;
 
-// Traductions spécifiques à la page We are MK BA
+// Traductions spécifiques à la page We are MK BA - MISES À JOUR
 const weAreMKBATranslations = {
     fr: {
         // Meta et navigation
@@ -21,10 +21,10 @@ const weAreMKBATranslations = {
         dropdown_title: "Qui nous sommes",
         dropdown_description: "Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence technologique en Afrique.",
         
-        // Hero et fil d'Ariane
+        // Hero et fil d'Ariane - CORRIGÉ
         we_are_hero_title: "We are MK BA",
-        breadcrumb_home: "Accueil",
-        breadcrumb_we_are: "Nous sommes MK BA",
+        breadcrumb_we_are: "Qui nous sommes",
+        breadcrumb_current_page: "Qui nous sommes",
         
         // Section Titre & Who we are
         section_title: "Titre",
@@ -33,9 +33,9 @@ const weAreMKBATranslations = {
         who_we_are_description_section: "Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son île.",
         discover_more: "Discover more",
         
-        // Section Why MK BA
-        why_mkba_title: "Why MK BA",
-        why_mkba_description: "Voyez ce jeu exquis wallon, de graphie en kit mais",
+        // Section Why MK BA - NOUVELLES TRADUCTIONS
+        why_mkba_subtitle: "Why MK BA",
+        why_mkba_main_title: "Voyez ce jeu exquis wallon, de graphie en kit mais",
         why_card_1_title: "Voyez ce jeu exquis wallon, de graphie en kit mais bref.",
         why_card_1_description: "Etiam facilisis ligula nec velit posuere egestas. Nunc dictum lectus sem, vel dignissim purus luctus quis. Vestibulum et ligula suscipit, hendrerit erat a, ultricies velit. Praesent",
         why_card_2_title: "Aenean sed lorem est. Sed quis neque ut nibh suscipit",
@@ -54,7 +54,7 @@ const weAreMKBATranslations = {
         accordion_item_4: "Aenean non accumsan ante. Duis et risus",
         accordion_content_4: "Aenean non accumsan ante. Duis et risus consectetur, tempor lorem vel, rutrum magna. Pellentesque habitant morbi tristique.",
         
-        // Section Nos clients
+        // Section Nos clients - NOUVELLES TRADUCTIONS
         our_clients_title: "Nos clients",
         client_card_1_title: "Prestataires de services",
         client_card_1_description: "In at iaculis lorem. Praesent",
@@ -83,10 +83,10 @@ const weAreMKBATranslations = {
         dropdown_title: "Who we are",
         dropdown_description: "Discover our team, our values and our commitment to technological excellence in Africa.",
         
-        // Hero et fil d'Ariane
+        // Hero et fil d'Ariane - CORRIGÉ
         we_are_hero_title: "We are MK BA",
-        breadcrumb_home: "Home",
-        breadcrumb_we_are: "We are MK BA",
+        breadcrumb_we_are: "Who we are",
+        breadcrumb_current_page: "Who we are",
         
         // Section Titre & Who we are
         section_title: "Title",
@@ -95,9 +95,9 @@ const weAreMKBATranslations = {
         who_we_are_description_section: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
         discover_more: "Discover more",
         
-        // Section Why MK BA
-        why_mkba_title: "Why MK BA",
-        why_mkba_description: "Lorem ipsum dolor sit amet, consectetur",
+        // Section Why MK BA - NOUVELLES TRADUCTIONS
+        why_mkba_subtitle: "Why MK BA",
+        why_mkba_main_title: "Lorem ipsum dolor sit amet, consectetur",
         why_card_1_title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         why_card_1_description: "Etiam facilisis ligula nec velit posuere egestas. Nunc dictum lectus sem, vel dignissim purus luctus quis. Vestibulum et ligula suscipit, hendrerit erat a, ultricies velit. Praesent",
         why_card_2_title: "Aenean sed lorem est. Sed quis neque ut nibh suscipit",
@@ -116,7 +116,7 @@ const weAreMKBATranslations = {
         accordion_item_4: "Aenean non accumsan ante. Duis et risus",
         accordion_content_4: "Aenean non accumsan ante. Duis et risus consectetur, tempor lorem vel, rutrum magna. Pellentesque habitant morbi tristique.",
         
-        // Section Nos clients
+        // Section Nos clients - NOUVELLES TRADUCTIONS
         our_clients_title: "Our clients",
         client_card_1_title: "Service providers",
         client_card_1_description: "In at iaculis lorem. Praesent",
@@ -286,68 +286,87 @@ function initAccordionInteractions() {
 }
 
 // ==============================================
-// EFFETS HOVER POUR LES CARTES
+// EFFETS HOVER POUR LES NOUVELLES CARTES - MIS À JOUR
 // ==============================================
 
 function initCardHoverEffects() {
-    // Cartes "Why MK BA"
-    const whyCards = document.querySelectorAll('.why-card');
-    whyCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-            this.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.2)';
-        });
+    // Nouvelles cartes "Why MK BA"
+    const whyCardsNew = document.querySelectorAll('.why-card-new');
+    whyCardsNew.forEach(card => {
+        const visual = card.querySelector('.why-card-visual');
         
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-            this.style.boxShadow = '';
-        });
-        
-        // Support clavier
-        card.addEventListener('focus', function() {
-            this.style.transform = 'translateY(-5px) scale(1.01)';
-        });
-        
-        card.addEventListener('blur', function() {
-            this.style.transform = '';
-        });
-        
-        // Rendre les cartes focusables
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
+        if (visual) {
+            visual.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+                this.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.2)';
+            });
+            
+            visual.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+            
+            // Support clavier
+            visual.addEventListener('focus', function() {
+                this.style.transform = 'translateY(-3px) scale(1.01)';
+            });
+            
+            visual.addEventListener('blur', function() {
+                this.style.transform = '';
+            });
+            
+            // Rendre les cartes focusables
+            visual.setAttribute('tabindex', '0');
+            visual.setAttribute('role', 'button');
+            visual.setAttribute('aria-label', `Carte Why MK BA: ${card.querySelector('.why-card-title')?.textContent || ''}`);
+        }
     });
     
-    // Cartes "Nos clients"
-    const clientCards = document.querySelectorAll('.client-card');
-    clientCards.forEach(card => {
+    // Nouvelles cartes "Nos clients" - liens cliquables
+    const clientCardsNew = document.querySelectorAll('.client-card-new');
+    clientCardsNew.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.02)';
-            this.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.15)';
-            
+            const visual = this.querySelector('.client-card-visual');
             const arrow = this.querySelector('.client-arrow');
+            
+            if (visual) {
+                visual.style.transform = 'translateY(-3px)';
+                visual.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.15)';
+            }
+            
             if (arrow) {
                 arrow.style.transform = 'translateX(5px)';
             }
         });
         
         card.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-            this.style.boxShadow = '';
-            
+            const visual = this.querySelector('.client-card-visual');
             const arrow = this.querySelector('.client-arrow');
+            
+            if (visual) {
+                visual.style.transform = '';
+                visual.style.boxShadow = '';
+            }
+            
             if (arrow) {
                 arrow.style.transform = '';
             }
         });
         
-        // Click handler pour les cartes clients
-        card.addEventListener('click', function() {
+        // Click handler avec effet visuel
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            
             // Animation de clic
             this.style.transform = 'translateY(-2px) scale(0.98)';
             setTimeout(() => {
                 this.style.transform = '';
                 // Ici on pourrait rediriger vers une page spécifique
-                console.log(`Clic sur la carte client: ${this.querySelector('h3').textContent}`);
+                console.log(`Navigation vers: ${this.querySelector('.client-card-title')?.textContent || 'Section client'}`);
+                
+                // Pour l'instant, on peut faire défiler vers une section
+                // ou rediriger vers une page dédiée
+                // window.location.href = '#notre-approche-' + this.dataset.clientType;
             }, 150);
         });
         
@@ -359,13 +378,16 @@ function initCardHoverEffects() {
             }
         });
         
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
+        // Améliorer l'accessibilité
+        const title = card.querySelector('.client-card-title');
+        if (title) {
+            card.setAttribute('aria-label', `En savoir plus sur nos services pour: ${title.textContent}`);
+        }
     });
 }
 
 // ==============================================
-// ANIMATIONS AU SCROLL
+// ANIMATIONS AU SCROLL - MIS À JOUR
 // ==============================================
 
 function initScrollAnimations() {
@@ -374,14 +396,14 @@ function initScrollAnimations() {
             if (entry.isIntersecting) {
                 const target = entry.target;
                 
-                if (target.classList.contains('why-card')) {
+                if (target.classList.contains('why-card-new')) {
                     setTimeout(() => {
                         target.style.opacity = '1';
                         target.style.transform = 'translateY(0)';
                     }, parseInt(target.dataset.delay) || 0);
                 }
                 
-                if (target.classList.contains('client-card')) {
+                if (target.classList.contains('client-card-new')) {
                     setTimeout(() => {
                         target.style.opacity = '1';
                         target.style.transform = 'translateY(0)';
@@ -393,9 +415,9 @@ function initScrollAnimations() {
         });
     }, { threshold: 0.2 });
     
-    // Initialiser les animations des cartes
-    const whyCards = document.querySelectorAll('.why-card');
-    whyCards.forEach((card, index) => {
+    // Initialiser les animations des nouvelles cartes Why MK BA
+    const whyCardsNew = document.querySelectorAll('.why-card-new');
+    whyCardsNew.forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(40px)';
         card.style.transition = 'all 0.6s ease';
@@ -403,8 +425,9 @@ function initScrollAnimations() {
         animationObserver.observe(card);
     });
     
-    const clientCards = document.querySelectorAll('.client-card');
-    clientCards.forEach((card, index) => {
+    // Initialiser les animations des nouvelles cartes clients
+    const clientCardsNew = document.querySelectorAll('.client-card-new');
+    clientCardsNew.forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(40px)';
         card.style.transition = 'all 0.6s ease';
@@ -414,29 +437,25 @@ function initScrollAnimations() {
 }
 
 // ==============================================
-// GESTION DU FIL D'ARIANE
+// GESTION DU FIL D'ARIANE - MIS À JOUR
 // ==============================================
 
 function initBreadcrumbNavigation() {
-    const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
+    // Le fil d'Ariane n'a plus de liens actifs selon les nouvelles spécifications
+    // Il indique seulement la position actuelle
+    const breadcrumbItems = document.querySelectorAll('.breadcrumb-item');
     
-    breadcrumbLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const href = this.getAttribute('href');
-            
-            // Animation de transition douce
-            this.style.color = 'var(--primary-orange)';
-            
-            setTimeout(() => {
-                window.location.href = href;
-            }, 200);
-        });
+    breadcrumbItems.forEach(item => {
+        // Ajouter une indication visuelle pour la page actuelle
+        if (item.classList.contains('active')) {
+            item.style.fontWeight = '600';
+            item.style.color = 'var(--primary-blue)';
+        }
     });
 }
 
 // ==============================================
-// GESTION DES TRADUCTIONS POUR LA PAGE
+// GESTION DES TRADUCTIONS POUR LA PAGE - MIS À JOUR
 // ==============================================
 
 function setLanguageWeArePage(lang) {
@@ -484,6 +503,8 @@ function setLanguageWeArePage(lang) {
     if (pageTranslations.page_title_who_we_are) {
         document.title = pageTranslations.page_title_who_we_are;
     }
+    
+    console.log(`Langue changée vers: ${lang} pour la page We are MK BA`);
 }
 
 // ==============================================
@@ -515,7 +536,57 @@ function initSmoothScrollWeArePage() {
 }
 
 // ==============================================
-// FONCTION D'INITIALISATION PRINCIPALE
+// NOUVELLES FONCTIONS POUR LES INTERACTIONS
+// ==============================================
+
+function initIconImageLoading() {
+    // Gestion du chargement des images d'icônes pour Why MK BA
+    const iconImages = document.querySelectorAll('.why-icon-img');
+    
+    iconImages.forEach(img => {
+        img.addEventListener('error', function() {
+            // Fallback vers une icône par défaut en cas d'erreur
+            console.warn(`Icône non trouvée: ${this.src}`);
+            // On pourrait ici remplacer par une icône par défaut
+            this.style.display = 'none';
+        });
+        
+        img.addEventListener('load', function() {
+            // Animation d'entrée de l'icône
+            this.style.opacity = '1';
+            this.style.transform = 'scale(1)';
+        });
+        
+        // État initial
+        img.style.opacity = '0';
+        img.style.transform = 'scale(0.8)';
+        img.style.transition = 'all 0.3s ease';
+    });
+}
+
+function initClientCardAnalytics() {
+    // Fonction pour tracker les interactions avec les cartes clients
+    const clientCards = document.querySelectorAll('.client-card-new');
+    
+    clientCards.forEach((card, index) => {
+        card.addEventListener('click', function() {
+            const cardTitle = this.querySelector('.client-card-title')?.textContent;
+            
+            // Ici on pourrait envoyer des analytics
+            console.log(`Analytics: Clic sur carte client "${cardTitle}" (position: ${index + 1})`);
+            
+            // Possibilité d'ajouter Google Analytics ou autre
+            // gtag('event', 'click', {
+            //     event_category: 'Client Cards',
+            //     event_label: cardTitle,
+            //     value: index + 1
+            // });
+        });
+    });
+}
+
+// ==============================================
+// FONCTION D'INITIALISATION PRINCIPALE - MIS À JOUR
 // ==============================================
 
 function initWeAreMKBAPage() {
@@ -526,6 +597,8 @@ function initWeAreMKBAPage() {
     initScrollAnimations();
     initBreadcrumbNavigation();
     initSmoothScrollWeArePage();
+    initIconImageLoading();
+    initClientCardAnalytics();
     
     // Charger la langue sauvegardée ou française par défaut
     try {
@@ -552,19 +625,19 @@ function initWeAreMKBAPage() {
         };
     }
     
-    console.log('Page We are MK BA initialisée avec succès');
+    console.log('Page We are MK BA initialisée avec succès (version mise à jour)');
 }
 
 // ==============================================
-// UTILITAIRES D'ACCESSIBILITÉ
+// UTILITAIRES D'ACCESSIBILITÉ - MIS À JOUR
 // ==============================================
 
 function initAccessibilityWeArePage() {
-    // Améliorer l'accessibilité des cartes
-    const interactiveCards = document.querySelectorAll('.why-card, .client-card');
+    // Améliorer l'accessibilité des nouvelles cartes
+    const interactiveCards = document.querySelectorAll('.why-card-new, .client-card-new');
     interactiveCards.forEach(card => {
-        const title = card.querySelector('h3');
-        if (title) {
+        const title = card.querySelector('.why-card-title, .client-card-title');
+        if (title && !card.getAttribute('aria-label')) {
             card.setAttribute('aria-label', title.textContent);
         }
     });
@@ -577,11 +650,33 @@ function initAccessibilityWeArePage() {
     // Support du mode mouvement réduit
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.body.classList.add('reduced-motion');
+        
+        // Désactiver les animations pour les nouvelles cartes
+        const animatedElements = document.querySelectorAll('.why-card-new, .client-card-new');
+        animatedElements.forEach(element => {
+            element.style.opacity = '1';
+            element.style.transform = 'none';
+            element.style.transition = 'none';
+        });
     }
+    
+    // Gestion du focus pour les éléments interactifs
+    const focusableElements = document.querySelectorAll('.why-card-visual, .client-card-new');
+    focusableElements.forEach(element => {
+        element.addEventListener('focus', function() {
+            this.style.outline = '2px solid var(--primary-blue)';
+            this.style.outlineOffset = '2px';
+        });
+        
+        element.addEventListener('blur', function() {
+            this.style.outline = '';
+            this.style.outlineOffset = '';
+        });
+    });
 }
 
 // ==============================================
-// INITIALISATION AU CHARGEMENT
+// INITIALISATION AU CHARGEMENT - MIS À JOUR
 // ==============================================
 
 // Initialiser quand le DOM est prêt 
@@ -605,12 +700,27 @@ window.addEventListener('languageChanged', () => {
     }
 });
 
-// Export des fonctions pour utilisation externe
+// ==============================================
+// GESTION DES ERREURS ET FALLBACKS
+// ==============================================
+
+window.addEventListener('error', function(e) {
+    if (e.target.tagName === 'IMG' && e.target.classList.contains('why-icon-img')) {
+        console.warn('Erreur de chargement d\'icône:', e.target.src);
+        // Masquer l'icône défaillante
+        e.target.style.display = 'none';
+    }
+});
+
+// Export des fonctions pour utilisation externe - MIS À JOUR
 window.WeAreMKBAPage = {
     initWeAreMKBAPage,
     setLanguageWeArePage,
     initMegaMenuWeArePage,
     initAccordionInteractions,
     initCardHoverEffects,
+    initScrollAnimations,
+    initIconImageLoading,
+    initClientCardAnalytics,
     weAreMKBATranslations
 };

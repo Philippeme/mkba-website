@@ -1,5 +1,5 @@
 /* ==============================================
-   STYLES SPÉCIFIQUES POUR LA PAGE WE ARE MK BA
+   STYLES SPÉCIFIQUES POUR LA PAGE WE ARE MK BA - MIS À JOUR
    ============================================== */
 
 /* Header adapté - fond blanc avec liens bleus + EFFETS BLEUS UNIQUEMENT */
@@ -16,8 +16,7 @@
 }
 
 .we-are-page .navbar.who-we-are-nav .nav-link:hover {
-    color: var(--primary-blue) !important; /* BLEU au lieu d'orange */
-    opacity: 0.8;
+    color: var(--primary-blue) !important;
 }
 
 .we-are-page .navbar.who-we-are-nav .nav-link.active {
@@ -43,18 +42,17 @@
 }
 
 .we-are-page .navbar.who-we-are-nav .language-selector-nav:hover .language-icon {
-    color: var(--primary-blue) !important; /* BLEU au lieu d'orange */
-    opacity: 0.8;
+    color: var(--primary-blue) !important;
 }
 
 /* Top banner adaptation pour la page We are - EFFETS BLEUS UNIQUEMENT */
 .we-are-page .top-banner .search-trigger:hover {
-    color: var(--primary-blue) !important; /* BLEU au lieu d'orange */
+    color: var(--primary-blue) !important;
     opacity: 1;
 }
 
 .we-are-page .top-banner .search-close:hover {
-    color: var(--primary-blue) !important; /* BLEU au lieu d'orange */
+    color: var(--primary-blue) !important;
 }
 
 /* ==============================================
@@ -87,7 +85,7 @@
     align-items: stretch;
     min-height: 200px;
     margin-left: calc(44vw - 50%);
-    margin-right: 2rem; /* Marge droite pour ne pas coller au bord */
+    margin-right: 2rem;
     padding: 2rem 0;
 }
 
@@ -218,7 +216,7 @@
    ============================================== */
 
 .breadcrumb-banner {
-    background: var(--background-gray);
+    background: #EDF2F5;
     border-bottom: 1px solid var(--border-light);
     padding: 0.75rem 0;
     position: relative;
@@ -234,6 +232,40 @@
     z-index: auto;
 }
 
+/* Correction du fil d'Ariane */
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 0;
+    justify-content: flex-start;
+}
+
+.breadcrumb-item {
+    font-size: 1rem;
+    color: #565656;
+}
+
+.breadcrumb-item span {
+    color: #565656;
+    cursor: pointer;
+}
+
+.breadcrumb-item span:hover {
+    color: #333333;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "|";
+    color: var(--text-medium);
+    margin: 0 1rem;
+}
+
 /* ==============================================
    HERO SECTION "WE ARE MK BA" - RÉDUIT
    ============================================== */
@@ -247,46 +279,10 @@
     position: relative;
 }
 
-.we-are-hero .hero-overlay {
-    background: rgba(0, 0, 0, 0.4);
-}
-
 .we-are-hero .hero-title {
     font-size: 4rem;
-    font-weight: 600;
-}
-
-.breadcrumb {
-    background: transparent;
-    padding: 0;
-    margin-bottom: 0;
-    justify-content: flex-start;
-}
-
-.breadcrumb-item {
-    font-size: 1rem;
-    color: var(--text-dark);
-}
-
-.breadcrumb-item a {
-    color: var(--text-dark);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.breadcrumb-item a:hover {
-    color: #333333;
-    text-decoration: underline;
-}
-
-.breadcrumb-item.active {
-    color: var(--text-medium);
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-    content: "|";
-    color: var(--text-medium);
-    margin: 0 1rem;
+    font-weight: 400;
+    text-align: left;
 }
 
 /* ==============================================
@@ -296,20 +292,19 @@
 /* Section Titre - Bloc 1 selon maquette */
 #title-section {
     padding: 4rem 0 2rem 0;
-    background: var(--background-light);
 }
 
 .title-block-header {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
-    color: #333;
+    color: #0A0B0D;
     margin-bottom: 1rem;
     text-align: left;
 }
 
 .title-block-text {
-    font-size: 24px;
-    color: var(--text-dark);
+    font-size: 30px;
+    color: #0A0B0D;
     line-height: 1.6;
     margin-bottom: -6rem;
     text-align: left;
@@ -318,7 +313,7 @@
 /* Section Who we are - Bloc 2 selon maquette */
 #who-we-are-section {
     padding: 2rem 0 4rem 0;
-    background: var(--background-light);
+    margin-top: 2.5rem;
 }
 
 .who-we-are-left {
@@ -326,16 +321,16 @@
 }
 
 .who-we-are-block-header {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
-    color: #333;
+    color: #0A0B0D;
     margin-bottom: 1rem;
     text-align: left;
 }
 
 .who-we-are-block-text {
-    font-size: 24px;
-    color: var(--text-dark);
+    font-size: 30px;
+    color: #0A0B0D;
     line-height: 1.6;
     margin-bottom: 2rem;
     text-align: left;
@@ -360,7 +355,7 @@
     background-color: var(--primary-blue);
     border-color: var(--primary-blue);
     color: var(--white);
-    font-weight: 500;
+    font-weight: 400;
     padding: 0.75rem 2rem;
     border-radius: 4px;
     transition: all 0.3s ease;
@@ -375,7 +370,7 @@
 }
 
 /* ==============================================
-   SECTION "WHY MK BA" - CARTES COLORÉES
+   SECTION "WHY MK BA" - NOUVEAU STYLE SELON MAQUETTE
    ============================================== */
 
 #why-mkba {
@@ -383,116 +378,119 @@
     background: var(--white);
 }
 
-.section-title-bold {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-dark);
+/* Sous-titre en haut à gauche - même style que les titres h5 des sections "Titre" et "Who we are" */
+.section-subtitle-left {
+    font-size: 18px;
+    font-weight: 500;
+    color: #0A0B0D;
     margin-bottom: 1rem;
+    text-align: left;
     line-height: 1.3;
-
 }
 
-.section-subtitle {
-    font-size: 24px;
-    color: var(--text-dark);
-    margin-bottom: 2rem;
+/* Titre principal - même style que les paragraphes des sections "Titre" et "Who we are" */
+.section-main-title {
+    font-size: 30px;
+    color: #0A0B0D;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    text-align: left;
 }
 
-.why-card {
-    background: var(--white);
-    padding: 2.5rem 2rem;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-    transition: all 0.3s ease;
-    height: 100%;
-    min-height: 300px;
+/* Nouvelle structure pour les cartes Why MK BA */
+.why-card-new {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.why-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.9;
-    z-index: 1;
+    align-items: left;
+    text-align: center;
     transition: all 0.3s ease;
+    transform: translateY(40px);
+    animation: slideInFromBottom 0.6s ease forwards;
 }
 
-.why-card.card-blue::before {
-    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-}
+.why-card-new:nth-child(1) { animation-delay: 0.1s; }
+.why-card-new:nth-child(2) { animation-delay: 0.3s; }
+.why-card-new:nth-child(3) { animation-delay: 0.5s; }
 
-.why-card.card-purple::before {
-    background: linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%);
-}
-
-.why-card.card-cyan::before {
-    background: linear-gradient(135deg, #1ABC9C 0%, #16A085 100%);
-}
-
-.why-card:hover::before {
-    opacity: 0.95;
-}
-
-.why-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-.why-icon {
-    position: relative;
-    z-index: 2;
-    width: 80px;
-    height: 80px;
+/* Carte colorée avec icône */
+.why-card-visual {
+    width: 100%;
+    max-width: 350px;
+    height: 250px;
+    border-radius: 10px;
+    opacity: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
-}
-
-.why-icon i {
-    font-size: 2.5rem;
-    color: var(--white);
-}
-
-.why-card h3 {
+    margin-bottom: 2rem;
     position: relative;
-    z-index: 2;
-    color: var(--white);
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    font-size: 1.4rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.why-card-visual:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Dégradés selon la maquette */
+.card-blue-gradient {
+    background: linear-gradient(180deg, #1395FF 0%, #8451D9 100%);
+}
+
+.card-purple-gradient {
+    background: linear-gradient(0deg, #E553E0 0%, #823EDA 100%);
+}
+
+.card-cyan-gradient {
+    background: linear-gradient(227deg, #008FFD 0%, #00BFD2 100%);
+}
+
+/* Icônes centrées - taille 89px × 95px selon spécifications */
+.why-icon-img {
+    width: 89px;
+    height: 95px;
+    object-fit: contain;
+}
+
+/* Contenu textuel sous les cartes */
+.why-card-content {
+    width: 100%;
+    max-width: 350px;
+    text-align: left;
+}
+
+/* Titre gras noir ≈30px selon spécifications */
+.why-card-title {
+    font-size: 30px;
+    font-weight: 400;
+    color: #0A0B0D;
+    margin-bottom: 1rem;
     line-height: 1.4;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
-.why-card p {
-    position: relative;
-    z-index: 2;
-    color: rgba(255, 255, 255, 0.9);
+/* Description gris foncé ≈20px selon spécifications */
+.why-card-description {
+    font-size: 20px;
+    color: #313131;
     line-height: 1.6;
-    font-size: 0.99rem;
     margin-bottom: 0;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 /* ==============================================
-   SECTION ACCORDÉON "SO YOU CAN..." - MODIFICATIONS
+   SECTION ACCORDÉON "SO YOU CAN..." - INCHANGÉ
    ============================================== */
 
 #so-you-can {
     padding: 4rem 0;
-    background: var(--background-light);
+    background: #F9F9F9;
 }
 
-/* MODIFICATION 1: Adapter le titre "So you can..." pour avoir le même style que les sections "Titre" et "Who we are" */
 #so-you-can .section-title-bold {
     font-size: 16px;
     font-weight: 700;
@@ -524,8 +522,8 @@
 .accordion-button {
     background: transparent !important;
     border: none !important;
-    color: var(--text-dark) !important;
-    font-size: 1.1rem;
+    color: #313131 !important;
+    font-size: 35px;
     font-weight: 500;
     padding: 1.5rem 0;
     box-shadow: none !important;
@@ -533,7 +531,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    gap: 0.5rem; /* RÉDUIT de 1rem à 0.5rem pour rapprocher l'icône */
+    gap: 0.5rem;
 }
 
 .accordion-button:not(.collapsed) {
@@ -544,12 +542,11 @@
     display: none;
 }
 
-/* MODIFICATION 2: Rapprocher les boutons + des accordéons vers la gauche (moitié de l'espace actuel) */
 .accordion-icon {
     color: var(--primary-blue);
     font-size: 1.2rem;
     transition: all 0.3s ease;
-    margin-left: 0.25rem; /* RÉDUIT de 0.5rem à 0.25rem pour rapprocher davantage */
+    margin-left: 0.25rem;
     flex-shrink: 0;
 }
 
@@ -559,14 +556,12 @@
     line-height: 1.4;
 }
 
-/* État fermé : afficher + */
 .accordion-button.collapsed .accordion-icon::before {
-    content: "\f067"; /* fa-plus */
+    content: "\f067";
 }
 
-/* État ouvert : afficher × */
 .accordion-button:not(.collapsed) .accordion-icon::before {
-    content: "\f00d"; /* fa-times */
+    content: "\f00d";
     color: var(--primary-orange);
 }
 
@@ -587,100 +582,112 @@
 }
 
 /* ==============================================
-   SECTION "NOS CLIENTS" - GRILLE 2x3
+   SECTION "NOS CLIENTS" - NOUVEAU STYLE SELON MAQUETTE
    ============================================== */
 
 #our-clients {
     padding: 4rem 0;
-    margin-bottom: -4rem;
+    margin-bottom: 4rem;
     background: var(--white);
 }
 
-.clients-grid .row {
-    --bs-gutter-x: 2rem;
-    --bs-gutter-y: 2rem;
-}
-
-.client-card {
-    background: var(--white);
-    padding: 2rem 1.5rem;
-    border-radius: 8px;
-    position: relative;
-    transition: all 0.3s ease;
-    height: 100%;
-    min-height: 160px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.client-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.9;
-    z-index: 1;
-    transition: all 0.3s ease;
-}
-
-.client-card.card-blue::before {
-    background: linear-gradient(135deg, #3498DB 0%, #2980B9 100%);
-}
-
-.client-card.card-purple::before {
-    background: linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%);
-}
-
-.client-card.card-cyan::before {
-    background: linear-gradient(135deg, #1ABC9C 0%, #16A085 100%);
-}
-
-.client-card:hover::before {
-    opacity: 0.95;
-}
-
-.client-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.client-card h3 {
-    position: relative;
-    z-index: 2;
-    color: var(--white);
+.section-title-bold {
+    font-size: 35px;
     font-weight: 700;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
+    color: #0A0B0D;
+    margin-bottom: 3rem;
     line-height: 1.3;
 }
 
-.client-card p {
-    position: relative;
-    z-index: 2;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.5;
-    font-size: 1.4rem;
-    margin-bottom: 0;
-    flex: 1;
+/* Nouvelle grille pour les clients */
+.clients-grid-new .row {
+    --bs-gutter-x: 3rem;
+    --bs-gutter-y: 2rem;
 }
 
-.client-arrow {
-    position: absolute;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    z-index: 2;
-    color: var(--white);
-    font-size: 1.2rem;
+/* Nouvelles cartes clients selon la maquette */
+.client-card-new {
+    display: block;
+    text-decoration: none;
+    color: inherit;
     transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideInFromBottom 0.6s ease forwards;
 }
 
-.client-card:hover .client-arrow {
+.client-card-new:nth-child(1) { animation-delay: 0.1s; }
+.client-card-new:nth-child(2) { animation-delay: 0.2s; }
+.client-card-new:nth-child(3) { animation-delay: 0.3s; }
+.client-card-new:nth-child(4) { animation-delay: 0.4s; }
+.client-card-new:nth-child(5) { animation-delay: 0.5s; }
+.client-card-new:nth-child(6) { animation-delay: 0.6s; }
+
+.client-card-new:hover {
+    transform: translateY(-5px);
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Zone rectangulaire colorée ≈250×150px selon spécifications */
+.client-card-visual {
+    width: 100%;
+    max-width: 435px;
+    height: 150px;
+    border-radius: 10px;
+    opacity: 100%;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.client-card-new:hover .client-card-visual {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenu textuel sous les cartes */
+.client-card-content {
+    text-align: left;
+}
+
+/* Titre gras noir ≈20px selon spécifications */
+.client-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0A0B0D;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Description gris foncé ≈20px avec flèche selon spécifications */
+.client-card-description {
+    font-size: 30px;
+    color: #0A0B0D;
+    line-height: 1.6;
+    margin-bottom: 0;
+    word-wrap: break-word;
+    hyphens: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Icône flèche → en bleu #0066FF selon spécifications */
+.client-arrow {
+    color: #0066FF !important;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.client-card-new:hover .client-arrow {
     transform: translateX(5px);
+    color: #0066FF !important;
 }
 
 /* ==============================================
@@ -695,7 +702,7 @@
 
     /* Sections Titre et Who we are mobile */
     .title-block {
-        max-width: 100%; /* Pleine largeur sur mobile */
+        max-width: 100%;
     }
 
     .title-block-header,
@@ -765,46 +772,70 @@
         font-size: 1.5rem;
     }
 
-    /* MODIFICATIONS MOBILE */
-    /* Titre "So you can..." version mobile */
+    /* Section Why MK BA mobile */
+    .section-subtitle-left {
+        font-size: 14px;
+    }
+
+    .section-main-title {
+        font-size: 18px;
+    }
+
+    .why-card-visual {
+        max-width: 280px;
+        height: 180px;
+        margin-bottom: 1.5rem;
+    }
+
+    .why-icon-img {
+        width: 60px;
+        height: 65px;
+    }
+
+    .why-card-content {
+        max-width: 280px;
+    }
+
+    .why-card-title {
+        font-size: 18px;
+    }
+
+    .why-card-description {
+        font-size: 14px;
+    }
+
+    /* Section Nos clients mobile */
+    .client-card-visual {
+        max-width: 100%;
+        height: 120px;
+        margin-bottom: 1rem;
+    }
+
+    .client-card-title {
+        font-size: 16px;
+    }
+
+    .client-card-description {
+        font-size: 14px;
+    }
+
+    /* Accordion mobile */
     #so-you-can .section-title-bold {
         font-size: 14px;
     }
 
-    /* Why MK BA cards mobile */
-    .why-card {
-        min-height: 250px;
-        margin-bottom: 1.5rem;
-    }
-
-    /* Accordion mobile - rapprochement encore plus important */
     .accordion-button {
         font-size: 1rem;
         padding: 1.2rem 0;
-        gap: 0.3rem; /* Encore plus proche sur mobile */
+        gap: 0.3rem;
     }
 
     .accordion-icon {
-        margin-left: 0.15rem; /* Encore plus proche sur mobile */
+        margin-left: 0.15rem;
     }
 
-    /* Items span mobile */
     .accordion-button span {
-        font-size: 1.1rem; /* Légèrement réduit sur mobile */
-    }
-
-    /* Client cards mobile */
-    .client-card {
-        min-height: 140px;
-        margin-bottom: 1rem;
-    }
-
-    .client-card h3 {
-        font-size: 1rem;
-    }
-
-    .client-card p {
-        font-size: 0.85rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -843,52 +874,70 @@
         font-size: 1.3rem;
     }
 
-    /* MODIFICATIONS TRÈS PETITS ÉCRANS */
+    /* Section Why MK BA très petit écran */
+    .section-subtitle-left {
+        font-size: 13px;
+    }
+
+    .section-main-title {
+        font-size: 16px;
+    }
+
+    .why-card-visual {
+        max-width: 250px;
+        height: 160px;
+    }
+
+    .why-icon-img {
+        width: 50px;
+        height: 55px;
+    }
+
+    .why-card-content {
+        max-width: 250px;
+    }
+
+    .why-card-title {
+        font-size: 16px;
+    }
+
+    .why-card-description {
+        font-size: 13px;
+    }
+
+    /* Section Nos clients très petit écran */
+    .clients-grid-new .row {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+    }
+
+    .client-card-visual {
+        height: 100px;
+    }
+
+    .client-card-title {
+        font-size: 14px;
+    }
+
+    .client-card-description {
+        font-size: 12px;
+    }
+
+    .client-arrow {
+        font-size: 1rem;
+    }
+
     /* Très petits écrans */
     #so-you-can .section-title-bold {
         font-size: 13px;
     }
 
     .accordion-icon {
-        margin-left: 0.1rem; /* Très proche sur très petits écrans */
+        margin-left: 0.1rem;
     }
 
     .accordion-button span {
         font-size: 1rem;
-    }
-
-    /* Why cards optimisation */
-    .why-card {
-        padding: 2rem 1.5rem;
-        min-height: 220px;
-    }
-
-    .why-icon {
-        width: 60px;
-        height: 60px;
-    }
-
-    .why-icon i {
-        font-size: 2rem;
-    }
-
-    .why-card h3 {
-        font-size: 1.1rem;
-    }
-
-    .why-card p {
-        font-size: 0.9rem;
-    }
-
-    /* Client cards optimisation */
-    .client-card {
-        padding: 1.5rem 1.2rem;
-        min-height: 120px;
-    }
-
-    .clients-grid .row {
-        --bs-gutter-x: 1rem;
-        --bs-gutter-y: 1rem;
     }
 
     /* Mega menu très petit écran */
@@ -921,22 +970,6 @@
     }
 }
 
-.why-card,
-.client-card {
-    animation: slideInFromBottom 0.6s ease forwards;
-}
-
-.why-card:nth-child(1) { animation-delay: 0.1s; }
-.why-card:nth-child(2) { animation-delay: 0.3s; }
-.why-card:nth-child(3) { animation-delay: 0.5s; }
-
-.client-card:nth-child(1) { animation-delay: 0.1s; }
-.client-card:nth-child(2) { animation-delay: 0.2s; }
-.client-card:nth-child(3) { animation-delay: 0.3s; }
-.client-card:nth-child(4) { animation-delay: 0.4s; }
-.client-card:nth-child(5) { animation-delay: 0.5s; }
-.client-card:nth-child(6) { animation-delay: 0.6s; }
-
 /* Animation d'ouverture du mega menu */
 .who-we-are-mega-menu {
     animation: megaMenuSlideIn 0.3s ease forwards;
@@ -954,17 +987,16 @@
 }
 
 /* Accessibility et states */
-.why-card:focus,
-.client-card:focus,
+.why-card-new:focus,
+.client-card-new:focus,
 .accordion-button:focus,
 .mega-menu-item:focus {
-    outline: 2px solid var(--primary-orange);
     outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .why-card,
-    .client-card,
+    .why-card-new,
+    .client-card-new,
     .who-we-are-mega-menu {
         animation: none;
         opacity: 1;
@@ -975,5 +1007,4 @@
     .accordion-button {
         transition: none !important;
     }
-
 }
