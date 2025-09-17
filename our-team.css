@@ -244,16 +244,22 @@
 
 .our-team-page .breadcrumb-item {
     font-size: 1rem;
-    color: var(--text-dark);
+    color: #565656;
 }
 
 .our-team-page .breadcrumb-item span {
-    color: var(--text-dark);
-    cursor: default;
+    color: #565656;
+    cursor: pointer;
+}
+
+.our-team-page .breadcrumb-item span:hover {
+    color: #333333;
+    text-decoration: underline;
 }
 
 .our-team-page .breadcrumb-item.active {
     color: var(--text-medium);
+    font-weight: 500;
 }
 
 .our-team-page .breadcrumb-item + .breadcrumb-item::before {
@@ -501,10 +507,8 @@
 }
 
 .partner-img {
-    max-height: 50px;
+    max-height: 80px;
     max-width: 150px;
-    width: 165px;
-    height: 64px;
     object-fit: contain;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -1089,7 +1093,7 @@
     align-items: center;
     margin-top: 2rem;
     margin-left: 2rem;
-    gap: 1rem; /* Espace entre les boutons */
+    gap: 2rem; /* Espace entre les boutons */
 }
 
 .btn-cancel {
