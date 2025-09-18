@@ -92,9 +92,9 @@
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(ellipse at top left, var(--tech-gradient-1) 20%, transparent 50%),
-        radial-gradient(ellipse at top right, var(--tech-gradient-2) 50%, transparent 50%),
-        radial-gradient(ellipse at bottom center, var(--tech-gradient-3) 100%, transparent 50%);
+        radial-gradient(ellipse at top left, var(--tech-gradient-1) 0%, transparent 50%),
+        radial-gradient(ellipse at top right, var(--tech-gradient-2) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom center, var(--tech-gradient-3) 0%, transparent 50%);
     opacity: 0.7;
     z-index: 0;
 }
