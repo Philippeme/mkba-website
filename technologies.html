@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title_technologies">Technologies - MK BA</title>
+    <meta name="description" content="Découvrez les plateformes, outils et technologies mis en œuvre par MK BA. Technologies web, mobile, desktop, cloud et bases de données.">
+    <meta name="keywords" content="MK BA, technologies, plateformes, outils, web, mobile, desktop, cloud, bases de données">
+    <meta name="author" content="MK Business Analysis">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mk-ba.com/technologies">
+    <meta property="og:title" content="Technologies - MK BA">
+    <meta property="og:description" content="Plateformes, outils et technologies mis en œuvre par MK BA">
+    <meta property="og:image" content="./assets/images/mkba-og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="we-are-mkba.css">
+    <link rel="stylesheet" href="technologies.css">
+
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./assets/images/mkba-logo-footer.png" as="image">
+</head>
+
+<body class="we-are-page technologies-page">
+    <!-- Top Banner with Search Only -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="top-banner-content">
+                <div class="search-section">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-trigger" onclick="toggleSearch()" tabindex="0" role="button"
+                            aria-label="Ouvrir la recherche">
+                            <i class="fas fa-search search-icon-right" aria-hidden="true"></i>
+                            <span data-i18n="search_placeholder">Recherche dans MK BA</span>
+                        </div>
+                        <div class="search-input-container" id="searchInputContainer">
+                            <input type="search" class="search-input" placeholder="Recherche dans MK BA..."
+                                data-i18n-placeholder="search_placeholder" aria-label="Champ de recherche">
+                            <button class="search-close" onclick="toggleSearch()" aria-label="Fermer la recherche">
+                                <i class="fas fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation with Mega Menu Dropdown -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top who-we-are-nav" role="navigation" aria-label="Navigation principale">
+            <div class="container">
+                <!-- Logo à gauche -->
+                <a class="navbar-brand" href="index.html" aria-label="Retour à l'accueil MK BA">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="brand-logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Navigation au centre -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown mega-menu-dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="whoWeAreDropdown" role="button" 
+                               data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_who_we_are">
+                                Qui nous sommes
+                            </a>
+                            <div class="dropdown-menu who-we-are-mega-menu" aria-labelledby="whoWeAreDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="dropdown_title">Qui nous sommes</h5>
+                                            <p class="mega-menu-description" data-i18n="dropdown_description">
+                                                Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence 
+                                                technologique en Afrique.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">
+                                                        Nous sommes MK BA
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_our_team">
+                                                        Notre équipe
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_sustainability">
+                                                        Notre engagement pour la durabilité
+                                                    </a>
+                                                </div>
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item active" href="technologies.html" data-i18n="nav_technologies">
+                                                        Technologies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_work_with_us">
+                                                        Travailler avec nous
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#what-we-do" data-i18n="nav_what_we_do">Ce que nous faisons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#achievements" data-i18n="nav_achievements">Réalisations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#news" data-i18n="nav_news">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact-btn" href="index.html#contact" data-i18n="nav_contact">Nous contacter</a>
+                        </li>
+                    </ul>
+
+                    <!-- Sélecteur de langue à l'extrémité droite -->
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link language-selector-nav" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="Sélection de langue">
+                                <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bannière Fil d'Ariane -->
+    <section class="breadcrumb-banner">
+        <div class="container">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <span data-i18n="breadcrumb_who_we_are">Qui nous sommes</span>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page" data-i18n="breadcrumb_technologies">
+                        Technologies
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Section d'en-tête -->
+    <section id="technologies-header" class="technologies-header-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="technologies-main-title" data-i18n="technologies_main_title">
+                        <span class="title-highlight">Plateformes</span>, outils, technologies mis en œuvre
+                    </h1>
+                    <p class="technologies-subtitle" data-i18n="technologies_subtitle">
+                        We use industry leading technologies to achieve great software. We follow standards that are accepted by industry professionals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Grille des Technologies -->
+    <section id="technologies-grid" class="technologies-grid-section">
+        <div class="technologies-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Section Web -->
+                        <div class="tech-section web-section">
+                            <h2 class="tech-section-title" data-i18n="tech_web_title">Web</h2>
+                            
+                            <!-- BACK END -->
+                            <div class="tech-subsection">
+                                <h3 class="tech-subsection-title" data-i18n="tech_backend_title">BACK END</h3>
+                                <div class="tech-rectangles-row">
+                                    <div class="tech-rectangle" data-tech="PHP" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/php.png" alt="PHP" class="tech-icon">
+                                        <span class="tech-tooltip">PHP</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Node.js" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/nodejs.png" alt="Node.js" class="tech-icon">
+                                        <span class="tech-tooltip">Node.js</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Python" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/python.png" alt="Python" class="tech-icon">
+                                        <span class="tech-tooltip">Python</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Java" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/java.png" alt="Java" class="tech-icon">
+                                        <span class="tech-tooltip">Java</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech=".NET" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/dotnet.png" alt=".NET" class="tech-icon">
+                                        <span class="tech-tooltip">.NET</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Laravel" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/laravel.png" alt="Laravel" class="tech-icon">
+                                        <span class="tech-tooltip">Ruby</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Go" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/go.png" alt="Go" class="tech-icon">
+                                        <span class="tech-tooltip">Go</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- FRONT END -->
+                            <div class="tech-subsection">
+                                <h3 class="tech-subsection-title" data-i18n="tech_frontend_title">FRONT END</h3>
+                                <div class="tech-rectangles-row">
+                                    <div class="tech-rectangle" data-tech="React" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/react.png" alt="React" class="tech-icon">
+                                        <span class="tech-tooltip">React</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Vue.js" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/vue.png" alt="Vue.js" class="tech-icon">
+                                        <span class="tech-tooltip">Vue.js</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Angular" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/angular.jpg" alt="Angular" class="tech-icon">
+                                        <span class="tech-tooltip">Angular</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="JavaScript" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/javascript.png" alt="JavaScript" class="tech-icon">
+                                        <span class="tech-tooltip">JavaScript</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="TypeScript" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/typescript.png" alt="TypeScript" class="tech-icon">
+                                        <span class="tech-tooltip">TypeScript</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section Mobile et Desktop -->
+                        <div class="tech-sections-row">
+                            <div class="tech-section mobile-section">
+                                <h2 class="tech-section-title" data-i18n="tech_mobile_title">Mobile</h2>
+                                <div class="tech-rectangles-row">
+                                    <div class="tech-rectangle" data-tech="React Native" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/react-native.png" alt="React Native" class="tech-icon">
+                                        <span class="tech-tooltip">React Native</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Flutter" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/flutter.png" alt="Flutter" class="tech-icon">
+                                        <span class="tech-tooltip">Flutter</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Swift" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/swift.png" alt="Swift" class="tech-icon">
+                                        <span class="tech-tooltip">Swift</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Kotlin" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/kotlin.png" alt="Kotlin" class="tech-icon">
+                                        <span class="tech-tooltip">Kotlin</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Xamarin" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/xamarin.png" alt="Xamarin" class="tech-icon">
+                                        <span class="tech-tooltip">Xamarin</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Ionic" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/ionic.png" alt="Ionic" class="tech-icon">
+                                        <span class="tech-tooltip">Ionic</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tech-section desktop-section">
+                                <h2 class="tech-section-title" data-i18n="tech_desktop_title">Desktop</h2>
+                                <div class="tech-rectangles-row">
+                                    <div class="tech-rectangle" data-tech="Electron" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/electron.png" alt="Electron" class="tech-icon">
+                                        <span class="tech-tooltip">Electron</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Qt" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/qt.png" alt="Qt" class="tech-icon">
+                                        <span class="tech-tooltip">Qt</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="WPF" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/wpf.jpg" alt="WPF" class="tech-icon">
+                                        <span class="tech-tooltip">WPF</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="JavaFX" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/javafx.png" alt="JavaFX" class="tech-icon">
+                                        <span class="tech-tooltip">JavaFX</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Tauri" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/tauri.png" alt="Tauri" class="tech-icon">
+                                        <span class="tech-tooltip">Tauri</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Flutter Desktop" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/flutter-desktop.png" alt="Flutter Desktop" class="tech-icon">
+                                        <span class="tech-tooltip">Flutter Desktop</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section Platforms et Clouds -->
+                        <div class="tech-sections-row">
+                            <div class="tech-section platforms-section">
+                                <h2 class="tech-section-title" data-i18n="tech_platforms_title">Platforms</h2>
+                                <div class="tech-rectangles-row platforms-row">
+                                    <div class="tech-rectangle" data-tech="Docker" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/docker.png" alt="Docker" class="tech-icon">
+                                        <span class="tech-tooltip">Docker</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Kubernetes" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/kubernetes.png" alt="Kubernetes" class="tech-icon">
+                                        <span class="tech-tooltip">Kubernetes</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Linux" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/linux.png" alt="Linux" class="tech-icon">
+                                        <span class="tech-tooltip">Linux</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Windows Server" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/windows.png" alt="Windows Server" class="tech-icon">
+                                        <span class="tech-tooltip">Windows Server</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Apache" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/apache.png" alt="Apache" class="tech-icon">
+                                        <span class="tech-tooltip">Apache</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Nginx" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/nginx.jpg" alt="Nginx" class="tech-icon">
+                                        <span class="tech-tooltip">Nginx</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Redis" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/redis.png" alt="Redis" class="tech-icon">
+                                        <span class="tech-tooltip">Redis</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Elasticsearch" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/elasticsearch.png" alt="Elasticsearch" class="tech-icon">
+                                        <span class="tech-tooltip">Elasticsearch</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tech-section clouds-section">
+                                <h2 class="tech-section-title" data-i18n="tech_clouds_title">Clouds</h2>
+                                <div class="tech-rectangles-row">
+                                    <div class="tech-rectangle" data-tech="AWS" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/aws.png" alt="AWS" class="tech-icon">
+                                        <span class="tech-tooltip">AWS</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Azure" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/azure.png" alt="Azure" class="tech-icon">
+                                        <span class="tech-tooltip">Azure</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Google Cloud" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/gcp.png" alt="Google Cloud" class="tech-icon">
+                                        <span class="tech-tooltip">Google Cloud</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="DigitalOcean" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/digitalocean.png" alt="DigitalOcean" class="tech-icon">
+                                        <span class="tech-tooltip">DigitalOcean</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section Bases de données -->
+                        <div class="tech-section databases-section">
+                            <h2 class="tech-section-title" data-i18n="tech_databases_title">Relational databases / data storages</h2>
+                            <div class="tech-rectangles-row">
+                                <div class="tech-rectangle" data-tech="MySQL" tabindex="0" role="button">
+                                    <img src="./assets/icons/technologies/mysql.png" alt="MySQL" class="tech-icon">
+                                    <span class="tech-tooltip">MySQL</span>
+                                </div>
+                                <div class="tech-rectangle" data-tech="PostgreSQL" tabindex="0" role="button">
+                                    <img src="./assets/icons/technologies/postgresql.png" alt="PostgreSQL" class="tech-icon">
+                                    <span class="tech-tooltip">PostgreSQL</span>
+                                </div>
+                                <div class="tech-rectangle" data-tech="MongoDB" tabindex="0" role="button">
+                                    <img src="./assets/icons/technologies/mongodb.png" alt="MongoDB" class="tech-icon">
+                                    <span class="tech-tooltip">MongoDB</span>
+                                </div>
+                                <div class="tech-rectangle" data-tech="Oracle" tabindex="0" role="button">
+                                    <img src="./assets/icons/technologies/oracle.png" alt="Oracle" class="tech-icon">
+                                    <span class="tech-tooltip">Oracle</span>
+                                </div>
+                                <div class="tech-rectangle" data-tech="SQL Server" tabindex="0" role="button">
+                                    <img src="./assets/icons/technologies/sqlserver.png" alt="SQL Server" class="tech-icon">
+                                    <span class="tech-tooltip">SQL Server</span>
+                                </div>
+                                <div class="tech-rectangle" data-tech="SQLite" tabindex="0" role="button">
+                                    <img src="./assets/icons/technologies/sqlite.png" alt="SQLite" class="tech-icon">
+                                    <span class="tech-tooltip">SQLite</span>
+                                </div>
+                                <div class="tech-rectangle" data-tech="Cassandra" tabindex="0" role="button">
+                                    <img src="./assets/icons/technologies/cassandra.jpeg" alt="Cassandra" class="tech-icon">
+                                    <span class="tech-tooltip">Cassandra</span>
+                                </div>
+                                <div class="tech-rectangle" data-tech="Redis" tabindex="0" role="button">
+                                    <img src="./assets/icons/technologies/redis.png" alt="Redis" class="tech-icon">
+                                    <span class="tech-tooltip">Redis</span>
+                                </div>
+                                <div class="tech-rectangle dropdown-rectangle" data-tech="Plus..." tabindex="0" role="button" id="databasesDropdown">
+                                    <img src="./assets/icons/technologies/more.png" alt="Plus de technologies" class="tech-icon">
+                                    <span class="tech-tooltip">Plus de technologies</span>
+                                    <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            
+                            <!-- Dropdown expandable pour plus d'options -->
+                            <div class="tech-dropdown-content" id="databasesDropdownContent">
+                                <div class="tech-rectangles-row">
+                                    <div class="tech-rectangle" data-tech="CouchDB" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/couchdb.png" alt="CouchDB" class="tech-icon">
+                                        <span class="tech-tooltip">CouchDB</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Neo4j" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/neo4j.png" alt="Neo4j" class="tech-icon">
+                                        <span class="tech-tooltip">Neo4j</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="DynamoDB" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/dynamodb.png" alt="DynamoDB" class="tech-icon">
+                                        <span class="tech-tooltip">DynamoDB</span>
+                                    </div>
+                                    <div class="tech-rectangle" data-tech="Firebase" tabindex="0" role="button">
+                                        <img src="./assets/icons/technologies/firebase.png" alt="Firebase" class="tech-icon">
+                                        <span class="tech-tooltip">Firebase</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Colonne 1: Logo + slogan -->
+                <div class="footer-brand-section">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA Footer" class="footer-logo">
+                    <p class="footer-description">MK Business Analysis</p>
+                </div>
+
+                <!-- Colonne 2: Qui nous sommes -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="we-are-mkba.html" data-i18n="footer_who_are_mkba">Nous sommes MK BA</a></li>
+                        <li><a href="#" data-i18n="footer_our_team">Notre équipe</a></li>
+                        <li><a href="#" data-i18n="footer_sustainability">Notre engagement pour la durabilité</a></li>
+                        <li><a href="technologies.html" data-i18n="footer_technologies">Technologies</a></li>
+                        <li><a href="#" data-i18n="footer_work_with_us">Travailler avec nous</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Ce que nous faisons -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="#" data-i18n="footer_industries">Industries servies</a></li>
+                        <li><a href="index.html#what-we-do" data-i18n="footer_services">Services</a></li>
+                        <li><a href="index.html#products" data-i18n="footer_solutions">Solutions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Réalisations -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_achievements">Réalisations</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="index.html#achievements" data-i18n="footer_achievements_link">Nos réalisations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5: Contacts -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_contacts">Contacts</h4>
+                    <address class="contact-info">
+                        <p data-i18n="footer_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@mk-ba.com">info@mk-ba.com</a></p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+237695478987">+237 695 478 987</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom-section">
+                <nav class="footer-legal" aria-label="Liens légaux">
+                    <a href="#" data-i18n="footer_legal_mentions">Mentions légales</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_privacy">Politique de Confidentialité</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_terms">Termes et conditions</a>
+                </nav>
+
+                <p class="footer-copyright" data-i18n="footer_copyright">Copyright © 2025. Tous droits réservés</p>
+            </div>
+        </div>
+
+        <!-- Bas de page (bande grise foncée) -->
+        <div class="footer-bottom-band">
+            <div class="container">
+                <small data-i18n="footer_powered">Powered by MK BA</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="we-are-mkba.js" defer></script>
+    <script src="technologies.js" defer></script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "name": "Technologies MK BA",
+        "description": "Plateformes, outils et technologies mis en œuvre par MK BA",
+        "url": "https://mk-ba.com/technologies",
+        "author": {
+            "@type": "Organization",
+            "name": "MK Business Analysis"
+        }
+    }
+    </script>
+</body>
+
+</html>
