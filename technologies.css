@@ -24,6 +24,7 @@
     background: var(--white);
 }
 
+/* Titre principal - structure de base */
 .technologies-main-title {
     font-size: 2.5rem; /* 40px */
     font-weight: bold;
@@ -35,9 +36,10 @@
     text-align: left;
 }
 
+/* CARRÉ BEIGE - même système que section-title-with-highlight */
 .title-highlight {
     position: relative;
-    z-index: 1;
+    z-index: 0;
 }
 
 .title-highlight::after {
@@ -46,7 +48,7 @@
     left: 1ch;
     top: 0;
     bottom: 0;
-    width: 3.75rem;
+    width: 3.75rem; /* 60px en rem */
     height: 100%;
     background-color: var(--highlight-beige);
     border-radius: 0;
@@ -176,8 +178,8 @@
 
 /* Images des technologies */
 .tech-icon {
-    width: 4rem; /* 32px */
-    height: 4rem; /* 32px */
+    width: 3.5rem; /* 32px */
+    height: 3.5rem; /* 32px */
     object-fit: contain;
     transition: all 0.3s ease;
     flex-shrink: 0;
@@ -188,13 +190,23 @@
 }
 
 /* Rectangle avec dropdown */
-.dropdown-rectangle {
+.tech-rectangle.dropdown-rectangle {
     position: relative;
     padding: 0.25rem;
     width: auto;
     min-width: 5rem;
     flex-direction: row;
     justify-content: space-between;
+    background: linear-gradient(to right, #FFFFFF 70%, #F1F3F4 70%) !important;
+    border: 1px solid #E0E0E0 !important;
+}
+
+.tech-rectangle.dropdown-rectangle:hover,
+.tech-rectangle.dropdown-rectangle:focus {
+    background: linear-gradient(to right, #F0F8FF 70%, #E8EAED 70%) !important;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-blue) !important;
 }
 
 .dropdown-rectangle .tech-icon {
@@ -229,7 +241,11 @@
     max-height: 6.25rem; /* 100px */
 }
 
-/* Tooltips des technologies */
+/* ==============================================
+   TOOLTIPS INTERACTIFS AMÉLIORÉS
+   ============================================== */
+
+/* Tooltip simple (pour les rectangles normaux au hover) */
 .tech-tooltip {
     position: absolute;
     bottom: calc(100% + 0.5rem);
@@ -263,6 +279,199 @@
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(-0.25rem);
+}
+
+/* Tooltip interactif riche (pour les clics) */
+.tech-detailed-tooltip {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--white);
+    border-radius: 0.75rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    width: 90%;
+    max-width: 32rem; /* 512px */
+    max-height: 80vh;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.tech-detailed-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.tooltip-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.tooltip-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tooltip-tech-icon {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.tooltip-tech-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin: 0;
+}
+
+.tooltip-close-btn {
+    background: none;
+    border: none;
+    color: var(--text-medium);
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0.25rem;
+    transition: all 0.3s ease;
+    border-radius: 0.25rem;
+}
+
+.tooltip-close-btn:hover {
+    color: var(--primary-blue);
+    background: var(--background-light);
+}
+
+.tooltip-content {
+    padding: 1.5rem;
+}
+
+.tooltip-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.tooltip-projects {
+    margin-bottom: 1.5rem;
+}
+
+.tooltip-projects-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tooltip-projects-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tooltip-projects-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-medium);
+    font-size: 0.9rem;
+}
+
+.tooltip-projects-list li:last-child {
+    border-bottom: none;
+}
+
+.tooltip-projects-list li::before {
+    content: '→';
+    color: var(--primary-orange);
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+.tooltip-cta {
+    background: var(--background-light);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border-light);
+}
+
+.tooltip-cta-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+}
+
+.tooltip-cta-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tooltip-cta-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+}
+
+.tooltip-cta-btn.primary {
+    background: var(--primary-blue);
+    color: var(--white);
+    border: 2px solid var(--primary-blue);
+}
+
+.tooltip-cta-btn.primary:hover {
+    background: var(--primary-orange);
+    border-color: var(--primary-orange);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 0.25rem 0.75rem rgba(243, 124, 31, 0.3);
+}
+
+.tooltip-cta-btn.secondary {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+}
+
+.tooltip-cta-btn.secondary:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-1px);
 }
 
 /* ==============================================
@@ -319,6 +528,46 @@
 .clouds-section { animation-delay: 0.6s; }
 .databases-section { animation-delay: 0.7s; }
 
+/* Animation pour le tooltip détaillé */
+@keyframes tooltipSlideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.tech-detailed-tooltip.show {
+    animation: tooltipSlideIn 0.3s ease forwards;
+}
+
+/* Effet de ripple au clic */
+.tech-rectangle {
+    overflow: hidden;
+    position: relative;
+}
+
+.tech-rectangle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(23, 48, 238, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.tech-rectangle:active::before {
+    width: 200%;
+    height: 200%;
+}
+
 /* ==============================================
    RESPONSIVE DESIGN
    ============================================== */
@@ -345,6 +594,11 @@
         width: 4.5rem; /* 72px */
         height: 2.8125rem; /* 45px */
     }
+    
+    .tech-detailed-tooltip {
+        width: 95%;
+        max-width: 28rem;
+    }
 }
 
 /* Mobile - jusqu'à 767px */
@@ -360,6 +614,7 @@
     
     .title-highlight::after {
         width: calc(100% + 0.25rem);
+        left: 0.25rem;
     }
     
     .technologies-subtitle {
@@ -397,6 +652,8 @@
         width: 4rem; /* 64px */
         height: 2.5rem; /* 40px */
         font-size: 0.75rem;
+        margin-right: 0.375rem;
+        margin-bottom: 0.375rem;
     }
     
     .dropdown-rectangle {
@@ -417,6 +674,41 @@
     
     .tech-dropdown-content.show {
         max-height: 5rem;
+    }
+    
+    .tech-detailed-tooltip {
+        width: 95%;
+        max-width: none;
+        max-height: 85vh;
+        border-radius: 0.5rem;
+    }
+    
+    .tooltip-header {
+        padding: 1rem;
+    }
+    
+    .tooltip-tech-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .tooltip-tech-name {
+        font-size: 1.25rem;
+    }
+    
+    .tooltip-content {
+        padding: 1rem;
+    }
+    
+    .tooltip-cta-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .tooltip-cta-btn {
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        width: 100%;
     }
 }
 
@@ -450,6 +742,8 @@
         width: 3.5rem; /* 56px */
         height: 2.25rem; /* 36px */
         font-size: 0.7rem;
+        margin-right: 0.25rem;
+        margin-bottom: 0.25rem;
     }
     
     .dropdown-rectangle {
@@ -459,6 +753,45 @@
     
     .dropdown-arrow {
         margin-left: 0.25rem;
+    }
+    
+    .tech-detailed-tooltip {
+        width: 98%;
+        max-height: 90vh;
+        border-radius: 0.375rem;
+    }
+    
+    .tooltip-header {
+        padding: 0.75rem;
+    }
+    
+    .tooltip-tech-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .tooltip-tech-name {
+        font-size: 1.125rem;
+    }
+    
+    .tooltip-content {
+        padding: 0.75rem;
+    }
+    
+    .tooltip-description {
+        font-size: 0.9rem;
+    }
+    
+    .tooltip-projects-title {
+        font-size: 1rem;
+    }
+    
+    .tooltip-projects-list li {
+        font-size: 0.8rem;
+    }
+    
+    .tooltip-cta-title {
+        font-size: 0.9rem;
     }
 }
 
@@ -483,6 +816,10 @@
     .technologies-container {
         background: linear-gradient(135deg, #E0E0E0 0%, #F0F0F0 50%, #F8F8F8 100%);
     }
+    
+    .tech-detailed-tooltip {
+        border: 3px solid var(--text-dark);
+    }
 }
 
 /* Mode mouvement réduit */
@@ -497,12 +834,18 @@
     .tech-rectangle,
     .tech-tooltip,
     .dropdown-arrow,
-    .tech-dropdown-content {
+    .tech-dropdown-content,
+    .tech-detailed-tooltip,
+    .tooltip-overlay {
         transition: none;
     }
     
     .tech-rectangle:hover {
         transform: none;
+    }
+    
+    .tech-detailed-tooltip.show {
+        animation: none;
     }
 }
 
@@ -526,76 +869,6 @@
     border-top-color: #999;
 }
 
-/* ==============================================
-   PRINT STYLES
-   ============================================== */
-
-@media print {
-    .technologies-container {
-        background: none !important;
-        box-shadow: none !important;
-    }
-    
-    .tech-rectangle {
-        border: 1px solid #000 !important;
-        background: white !important;
-        box-shadow: none !important;
-    }
-    
-    .tech-tooltip {
-        display: none !important;
-    }
-}
-
-/* ==============================================
-   THÈME SOMBRE (OPTIONNEL)
-   ============================================== */
-
-@media (prefers-color-scheme: dark) {
-    .technologies-page.dark-theme .tech-rectangle {
-        background: #2a2a2a;
-        border-color: #444;
-        color: #fff;
-    }
-    
-    .technologies-page.dark-theme .tech-rectangle:hover {
-        background: #3a3a3a;
-        border-color: var(--primary-blue);
-    }
-    
-    .technologies-page.dark-theme .technologies-container {
-        background: linear-gradient(135deg, #1a2940 0%, #1e3a52 50%, #224b64 100%);
-    }
-}
-
-/* ==============================================
-   MICRO-INTERACTIONS AVANCÉES
-   ============================================== */
-
-/* Effet de ripple au clic */
-.tech-rectangle {
-    overflow: hidden;
-    position: relative;
-}
-
-.tech-rectangle::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(23, 48, 238, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.tech-rectangle:active::before {
-    width: 200%;
-    height: 200%;
-}
-
 /* Loading skeleton pour les rectangles */
 .tech-rectangle.loading {
     background: linear-gradient(
@@ -615,4 +888,49 @@
     100% {
         background-position: -200% 0;
     }
+}
+
+/* ==============================================
+   PRINT STYLES
+   ============================================== */
+
+@media print {
+    .technologies-container {
+        background: none !important;
+        box-shadow: none !important;
+    }
+    
+    .tech-rectangle {
+        border: 1px solid #000 !important;
+        background: white !important;
+        box-shadow: none !important;
+    }
+    
+    .tech-tooltip,
+    .tech-detailed-tooltip,
+    .tooltip-overlay {
+        display: none !important;
+    }
+}
+
+/* ==============================================
+   SCROLLBAR PERSONNALISÉE POUR LE TOOLTIP
+   ============================================== */
+
+.tech-detailed-tooltip::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.tech-detailed-tooltip::-webkit-scrollbar-track {
+    background: var(--background-light);
+    border-radius: 0.25rem;
+}
+
+.tech-detailed-tooltip::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 0.25rem;
+}
+
+.tech-detailed-tooltip::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-orange);
 }
