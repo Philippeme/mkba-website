@@ -84,7 +84,6 @@ function initTechRectangles() {
         rectangle.addEventListener('focus', function() {
             this.style.transform = 'translateY(-2px)';
             this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)';
-            this.style.outline = '2px solid var(--primary-orange)';
             this.style.outlineOffset = '2px';
         });
         
