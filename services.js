@@ -6,7 +6,7 @@
 let whatWeDoMegaMenuOpen = false;
 let servicesAnimationsInitialized = false;
 
-// Traductions spécifiques à la page Services
+// Traductions spécifiques à la page Services - MIS À JOUR AVEC NOUVEAU MEGA MENU
 const servicesTranslations = {
     fr: {
         // Meta et navigation
@@ -18,6 +18,10 @@ const servicesTranslations = {
         // Breadcrumb
         breadcrumb_what_we_do: "Ce que nous faisons",
         breadcrumb_services: "Services",
+        
+        // Nouveau mega menu "What we do"
+        what_we_do_mega_title: "Ce que nous faisons",
+        what_we_do_mega_description: "Aliquam faucibus, odio nec commodo aliquam, neque felis placerat dui, a porta ante lectus dapibus est. Aliquam a bibendum mi, sed condimentum est. Mauris arcu odio, vestibulum quis imperdiet cursus, sodales vitae dui.",
         
         // Hero Section
         services_hero_title: "Nos Services",
@@ -110,6 +114,10 @@ const servicesTranslations = {
         breadcrumb_what_we_do: "What we do",
         breadcrumb_services: "Services",
         
+        // Nouveau mega menu "What we do"
+        what_we_do_mega_title: "What we do",
+        what_we_do_mega_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+        
         // Hero Section
         services_hero_title: "Our Services",
         services_hero_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
@@ -192,7 +200,7 @@ const servicesTranslations = {
 };
 
 // ==============================================
-// GESTION DU MEGA MENU "WHAT WE DO"
+// GESTION DU NOUVEAU MEGA MENU "WHAT WE DO" - IDENTIQUE AU "WHO WE ARE"
 // ==============================================
 
 function initWhatWeDoMegaMenu() {
@@ -207,7 +215,7 @@ function initWhatWeDoMegaMenu() {
             // Supprimer l'attribut data-bs-toggle pour désactiver Bootstrap
             dropdownToggle.removeAttribute('data-bs-toggle');
             
-            // Système hover personnalisé
+            // Système hover personnalisé - identique au mega menu "Who we are"
             megaMenuDropdown.addEventListener('mouseenter', function() {
                 whatWeDoMegaMenuOpen = true;
                 dropdownMenu.classList.add('show');
@@ -315,7 +323,7 @@ function initServiceCardsInteractions() {
             this.style.outlineOffset = '';
         });
         
-        // Click handler pour futures interactions (contact, demande de devis, etc.)
+        // Click handler pour futures interactions
         card.addEventListener('click', function() {
             const serviceTitle = this.querySelector('.service-card-title')?.textContent;
             
@@ -325,11 +333,7 @@ function initServiceCardsInteractions() {
                 this.style.transform = '';
             }, 150);
             
-            // Log pour analytics ou future fonctionnalité
             console.log(`Clic sur service: ${serviceTitle}`);
-            
-            // Ici on pourrait ajouter une modal de contact ou rediriger
-            // showServiceContactModal(serviceTitle);
         });
         
         // Support clavier pour le clic
@@ -468,7 +472,7 @@ function initBreadcrumbNavigation() {
             item.style.color = 'var(--text-medium)';
         }
         
-        // Ajouter des event listeners pour les éléments non-actifs si nécessaire
+        // Ajouter des event listeners pour les éléments non-actifs
         const span = item.querySelector('span');
         if (span && !item.classList.contains('active')) {
             span.addEventListener('click', function() {
@@ -553,7 +557,6 @@ function initCheckIconsHandling() {
             this.style.opacity = '1';
             this.style.transform = 'scale(1)';
         });
-        
     });
 }
 
@@ -567,16 +570,7 @@ function initServicesAnalytics() {
     serviceCards.forEach((card, index) => {
         card.addEventListener('click', function() {
             const serviceTitle = this.querySelector('.service-card-title')?.textContent;
-            
-            // Analytics pour tracker l'intérêt des utilisateurs
             console.log(`Analytics: Clic sur service "${serviceTitle}" (position: ${index + 1})`);
-            
-            // Ici on pourrait ajouter Google Analytics ou autre
-            // gtag('event', 'service_interest', {
-            //     event_category: 'Services',
-            //     event_label: serviceTitle,
-            //     value: index + 1
-            // });
         });
         
         // Tracking du temps de hover (engagement)

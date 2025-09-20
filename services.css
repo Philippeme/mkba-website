@@ -116,54 +116,109 @@
     color: var(--primary-blue) !important;
 }
 
+/* ==============================================
+   NOUVEAU MEGA MENU "WHAT WE DO" - STYLE IDENTIQUE AU "WHO WE ARE"
+   ============================================== */
+
 .what-we-do-mega-menu {
     background: var(--white);
     border: none;
-    border-radius: 0.375rem;
+    border-radius: 0;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
-    margin-top: 7px;
-    min-width: 15rem;
+    margin-top: 20px;
+    min-width: 132vw;
     left: 50% !important;
     transform: translateX(-50%);
     position: absolute;
     top: 100%;
 }
 
-.mega-menu-content-simple {
-    padding: 1rem;
+.what-we-do-mega-menu .mega-menu-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-.mega-menu-links-simple {
+.what-we-do-mega-menu .mega-menu-content {
+    display: flex;
+    align-items: stretch;
+    min-height: 200px;
+    margin-left: calc(44vw - 40%);
+    padding: 2rem 0;
+}
+
+.what-we-do-mega-menu .mega-menu-left {
+    flex: 1;
+    padding: 2rem;
+    background: var(--background-gray);
+    border-right: 1px solid var(--border-light);
+}
+
+.what-we-do-mega-menu .mega-menu-title {
+    color: #333333;
+    font-weight: 430;
+    margin-bottom: 1rem;
+    font-size: 30px;
+    word-wrap: break-word;
+}
+
+.what-we-do-mega-menu .mega-menu-description {
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 0;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.what-we-do-mega-menu .mega-menu-right {
+    flex: 2;
+    padding: 2rem;
+    margin-bottom: 4.125rem;
+    display: flex;
+    align-items: center;
+}
+
+.what-we-do-mega-menu .mega-menu-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+}
+
+.what-we-do-mega-menu .mega-menu-column {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
-.mega-menu-links-simple .mega-menu-item {
-    color: var(--text-dark) !important;
-    padding: 0.5rem;
-    font-size: 1rem;
+.what-we-do-mega-menu .mega-menu-item {
+    color: #333333 !important;
+    padding: 0.5rem 0;
+    font-size: 18px;
     font-weight: 400;
     background: transparent;
     transition: all 0.3s ease;
-    border-radius: 0.25rem;
+    border-radius: 0;
     text-decoration: none;
     border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+    word-wrap: break-word;
 }
 
-.mega-menu-links-simple .mega-menu-item:last-child {
+.what-we-do-mega-menu .mega-menu-item:last-child {
     border-bottom: none;
 }
 
-.mega-menu-links-simple .mega-menu-item:hover,
-.mega-menu-links-simple .mega-menu-item:focus {
+.what-we-do-mega-menu .mega-menu-item:hover,
+.what-we-do-mega-menu .mega-menu-item:focus {
     background-color: rgba(0, 102, 204, 0.05);
-    color: var(--primary-orange) !important;
+    color: var(--primary-blue) !important;
     transform: translateX(3px);
 }
 
-.mega-menu-links-simple .mega-menu-item.active {
+.what-we-do-mega-menu .mega-menu-item.active {
     background-color: rgba(0, 102, 204, 0.1);
     color: var(--primary-blue) !important;
     font-weight: 600;
@@ -476,6 +531,10 @@
     .services-grid .row {
         --bs-gutter-x: 1.5rem;
     }
+    
+    .what-we-do-mega-menu .mega-menu-content {
+        margin-left: calc(40vw - 50%);
+    }
 }
 
 /* Small-Medium screens - 768px to 991px */
@@ -529,6 +588,15 @@
     .services-grid .row {
         --bs-gutter-x: 1.5rem;
         --bs-gutter-y: 1.5rem;
+    }
+    
+    /* Mega menu tablet */
+    .what-we-do-mega-menu {
+        min-width: 90vw;
+    }
+    
+    .what-we-do-mega-menu .mega-menu-content {
+        margin-left: 0;
     }
 }
 
@@ -621,6 +689,51 @@
         width: 1rem;
         height: 1rem;
     }
+    
+    /* Mega menu mobile */
+    .what-we-do-mega-menu {
+        min-width: 280px;
+        max-width: 320px;
+        left: 0 !important;
+        transform: none;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-content {
+        flex-direction: column;
+        min-height: auto;
+        padding: 1rem 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .what-we-do-mega-menu .mega-menu-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 1.5rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-title {
+        font-size: 1.375rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-description {
+        font-size: 0.9rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-right {
+        padding: 1rem 1.5rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-links {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-item {
+        font-size: 1rem;
+    }
 }
 
 /* Very small screens - jusqu'à 575px */
@@ -676,13 +789,22 @@
         height: 0.875rem;
     }
     
-    /* Mega menu mobile */
+    /* Mega menu très petit mobile */
     .what-we-do-mega-menu {
-        min-width: 12rem;
-        left: 0 !important;
-        transform: none;
-        margin-left: 1rem;
-        margin-right: 1rem;
+        min-width: 260px;
+        max-width: 280px;
+    }
+
+    .what-we-do-mega-menu .mega-menu-title {
+        font-size: 1.25rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-description {
+        font-size: 0.85rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-item {
+        font-size: 0.9rem;
     }
 }
 
@@ -703,6 +825,10 @@
     .what-we-do-mega-menu {
         border: 2px solid var(--text-dark);
     }
+    
+    .what-we-do-mega-menu .mega-menu-left {
+        border-right: 2px solid var(--text-dark);
+    }
 }
 
 /* Support reduced motion */
@@ -717,20 +843,20 @@
         transform: none;
     }
     
-    .mega-menu-links-simple .mega-menu-item:hover {
+    .what-we-do-mega-menu .mega-menu-item:hover {
         transform: none;
     }
 }
 
 /* Focus states pour l'accessibilité */
 .service-card-detailed:focus,
-.mega-menu-links-simple .mega-menu-item:focus {
+.what-we-do-mega-menu .mega-menu-item:focus {
     outline-offset: 2px;
 }
 
 /* Keyboard navigation */
 .keyboard-navigation .service-card-detailed:focus,
-.keyboard-navigation .mega-menu-links-simple .mega-menu-item:focus {
+.keyboard-navigation .what-we-do-mega-menu .mega-menu-item:focus {
     outline-offset: 2px !important;
 }
 
