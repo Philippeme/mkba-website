@@ -1,0 +1,1417 @@
+/* ==============================================
+   STYLES SPÉCIFIQUES POUR LA PAGE E-GOUVERNANCE
+   ============================================== */
+
+/* Variables spécifiques à la page E-Gouvernance */
+:root {
+    --egovernance-hero-bg: url('./assets/images/egovernance-hero-bg.png');
+    --egovernance-blue: #005FAC;
+    --egovernance-light-blue: #DEEFF8;
+    --egovernance-projects-bg: #DEEFF8;
+    --egovernance-testimonials-bg: #E9F5FF;
+    --egovernance-quote-blue: #5AB8FF;
+}
+
+/* ==============================================
+   HEADER ADAPTATION POUR LA PAGE E-GOUVERNANCE
+   ============================================== */
+
+.egovernance-page .navbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+}
+
+.egovernance-page .navbar .nav-link {
+    color: var(--primary-blue) !important;
+    font-weight: 400;
+}
+
+.egovernance-page .navbar .nav-link:hover {
+    color: var(--primary-orange) !important;
+}
+
+.egovernance-page .navbar .nav-link.active {
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 1.7rem !important;
+    margin-bottom: -19rem;
+}
+
+.egovernance-page .navbar .contact-btn {
+    border-color: var(--primary-blue) !important;
+    color: var(--primary-blue) !important;
+}
+
+.egovernance-page .navbar .contact-btn:hover {
+    background-color: var(--primary-blue) !important;
+    color: var(--white) !important;
+}
+
+.egovernance-page .navbar .language-icon {
+    color: var(--primary-blue) !important;
+}
+
+.egovernance-page .top-banner .search-trigger:hover {
+    color: var(--primary-blue) !important;
+    opacity: 1;
+}
+
+/* ==============================================
+   HERO SECTION E-GOUVERNANCE
+   ============================================== */
+
+.egovernance-hero-section {
+    background: var(--egovernance-hero-bg);
+    background-size: cover;
+    min-height: 600px;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0;
+    margin-top: 0;
+}
+
+.egovernance-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.egovernance-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    width: 100%;
+}
+
+.egovernance-hero-title {
+    font-family: 'Spectral', serif;
+    font-size: 3.125rem; /* 50px */
+    font-weight: 540;
+    color: var(--white);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: 0.025rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+}
+
+/* ==============================================
+   SECTION "NOS PRESTATIONS"
+   ============================================== */
+
+.egovernance-prestations-section {
+    background: var(--white);
+    padding: 3.75rem 0; /* 60px */
+}
+
+.egovernance-prestations-section .section-title-with-highlight {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3.75rem; /* 60px */
+    text-align: left;
+    position: relative;
+}
+
+.prestation-card {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    min-height: 200px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    position: relative;
+}
+
+.prestation-border {
+    width: 2px;
+    background: #A4A4A4;
+    min-height: 100%;
+    margin-right: 2rem;
+    flex-shrink: 0;
+}
+
+.prestation-content {
+    flex: 1;
+    padding-top: 0.5rem;
+}
+
+.prestation-number {
+    font-size: 2.5rem; /* 40px */
+    font-weight: bold;
+    color: var(--egovernance-blue);
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.prestation-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #707070;
+    line-height: 1.5;
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTION INTRO
+   ============================================== */
+
+.egovernance-intro-section {
+    background: var(--white);
+    padding: 2rem 0;
+}
+
+.egovernance-intro-section .section-title-with-highlight {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.egovernance-intro-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #333333;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTION CONTENU PRINCIPAL AVEC SIDEBAR
+   ============================================== */
+
+.egovernance-content-section {
+    position: relative;
+    background: var(--white);
+    border: none; /* enlève la bordure */
+}
+
+.egovernance-content-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 17rem; /* décale la fausse bordure */
+    bottom: -2rem;
+    left: 22.5rem;
+    border: 0.5px solid #005FAC;
+    pointer-events: none; /* ne gêne pas les clics */
+    z-index: 0;
+}
+
+/* Sidebar de navigation */
+.egovernance-sidebar {
+    background: var(--egovernance-blue);
+    border-radius: 0;
+    padding: 0;
+    height: fit-content;
+    position: sticky;
+    top: calc(var(--total-header-height) + 2rem);
+    z-index: 1;
+}
+
+.sidebar-header {
+    background: var(--egovernance-light-blue);
+    padding: 1.5rem;
+    border-radius: 0;
+    transform: translate(1.5rem, 1.5rem);
+}
+
+.sidebar-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5625rem; /* 25px */
+    font-weight: 600;
+    color: #0A0B0D;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.sidebar-nav {
+    padding: 1.5rem;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0;
+    margin-left: 1.5rem;   /* décale le bloc entier avec sa bordure */
+}
+
+.sidebar-menu li:last-child {
+    border-bottom: none;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 1rem 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5625rem; /* 25px */
+    font-weight: 500;
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    word-wrap: break-word;
+}
+
+.sidebar-menu a:hover {
+    color: var(--primary-orange);
+    opacity: 0.8;
+    transform: translateX(5px);
+}
+
+/* Zone de contenu principal */
+.egovernance-main-content {
+    padding-left: 2.5rem;
+}
+
+.content-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5625rem; /* 25px */
+    font-weight: 600;
+    color: #0A0B0D;
+    margin: 4.5rem 0 1.5rem 0;
+    word-wrap: break-word;
+}
+
+.content-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #707070;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.content-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.content-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #333333;
+    line-height: 1.6;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.content-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    background: var(--egovernance-blue);
+    border-radius: 0;
+}
+
+/* ==============================================
+   SECTION VIDÉO INTÉGRÉE
+   ============================================== */
+
+.egovernance-video-section {
+    background: var(--white);
+    padding: 5rem 0;
+}
+
+.video-container-egovernance {
+    width: 80%;
+    margin-bottom: 2rem;
+}
+
+.video-frame-egovernance {
+    position: relative;
+    width: 100%;
+    background: var(--text-dark);
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    aspect-ratio: 16/9;
+}
+
+.video-frame-egovernance iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.video-overlay-info-egovernance {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--white);
+    z-index: 10;
+}
+
+.copy-link-btn-egovernance {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    backdrop-filter: blur(4px);
+}
+
+.copy-link-btn-egovernance:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+}
+
+.video-description {
+    padding-left: 0;
+    transform: translateX(-7rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.video-desc-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5625rem; /* 25px */
+    font-weight: 600;
+    color: #0A0B0D;
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
+}
+
+.video-desc-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    color: #707070;
+    line-height: 1.6;
+    word-wrap: break-word;
+    hyphens: auto;
+    width: 135%;   
+    flex: 1;       
+}
+
+/* ==============================================
+   SECTION "NOS MEILLEURS PROJETS"
+   ============================================== */
+
+.egovernance-projects-section {
+    position: relative;
+    padding: 3.75rem 0;
+    margin-top: -2rem;
+}
+
+.egovernance-projects-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10%;         
+    right: 10%;        
+    background: var(--egovernance-projects-bg);
+    z-index: 0;       /* derrière le contenu */
+}
+
+.egovernance-projects-section > * {
+    position: relative;
+    z-index: 1; 
+}
+
+.egovernance-projects-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.projects-container {
+    width: 100%;
+}
+
+.project-card {
+    background: var(--white);
+    border-radius: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-header {
+    background: #6917EE;
+    height: 100%;
+    position: relative;
+    padding: 7.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.project-flag {
+    width: 64px;
+    height: 43px;
+    object-fit: cover;
+    background: #fff;          
+    border: 1px solid #ccc;    
+    padding: 4px;             
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.project-content {
+    background: #F5F5F5;
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.project-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5625rem; /* 25px */
+    font-weight: 400;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    flex: 1;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--egovernance-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 1px solid var(--egovernance-blue);
+    background: var(--white);
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin-bottom: 1rem;
+}
+
+.project-link:hover {
+    background: var(--egovernance-blue);
+    color: var(--white);
+    transform: translateX(2px);
+}
+
+.project-partner {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ==============================================
+   SECTION "CLIENT QUE NOUS SERVONS"
+   ============================================== */
+
+.egovernance-clients-section {
+    background: var(--white);
+    padding: 3.75rem 0; /* 60px */
+}
+
+.egovernance-clients-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.client-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px #00000029;
+    cursor: pointer;
+}
+
+.client-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 10px #00000029;
+}
+
+.client-icon {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    width: 41px;
+    height: 41px;
+}
+
+.client-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    color: #333333;
+    line-height: 1.4;
+    margin-top: 2rem;
+    padding: 0 2rem 0 2rem;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTION DÉTAILLÉE "DUIS MAURIS AUGUE"
+   ============================================== */
+
+.egovernance-details-section {
+    background: var(--white);
+    padding: 0.75rem 0; /* 60px */
+}
+
+.egovernance-details-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.egovernance-details-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.egovernance-details-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    color: #333333;
+    line-height: 1.8;
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.egovernance-details-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 12px;
+    height: 12px;
+    background: var(--egovernance-blue);
+    border-radius: 0;
+}
+
+/* ==============================================
+   SECTION "AENEAN NON ACCUMSAN ANTE"
+   ============================================== */
+
+.egovernance-services-section {
+    background: var(--white);
+    padding: 0.75rem 0; /* 60px */
+}
+
+.egovernance-services-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.service-detail-card {
+    background: var(--white);
+    border: 0.5px solid var(--egovernance-blue);
+    border-radius: 10px;
+    padding: 2.5rem;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-detail-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service-detail-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    color: var(--egovernance-blue);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.3;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.service-detail-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    color: #565656;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0;
+    flex: 1;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTION "SOLUTIONS INFORMATIQUES"
+   ============================================== */
+
+.egovernance-solutions-section {
+    background: var(--white);
+    padding: 2.75rem 0; /* 60px */
+}
+
+.egovernance-solutions-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.solution-card {
+    background: var(--white);
+    border: 1px solid #707070;
+    border-radius: 10px;
+    padding: 2rem;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.solution-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.solution-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.solution-icon-img {
+    width: 65px;
+    height: 65px;
+    background: #8290FF;
+    object-fit: cover;
+}
+
+.solution-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    color: var(--egovernance-blue);
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
+}
+
+.solution-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    flex: 1;
+}
+
+.solution-features li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    color: #565656;
+    line-height: 1.4;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.solution-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    background: var(--egovernance-blue);
+    border-radius: 0;
+}
+
+/* ==============================================
+   SECTION "JOIN OUR SATISFIED CLIENTS"
+   ============================================== */
+
+.egovernance-testimonials-section {
+    background: var(--white);
+    padding: 0.75rem 0; /* 60px */
+}
+
+.egovernance-testimonials-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.testimonial-card {
+    background: var(--egovernance-testimonials-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.testimonial-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.testimonial-logo {
+    height: 63px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.testimonial-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    background: #707070;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 0.25rem;
+}
+
+.profile-name i {
+    color: #0077B5;
+    font-size: 1.25rem;
+    margin-left: 0.75rem;
+}
+
+.profile-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    word-wrap: break-word;
+}
+
+.testimonial-rating {
+    display: flex;
+    gap: 0.25rem;
+    flex-shrink: 0;
+}
+
+.testimonial-rating i {
+    color: #FFD700;
+    font-size: 1.125rem;
+}
+
+.testimonial-content {
+    position: relative;
+    display: flex;
+    margin-left: 9.25rem;
+    align-items: flex-start;
+    gap: 0.25rem; /* espace entre guillemet et texte */
+}
+
+.quote-icon {
+    font-size: 2rem;
+    color: var(--egovernance-quote-blue);
+    margin: 0;
+    line-height: 1;
+    flex-shrink: 0; 
+}
+
+.testimonial-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    color: #232323;
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+
+/* Medium screens - 992px to 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .egovernance-hero-title {
+        font-size: 2.75rem;
+    }
+    
+    .egovernance-main-content {
+        padding-left: 2rem;
+    }
+    
+    .video-description {
+        padding-left: 1.5rem;
+    }
+}
+
+/* Small-Medium screens - 768px to 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .egovernance-hero-section {
+        min-height: 500px;
+        padding: 3rem 0;
+    }
+    
+    .egovernance-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .prestation-card {
+        min-height: 150px;
+    }
+    
+    .prestation-border {
+        margin-right: 1.5rem;
+    }
+    
+    .prestation-number {
+        font-size: 2rem;
+    }
+    
+    .prestation-description {
+        font-size: 1.125rem;
+    }
+    
+    .egovernance-main-content {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+    
+    .video-description {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+    
+    .egovernance-projects-section {
+        margin: 2rem -1rem;
+    }
+    
+    .project-title {
+        font-size: 1.25rem;
+    }
+    
+    .client-text {
+        font-size: 1.125rem;
+    }
+    
+    .service-detail-title {
+        font-size: 1.625rem;
+    }
+    
+    .solution-title {
+        font-size: 1.625rem;
+    }
+    
+    .testimonial-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .testimonial-left {
+        width: 100%;
+    }
+    
+    .testimonial-rating {
+        align-self: flex-end;
+    }
+}
+
+/* Mobile screens - jusqu'à 767px */
+@media (max-width: 767px) {
+    .egovernance-hero-section {
+        min-height: 450px;
+        padding: 2.5rem 0;
+        background-attachment: scroll;
+    }
+    
+    .egovernance-hero-title {
+        font-size: 2rem;
+    }
+    
+    .egovernance-prestations-section .section-title-with-highlight,
+    .egovernance-intro-section .section-title-with-highlight,
+    .egovernance-projects-section .section-title-with-highlight,
+    .egovernance-clients-section .section-title-with-highlight,
+    .egovernance-details-section .section-title-with-highlight,
+    .egovernance-solutions-section .section-title-with-highlight,
+    .egovernance-testimonials-section .section-title-with-highlight {
+        font-size: 1.75rem;
+        text-align: center;
+    }
+    
+    .egovernance-prestations-section .section-title-with-highlight::after,
+    .egovernance-intro-section .section-title-with-highlight::after,
+    .egovernance-projects-section .section-title-with-highlight::after,
+    .egovernance-clients-section .section-title-with-highlight::after,
+    .egovernance-details-section .section-title-with-highlight::after,
+    .egovernance-solutions-section .section-title-with-highlight::after,
+    .egovernance-testimonials-section .section-title-with-highlight::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2.5rem;
+    }
+    
+    .prestation-card {
+        min-height: 120px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .prestation-border {
+        margin-right: 1rem;
+    }
+    
+    .prestation-number {
+        font-size: 1.75rem;
+    }
+    
+    .prestation-description {
+        font-size: 1rem;
+    }
+    
+    .egovernance-intro-text {
+        font-size: 1.125rem;
+        text-align: center;
+    }
+    
+    .egovernance-sidebar {
+        position: static;
+        margin-bottom: 2rem;
+    }
+    
+    .sidebar-title {
+        font-size: 1.25rem;
+    }
+    
+    .sidebar-menu a {
+        font-size: 1.25rem;
+    }
+    
+    .egovernance-main-content {
+        padding-left: 0;
+    }
+    
+    .content-title {
+        font-size: 1.25rem;
+    }
+    
+    .content-text {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .content-list li {
+        font-size: 1rem;
+    }
+    
+    .video-description {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+    
+    .video-desc-title {
+        font-size: 1.25rem;
+    }
+    
+    .video-desc-text {
+        font-size: 1rem;
+    }
+    
+    .egovernance-projects-section {
+        margin: 2rem -0.75rem;
+        padding: 2.5rem 0;
+    }
+    
+    .project-title {
+        font-size: 1.125rem;
+    }
+    
+    .project-flag {
+        width: 40px;
+        height: 25px;
+    }
+    
+    .project-partner {
+        height: 30px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .client-text {
+        font-size: 1rem;
+        padding-right: 1.5rem;
+    }
+    
+    .egovernance-details-list li {
+        font-size: 1rem;
+    }
+    
+    .service-detail-card {
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .service-detail-title {
+        font-size: 1.375rem;
+    }
+    
+    .service-detail-description {
+        font-size: 1rem;
+    }
+    
+    .solution-card {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .solution-title {
+        font-size: 1.375rem;
+    }
+    
+    .solution-features li {
+        font-size: 1rem;
+    }
+    
+    .testimonial-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .testimonial-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .testimonial-profile {
+        width: 100%;
+    }
+    
+    .profile-avatar {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .testimonial-logo {
+        height: 40px;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+    }
+    
+    .quote-icon {
+        font-size: 1.5rem;
+    }
+}
+
+/* Very small screens - jusqu'à 575px */
+@media (max-width: 575px) {
+    .egovernance-hero-section {
+        min-height: 400px;
+        padding: 2rem 0;
+    }
+    
+    .egovernance-hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .egovernance-prestations-section .section-title-with-highlight,
+    .egovernance-intro-section .section-title-with-highlight,
+    .egovernance-projects-section .section-title-with-highlight,
+    .egovernance-clients-section .section-title-with-highlight,
+    .egovernance-details-section .section-title-with-highlight,
+    .egovernance-solutions-section .section-title-with-highlight,
+    .egovernance-testimonials-section .section-title-with-highlight {
+        font-size: 1.5rem;
+    }
+    
+    .prestation-number {
+        font-size: 1.5rem;
+    }
+    
+    .prestation-description {
+        font-size: 0.95rem;
+    }
+    
+    .egovernance-intro-text {
+        font-size: 1rem;
+    }
+    
+    .sidebar-title {
+        font-size: 1.125rem;
+    }
+    
+    .sidebar-menu a {
+        font-size: 1.125rem;
+        padding: 0.75rem 0;
+    }
+    
+    .content-title {
+        font-size: 1.125rem;
+    }
+    
+    .content-text {
+        font-size: 0.95rem;
+    }
+    
+    .content-list li {
+        font-size: 0.95rem;
+    }
+    
+    .video-desc-title {
+        font-size: 1.125rem;
+    }
+    
+    .video-desc-text {
+        font-size: 0.95rem;
+    }
+    
+    .project-title {
+        font-size: 1rem;
+    }
+    
+    .client-text {
+        font-size: 0.95rem;
+    }
+    
+    .service-detail-title {
+        font-size: 1.25rem;
+    }
+    
+    .service-detail-description {
+        font-size: 0.95rem;
+    }
+    
+    .solution-title {
+        font-size: 1.25rem;
+    }
+    
+    .solution-features li {
+        font-size: 0.95rem;
+    }
+    
+    .testimonial-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* ==============================================
+   ACCESSIBILITÉ ET ÉTATS SPÉCIAUX
+   ============================================== */
+
+/* Support high contrast mode */
+@media (prefers-contrast: high) {
+    .project-card,
+    .client-card,
+    .service-detail-card,
+    .solution-card,
+    .testimonial-card {
+        border: 2px solid #333;
+    }
+    
+    .egovernance-sidebar {
+        border: 2px solid var(--egovernance-blue);
+    }
+}
+
+/* Support reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .project-card,
+    .client-card,
+    .service-detail-card,
+    .solution-card,
+    .testimonial-card {
+        transition: none;
+    }
+    
+    .project-card:hover,
+    .client-card:hover,
+    .service-detail-card:hover,
+    .solution-card:hover,
+    .testimonial-card:hover {
+        transform: none;
+    }
+    
+    .egovernance-hero-section {
+        background-attachment: scroll;
+    }
+}
+
+/* Focus states pour l'accessibilité */
+.project-link:focus,
+.sidebar-menu a:focus,
+.client-card:focus,
+.service-detail-card:focus,
+.solution-card:focus,
+.testimonial-card:focus {
+    outline: 2px solid var(--primary-orange);
+    outline-offset: 2px;
+}
+
+/* Keyboard navigation */
+.keyboard-navigation .project-link:focus,
+.keyboard-navigation .sidebar-menu a:focus,
+.keyboard-navigation .client-card:focus,
+.keyboard-navigation .service-detail-card:focus,
+.keyboard-navigation .solution-card:focus,
+.keyboard-navigation .testimonial-card:focus {
+    outline: 2px solid var(--primary-orange) !important;
+    outline-offset: 2px !important;
+}
+
+/* ==============================================
+   CORRECTIONS SPÉCIFIQUES ZOOM
+   ============================================== */
+
+/* Assurer le rendu correct à tous niveaux de zoom */
+@supports (zoom: 1) {
+    .egovernance-hero-section {
+        min-height: 37.5rem; /* 600px en rem */
+    }
+    
+    .project-card,
+    .service-detail-card,
+    .solution-card {
+        min-height: 15rem; /* Hauteur minimum adaptative */
+    }
+}
+
+/* Correction des polices pour Safari */
+@supports (-webkit-appearance: none) {
+    .egovernance-hero-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Spectral', serif;
+    }
+    
+    .prestation-description,
+    .content-text,
+    .client-text,
+    .service-detail-description,
+    .testimonial-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+    }
+}
