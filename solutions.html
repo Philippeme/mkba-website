@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+    <title data-i18n="page_title_solutions">Solutions - MK BA Excellence en Solutions Technologiques</title>
+    <meta name="description"
+        content="Découvrez nos solutions logicielles par secteur : e-gouvernance, santé, éducation, environnement, business management et finance. Solutions modernes et sécurisées par MK BA.">
+    <meta name="keywords"
+        content="MK BA, solutions, logiciels, e-gouvernance, santé, éducation, environnement, business, finance">
+    <meta name="author" content="MK Business Analysis">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mk-ba.com/solutions">
+    <meta property="og:title" content="Solutions - MK BA Excellence en Solutions Technologiques">
+    <meta property="og:description"
+        content="Solutions logicielles par secteur d'activité avec modèles de déploiement flexibles">
+    <meta property="og:image" content="./assets/images/mkba-og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="solutions.css">
+
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./assets/images/solutions-hero-illustration.png" as="image">
+    <link rel="preload" href="./assets/images/Groupe 1@2x.png" as="image">
+</head>
+
+<body class="solutions-page zoom-optimized">
+    <!-- Top Banner with Search Only -->
+    <div class="top-banner">
+        <div class="container-fluid px-3">
+            <div class="top-banner-content">
+                <div class="search-section">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-trigger" onclick="toggleSearch()" tabindex="0" role="button"
+                            aria-label="Ouvrir la recherche">
+                            <i class="fas fa-search search-icon-right" aria-hidden="true"></i>
+                            <span data-i18n="search_placeholder">Recherche dans MK BA</span>
+                        </div>
+                        <div class="search-input-container" id="searchInputContainer">
+                            <input type="search" class="search-input" placeholder="Recherche dans MK BA..."
+                                data-i18n-placeholder="search_placeholder" aria-label="Champ de recherche">
+                            <button class="search-close" onclick="toggleSearch()" aria-label="Fermer la recherche">
+                                <i class="fas fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation avec Mega Menu "What we do" -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Navigation principale">
+            <div class="container-fluid px-3">
+                <!-- Logo à gauche -->
+                <a class="navbar-brand" href="index.html" aria-label="Retour à l'accueil MK BA">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="brand-logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <!-- Navigation au centre -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown mega-menu-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="whoWeAreDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_who_we_are">
+                                Qui nous sommes
+                            </a>
+                            <div class="dropdown-menu who-we-are-mega-menu" aria-labelledby="whoWeAreDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="dropdown_title">Qui nous sommes</h5>
+                                            <p class="mega-menu-description" data-i18n="dropdown_description">
+                                                Découvrez notre équipe, nos valeurs et notre engagement pour
+                                                l'excellence
+                                                technologique en Afrique.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="we-are-mkba.html"
+                                                        data-i18n="nav_we_are_mkba">
+                                                        Nous sommes MK BA
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_our_team">
+                                                        Notre équipe
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_sustainability">
+                                                        Notre engagement pour la durabilité
+                                                    </a>
+                                                </div>
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_technologies">
+                                                        Technologies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_work_with_us">
+                                                        Travailler avec nous
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown mega-menu-dropdown what-we-do-dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="whatWeDoDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_what_we_do">
+                                Ce que nous faisons
+                            </a>
+                            <!-- MEGA MENU "WHAT WE DO" -->
+                            <div class="dropdown-menu what-we-do-mega-menu" aria-labelledby="whatWeDoDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="what_we_do_mega_title">Ce que nous
+                                                faisons</h5>
+                                            <p class="mega-menu-description" data-i18n="what_we_do_mega_description">
+                                                Aliquam faucibus, odio nec commodo aliquam, neque felis placerat dui, a
+                                                porta ante lectus dapibus est. Aliquam a bibendum mi, sed condimentum
+                                                est. Mauris arcu odio, vestibulum quis imperdiet cursus, sodales vitae
+                                                dui.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="#"
+                                                        data-i18n="nav_industries_served">
+                                                        Industries servies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="services.html"
+                                                        data-i18n="nav_services">
+                                                        Services
+                                                    </a>
+                                                    <a class="mega-menu-item active" href="solutions.html"
+                                                        data-i18n="nav_solutions">
+                                                        Solutions
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#achievements"
+                                data-i18n="nav_achievements">Réalisations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#news" data-i18n="nav_news">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact-btn" href="index.html#contact" data-i18n="nav_contact">Nous
+                                contacter</a>
+                        </li>
+                    </ul>
+
+                    <!-- Sélecteur de langue à l'extrémité droite -->
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link language-selector-nav" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="Sélection de langue">
+                                <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bannière Fil d'Ariane -->
+    <section class="breadcrumb-banner">
+        <div class="container-fluid px-3">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <span data-i18n="breadcrumb_what_we_do">What we do</span>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page" data-i18n="breadcrumb_solutions">
+                        Solutions
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Hero Section "Solutions" -->
+    <section id="solutions-hero" class="solutions-hero-section" role="banner">
+        <div class="hero-overlay"></div>
+        <div class="container-fluid px-3">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-12">
+                    <div class="solutions-hero-content">
+                        <h1 class="solutions-hero-title" data-i18n="solutions_hero_title">Solutions</h1>
+                        <p class="solutions-hero-description" data-i18n="solutions_hero_description">
+                            Proin ac quam et lectus vestibulum blandit. Nunc maximus nibh at placerat tincidunt.
+                            Nam sem lacus, ornare non ante sed, ultricies fringilla massa. Ut congue, elit non tempus
+                            elementum, sem risus tincidunt diam, vitae sodales diam ipsum vitae purus. Fusce tristique
+                            erat nulla, vel viverra mi auctor non. Integer ante lorem, dictum at felis at, bibendum
+                            egestas augue. Aenean vestibulum lacus dolor, id tincidunt arcu pellentesque ut. Mauris
+                            sed venenatis diam, quis aliquam odio. Mauris lobortis augue placerat elit ultrices, non
+                            laoreet nunc semper. Phasellus
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="solutions-hero-illustration">
+                        <!-- Illustration avec superposition d'éléments selon la maquette -->
+                        <div class="solutions-illustration-stack">
+                            <img src="./assets/images/solutions/browsers-interfaces.png"
+                                alt="Navigateurs web avec interfaces arrière-plan"
+                                class="illustration-browsers-background" loading="lazy">
+                            <img src="./assets/images/solutions/browsers-interfaces.png"
+                                alt="Navigateurs web avec interfaces" class="illustration-browsers" loading="lazy">
+                            <img src="./assets/images/solutions/world-maps.png" alt="Cartes mondiales"
+                                class="illustration-maps" loading="lazy">
+                            <div class="globes-container">
+                                <img src="./assets/images/solutions/globe.png" alt="Globe" class="globe-icon globe-1"
+                                    loading="lazy">
+                                <img src="./assets/images/solutions/globe.png" alt="Globe" class="globe-icon globe-2"
+                                    loading="lazy">
+                                <img src="./assets/images/solutions/globe.png" alt="Globe" class="globe-icon globe-3"
+                                    loading="lazy">
+                                <img src="./assets/images/solutions/globe.png" alt="Globe" class="globe-icon globe-4"
+                                    loading="lazy">
+                                <img src="./assets/images/solutions/globe.png" alt="Globe" class="globe-icon globe-5"
+                                    loading="lazy">
+                                <img src="./assets/images/solutions/globe.png" alt="Globe" class="globe-icon globe-6"
+                                    loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section de contenu descriptif -->
+    <section id="solutions-intro" class="solutions-intro-section">
+        <div class="container-fluid px-3">
+            <div class="solutions-intro-content">
+                <p class="solutions-intro-text" data-i18n="solutions_intro_text">
+                    Proin ac quam et lectus vestibulum blandit. Nunc maximus nibh at placerat tincidunt. Nam sem lacus,
+                    ornare non ante sed, ultricies fringilla massa. Ut congue, elit non tempus elementum, sem risus
+                    tincidunt diam, vitae sodales diam ipsum vitae purus. Fusce tristique erat nulla, vel viverra mi
+                    auctor non. Integer ante lorem, dictum at felis at, bibendum egestas augue. Aenean vestibulum lacus
+                    dolor, id tincidunt arcu pellentesque ut. Mauris sed venenatis diam, quis aliquam odio. Mauris
+                    lobortis augue placerat elit ultrices, non laoreet nunc semper. Phasellus dolor sapien, molestie
+                    at ante id, porta interdum nisl. Duis sit amet ante feugiat enim viverra sagittis. Sed vitae
+                    pulvinar augue. Donec sit amet dolor non velit tincidunt commodo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Liste de produits par industrie" -->
+    <section id="solutions-grid" class="solutions-grid-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight solutions-section-title" data-i18n="solutions_section_title">
+                Liste de produits par industrie
+            </h2>
+
+            <div class="solutions-grid">
+                <div class="row">
+                    <!-- Secteur 1: INGÉNIERIE DES DONNÉES ET IA -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="solution-card-industry">
+                            <h3 class="solution-card-title" data-i18n="industry_data_ai_title">
+                                INGÉNIERIE DES DONNÉES ET IA
+                            </h3>
+                            <ul class="solution-features-list">
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_data_ai_1">Online government e-Services</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_data_ai_2">e-Justice</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_data_ai_3">Civil registration and vital statistics</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_data_ai_4">Social protection</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_data_ai_5">Projects and Programs Monitoring and
+                                        Evaluation</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_data_ai_6">Land Management</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_data_ai_7">e-Sourcing, e-Procurement, e-</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_data_ai_8">Citizen engagement</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Secteur 2: HEALTHCARE -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="solution-card-industry">
+                            <h3 class="solution-card-title" data-i18n="industry_healthcare_title">
+                                HEALTHCARE
+                            </h3>
+                            <ul class="solution-features-list">
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_healthcare_1">Hospital management</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_healthcare_2">Health products tracking and
+                                        logistics</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_healthcare_3">Laboratory management</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Secteur 3: EDUCATION -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="solution-card-industry">
+                            <h3 class="solution-card-title" data-i18n="industry_education_title">
+                                EDUCATION
+                            </h3>
+                            <ul class="solution-features-list">
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_education_1">e-Learning platform</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_education_2">School management</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Secteur 4: BUSINESS MANAGEMENT -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="solution-card-industry">
+                            <h3 class="solution-card-title" data-i18n="industry_business_title">
+                                BUSINESS MANAGEMENT
+                            </h3>
+                            <ul class="solution-features-list">
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_business_1">Document Management System</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_business_2">Enterprise Resource Planning</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_business_3">Project Management Software</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_business_4">HR Management</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_business_5">Customer Relationship Management</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_business_6">e-Sourcing, e-Procurement, e-</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_business_7">AI profiling and selection in HR</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_business_8">Business Intelligence</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_business_9">Networking</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Secteur 5: ENVIRONMENT -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="solution-card-industry">
+                            <h3 class="solution-card-title" data-i18n="industry_environment_title">
+                                ENVIRONMENT
+                            </h3>
+                            <ul class="solution-features-list">
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_environment_1">Environmental Monitoring</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_environment_2">Waste Management</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Secteur 6: FINANCE -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="solution-card-industry">
+                            <h3 class="solution-card-title" data-i18n="industry_finance_title">
+                                FINANCE
+                            </h3>
+                            <ul class="solution-features-list">
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_finance_1">Mobile payment</span>
+                                </li>
+                                <li class="solution-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="industry_finance_2">Rating and scoring</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Modèles de Déploiement & Licences" -->
+    <section id="deployment-models" class="deployment-models-section">
+        <div class="container">
+            <div class="deployment-inner">
+                <h2 class="section-title-with-highlight deployment-section-title" data-i18n="deployment_models_title">
+                    MODÈLES DE DÉPLOIEMENT & LICENCES
+                </h2>
+
+                <div class="deployment-content">
+                    <div class="row g-5">
+                        <!-- Colonne 1: Cloud SaaS -->
+                        <div class="col-lg-6 col-12">
+                            <div class="deployment-column">
+                                <h3 class="deployment-model-title" data-i18n="cloud_saas_title">Cloud SaaS</h3>
+                                <ul class="deployment-features-list">
+                                    <li class="deployment-feature">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="cloud_saas_1">Aucune installation</span>
+                                    </li>
+                                    <li class="deployment-feature">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="cloud_saas_2">Adaptation automatique à la charge</span>
+                                    </li>
+                                    <li class="deployment-feature">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="cloud_saas_3">Licence annuelle</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Colonne 2: Sur site (on-premises) -->
+                        <div class="col-lg-6 col-12">
+                            <div class="deployment-column">
+                                <h3 class="deployment-model-title" data-i18n="on_premises_title">Sur site (on-premises)
+                                </h3>
+                                <ul class="deployment-features-list">
+                                    <li class="deployment-feature">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="on_premises_1">Sur votre infrastructure physique</span>
+                                    </li>
+                                    <li class="deployment-feature">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="on_premises_2">Gestion assurée par le client</span>
+                                    </li>
+                                    <li class="deployment-feature">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="on_premises_3">Licence perpétuelle</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Notre Approche" -->
+    <section id="our-approach" class="our-approach-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight approach-section-title" data-i18n="our_approach_title">
+                NOTRE APPROCHE
+            </h2>
+
+            <div class="approach-content">
+                <ul class="approach-methodology-list">
+                    <li class="approach-feature">
+                        <span class="blue-square-bullet"></span>
+                        <span data-i18n="approach_1">Implication du client dans le recueil des attentes, les études et
+                            la conception</span>
+                    </li>
+                    <li class="approach-feature">
+                        <span class="blue-square-bullet"></span>
+                        <span data-i18n="approach_2">Mise à contribution d'une expertise de qualité et des meilleurs
+                            outils de l'industrie</span>
+                    </li>
+                    <li class="approach-feature">
+                        <span class="blue-square-bullet"></span>
+                        <span data-i18n="approach_3">Documentation des résultats</span>
+                    </li>
+                    <li class="approach-feature">
+                        <span class="blue-square-bullet"></span>
+                        <span data-i18n="approach_4">Renforcement de capacités et accompagnement du changement</span>
+                    </li>
+                    <li class="approach-feature">
+                        <span class="blue-square-bullet"></span>
+                        <span data-i18n="approach_5">Support et maintenance pour les logiciels</span>
+                    </li>
+                    <li class="approach-feature">
+                        <span class="blue-square-bullet"></span>
+                        <span data-i18n="approach_6">Nos solutions logicielles vérifient les caractéristiques des
+                            solutions modernes et sécurisées pour l'amélioration des performances de nos clients</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Tableau Comparatif -->
+    <section id="features-comparison" class="features-comparison-section">
+        <div class="container-fluid px-3">
+            <div class="comparison-table-container">
+                <div class="comparison-table">
+                    <!-- Colonne gauche: Fonctionnalités -->
+                    <div class="features-column">
+                        <div class="feature-item active" data-feature="simplicity">
+                            <span data-i18n="feature_simplicity">Simplicité d'utilisation</span>
+                        </div>
+                        <div class="feature-item" data-feature="multilingual">
+                            <span data-i18n="feature_multilingual">Multilingue</span>
+                        </div>
+                        <div class="feature-item" data-feature="security">
+                            <span data-i18n="feature_security">Sécurité</span>
+                        </div>
+                        <div class="feature-item" data-feature="integration">
+                            <span data-i18n="feature_integration">Integration aisée</span>
+                        </div>
+                        <div class="feature-item" data-feature="responsive">
+                            <span data-i18n="feature_responsive">Responsive design</span>
+                        </div>
+                        <div class="feature-item" data-feature="admin">
+                            <span data-i18n="feature_admin">Espace d'administration</span>
+                        </div>
+                    </div>
+
+                    <!-- Colonne droite: Avantages -->
+                    <div class="benefits-column">
+                        <div class="benefits-content" id="benefits-content">
+                            <!-- Contenu dynamique selon l'élément sélectionné -->
+                            <div class="benefit-section active" data-content="simplicity">
+                                <ul class="benefits-list">
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_simplicity_1">Courbe d'apprentissage réduite</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_simplicity_2">Interfaces utilisateur intuitives</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_simplicity_3">Documentation complète</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="benefit-section" data-content="multilingual">
+                                <ul class="benefits-list">
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_multilingual_1">Support de multiples langues</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_multilingual_2">Interface adaptable par région</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_multilingual_3">Gestion centralisée des
+                                            traductions</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="benefit-section" data-content="security">
+                                <ul class="benefits-list">
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_security_1">Cryptage de bout en bout</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_security_2">Authentification multi-facteurs</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_security_3">Audits de sécurité réguliers</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="benefit-section" data-content="integration">
+                                <ul class="benefits-list">
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_integration_1">APIs standardisées</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_integration_2">Connecteurs pré-configurés</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_integration_3">Migration facilitée</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="benefit-section" data-content="responsive">
+                                <ul class="benefits-list">
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_responsive_1">Optimisé mobile</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_responsive_2">Interface adaptive</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_responsive_3">Performance sur tous appareils</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="benefit-section" data-content="admin">
+                                <ul class="benefits-list">
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_admin_1">Tableau de bord centralisé</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_admin_2">Gestion des droits granulaire</span>
+                                    </li>
+                                    <li class="benefit-item">
+                                        <span class="blue-square-bullet"></span>
+                                        <span data-i18n="benefit_admin_3">Rapports automatisés</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer" role="contentinfo">
+        <div class="container-fluid px-3">
+            <div class="footer-content">
+                <!-- Colonne 1: Logo + slogan -->
+                <div class="footer-brand-section">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA Footer" class="footer-logo">
+                    <p class="footer-description">MK Business Analysis</p>
+                </div>
+
+                <!-- Colonne 2: Qui nous sommes -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="we-are-mkba.html" data-i18n="footer_who_are_mkba">Nous sommes MK BA</a></li>
+                        <li><a href="#" data-i18n="footer_our_team">Notre équipe</a></li>
+                        <li><a href="#" data-i18n="footer_sustainability">Notre engagement pour la durabilité</a></li>
+                        <li><a href="#" data-i18n="footer_technologies">Technologies</a></li>
+                        <li><a href="#" data-i18n="footer_work_with_us">Travailler avec nous</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Ce que nous faisons -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="#" data-i18n="footer_industries">Industries servies</a></li>
+                        <li><a href="services.html" data-i18n="footer_services">Services</a></li>
+                        <li><a href="solutions.html" data-i18n="footer_solutions">Solutions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Réalisations -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_achievements">Réalisations</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="index.html#achievements" data-i18n="footer_achievements_link">Nos réalisations</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5: Contacts -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_contacts">Contacts</h4>
+                    <address class="contact-info">
+                        <p data-i18n="footer_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a
+                                href="mailto:info@mk-ba.com">info@mk-ba.com</a></p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+237695478987">+237 695 478
+                                987</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom-section">
+                <nav class="footer-legal" aria-label="Liens légaux">
+                    <a href="#" data-i18n="footer_legal_mentions">Mentions légales</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_privacy">Politique de Confidentialité</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_terms">Termes et conditions</a>
+                </nav>
+
+                <p class="footer-copyright" data-i18n="footer_copyright">Copyright © 2025. Tous droits réservés</p>
+            </div>
+        </div>
+
+        <!-- Bas de page (bande grise foncée) -->
+        <div class="footer-bottom-band">
+            <div class="container-fluid px-3">
+                <small data-i18n="footer_powered">Powered by MK BA</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="solutions.js" defer></script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Solutions MK BA",
+        "description": "Solutions logicielles par secteur d'activité avec modèles de déploiement Cloud SaaS et sur site",
+        "provider": {
+            "@type": "Organization",
+            "name": "MK Business Analysis"
+        },
+        "url": "https://mk-ba.com/solutions",
+        "category": [
+            "Ingénierie des données et IA",
+            "Healthcare",
+            "Education",
+            "Business Management",
+            "Environment",
+            "Finance"
+        ]
+    }
+    </script>
+</body>
+
+</html>
