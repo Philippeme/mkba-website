@@ -1,0 +1,901 @@
+/* ==============================================
+   STYLES SPÉCIFIQUES POUR LA PAGE DÉVELOPPEMENT LOGICIEL
+   ============================================== */
+
+/* Variables spécifiques à la page Développement Logiciel */
+:root {
+    --development-hero-bg: url('./assets/images/developpement-hero-bg.png');
+    --development-blue: #005FAC;
+    --development-light-blue: #DEEFF8;
+    --development-references-bg: #F5F5F5;
+    --development-testimonials-bg: #E9F5FF;
+    --development-quote-blue: #5AB8FF;
+}
+
+/* ==============================================
+   HEADER ADAPTATION POUR LA PAGE DÉVELOPPEMENT LOGICIEL
+   ============================================== */
+
+.developpement-page .navbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+}
+
+.developpement-page .navbar .nav-link {
+    color: var(--primary-blue) !important;
+    font-weight: 400;
+}
+
+.developpement-page .navbar .nav-link:hover {
+    color: var(--primary-orange) !important;
+}
+
+.developpement-page .navbar .nav-link.active {
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 1.7rem !important;
+    margin-bottom: -19rem;
+}
+
+.developpement-page .navbar .contact-btn {
+    border-color: var(--primary-blue) !important;
+    color: var(--primary-blue) !important;
+}
+
+.developpement-page .navbar .contact-btn:hover {
+    background-color: var(--primary-blue) !important;
+    color: var(--white) !important;
+}
+
+.developpement-page .navbar .language-icon {
+    color: var(--primary-blue) !important;
+}
+
+.developpement-page .top-banner .search-trigger:hover {
+    color: var(--primary-blue) !important;
+    opacity: 1;
+}
+
+/* ==============================================
+   HERO SECTION DÉVELOPPEMENT LOGICIEL
+   ============================================== */
+
+.development-hero-section {
+    background: var(--development-hero-bg);
+    background-size: cover;
+    background-position: center;
+    min-height: 600px;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0;
+    margin-top: 0;
+}
+
+.development-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.development-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    width: 100%;
+}
+
+.development-hero-title {
+    font-family: 'Spectral', serif;
+    font-size: 3.125rem; /* 50px */
+    font-weight: 540;
+    color: var(--white);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: 0.025rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+}
+
+/* ==============================================
+   SECTION INTRODUCTION - DESCRIPTION DU SERVICE
+   ============================================== */
+
+.development-intro-section {
+    background: var(--white);
+    padding: 2.75rem 0;
+}
+
+.development-intro-content {
+    max-width: 100%;
+}
+
+.development-intro-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #707070;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.development-intro-text strong {
+    color: #707070;
+    font-weight: 600;
+}
+
+.development-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #333333;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.development-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.development-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #333333;
+    line-height: 1.6;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.development-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 12px;
+    height: 13px;
+    background: var(--development-blue);
+    border-radius: 0;
+}
+
+/* ==============================================
+   SECTION ARGUMENTAIRE - "POURQUOI CHOISIR MK BA"
+   ============================================== */
+
+.development-why-choose-section {
+    background: var(--white);
+    padding: 2rem 0 4rem 0;
+    margin-top: -3rem;
+}
+
+.development-why-choose-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+    position: relative;
+}
+
+.development-why-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.development-why-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #333333;
+    line-height: 1.5;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.development-why-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 12px;
+    height: 13px;
+    background: var(--development-blue);
+    border-radius: 0;
+}
+
+/* ==============================================
+   SECTIONS "DUIS PRETIUM GRAVIDA ENIM"
+   ============================================== */
+
+.development-services-section {
+    background: var(--white);
+    padding: 2rem 0 4rem 0;
+    margin-top: -4.5rem;
+}
+
+.development-services-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+    position: relative;
+}
+
+.service-card1 {
+    background: var(--white);
+    border: 0.5px solid var(--development-blue);
+    border-radius: 10px;
+    padding: 2rem;
+    height: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.service-card1:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.service-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    color: var(--development-blue);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.3;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.service-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    color: #565656;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0;
+    flex: 1;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTION CONTENU ADDITIONNEL
+   ============================================== */
+
+.development-additional-section {
+    background: var(--white);
+    padding: 2rem 0 4rem 0;
+    margin-top: -2rem;
+}
+
+.development-additional-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+    position: relative;
+}
+
+.development-additional-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #333333;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.development-additional-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.development-additional-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #333333;
+    line-height: 1.6;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.development-additional-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 12px;
+    height: 13px;
+    background: var(--development-blue);
+    border-radius: 0;
+}
+
+/* ==============================================
+   SECTION "RÉFÉRENCES LIÉS À CE SERVICE"
+   ============================================== */
+
+.development-references-section {
+    background: var(--white);
+    padding: 2rem 0 4rem 0;
+    margin-top: -4.5rem;
+}
+
+.development-references-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+    position: relative;
+}
+
+.references-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.reference-item {
+    display: flex;
+    align-items: stretch;
+    gap: 2rem;
+    background: var(--development-references-bg);
+    border-radius: 0;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+.reference-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.reference-image {
+    flex: 2;
+    position: relative;
+    overflow: hidden;
+}
+
+.reference-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.reference-item:hover .reference-img {
+    transform: scale(1.02);
+}
+
+.reference-flag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.project-flag {
+    width: 64px;
+    height: 43px;
+    object-fit: cover;
+    background: #fff;          
+    border: 1px solid #ccc;    
+    padding: 4px;             
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.reference-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reference-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    color: #333333;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex: 1;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.reference-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reference-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--development-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 1px solid var(--development-blue);
+    background: var(--white);
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.reference-btn:hover {
+    background: var(--development-blue);
+    color: var(--white);
+    transform: translateX(2px);
+}
+
+.reference-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ==============================================
+   SECTION "JOIN OUR SATISFIED CLIENTS"
+   ============================================== */
+
+.development-testimonials-section {
+    background: var(--white);
+    padding: 2rem 0 4rem 0;
+    margin-top: -2rem;
+}
+
+.development-testimonials-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+    position: relative;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.testimonial-card {
+    background: var(--development-testimonials-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.testimonial-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.testimonial-logo {
+    height: 63px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.testimonial-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    background: #707070;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 0.25rem;
+}
+
+.profile-name i {
+    color: #0077B5;
+    font-size: 1.25rem;
+    margin-left: 0.75rem;
+}
+
+.profile-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    word-wrap: break-word;
+}
+
+.testimonial-rating {
+    display: flex;
+    gap: 0.25rem;
+    flex-shrink: 0;
+}
+
+.testimonial-rating i {
+    color: #FFD700;
+    font-size: 1.125rem;
+}
+
+.testimonial-content {
+    position: relative;
+    display: flex;
+    margin-left: 9.25rem;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
+.quote-icon {
+    font-size: 2rem;
+    color: var(--development-quote-blue);
+    margin: 0;
+    line-height: 1;
+    flex-shrink: 0; 
+}
+
+.testimonial-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    color: #232323;
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+
+/* Medium screens - 992px to 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .development-hero-title {
+        font-size: 2.75rem;
+    }
+    
+    .development-intro-text,
+    .development-description {
+        font-size: 1.125rem;
+    }
+}
+
+/* Small-Medium screens - 768px to 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .development-hero-section {
+        min-height: 500px;
+        padding: 3rem 0;
+    }
+    
+    .development-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .development-intro-text,
+    .development-description {
+        font-size: 1.125rem;
+    }
+    
+    .service-title {
+        font-size: 1.625rem;
+    }
+    
+    .reference-item {
+        flex-direction: column !important;
+        min-height: auto;
+    }
+    
+    .reference-content {
+        padding: 1.5rem;
+    }
+    
+    .testimonial-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .testimonial-left {
+        width: 100%;
+    }
+    
+    .testimonial-content {
+        margin-left: 0;
+    }
+    
+    .testimonial-rating {
+        align-self: flex-end;
+    }
+}
+
+/* Mobile screens - jusqu'à 767px */
+@media (max-width: 767px) {
+    .development-hero-section {
+        min-height: 450px;
+        padding: 2.5rem 0;
+        background-attachment: scroll;
+    }
+    
+    .development-hero-title {
+        font-size: 2rem;
+    }
+    
+    .development-intro-section,
+    .development-why-choose-section,
+    .development-services-section,
+    .development-additional-section,
+    .development-references-section,
+    .development-testimonials-section {
+        padding: 2rem 0;
+    }
+    
+    .section-title-with-highlight {
+        font-size: 1.75rem;
+        text-align: center;
+    }
+    
+    .section-title-with-highlight::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2.5rem;
+    }
+    
+    .development-intro-text,
+    .development-description,
+    .development-additional-text {
+        font-size: 1rem;
+    }
+    
+    .development-list li,
+    .development-why-list li,
+    .development-additional-list li {
+        font-size: 1rem;
+    }
+    
+    .service-card1 {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .service-title {
+        font-size: 1.375rem;
+    }
+    
+    .service-description {
+        font-size: 1rem;
+    }
+    
+    .reference-item {
+        flex-direction: column !important;
+        gap: 0;
+        min-height: auto;
+    }
+    
+    .reference-content {
+        padding: 1.25rem;
+    }
+    
+    .reference-description {
+        font-size: 1rem;
+    }
+    
+    .testimonial-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .testimonial-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .testimonial-profile {
+        width: 100%;
+    }
+    
+    .profile-avatar {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .testimonial-logo {
+        height: 40px;
+    }
+    
+    .testimonial-content {
+        margin-left: 0;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+    }
+    
+    .quote-icon {
+        font-size: 1.5rem;
+    }
+}
+
+/* Very small screens - jusqu'à 575px */
+@media (max-width: 575px) {
+    .development-hero-section {
+        min-height: 400px;
+        padding: 2rem 0;
+    }
+    
+    .development-hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .section-title-with-highlight {
+        font-size: 1.5rem;
+    }
+    
+    .service-title {
+        font-size: 1.25rem;
+    }
+    
+    .service-description {
+        font-size: 0.95rem;
+    }
+    
+    .reference-description {
+        font-size: 0.95rem;
+    }
+    
+    .testimonial-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* ==============================================
+   ACCESSIBILITÉ ET ÉTATS SPÉCIAUX
+   ============================================== */
+
+/* Support high contrast mode */
+@media (prefers-contrast: high) {
+    .service-card1,
+    .testimonial-card {
+        border: 2px solid #333;
+    }
+}
+
+/* Support reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .service-card1,
+    .testimonial-card,
+    .reference-item {
+        transition: none;
+    }
+    
+    .service-card1:hover,
+    .testimonial-card:hover {
+        transform: none;
+    }
+    
+    .development-hero-section {
+        background-attachment: scroll;
+    }
+}
+
+.service-card1,
+.reference-img,
+.reference-item,
+.testimonial-card {
+  cursor: auto;   
+}
+
+/* Focus states pour l'accessibilité */
+.reference-btn:focus,
+.service-card1:focus,
+.testimonial-card:focus {
+    outline-offset: 2px;
+}
+
+/* Keyboard navigation */
+.keyboard-navigation .reference-btn:focus,
+.keyboard-navigation .service-card1:focus,
+.keyboard-navigation .testimonial-card:focus {
+    outline: 2px solid var(--primary-orange) !important;
+    outline-offset: 2px !important;
+}
+
+/* ==============================================
+   CORRECTIONS SPÉCIFIQUES ZOOM
+   ============================================== */
+
+/* Assurer le rendu correct à tous niveaux de zoom */
+@supports (zoom: 1) {
+    .development-hero-section {
+        min-height: 37.5rem; /* 600px en rem */
+    }
+    
+    .service-card1,
+    .testimonial-card {
+        min-height: 15rem; /* Hauteur minimum adaptative */
+    }
+}
+
+/* Correction des polices pour Safari */
+@supports (-webkit-appearance: none) {
+    .development-hero-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Spectral', serif;
+    }
+    
+    .development-intro-text,
+    .development-description,
+    .service-description,
+    .testimonial-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+    }
+}

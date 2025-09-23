@@ -248,6 +248,9 @@
     padding: 0;
     margin-bottom: 0;
     justify-content: flex-start;
+    flex-wrap: nowrap;        
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
 }
 
 .breadcrumb-item {
