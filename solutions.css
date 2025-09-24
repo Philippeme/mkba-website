@@ -421,7 +421,7 @@
 }
 
 /* ==============================================
-   SECTION "LISTE DE PRODUITS PAR INDUSTRIE"
+   SECTION "LISTE DE PRODUITS PAR INDUSTRIE" 
    ============================================== */
 
 .solutions-grid-section {
@@ -453,12 +453,65 @@
 }
 
 .solutions-grid {
-    margin-top: 2rem;
+    margin: 2rem 0 -2rem 0;
 }
 
+/* ==============================================
+   DISPOSITION CONFORME À LA MAQUETTE - CSS GRID
+   ============================================== */
+
+/* Container principal avec CSS Grid */
 .solutions-grid .row {
-    --bs-gutter-x: 2rem;
-    --bs-gutter-y: 2rem;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 2rem;
+    margin: 0 !important;
+    padding: 0;
+}
+
+/* Supprime le padding Bootstrap */
+.solutions-grid .row > [class*="col-"] {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+}
+
+/* Positionnement spécifique selon la maquette */
+.solutions-grid .row > [class*="col-"]:nth-child(1) {
+    /* INGÉNIERIE DES DONNÉES ET IA - Position 1,1 */
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.solutions-grid .row > [class*="col-"]:nth-child(2) {
+    /* HEALTHCARE - Position 2,1 */
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.solutions-grid .row > [class*="col-"]:nth-child(3) {
+    /* EDUCATION - Position 3,1 */
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.solutions-grid .row > [class*="col-"]:nth-child(4) {
+    /* BUSINESS MANAGEMENT - Position 2,2 (centrée) */
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.solutions-grid .row > [class*="col-"]:nth-child(5) {
+    /* ENVIRONMENT - Position 2,3 */
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.solutions-grid .row > [class*="col-"]:nth-child(6) {
+    /* FINANCE - Position 3,3 */
+    grid-column: 3;
+    grid-row: 2;
 }
 
 /* ==============================================
@@ -470,13 +523,13 @@
     border: 0.5px solid var(--solutions-card-border);
     border-radius: 0.625rem; /* 10px */
     padding: 2rem;
-    height: auto; /* Hauteur adaptative selon le contenu */
-    min-height: 200px; /* Hauteur minimum pour uniformité */
     transition: all 0.3s ease;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    height: auto;
+    min-height: 200px;
 }
 
 .solution-card-industry:hover {
@@ -854,11 +907,46 @@
 }
 
 /* ==============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - ADAPTATIF SELON MAQUETTE
    ============================================== */
 
-/* Medium screens - 992px to 1199px */
-@media (min-width: 992px) and (max-width: 1199px) {
+/* Responsive pour tablette */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .solutions-grid .row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .solutions-grid .row > [class*="col-"]:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    .solutions-grid .row > [class*="col-"]:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    
+    .solutions-grid .row > [class*="col-"]:nth-child(3) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    .solutions-grid .row > [class*="col-"]:nth-child(4) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    
+    .solutions-grid .row > [class*="col-"]:nth-child(5) {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    
+    .solutions-grid .row > [class*="col-"]:nth-child(6) {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    
     .solutions-hero-title {
         font-size: 3.25rem;
     }
@@ -874,10 +962,6 @@
     
     .solutions-section-title {
         font-size: 2.25rem;
-    }
-    
-    .solutions-grid .row {
-        --bs-gutter-x: 1.5rem;
     }
     
     .what-we-do-mega-menu .mega-menu-content {
@@ -941,11 +1025,6 @@
         width: 3rem;
     }
     
-    .solutions-grid .row {
-        --bs-gutter-x: 1.5rem;
-        --bs-gutter-y: 1.5rem;
-    }
-    
     .deployment-column {
         padding: 0 1rem;
     }
@@ -970,8 +1049,18 @@
     }
 }
 
-/* Mobile screens - jusqu'à 767px */
+/* Responsive mobile */
 @media (max-width: 767px) {
+    .solutions-grid .row {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .solutions-grid .row > [class*="col-"] {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+    }
+    
     .solutions-hero-section {
         min-height: 450px;
         padding: 2.5rem 0;
@@ -1039,11 +1128,6 @@
         left: 50%;
         transform: translateX(-50%);
         width: 2.5rem;
-    }
-    
-    .solutions-grid .row {
-        --bs-gutter-x: 1rem;
-        --bs-gutter-y: 1.5rem;
     }
     
     .solution-card-industry {

@@ -412,20 +412,22 @@ function showBenefitContent(featureType) {
 }
 
 // ==============================================
-// INTERACTIONS AVEC LES CARTES D'INDUSTRIES
+// INTERACTIONS AVEC LES CARTES D'INDUSTRIES - MISE À JOUR CSS GRID
 // ==============================================
 
 function initSolutionCardsInteractions() {
     const solutionCards = document.querySelectorAll('.solution-card-industry');
     
     solutionCards.forEach((card, index) => {
-        // Observer pour l'animation d'entrée
+        // Observer pour l'animation d'entrée adaptée au CSS Grid
         const cardObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Délai basé sur la position dans la grille plutôt que l'index séquentiel
+                    const delay = calculateGridDelay(index);
                     setTimeout(() => {
                         entry.target.classList.add('animate-in');
-                    }, index * 100);
+                    }, delay);
                     cardObserver.unobserve(entry.target);
                 }
             });
@@ -433,7 +435,7 @@ function initSolutionCardsInteractions() {
         
         cardObserver.observe(card);
         
-        // Effets d'interaction au survol
+        // Effets d'interaction au survol adaptés
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-3px) scale(1.01)';
             this.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.12)';
@@ -458,7 +460,7 @@ function initSolutionCardsInteractions() {
             });
         });
         
-        // Support clavier
+        // Support clavier et interactions existantes
         card.addEventListener('focus', function() {
             this.style.outlineOffset = '2px';
         });
@@ -468,7 +470,6 @@ function initSolutionCardsInteractions() {
             this.style.outlineOffset = '';
         });
         
-        // Click handler pour futures interactions
         card.addEventListener('click', function() {
             const industryTitle = this.querySelector('.solution-card-title')?.textContent;
             
@@ -481,7 +482,6 @@ function initSolutionCardsInteractions() {
             console.log(`Clic sur industrie: ${industryTitle}`);
         });
         
-        // Support clavier pour le clic
         card.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -489,7 +489,7 @@ function initSolutionCardsInteractions() {
             }
         });
         
-        // Rendre les cartes focusables
+        // Accessibilité
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'button');
         
@@ -498,6 +498,49 @@ function initSolutionCardsInteractions() {
             card.setAttribute('aria-label', `Industrie: ${industryTitle.textContent}`);
         }
     });
+}
+
+// ==============================================
+// FONCTION UTILITAIRE - CALCUL DÉLAI ANIMATION GRILLE
+// ==============================================
+
+function calculateGridDelay(index) {
+    // Calculer le délai basé sur la position dans une grille 3 colonnes
+    const columnsCount = getGridColumns();
+    const row = Math.floor(index / columnsCount);
+    const col = index % columnsCount;
+    
+    // Animation en diagonale pour un effet plus naturel
+    return (row * 100) + (col * 50);
+}
+
+function getGridColumns() {
+    // Déterminer le nombre de colonnes selon la taille d'écran
+    if (window.innerWidth >= 1200) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+}
+
+// ==============================================
+// FONCTION DE RÉAJUSTEMENT AU REDIMENSIONNEMENT
+// ==============================================
+
+function handleGridResize() {
+    const solutionCards = document.querySelectorAll('.solution-card-industry');
+    
+    // Réinitialiser les styles inline qui pourraient interférer
+    solutionCards.forEach(card => {
+        card.style.height = '';
+        card.style.minHeight = '';
+    });
+    
+    // Forcer le recalcul de la grille CSS
+    const grid = document.querySelector('.solutions-grid .row');
+    if (grid) {
+        grid.style.display = 'none';
+        grid.offsetHeight; // Force reflow
+        grid.style.display = '';
+    }
 }
 
 // ==============================================
@@ -771,6 +814,58 @@ function initSolutionsAnalytics() {
 }
 
 // ==============================================
+// FONCTION DE DEBUG POUR DÉVELOPPEMENT
+// ==============================================
+
+function debugGridLayout() {
+    const cards = document.querySelectorAll('.solution-card-industry');
+    console.log('=== DEBUG GRID LAYOUT ===');
+    
+    cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const title = card.querySelector('.solution-card-title')?.textContent || `Card ${index}`;
+        const features = card.querySelectorAll('.solution-feature').length;
+        
+        console.log(`${title}:`, {
+            index,
+            height: Math.round(rect.height),
+            features,
+            top: Math.round(rect.top),
+            left: Math.round(rect.left)
+        });
+    });
+    
+    console.log('=== END DEBUG ===');
+}
+
+// ==============================================
+// FALLBACK POUR NAVIGATEURS SANS CSS GRID
+// ==============================================
+
+function applyCSSGridFallback() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .solutions-grid .row {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            margin: 0 -1rem !important;
+        }
+        
+        .solutions-grid .row > [class*="col-"] {
+            padding: 0 1rem 2rem 1rem !important;
+            display: flex !important;
+        }
+        
+        .solution-card-industry {
+            height: 100% !important;
+            min-height: 350px !important;
+        }
+    `;
+    document.head.appendChild(style);
+    console.log('Fallback CSS Grid appliqué');
+}
+
+// ==============================================
 // FONCTION D'INITIALISATION PRINCIPALE
 // ==============================================
 
@@ -785,7 +880,7 @@ function initSolutionsPage() {
     initCheckIconsHandlingSolutions();
     initSolutionsAnalytics();
     
-    // Charger la langue sauvegardée ou française par défaut
+    // Charger la langue sauvegardée
     try {
         const savedLanguage = localStorage.getItem('mkba-language') || 'fr';
         setLanguageSolutionsPage(savedLanguage);
@@ -798,19 +893,41 @@ function initSolutionsPage() {
         setLanguageSolutionsPage(e.detail.language);
     });
     
+    // Gérer le redimensionnement pour la nouvelle grille
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            handleGridResize();
+            
+            // Fermer le mega menu sur mobile si ouvert
+            if (window.innerWidth < 768 && whatWeDoMegaMenuOpen) {
+                const megaMenuDropdown = document.querySelector('.what-we-do-dropdown');
+                const dropdownMenu = megaMenuDropdown?.querySelector('.what-we-do-mega-menu');
+                if (dropdownMenu) {
+                    dropdownMenu.classList.remove('show');
+                    whatWeDoMegaMenuOpen = false;
+                }
+            }
+        }, 250);
+    });
+    
     // Intégrer avec le système de traduction principal
     if (window.MKBAWebsite && window.MKBAWebsite.setLanguage) {
-        // Surcharger la fonction setLanguage pour inclure nos traductions
         const originalSetLanguage = window.MKBAWebsite.setLanguage;
         window.setLanguage = function(lang) {
-            // Appeler la fonction originale
             originalSetLanguage(lang);
-            // Appliquer nos traductions spécifiques
             setLanguageSolutionsPage(lang);
         };
     }
     
-    console.log('Page Solutions initialisée avec succès');
+    // Debug en mode développement
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        window.debugGrid = debugGridLayout;
+        console.log('Debug disponible avec: debugGrid()');
+    }
+    
+    console.log('Page Solutions initialisée avec CSS Grid');
 }
 
 // ==============================================
@@ -912,7 +1029,7 @@ function initAccessibilitySolutionsPage() {
 // ==============================================
 
 function initErrorHandlingAndPerformanceSolutions() {
-    // Gestion des erreurs d'images
+    // Gestion des erreurs d'images avec fallback amélioré
     window.addEventListener('error', function(e) {
         if (e.target.tagName === 'IMG') {
             console.warn('Erreur de chargement d\'image:', e.target.src);
@@ -933,10 +1050,39 @@ function initErrorHandlingAndPerformanceSolutions() {
                 `;
                 e.target.parentNode.appendChild(fallback);
             }
+            
+            // Fallback spécifique pour les icônes de validation
+            if (e.target.classList.contains('check-icon')) {
+                e.target.style.display = 'none';
+                const fallbackIcon = document.createElement('div');
+                fallbackIcon.className = 'check-icon-fallback';
+                fallbackIcon.innerHTML = '✓';
+                fallbackIcon.style.cssText = `
+                    width: 18px;
+                    height: 18px;
+                    background: #4CAF50;
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 12px;
+                    font-weight: bold;
+                    flex-shrink: 0;
+                    margin-top: 0.1rem;
+                `;
+                e.target.parentNode.insertBefore(fallbackIcon, e.target);
+            }
         }
     }, true);
     
-    // Préchargement des ressources importantes
+    // Vérification du support CSS Grid avec fallback
+    if (!CSS.supports('display: grid')) {
+        console.warn('CSS Grid non supporté - Application du fallback');
+        applyCSSGridFallback();
+    }
+    
+    // Préchargement optimisé
     const importantImages = [
         './assets/images/solutions/browsers-interfaces.png',
         './assets/images/solutions/world-maps.png',
@@ -970,30 +1116,6 @@ if (document.readyState === 'loading') {
     initErrorHandlingAndPerformanceSolutions();
 }
 
-// Optimisation des performances au redimensionnement
-let resizeTimeoutSolutions;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeoutSolutions);
-    resizeTimeoutSolutions = setTimeout(() => {
-        // Réinitialiser certaines fonctionnalités si nécessaire
-        if (window.innerWidth < 768 && whatWeDoMegaMenuOpen) {
-            // Fermer le mega menu sur mobile
-            const megaMenuDropdown = document.querySelector('.what-we-do-dropdown');
-            const dropdownMenu = megaMenuDropdown?.querySelector('.what-we-do-mega-menu');
-            if (dropdownMenu) {
-                dropdownMenu.classList.remove('show');
-                whatWeDoMegaMenuOpen = false;
-            }
-        }
-        
-        // Réajuster le tableau comparatif sur mobile
-        const comparisonTable = document.querySelector('.comparison-table');
-        if (comparisonTable && window.innerWidth < 768) {
-            // Logique d'ajustement mobile si nécessaire
-        }
-    }, 250);
-});
-
 // Export des fonctions pour utilisation externe
 window.SolutionsPage = {
     initSolutionsPage,
@@ -1003,5 +1125,10 @@ window.SolutionsPage = {
     initSolutionCardsInteractions,
     initSolutionsScrollAnimations,
     solutionsTranslations,
-    showBenefitContent
+    showBenefitContent,
+    handleGridResize,
+    debugGridLayout,
+    applyCSSGridFallback,
+    calculateGridDelay,
+    getGridColumns
 };
