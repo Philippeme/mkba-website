@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+    <title data-i18n="page_title_achievements">Réalisations - MK BA</title>
+    <meta name="description" content="Découvrez nos réalisations et accomplissements internationaux. Projets, témoignages clients et impact de MK BA dans 10 pays d'Afrique et de l'Océan Indien.">
+    <meta name="keywords" content="MK BA, réalisations, accomplissements, projets, témoignages, Afrique, développement technologique">
+    <meta name="author" content="MK Business Analysis">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mk-ba.com/achievements">
+    <meta property="og:title" content="Réalisations - MK BA">
+    <meta property="og:description" content="Nos réalisations et accomplissements internationaux en Afrique">
+    <meta property="og:image" content="./assets/images/mkba-og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="solutions.css">
+    <link rel="stylesheet" href="industries-served.css">
+    <link rel="stylesheet" href="achievements.css">
+
+    <!-- Leaflet CSS pour la carte interactive -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./assets/images/achievements-hero.png" as="image">
+</head>
+
+<body class="achievements-page zoom-optimized">
+    <!-- Top Banner with Search Only -->
+    <div class="top-banner">
+        <div class="container-fluid px-3">
+            <div class="top-banner-content">
+                <div class="search-section">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-trigger" onclick="toggleSearch()" tabindex="0" role="button"
+                            aria-label="Ouvrir la recherche">
+                            <i class="fas fa-search search-icon-right" aria-hidden="true"></i>
+                            <span data-i18n="search_placeholder">Recherche dans MK BA</span>
+                        </div>
+                        <div class="search-input-container" id="searchInputContainer">
+                            <input type="search" class="search-input" placeholder="Recherche dans MK BA..."
+                                data-i18n-placeholder="search_placeholder" aria-label="Champ de recherche">
+                            <button class="search-close" onclick="toggleSearch()" aria-label="Fermer la recherche">
+                                <i class="fas fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Navigation principale">
+            <div class="container-fluid px-3">
+                <!-- Logo à gauche -->
+                <a class="navbar-brand" href="index.html" aria-label="Retour à l'accueil MK BA">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="brand-logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <!-- Navigation au centre -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown mega-menu-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="whoWeAreDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_who_we_are">
+                                Qui nous sommes
+                            </a>
+                            <div class="dropdown-menu who-we-are-mega-menu" aria-labelledby="whoWeAreDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="dropdown_title">Qui nous sommes</h5>
+                                            <p class="mega-menu-description" data-i18n="dropdown_description">
+                                                Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence technologique en Afrique.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">
+                                                        Nous sommes MK BA
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_our_team">
+                                                        Notre équipe
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_sustainability">
+                                                        Notre engagement pour la durabilité
+                                                    </a>
+                                                </div>
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_technologies">
+                                                        Technologies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_work_with_us">
+                                                        Travailler avec nous
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#what-we-do" data-i18n="nav_what_we_do">Ce que nous faisons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="achievements.html" data-i18n="nav_achievements">Réalisations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#news" data-i18n="nav_news">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact-btn" href="index.html#contact" data-i18n="nav_contact">Nous contacter</a>
+                        </li>
+                    </ul>
+
+                    <!-- Sélecteur de langue à l'extrémité droite -->
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link language-selector-nav" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="Sélection de langue">
+                                <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bannière Fil d'Ariane -->
+    <section class="breadcrumb-banner">
+        <div class="container-fluid px-3">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span data-i18n="nav_achievements">Réalisations</span>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Hero Section Réalisations -->
+    <section id="achievements-hero" class="achievements-hero-section" role="banner">
+        <div class="hero-overlay"></div>
+        <div class="container-fluid px-3">
+            <div class="row align-items-center justify-content-start">
+                <div class="col-12">
+                    <div class="achievements-hero-content">
+                        <h1 class="achievements-hero-title" data-i18n="achievements_hero_title">
+                            Réalisations
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section de contenu principal descriptif -->
+    <section id="achievements-intro" class="achievements-intro-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="achievements_intro_title">
+                Nulla eleifend pulvinar purus,
+            </h2>
+            <p class="achievements-intro-text" data-i18n="achievements_intro_text">
+                Quisque suscipit ipsum est, eu venenatis leo ornare eget. Ut porta facilisis elementum. Sed condimentum sed massa quis ullamcorper. Donec at scelerisque neque. Pellentesque sagittis, massa sodales sodales finibus, felis ligula tempus lorem, eu porttitor ex lacus vel felis. Vivamus egestas scelerisque consectetur. Vestibulum faucibus enim urna, fermentum aliquet quam euismod non. Proin cursus, libero quis semper elementum, diam metus eleifend magna, in placerat sem velit vitae lacus. Vivamus tempor fringilla nisl, id condimentum felis dignissim nec.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section "Accomplissement par Pays" -->
+    <section id="achievements-by-country" class="achievements-by-country-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="achievements_by_country_title">
+                Accomplissement par Pays
+            </h2>
+        </div>
+
+        <!-- Carte sur toute la largeur -->
+        <div class="full-width-achievements-map-section">
+            <div id="achievements-interactive-map" role="img"
+                aria-label="Carte interactive des accomplissements de MK BA par pays">
+                <div class="map-loading-state">
+                    <div class="loading-content">
+                        <i class="fas fa-spinner fa-spin loading-spinner"></i>
+                        <div class="loading-text">Chargement de la carte des accomplissements...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Tous nos accomplissements" -->
+    <section id="all-achievements" class="all-achievements-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="all_achievements_title">
+                Tous nos accomplissements
+            </h2>
+
+            <!-- Interface de recherche et filtrage -->
+            <div class="achievements-search-container">
+                <div class="search-form-container">
+                    <div class="search-field-group">
+                        <label for="achievements-search" data-i18n="search_jobs_label">Recherche des emplois</label>
+                        <div class="search-input-wrapper">
+                            <input type="text" id="achievements-search" class="achievements-search-input" 
+                                   placeholder="Recherche par mots-clés" data-i18n-placeholder="search_keywords_placeholder">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="filters-row">
+                        <div class="filter-group">
+                            <select class="form-select filter-select" id="solution-filter">
+                                <option value="" data-i18n="filter_solution">Solution</option>
+                                <option value="egovernance" data-i18n="solution_egovernance">E-gouvernance</option>
+                                <option value="healthcare" data-i18n="solution_healthcare">Santé</option>
+                                <option value="education" data-i18n="solution_education">Éducation</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <select class="form-select filter-select" id="industries-filter">
+                                <option value="" data-i18n="filter_industries">Industries</option>
+                                <option value="public" data-i18n="industry_public">Secteur public</option>
+                                <option value="private" data-i18n="industry_private">Secteur privé</option>
+                                <option value="ngo" data-i18n="industry_ngo">ONG</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <select class="form-select filter-select" id="services-filter">
+                                <option value="" data-i18n="filter_services">Services</option>
+                                <option value="consulting" data-i18n="service_consulting">Conseil</option>
+                                <option value="development" data-i18n="service_development">Développement</option>
+                                <option value="integration" data-i18n="service_integration">Intégration</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <select class="form-select filter-select" id="technologies-filter">
+                                <option value="" data-i18n="filter_technologies">Technologies</option>
+                                <option value="web" data-i18n="tech_web">Web</option>
+                                <option value="mobile" data-i18n="tech_mobile">Mobile</option>
+                                <option value="ai" data-i18n="tech_ai">IA</option>
+                            </select>
+                        </div>
+
+                        <div class="search-button-group">
+                            <button type="button" class="btn search-btn" data-i18n="search_button">
+                                Recherche
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grille de projets accomplissements -->
+            <div class="achievements-grid">
+                <div class="row g-4">
+                    <!-- Carte 1 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="achievement-project-card">
+                            <div class="achievement-header-purple">
+                                <img src="./assets/images/flags/cameroon.png" alt="Drapeau Cameroun" class="achievement-flag">
+                            </div>
+                            <div class="achievement-content">
+                                <p class="achievement-description" data-i18n="achievement_desc_1">
+                                    Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at
+                                </p>
+                                <a href="#" class="achievement-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="achievement-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carte 2 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="achievement-project-card">
+                            <div class="achievement-header-purple">
+                                <img src="./assets/images/flags/cameroon.png" alt="Drapeau Cameroun" class="achievement-flag">
+                            </div>
+                            <div class="achievement-content">
+                                <p class="achievement-description" data-i18n="achievement_desc_2">
+                                    Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam
+                                </p>
+                                <a href="#" class="achievement-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="achievement-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carte 3 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="achievement-project-card">
+                            <div class="achievement-header-purple">
+                                <img src="./assets/images/flags/cameroon.png" alt="Drapeau Cameroun" class="achievement-flag">
+                            </div>
+                            <div class="achievement-content">
+                                <p class="achievement-description" data-i18n="achievement_desc_1">
+                                    Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at
+                                </p>
+                                <a href="#" class="achievement-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="achievement-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carte 4 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="achievement-project-card">
+                            <div class="achievement-header-purple">
+                                <img src="./assets/images/flags/cameroon.png" alt="Drapeau Cameroun" class="achievement-flag">
+                            </div>
+                            <div class="achievement-content">
+                                <p class="achievement-description" data-i18n="achievement_desc_2">
+                                    Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam
+                                </p>
+                                <a href="#" class="achievement-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="achievement-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carte 5 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="achievement-project-card">
+                            <div class="achievement-header-purple">
+                                <img src="./assets/images/flags/cameroon.png" alt="Drapeau Cameroun" class="achievement-flag">
+                            </div>
+                            <div class="achievement-content">
+                                <p class="achievement-description" data-i18n="achievement_desc_1">
+                                    Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at
+                                </p>
+                                <a href="#" class="achievement-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="achievement-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carte 6 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="achievement-project-card">
+                            <div class="achievement-header-purple">
+                                <img src="./assets/images/flags/cameroon.png" alt="Drapeau Cameroun" class="achievement-flag">
+                            </div>
+                            <div class="achievement-content">
+                                <p class="achievement-description" data-i18n="achievement_desc_2">
+                                    Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam
+                                </p>
+                                <a href="#" class="achievement-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="achievement-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages clients -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="testimonials-full-width">
+            <div class="container-fluid px-3">
+                <h2 class="section-title-with-highlight" data-i18n="testimonials_title">
+                    Témoignage
+                </h2>
+
+                <!-- Grille de témoignages -->
+                <div class="testimonials-grid">
+                    <div class="row g-4">
+                        <!-- Témoignage 1 - PNUD -->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-org-info">
+                                        <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo PNUD" class="testimonial-org-logo">
+                                        <div class="org-details">
+                                            <p class="org-name" data-i18n="org_undp_full">PNUD : Programme des nations Unis pour le développement</p>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote-section">
+                                        <div class="client-avatar"></div>
+                                        <div class="quote-content">
+                                            <div class="quote-marks">"</div>
+                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
+                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="client-attribution">
+                                        <div class="client-info">
+                                            <span class="client-name" data-i18n="client_name">Alan Ellis</span>
+                                            <span class="client-title" data-i18n="client_title">Président et chef de la direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-action">
+                                    <a href="#" class="testimonial-link" data-i18n="learn_more">En Savoir Plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 2 - UNICEF -->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-org-info">
+                                        <img src="./assets/icons/unicef-logo.png" alt="Logo UNICEF" class="testimonial-org-logo">
+                                        <div class="org-details">
+                                            <p class="org-name" data-i18n="org_unicef_full">UNICEF : Fonds des Nations Unies pour l'enfance</p>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote-section">
+                                        <div class="client-avatar"></div>
+                                        <div class="quote-content">
+                                            <div class="quote-marks">"</div>
+                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
+                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="client-attribution">
+                                        <div class="client-info">
+                                            <span class="client-name" data-i18n="client_name">Alan Ellis</span>
+                                            <span class="client-title" data-i18n="client_title">Président et chef de la direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-action">
+                                    <a href="#" class="testimonial-link" data-i18n="learn_more">En Savoir Plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 3 - UNIDO -->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-org-info">
+                                        <img src="./assets/icons/unido-logo.png" alt="Logo UNIDO" class="testimonial-org-logo">
+                                        <div class="org-details">
+                                            <p class="org-name" data-i18n="org_unido_full">UNIDO : Programme des nations Unis pour le développement</p>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote-section">
+                                        <div class="client-avatar"></div>
+                                        <div class="quote-content">
+                                            <div class="quote-marks">"</div>
+                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
+                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="client-attribution">
+                                        <div class="client-info">
+                                            <span class="client-name" data-i18n="client_name">Alan Ellis</span>
+                                            <span class="client-title" data-i18n="client_title">Président et chef de la direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-action">
+                                    <a href="#" class="testimonial-link" data-i18n="learn_more">En Savoir Plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Répéter pour les 6 témoignages supplémentaires -->
+                        <!-- Témoignage 4 -->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-org-info">
+                                        <div class="placeholder-logo"></div>
+                                        <div class="org-details">
+                                            <p class="org-name" data-i18n="org_undp_full">PNUD : Programme des nations Unis pour le développement</p>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote-section">
+                                        <div class="client-avatar"></div>
+                                        <div class="quote-content">
+                                            <div class="quote-marks">"</div>
+                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
+                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="client-attribution">
+                                        <div class="client-info">
+                                            <span class="client-name" data-i18n="client_name">Alan Ellis</span>
+                                            <span class="client-title" data-i18n="client_title">Président et chef de la direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-action">
+                                    <a href="#" class="testimonial-link" data-i18n="learn_more">En Savoir Plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 5 -->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-org-info">
+                                        <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo PNUD" class="testimonial-org-logo">
+                                        <div class="org-details">
+                                            <p class="org-name" data-i18n="org_undp_full">PNUD : Programme des nations Unis pour le développement</p>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote-section">
+                                        <div class="client-avatar"></div>
+                                        <div class="quote-content">
+                                            <div class="quote-marks">"</div>
+                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
+                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="client-attribution">
+                                        <div class="client-info">
+                                            <span class="client-name" data-i18n="client_name">Alan Ellis</span>
+                                            <span class="client-title" data-i18n="client_title">Président et chef de la direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-action">
+                                    <a href="#" class="testimonial-link" data-i18n="learn_more">En Savoir Plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 6 -->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-org-info">
+                                        <div class="placeholder-logo"></div>
+                                        <div class="org-details">
+                                            <p class="org-name" data-i18n="org_undp_full">PNUD : Programme des nations Unis pour le développement</p>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote-section">
+                                        <div class="client-avatar"></div>
+                                        <div class="quote-content">
+                                            <div class="quote-marks">"</div>
+                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
+                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="client-attribution">
+                                        <div class="client-info">
+                                            <span class="client-name" data-i18n="client_name">Alan Ellis</span>
+                                            <span class="client-title" data-i18n="client_title">Président et chef de la direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-action">
+                                    <a href="#" class="testimonial-link" data-i18n="learn_more">En Savoir Plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Témoignages 7, 8, 9 suivent le même pattern -->
+                        <!-- Témoignage 7 -->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-org-info">
+                                        <div class="placeholder-logo"></div>
+                                        <div class="org-details">
+                                            <p class="org-name" data-i18n="org_undp_full">PNUD : Programme des nations Unis pour le développement</p>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote-section">
+                                        <div class="client-avatar"></div>
+                                        <div class="quote-content">
+                                            <div class="quote-marks">"</div>
+                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
+                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="client-attribution">
+                                        <div class="client-info">
+                                            <span class="client-name" data-i18n="client_name">Alan Ellis</span>
+                                            <span class="client-title" data-i18n="client_title">Président et chef de la direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-action">
+                                    <a href="#" class="testimonial-link" data-i18n="learn_more">En Savoir Plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 8 -->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-org-info">
+                                        <div class="placeholder-logo"></div>
+                                        <div class="org-details">
+                                            <p class="org-name" data-i18n="org_undp_full">PNUD : Programme des nations Unis pour le développement</p>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote-section">
+                                        <div class="client-avatar"></div>
+                                        <div class="quote-content">
+                                            <div class="quote-marks">"</div>
+                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
+                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="client-attribution">
+                                        <div class="client-info">
+                                            <span class="client-name" data-i18n="client_name">Alan Ellis</span>
+                                            <span class="client-title" data-i18n="client_title">Président et chef de la direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-action">
+                                    <a href="#" class="testimonial-link" data-i18n="learn_more">En Savoir Plus</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 9 -->
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                            <div class="testimonial-card">
+                                <div class="testimonial-header">
+                                    <div class="testimonial-org-info">
+                                        <div class="placeholder-logo"></div>
+                                        <div class="org-details">
+                                            <p class="org-name" data-i18n="org_undp_full">PNUD : Programme des nations Unis pour le développement</p>
+                                        </div>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-content">
+                                    <div class="testimonial-quote-section">
+                                        <div class="client-avatar"></div>
+                                        <div class="quote-content">
+                                            <div class="quote-marks">"</div>
+                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
+                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="client-attribution">
+                                        <div class="client-info">
+                                            <span class="client-name" data-i18n="client_name">Alan Ellis</span>
+                                            <span class="client-title" data-i18n="client_title">Président et chef de la direction</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-separator"></div>
+
+                                <div class="testimonial-action">
+                                    <a href="#" class="testimonial-link" data-i18n="learn_more">En Savoir Plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bouton afficher plus -->
+                    <div class="show-more-testimonials">
+                        <button class="btn show-more-btn" data-i18n="show_more_testimonials">
+                            Afficher plus de témoignages
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer" role="contentinfo">
+        <div class="container-fluid px-3">
+            <div class="footer-content">
+                <!-- Colonne 1: Logo + slogan -->
+                <div class="footer-brand-section">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA Footer" class="footer-logo">
+                    <p class="footer-description">MK Business Analysis</p>
+                </div>
+
+                <!-- Colonne 2: Qui nous sommes -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="we-are-mkba.html" data-i18n="footer_who_are_mkba">Qui sommes-nous MK BA</a></li>
+                        <li><a href="#" data-i18n="footer_our_team">Notre équipe</a></li>
+                        <li><a href="#" data-i18n="footer_sustainability">Notre engagement pour la durabilité</a></li>
+                        <li><a href="#" data-i18n="footer_technologies">Technologies</a></li>
+                        <li><a href="#" data-i18n="footer_work_with_us">Travailler avec nous</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Ce que nous faisons -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="industries-served.html" data-i18n="footer_industries">Industries servies</a></li>
+                        <li><a href="#" data-i18n="footer_services">Services</a></li>
+                        <li><a href="#" data-i18n="footer_solutions">Solutions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Réalisations -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_achievements">Réalisations</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="achievements.html" data-i18n="footer_achievements_link">Réalisations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5: Contacts -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_contacts">Contacts</h4>
+                    <address class="contact-info">
+                        <p data-i18n="footer_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@mk-ba.com">info@mk-ba.com</a></p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+237695478987">+237 695 478 987</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom-section">
+                <nav class="footer-legal" aria-label="Liens légaux">
+                    <a href="#" data-i18n="footer_legal_mentions">Mentions légales</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_privacy">Politique de Confidentialité</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_terms">Termes et conditions</a>
+                </nav>
+
+                <p class="footer-copyright" data-i18n="footer_copyright">Copyright © 2025. Tous droits réservés</p>
+            </div>
+        </div>
+
+        <!-- Bas de page (bande grise foncée) -->
+        <div class="footer-bottom-band">
+            <div class="container-fluid px-3">
+                <small data-i18n="footer_powered">Powered by MK BA</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="achievements.js" defer></script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://mk-ba.com/achievements",
+        "name": "Réalisations - MK BA",
+        "description": "Découvrez nos réalisations et accomplissements internationaux en Afrique",
+        "publisher": {
+            "@type": "Organization",
+            "name": "MK Business Analysis"
+        },
+        "url": "https://mk-ba.com/achievements",
+        "mainEntity": {
+            "@type": "ItemList",
+            "name": "Réalisations MK BA",
+            "description": "Liste des accomplissements de MK BA dans 10 pays d'Afrique et de l'Océan Indien"
+        }
+    }
+    </script>
+</body>
+
+</html>
