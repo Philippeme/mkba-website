@@ -244,7 +244,7 @@ function initAchievementsInteractiveMap() {
         const mapStyle = document.createElement('style');
         mapStyle.textContent = `
             .achievements-map-tiles {
-                filter: grayscale(100%) brightness(0.9) contrast(0.8);
+                background: #F5F5F5;
             }
         `;
         document.head.appendChild(mapStyle);
