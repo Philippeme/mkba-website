@@ -42,7 +42,8 @@ const achievementsTranslations = {
         filter_industries: "Industries",
         filter_services: "Services",
         filter_technologies: "Technologies",
-        search_button: "Recherche",
+        search_button: "Rechercher",
+        reset_filters: "Réinitialiser",
         
         // Options des filtres
         solution_egovernance: "E-gouvernance",
@@ -64,7 +65,7 @@ const achievementsTranslations = {
         read_more_btn: "Lire plus",
         
         // Témoignages
-        testimonials_title: "Témoignage",
+        testimonials_title: "Témoignages",
         org_undp_full: "PNUD : Programme des nations Unis pour le développement",
         org_unicef_full: "UNICEF : Fonds des Nations Unies pour l'enfance",
         org_unido_full: "UNIDO : Programme des nations Unis pour le développement",
@@ -102,6 +103,7 @@ const achievementsTranslations = {
         filter_services: "Services",
         filter_technologies: "Technologies",
         search_button: "Search",
+        reset_filters: "Reset",
         
         // Options des filtres
         solution_egovernance: "E-governance",
@@ -383,7 +385,7 @@ function showAchievementsStaticMapFallback() {
 }
 
 // ==============================================
-// SYSTÈME DE RECHERCHE ET FILTRAGE
+// SYSTÈME DE RECHERCHE ET FILTRAGE AMÉLIORÉ
 // ==============================================
 
 function initAchievementsSearchSystem() {
@@ -393,11 +395,16 @@ function initAchievementsSearchSystem() {
     const servicesFilter = document.getElementById('services-filter');
     const technologiesFilter = document.getElementById('technologies-filter');
     const searchBtn = document.querySelector('.search-btn');
+    const resetBtn = document.getElementById('reset-filters-btn');
+
+    // Initialiser les interactions des dropdowns
+    initDropdownInteractions();
 
     // Gestion de la saisie dans le champ de recherche
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             achievementsSearchFilters.keywords = e.target.value.trim();
+            updateResetButtonVisibility();
             debounceAchievementsSearch();
         });
 
@@ -418,6 +425,7 @@ function initAchievementsSearchSystem() {
                                           filterId === 'services' ? 'services' :
                                           filterId === 'technologies' ? 'technologies' : 
                                           'solution'] = e.target.value;
+                updateResetButtonVisibility();
                 debounceAchievementsSearch();
             });
         }
@@ -427,6 +435,115 @@ function initAchievementsSearchSystem() {
     if (searchBtn) {
         searchBtn.addEventListener('click', performAchievementsSearch);
     }
+
+    // Bouton de réinitialisation
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetAllFilters);
+    }
+}
+
+// Initialiser les interactions des dropdowns avec icônes
+function initDropdownInteractions() {
+    const filterSelects = document.querySelectorAll('.filter-select');
+    
+    filterSelects.forEach(select => {
+        const wrapper = select.parentElement;
+        const icon = wrapper.querySelector('.filter-dropdown-icon');
+        
+        if (!icon) return;
+
+        // Événements pour l'animation de l'icône
+        select.addEventListener('focus', () => {
+            icon.style.transform = 'rotate(180deg)';
+            icon.style.color = 'var(--achievements-blue)';
+        });
+
+        select.addEventListener('blur', () => {
+            icon.style.transform = 'rotate(0deg)';
+            icon.style.color = '#707070';
+        });
+
+        // Animation lors du clic
+        select.addEventListener('mousedown', () => {
+            icon.style.transform = 'rotate(180deg)';
+            icon.style.color = 'var(--achievements-blue)';
+        });
+
+        // Gérer l'état ouvert/fermé pour les navigateurs modernes
+        select.addEventListener('click', (e) => {
+            // Petite animation pour feedback visuel
+            wrapper.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                wrapper.style.transform = '';
+            }, 100);
+        });
+    });
+}
+
+// Mettre à jour la visibilité du bouton de réinitialisation
+function updateResetButtonVisibility() {
+    const resetBtn = document.getElementById('reset-filters-btn');
+    if (!resetBtn) return;
+
+    const hasFilters = Object.values(achievementsSearchFilters).some(value => value !== '');
+    
+    if (hasFilters) {
+        resetBtn.classList.add('show');
+        resetBtn.style.display = 'block';
+    } else {
+        resetBtn.classList.remove('show');
+        resetBtn.style.display = 'none';
+    }
+}
+
+// Réinitialiser tous les filtres
+function resetAllFilters() {
+    const resetBtn = document.getElementById('reset-filters-btn');
+    const searchInput = document.getElementById('achievements-search');
+    const filterSelects = document.querySelectorAll('.filter-select');
+
+    // Animation du bouton de réinitialisation
+    if (resetBtn) {
+        resetBtn.style.transform = 'scale(0.95)';
+        resetBtn.textContent = 'Réinitialisation...';
+        resetBtn.disabled = true;
+    }
+
+    setTimeout(() => {
+        // Réinitialiser les valeurs
+        achievementsSearchFilters = {
+            keywords: '',
+            solution: '',
+            industries: '',
+            services: '',
+            technologies: ''
+        };
+
+        // Réinitialiser les champs
+        if (searchInput) {
+            searchInput.value = '';
+        }
+
+        filterSelects.forEach(select => {
+            select.selectedIndex = 0;
+        });
+
+        // Effectuer une nouvelle recherche (afficher tous les résultats)
+        performAchievementsSearch();
+
+        // Masquer le bouton de réinitialisation
+        updateResetButtonVisibility();
+
+        // Restaurer le bouton
+        if (resetBtn) {
+            resetBtn.style.transform = '';
+            resetBtn.textContent = achievementsTranslations[currentLanguageAchievements].reset_filters;
+            resetBtn.disabled = false;
+        }
+
+        // Notification
+        showAchievementsNotification('Filtres réinitialisés');
+    }, 500);
 }
 
 // Debounce pour la recherche
@@ -493,6 +610,7 @@ function showAchievementsSearchResults(count) {
             border-left: 4px solid #005FAC;
             font-size: 0.9rem;
             color: #333;
+            transition: opacity 0.3s ease;
         `;
         
         const achievementsGrid = document.querySelector('.achievements-grid');
@@ -501,6 +619,9 @@ function showAchievementsSearchResults(count) {
         }
     }
     
+    // Afficher le message
+    resultsIndicator.style.opacity = '1';
+    resultsIndicator.style.display = 'block';
     resultsIndicator.textContent = `${count} accomplissement(s) trouvé(s)`;
     
     if (count === 0) {
@@ -511,10 +632,22 @@ function showAchievementsSearchResults(count) {
         resultsIndicator.style.background = '#e3f2fd';
         resultsIndicator.style.borderLeftColor = '#005FAC';
     }
+    
+    // Faire disparaître le message après 4 secondes
+    setTimeout(() => {
+        if (resultsIndicator) {
+            resultsIndicator.style.opacity = '0';
+            setTimeout(() => {
+                if (resultsIndicator) {
+                    resultsIndicator.style.display = 'none';
+                }
+            }, 300); // Attendre la fin de la transition d'opacité
+        }
+    }, 4000);
 }
 
 // ==============================================
-// GESTION DES TÉMOIGNAGES
+// GESTION DES TÉMOIGNAGES AMÉLIORÉE
 // ==============================================
 
 function initTestimonialsInteractions() {
@@ -552,6 +685,9 @@ function initTestimonialsInteractions() {
             });
         }
 
+        // Amélioration de la structure des témoignages
+        optimizeTestimonialStructure(card);
+
         // Accessibilité
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'article');
@@ -582,6 +718,46 @@ function initTestimonialsInteractions() {
                 showAchievementsNotification('Témoignages supplémentaires chargés');
             }, 1500);
         });
+    }
+}
+
+// Optimiser la structure des témoignages selon les spécifications
+function optimizeTestimonialStructure(card) {
+    const quoteSection = card.querySelector('.testimonial-quote-section');
+    const quoteContent = card.querySelector('.quote-content');
+    const testimonialText = card.querySelector('.testimonial-text');
+    const quoteMarks = card.querySelector('.quote-marks');
+
+    if (quoteContent && testimonialText && quoteMarks) {
+        // S'assurer que les guillemets sont bien positionnés
+        quoteMarks.style.cssText = `
+            color: var(--quote-blue);
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 1;
+            margin-right: 0.25rem;
+            flex-shrink: 0;
+            margin-top: -0.25rem;
+        `;
+
+        // S'assurer que le texte commence bien après les guillemets
+        testimonialText.style.cssText = `
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: #232323;
+            line-height: 1.5;
+            margin: 0;
+            flex: 1;
+        `;
+
+        // Améliorer la structure flex du contenu des guillemets
+        quoteContent.style.cssText = `
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+        `;
     }
 }
 
@@ -617,8 +793,8 @@ function initAchievementsScrollAnimations() {
         heroObserver.observe(heroTitle);
     }
     
-    // Animation des titres de section
-    const sectionTitles = document.querySelectorAll('.section-title-with-highlight');
+    // Animation des titres de section (avec et sans carré beige)
+    const sectionTitles = document.querySelectorAll('.section-title-with-highlight, .section-title-no-highlight');
     sectionTitles.forEach((title, index) => {
         const titleObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1025,6 +1201,7 @@ window.AchievementsPage = {
     initAchievementsSearchSystem,
     initTestimonialsInteractions,
     performAchievementsSearch,
+    resetAllFilters,
     achievementsTranslations,
     achievementsCountries
 };

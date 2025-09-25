@@ -182,7 +182,7 @@
     <!-- Section de contenu principal descriptif -->
     <section id="achievements-intro" class="achievements-intro-section">
         <div class="container-fluid px-3">
-            <h2 class="section-title-with-highlight" data-i18n="achievements_intro_title">
+            <h2 class="section-title-no-highlight" data-i18n="achievements_intro_title">
                 Nulla eleifend pulvinar purus,
             </h2>
             <p class="achievements-intro-text" data-i18n="achievements_intro_text">
@@ -234,44 +234,59 @@
 
                     <div class="filters-row">
                         <div class="filter-group">
-                            <select class="form-select filter-select" id="solution-filter">
-                                <option value="" data-i18n="filter_solution">Solution</option>
-                                <option value="egovernance" data-i18n="solution_egovernance">E-gouvernance</option>
-                                <option value="healthcare" data-i18n="solution_healthcare">Santé</option>
-                                <option value="education" data-i18n="solution_education">Éducation</option>
-                            </select>
+                            <div class="filter-select-wrapper">
+                                <select class="form-select filter-select" id="solution-filter">
+                                    <option value="" data-i18n="filter_solution">Solution</option>
+                                    <option value="egovernance" data-i18n="solution_egovernance">E-gouvernance</option>
+                                    <option value="healthcare" data-i18n="solution_healthcare">Santé</option>
+                                    <option value="education" data-i18n="solution_education">Éducation</option>
+                                </select>
+                                <i class="fas fa-chevron-down filter-dropdown-icon"></i>
+                            </div>
                         </div>
 
                         <div class="filter-group">
-                            <select class="form-select filter-select" id="industries-filter">
-                                <option value="" data-i18n="filter_industries">Industries</option>
-                                <option value="public" data-i18n="industry_public">Secteur public</option>
-                                <option value="private" data-i18n="industry_private">Secteur privé</option>
-                                <option value="ngo" data-i18n="industry_ngo">ONG</option>
-                            </select>
+                            <div class="filter-select-wrapper">
+                                <select class="form-select filter-select" id="industries-filter">
+                                    <option value="" data-i18n="filter_industries">Industries</option>
+                                    <option value="public" data-i18n="industry_public">Secteur public</option>
+                                    <option value="private" data-i18n="industry_private">Secteur privé</option>
+                                    <option value="ngo" data-i18n="industry_ngo">ONG</option>
+                                </select>
+                                <i class="fas fa-chevron-down filter-dropdown-icon"></i>
+                            </div>
                         </div>
 
                         <div class="filter-group">
-                            <select class="form-select filter-select" id="services-filter">
-                                <option value="" data-i18n="filter_services">Services</option>
-                                <option value="consulting" data-i18n="service_consulting">Conseil</option>
-                                <option value="development" data-i18n="service_development">Développement</option>
-                                <option value="integration" data-i18n="service_integration">Intégration</option>
-                            </select>
+                            <div class="filter-select-wrapper">
+                                <select class="form-select filter-select" id="services-filter">
+                                    <option value="" data-i18n="filter_services">Services</option>
+                                    <option value="consulting" data-i18n="service_consulting">Conseil</option>
+                                    <option value="development" data-i18n="service_development">Développement</option>
+                                    <option value="integration" data-i18n="service_integration">Intégration</option>
+                                </select>
+                                <i class="fas fa-chevron-down filter-dropdown-icon"></i>
+                            </div>
                         </div>
 
                         <div class="filter-group">
-                            <select class="form-select filter-select" id="technologies-filter">
-                                <option value="" data-i18n="filter_technologies">Technologies</option>
-                                <option value="web" data-i18n="tech_web">Web</option>
-                                <option value="mobile" data-i18n="tech_mobile">Mobile</option>
-                                <option value="ai" data-i18n="tech_ai">IA</option>
-                            </select>
+                            <div class="filter-select-wrapper">
+                                <select class="form-select filter-select" id="technologies-filter">
+                                    <option value="" data-i18n="filter_technologies">Technologies</option>
+                                    <option value="web" data-i18n="tech_web">Web</option>
+                                    <option value="mobile" data-i18n="tech_mobile">Mobile</option>
+                                    <option value="ai" data-i18n="tech_ai">IA</option>
+                                </select>
+                                <i class="fas fa-chevron-down filter-dropdown-icon"></i>
+                            </div>
                         </div>
 
                         <div class="search-button-group">
                             <button type="button" class="btn search-btn" data-i18n="search_button">
                                 Recherche
+                            </button>
+                            <button type="button" class="btn reset-filters-btn" id="reset-filters-btn" data-i18n="reset_filters">
+                                Réinitialiser
                             </button>
                         </div>
                     </div>
@@ -429,10 +444,7 @@
                                     <div class="testimonial-quote-section">
                                         <div class="client-avatar"></div>
                                         <div class="quote-content">
-                                            <div class="quote-marks">"</div>
-                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
-                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
-                                            </p>
+                                            <span class="quote-marks">"</span><p class="testimonial-text" data-i18n="testimonial_text_1">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus</p>
                                         </div>
                                     </div>
                                     <div class="client-attribution">
@@ -476,10 +488,7 @@
                                     <div class="testimonial-quote-section">
                                         <div class="client-avatar"></div>
                                         <div class="quote-content">
-                                            <div class="quote-marks">"</div>
-                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
-                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
-                                            </p>
+                                            <span class="quote-marks">"</span><p class="testimonial-text" data-i18n="testimonial_text_1">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus</p>
                                         </div>
                                     </div>
                                     <div class="client-attribution">
@@ -523,10 +532,7 @@
                                     <div class="testimonial-quote-section">
                                         <div class="client-avatar"></div>
                                         <div class="quote-content">
-                                            <div class="quote-marks">"</div>
-                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
-                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
-                                            </p>
+                                            <span class="quote-marks">"</span><p class="testimonial-text" data-i18n="testimonial_text_1">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus</p>
                                         </div>
                                     </div>
                                     <div class="client-attribution">
@@ -571,10 +577,7 @@
                                     <div class="testimonial-quote-section">
                                         <div class="client-avatar"></div>
                                         <div class="quote-content">
-                                            <div class="quote-marks">"</div>
-                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
-                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
-                                            </p>
+                                            <span class="quote-marks">"</span><p class="testimonial-text" data-i18n="testimonial_text_1">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus</p>
                                         </div>
                                     </div>
                                     <div class="client-attribution">
@@ -618,10 +621,7 @@
                                     <div class="testimonial-quote-section">
                                         <div class="client-avatar"></div>
                                         <div class="quote-content">
-                                            <div class="quote-marks">"</div>
-                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
-                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
-                                            </p>
+                                            <span class="quote-marks">"</span><p class="testimonial-text" data-i18n="testimonial_text_1">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus</p>
                                         </div>
                                     </div>
                                     <div class="client-attribution">
@@ -665,10 +665,7 @@
                                     <div class="testimonial-quote-section">
                                         <div class="client-avatar"></div>
                                         <div class="quote-content">
-                                            <div class="quote-marks">"</div>
-                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
-                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
-                                            </p>
+                                            <span class="quote-marks">"</span><p class="testimonial-text" data-i18n="testimonial_text_1">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus</p>
                                         </div>
                                     </div>
                                     <div class="client-attribution">
@@ -713,10 +710,7 @@
                                     <div class="testimonial-quote-section">
                                         <div class="client-avatar"></div>
                                         <div class="quote-content">
-                                            <div class="quote-marks">"</div>
-                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
-                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
-                                            </p>
+                                            <span class="quote-marks">"</span><p class="testimonial-text" data-i18n="testimonial_text_1">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus</p>
                                         </div>
                                     </div>
                                     <div class="client-attribution">
@@ -760,10 +754,7 @@
                                     <div class="testimonial-quote-section">
                                         <div class="client-avatar"></div>
                                         <div class="quote-content">
-                                            <div class="quote-marks">"</div>
-                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
-                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
-                                            </p>
+                                            <span class="quote-marks">"</span><p class="testimonial-text" data-i18n="testimonial_text_1">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus</p>
                                         </div>
                                     </div>
                                     <div class="client-attribution">
@@ -807,10 +798,7 @@
                                     <div class="testimonial-quote-section">
                                         <div class="client-avatar"></div>
                                         <div class="quote-content">
-                                            <div class="quote-marks">"</div>
-                                            <p class="testimonial-text" data-i18n="testimonial_text_1">
-                                                Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus
-                                            </p>
+                                            <span class="quote-marks">"</span><p class="testimonial-text" data-i18n="testimonial_text_1">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet. Vestibulum maximus lacinia massa non porttitor. Pellentesque vehicula est a lorem gravida bibendum. Proin tristique diam ut urna pharetra, ac rhoncus elit elementum. Proin vitae purus</p>
                                         </div>
                                     </div>
                                     <div class="client-attribution">
