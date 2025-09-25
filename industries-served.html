@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+    <title data-i18n="page_title_industries">Industries Servies - Services et Solutions Informatiques Sanitaire - MK BA</title>
+    <meta name="description"
+        content="Découvrez nos services et solutions informatiques spécialisés pour le secteur sanitaire. Solutions e-santé, sécurité des données et technologies cloud par MK BA.">
+    <meta name="keywords"
+        content="MK BA, secteur sanitaire, e-santé, solutions médicales, sécurité données santé">
+    <meta name="author" content="MK Business Analysis">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mk-ba.com/industries-served">
+    <meta property="og:title" content="Services et Solutions Informatiques Sanitaire - MK BA">
+    <meta property="og:description" content="Solutions informatiques spécialisées pour le secteur sanitaire">
+    <meta property="og:image" content="./assets/images/mkba-og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="solutions.css">
+    <link rel="stylesheet" href="industries-served.css">
+
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./assets/images/healthcare-facility-hero.png" as="image">
+</head>
+
+<body class="industries-served-page zoom-optimized">
+    <!-- Top Banner with Search Only -->
+    <div class="top-banner">
+        <div class="container-fluid px-3">
+            <div class="top-banner-content">
+                <div class="search-section">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-trigger" onclick="toggleSearch()" tabindex="0" role="button"
+                            aria-label="Ouvrir la recherche">
+                            <i class="fas fa-search search-icon-right" aria-hidden="true"></i>
+                            <span data-i18n="search_placeholder">Recherche dans MK BA</span>
+                        </div>
+                        <div class="search-input-container" id="searchInputContainer">
+                            <input type="search" class="search-input" placeholder="Recherche dans MK BA..."
+                                data-i18n-placeholder="search_placeholder" aria-label="Champ de recherche">
+                            <button class="search-close" onclick="toggleSearch()" aria-label="Fermer la recherche">
+                                <i class="fas fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Navigation principale">
+            <div class="container-fluid px-3">
+                <!-- Logo à gauche -->
+                <a class="navbar-brand" href="index.html" aria-label="Retour à l'accueil MK BA">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="brand-logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <!-- Navigation au centre -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown mega-menu-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="whoWeAreDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_who_we_are">
+                                Qui nous sommes
+                            </a>
+                            <div class="dropdown-menu who-we-are-mega-menu" aria-labelledby="whoWeAreDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="dropdown_title">Qui nous sommes</h5>
+                                            <p class="mega-menu-description" data-i18n="dropdown_description">
+                                                Découvrez notre équipe, nos valeurs et notre engagement pour
+                                                l'excellence technologique en Afrique.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="we-are-mkba.html"
+                                                        data-i18n="nav_we_are_mkba">
+                                                        Nous sommes MK BA
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_our_team">
+                                                        Notre équipe
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_sustainability">
+                                                        Notre engagement pour la durabilité
+                                                    </a>
+                                                </div>
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_technologies">
+                                                        Technologies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_work_with_us">
+                                                        Travailler avec nous
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown mega-menu-dropdown what-we-do-dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="whatWeDoDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_what_we_do">
+                                Ce que nous faisons
+                            </a>
+                            <div class="dropdown-menu what-we-do-mega-menu" aria-labelledby="whatWeDoDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="what_we_do_mega_title">Ce que nous
+                                                faisons</h5>
+                                            <p class="mega-menu-description" data-i18n="what_we_do_mega_description">
+                                                Aliquam faucibus, odio nec commodo aliquam, neque felis placerat dui, a
+                                                porta ante lectus dapibus est.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item active" href="industries-served.html"
+                                                        data-i18n="nav_industries_served">
+                                                        Industries servies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="services.html"
+                                                        data-i18n="nav_services">
+                                                        Services
+                                                    </a>
+                                                    <a class="mega-menu-item" href="solutions.html"
+                                                        data-i18n="nav_solutions">
+                                                        Solutions
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#achievements"
+                                data-i18n="nav_achievements">Réalisations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#news" data-i18n="nav_news">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact-btn" href="index.html#contact" data-i18n="nav_contact">Nous
+                                contacter</a>
+                        </li>
+                    </ul>
+
+                    <!-- Sélecteur de langue à l'extrémité droite -->
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link language-selector-nav" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="Sélection de langue">
+                                <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bannière Fil d'Ariane -->
+    <section class="breadcrumb-banner">
+        <div class="container-fluid px-3">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <span data-i18n="breadcrumb_what_we_do">What we do</span>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <span data-i18n="breadcrumb_industries_served">Industries served</span>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page" data-i18n="breadcrumb_healthcare_solutions">
+                        Services et solutions informatiques sanitaire
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Hero Section Secteur Sanitaire -->
+    <section id="healthcare-hero" class="healthcare-hero-section" role="banner">
+        <div class="container-fluid px-3">
+            <div class="row align-items-center justify-content-start">
+                <div class="col-12">
+                    <div class="healthcare-hero-content">
+                        <h1 class="healthcare-hero-title" data-i18n="healthcare_hero_title">
+                            Services et solutions informatiques sanitaire
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section de contenu principal descriptif -->
+    <section id="healthcare-intro" class="healthcare-intro-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="healthcare_intro_title">
+                Services et solutions informatiques sanitaire
+            </h2>
+            <p class="healthcare-intro-text" data-i18n="healthcare_intro_text">
+                Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son île intérieure, à côté de l'alcôve ovoïde, où les bûches se consument dans l'âtre, ce qui lui permet de penser à la cænogenèse de l'être dont il est question dans la cause ambiguë entendue à Moy, dans un capharnaüm qui, pense-t-il, diminue ça et là la qualité de son œuvre. Prouvez, beau juge, que le fameux sandwich au yak tue. L'île exiguë Où l'obèse jury mûr Fête l'haï volupük, Âne ex æquo au whist, Ôtez ce vœu déçu. Vieux pelage que je modifie : breitschwanz ou yak ? Dès Noël où un zéphyr haï me vêt de glaçons würmiens, je dîne d'exquis rôtis de bœuf au kir à l'ay d'âge mûr & cætera ! Fougueux, j'enivre la squaw au pack de beau zythum. Ketch, yawl, jonque flambant neuve... jugez des prix ! Voyez le brick géant que j'examine près du wharf. Portez ce vieux.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section "Services liés à l'industrie" -->
+    <section id="industry-services" class="industry-services-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="industry_services_title">
+                Services liés à l'industrie
+            </h2>
+
+            <div class="services-grid">
+                <div class="row g-4">
+                    <!-- Service 1: INGÉNIERIE DES DONNÉES ET IA -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="service-card2">
+                            <h3 class="service-card-title" data-i18n="service_data_ai_title">
+                                INGÉNIERIE DES DONNÉES ET IA
+                            </h3>
+                            <ul class="service-features-list">
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_1">Gouvernance et gestion de la qualité des données</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_2">Intégration (ETL), analyse et visualisation des données</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_3">Stockage des données</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_4">Migration et sauvegarde des données</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_5">Big Data et Business Intelligence</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_6">Master Data Management</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: SÉCURITÉ DE L'INFORMATION -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="service-card2">
+                            <h3 class="service-card-title" data-i18n="service_security_title">
+                                SÉCURITÉ DE L'INFORMATION
+                            </h3>
+                            <ul class="service-features-list">
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_security_1">Confidentialité et protection des données</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_security_2">Cryptage et certificats</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_security_3">Audits des systèmes d'information</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_security_4">Gestion avancée des menaces et des vulnérabilités</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_security_5">Services de sécurité managés</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_security_6">Reprise après sinistre et continuité des activités</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_security_7">Signature électronique</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: INGÉNIERIE RÉSEAU ET SYSTÈME, CLOUD -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="service-card2">
+                            <h3 class="service-card-title" data-i18n="service_network_cloud_title">
+                                INGÉNIERIE RÉSEAU ET SYSTÈME, CLOUD
+                            </h3>
+                            <ul class="service-features-list">
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_network_cloud_1">Conception, déploiement, mises à niveau, dépannage et gestion de réseaux</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_network_cloud_2">Déploiement d'infrastructures matérielles</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_network_cloud_3">Intégration continue CI/CD / Livraison continue</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_network_cloud_4">Cloud computing – AWS et Azure</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Duplication du premier service pour équilibrage -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="service-card2">
+                            <h3 class="service-card-title" data-i18n="service_data_ai_title">
+                                INGÉNIERIE DES DONNÉES ET IA
+                            </h3>
+                            <ul class="service-features-list">
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_1">Gouvernance et gestion de la qualité des données</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_2">Intégration (ETL), analyse et visualisation des données</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_3">Stockage des données</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_4">Migration et sauvegarde des données</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_5">Big Data et Business Intelligence</span>
+                                </li>
+                                <li class="service-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="service_data_ai_6">Master Data Management</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Produits liés à l'industrie" -->
+    <section id="industry-products" class="industry-products-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="industry_products_title">
+                Produits liés à l'industrie
+            </h2>
+
+            <div class="products-grid">
+                <div class="row">
+                    <!-- Produit 1: HEALTHCARE -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="product-card1">
+                            <h3 class="product-card-title" data-i18n="product_healthcare_title">
+                                HEALTHCARE
+                            </h3>
+                            <ul class="product-features-list">
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_healthcare_1">Hospital management</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_healthcare_2">Health products tracking and logistics</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_healthcare_3">Laboratory management</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Produit 2: ENVIRONMENT -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="product-card1">
+                            <h3 class="product-card-title" data-i18n="product_environment_title">
+                                ENVIRONMENT
+                            </h3>
+                            <ul class="product-features-list">
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_environment_1">Environmental Monitoring</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_environment_2">Waste Management</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Produit 3: INGÉNIERIE DES DONNÉES ET IA -->
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                        <div class="product-card1">
+                            <h3 class="product-card-title" data-i18n="product_data_ai_title">
+                                INGÉNIERIE DES DONNÉES ET IA
+                            </h3>
+                            <ul class="product-features-list">
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_data_ai_1">Online government e-Services</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_data_ai_2">e-Justice</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_data_ai_3">Civil registration and vital statistics</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_data_ai_4">Social protection</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_data_ai_5">Projects and Programs Monitoring and Evaluation</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_data_ai_6">Land Management</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_data_ai_7">e-Sourcing, e-Procurement, e-</span>
+                                </li>
+                                <li class="product-feature">
+                                    <img src="./assets/icons/check-circle-green.png" alt="Check" class="check-icon">
+                                    <span data-i18n="product_data_ai_8">Citizen engagement</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Références liées à cette industrie" -->
+    <section id="industry-references" class="industry-references-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title" data-i18n="industry_references_title">
+                Références liées à cette industrie
+            </h2>
+
+            <div class="references-grid">
+                <div class="row g-4">
+                    <!-- Référence 1 -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="reference-card">
+                            <div class="reference-header">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Cameroun" class="reference-flag">
+                            </div>
+                            <div class="reference-content">
+                                <p class="reference-description" data-i18n="reference_1_description">
+                                    Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at
+                                </p>
+                                <a href="#" class="reference-link" data-i18n="reference_read_more">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="reference-partner">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Référence 2 -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="reference-card">
+                            <div class="reference-header">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Cameroun" class="reference-flag">
+                            </div>
+                            <div class="reference-content">
+                                <p class="reference-description" data-i18n="reference_2_description">
+                                    Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam
+                                </p>
+                                <a href="#" class="reference-link" data-i18n="reference_read_more">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="reference-partner">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Référence 3 -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="reference-card">
+                            <div class="reference-header">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Cameroun" class="reference-flag">
+                            </div>
+                            <div class="reference-content">
+                                <p class="reference-description" data-i18n="reference_1_description">
+                                    Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at
+                                </p>
+                                <a href="#" class="reference-link" data-i18n="reference_read_more">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="reference-partner">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Référence 4 -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="reference-card">
+                            <div class="reference-header">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Cameroun" class="reference-flag">
+                            </div>
+                            <div class="reference-content">
+                                <p class="reference-description" data-i18n="reference_2_description">
+                                    Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam
+                                </p>
+                                <a href="#" class="reference-link" data-i18n="reference_read_more">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="reference-partner">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Référence 5 -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="reference-card">
+                            <div class="reference-header">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Cameroun" class="reference-flag">
+                            </div>
+                            <div class="reference-content">
+                                <p class="reference-description" data-i18n="reference_1_description">
+                                    Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at
+                                </p>
+                                <a href="#" class="reference-link" data-i18n="reference_read_more">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="reference-partner">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Référence 6 -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                        <div class="reference-card">
+                            <div class="reference-header">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Cameroun" class="reference-flag">
+                            </div>
+                            <div class="reference-content">
+                                <p class="reference-description" data-i18n="reference_2_description">
+                                    Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam
+                                </p>
+                                <a href="#" class="reference-link" data-i18n="reference_read_more">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="reference-partner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer" role="contentinfo">
+        <div class="container-fluid px-3">
+            <div class="footer-content">
+                <!-- Colonne 1: Logo + slogan -->
+                <div class="footer-brand-section">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA Footer" class="footer-logo">
+                    <p class="footer-description">MK Business Analysis</p>
+                </div>
+
+                <!-- Colonne 2: Qui nous sommes -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="we-are-mkba.html" data-i18n="footer_who_are_mkba">Nous sommes MK BA</a></li>
+                        <li><a href="#" data-i18n="footer_our_team">Notre équipe</a></li>
+                        <li><a href="#" data-i18n="footer_sustainability">Notre engagement pour la durabilité</a></li>
+                        <li><a href="#" data-i18n="footer_technologies">Technologies</a></li>
+                        <li><a href="#" data-i18n="footer_work_with_us">Travailler avec nous</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Ce que nous faisons -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="industries-served.html" data-i18n="footer_industries">Industries servies</a></li>
+                        <li><a href="services.html" data-i18n="footer_services">Services</a></li>
+                        <li><a href="solutions.html" data-i18n="footer_solutions">Solutions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Réalisations -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_achievements">Réalisations</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="index.html#achievements" data-i18n="footer_achievements_link">Nos réalisations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5: Contacts -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_contacts">Contacts</h4>
+                    <address class="contact-info">
+                        <p data-i18n="footer_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@mk-ba.com">info@mk-ba.com</a></p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+237695478987">+237 695 478 987</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom-section">
+                <nav class="footer-legal" aria-label="Liens légaux">
+                    <a href="#" data-i18n="footer_legal_mentions">Mentions légales</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_privacy">Politique de Confidentialité</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_terms">Termes et conditions</a>
+                </nav>
+
+                <p class="footer-copyright" data-i18n="footer_copyright">Copyright © 2025. Tous droits réservés</p>
+            </div>
+        </div>
+
+        <!-- Bas de page (bande grise foncée) -->
+        <div class="footer-bottom-band">
+            <div class="container-fluid px-3">
+                <small data-i18n="footer_powered">Powered by MK BA</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="industries-served.js" defer></script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://mk-ba.com/industries-served",
+        "name": "Services et Solutions Informatiques Sanitaire",
+        "description": "Services et solutions informatiques spécialisés pour le secteur sanitaire par MK BA",
+        "provider": {
+            "@type": "Organization",
+            "name": "MK Business Analysis"
+        },
+        "url": "https://mk-ba.com/industries-served",
+        "serviceType": "Solutions e-santé et informatiques médicales",
+        "areaServed": "Afrique",
+        "category": "Healthcare Technology"
+    }
+    </script>
+</body>
+
+</html>

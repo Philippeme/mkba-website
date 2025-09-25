@@ -1,0 +1,1016 @@
+/* ==============================================
+   STYLES SPÉCIFIQUES POUR LA PAGE INDUSTRIES SERVED
+   ============================================== */
+
+/* Variables spécifiques à la page Industries Served */
+:root {
+    --healthcare-hero-bg: url('./assets/images/healthcare-facility-hero.png');
+    --healthcare-blue: #005FAC;
+    --check-icon-green: #4CAF50;
+    --reference-purple: #6917EE;
+    --reference-content-bg: #F5F5F5;
+}
+
+/* ==============================================
+   HEADER ADAPTATION - CONFORME AUX PAGES EXISTANTES
+   ============================================== */
+
+.industries-served-page .navbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+}
+
+.industries-served-page .navbar .nav-link {
+    color: var(--primary-blue) !important;
+    font-weight: 400;
+}
+
+.industries-served-page .navbar .nav-link:hover {
+    color: var(--primary-orange) !important;
+}
+
+.industries-served-page .navbar .nav-link.active {
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 1.7rem !important;
+    margin-bottom: -19rem;
+}
+
+.industries-served-page .navbar .contact-btn {
+    border-color: var(--primary-blue) !important;
+    color: var(--primary-blue) !important;
+}
+
+.industries-served-page .navbar .contact-btn:hover {
+    background-color: var(--primary-blue) !important;
+    color: var(--white) !important;
+}
+
+.industries-served-page .navbar .language-icon {
+    color: var(--primary-blue) !important;
+}
+
+.industries-served-page .top-banner .search-trigger:hover {
+    color: var(--primary-blue) !important;
+    opacity: 1;
+}
+
+/* Mega menu - identique aux autres pages */
+.what-we-do-mega-menu {
+    background: var(--white);
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    margin-top: 20px;
+    min-width: 132vw;
+    left: 50% !important;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 100%;
+}
+
+.what-we-do-mega-menu .mega-menu-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.what-we-do-mega-menu .mega-menu-content {
+    display: flex;
+    align-items: stretch;
+    min-height: 200px;
+    margin-left: calc(44vw - 40%);
+    padding: 2rem 0;
+}
+
+.what-we-do-mega-menu .mega-menu-left {
+    flex: 1;
+    padding: 2rem;
+    background: var(--background-gray);
+    border-right: 1px solid var(--border-light);
+}
+
+.what-we-do-mega-menu .mega-menu-title {
+    color: #333333;
+    font-weight: 430;
+    margin-bottom: 1rem;
+    font-size: 30px;
+    word-wrap: break-word;
+}
+
+.what-we-do-mega-menu .mega-menu-description {
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 0;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.what-we-do-mega-menu .mega-menu-right {
+    flex: 2;
+    padding: 2rem;
+    margin-bottom: 4.125rem;
+    display: flex;
+    align-items: center;
+}
+
+.what-we-do-mega-menu .mega-menu-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+}
+
+.what-we-do-mega-menu .mega-menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.what-we-do-mega-menu .mega-menu-item {
+    color: #333333 !important;
+    padding: 0.5rem 0;
+    font-size: 18px;
+    font-weight: 400;
+    background: transparent;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+    word-wrap: break-word;
+}
+
+.what-we-do-mega-menu .mega-menu-item:last-child {
+    border-bottom: none;
+}
+
+.what-we-do-mega-menu .mega-menu-item:hover,
+.what-we-do-mega-menu .mega-menu-item:focus {
+    background-color: rgba(0, 102, 204, 0.05);
+    color: var(--primary-blue) !important;
+    transform: translateX(3px);
+}
+
+.what-we-do-mega-menu .mega-menu-item.active {
+    background-color: rgba(0, 102, 204, 0.1);
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+    border-left: 3px solid var(--primary-blue);
+    padding-left: 0.75rem;
+}
+
+/* ==============================================
+   HERO SECTION SECTEUR SANITAIRE
+   ============================================== */
+
+.healthcare-hero-section {
+    background: var(--healthcare-hero-bg);
+    background-size: cover;
+    background-position: center;
+    min-height: 600px;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0;
+    margin-top: 0;
+}
+
+.healthcare-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+}
+
+.healthcare-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    width: 100%;
+}
+
+.healthcare-hero-title {
+    font-family: 'Spectral', serif;
+    font-size: 3.75rem; /* 60px */
+    font-weight: 400;
+    color: var(--white);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: 0.025rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 45%;
+}
+
+/* ==============================================
+   SECTION CONTENU INTRODUCTIF
+   ============================================== */
+
+.healthcare-intro-section {
+    background: var(--white);
+    padding: 3rem 0;
+}
+
+.healthcare-intro-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    position: relative;
+}
+
+/* Carré beige décoratif */
+.healthcare-intro-section .section-title-with-highlight::after {
+    content: '';
+    position: absolute;
+    left: 1ch;
+    top: 0;
+    bottom: 0;
+    width: 3.75rem; /* 60px */
+    height: 100%;
+    background-color: var(--highlight-beige);
+    border-radius: 0;
+    z-index: -1;
+}
+
+.healthcare-intro-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    color: #333333;
+    line-height: 1.6;
+    margin-bottom: -0.75rem;
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTION "SERVICES LIÉS À L'INDUSTRIE"
+   ============================================== */
+
+.industry-services-section {
+    background: var(--white);
+    padding: 0.5rem 0;
+}
+
+.industry-services-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+    position: relative;
+}
+
+/* Carré beige décoratif */
+.industry-services-section .section-title-with-highlight::after {
+    content: '';
+    position: absolute;
+    left: 1ch;
+    top: 0;
+    bottom: 0;
+    width: 3.75rem;
+    height: 100%;
+    background-color: var(--highlight-beige);
+    border-radius: 0;
+    z-index: -1;
+}
+
+.services-grid {
+    margin: 2rem 0 2.5rem 0;
+}
+
+/* Cartes de services - reprises de la page solutions */
+.service-card2 {
+    background: var(--white);
+    border: 0.5px solid #333333;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 300px;
+}
+
+.service-card2:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.service-card-title {
+    color: #313131;
+    font-weight: 600;
+    font-size: 1.25rem; /* 20px */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.025rem;
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Barre de soulignement bleue */
+.service-card-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 130px;
+    height: 2px;
+    background-color: var(--primary-blue);
+}
+
+.service-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.service-feature {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem; /* 8px */
+    gap: 0.75rem;
+}
+
+.service-feature:last-child {
+    margin-bottom: 0;
+}
+
+.check-icon {
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.service-feature span {
+    color: #565656;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.4;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTION "PRODUITS LIÉS À L'INDUSTRIE"
+   ============================================== */
+
+.industry-products-section {
+    background: var(--white);
+    padding: 0.5rem 0;
+}
+
+.industry-products-section .section-title-with-highlight {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 3rem;
+    text-align: left;
+    position: relative;
+}
+
+/* Carré beige décoratif */
+.industry-products-section .section-title-with-highlight::after {
+    content: '';
+    position: absolute;
+    left: 1ch;
+    top: 0;
+    bottom: 0;
+    width: 3.75rem;
+    height: 100%;
+    background-color: var(--highlight-beige);
+    border-radius: 0;
+    z-index: -1;
+}
+
+.products-grid {
+    margin-top: 2rem;
+}
+
+/* Cartes de produits - identiques aux cartes de services */
+.product-card1 {
+    background: var(--white);
+    border: 0.5px solid #333333;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 250px;
+}
+
+.product-card1:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product-card-title {
+    color: #313131;
+    font-weight: 600;
+    font-size: 1.25rem; /* 20px */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.025rem;
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.product-card-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 130px;
+    height: 2px;
+    background-color: var(--primary-blue);
+}
+
+.product-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.product-feature {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem; /* 8px */
+    gap: 0.75rem;
+}
+
+.product-feature:last-child {
+    margin-bottom: 0;
+}
+
+.product-feature span {
+    color: #565656;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.4;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTION "RÉFÉRENCES LIÉES À CETTE INDUSTRIE"
+   ============================================== */
+
+.industry-references-section {
+    background: var(--white);
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+.industry-references-section .section-title {
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 2.5rem; /* 60px */
+    text-align: left;
+}
+
+/* Pas de carré beige pour ce titre selon les spécifications */
+
+.references-grid {
+    margin-top: 0.5rem;
+}
+
+/* Cartes de références - reprises de la page egovernance */
+.reference-card {
+    background: var(--white);
+    border-radius: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.reference-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.reference-header {
+    background: var(--reference-purple);
+    height: 250px;
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.reference-flag {
+    width: 64px;
+    height: 43px;
+    object-fit: cover;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.reference-content {
+    background: var(--reference-content-bg);
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.reference-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5625rem; /* 25px */
+    font-weight: 400;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    flex: 1;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.reference-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--healthcare-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 1px solid var(--healthcare-blue);
+    background: var(--white);
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin-bottom: 1rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.reference-link:hover {
+    background: var(--healthcare-blue);
+    color: var(--white);
+    transform: translateX(2px);
+}
+
+.reference-partner {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ==============================================
+   ANIMATIONS AU SCROLL
+   ============================================== */
+
+.service-card2,
+.product-card1,
+.reference-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.service-card2:nth-child(1) { animation-delay: 0.1s; }
+.service-card2:nth-child(2) { animation-delay: 0.2s; }
+.service-card2:nth-child(3) { animation-delay: 0.3s; }
+.service-card2:nth-child(4) { animation-delay: 0.4s; }
+
+.product-card1:nth-child(1) { animation-delay: 0.1s; }
+.product-card1:nth-child(2) { animation-delay: 0.2s; }
+.product-card1:nth-child(3) { animation-delay: 0.3s; }
+
+.reference-card:nth-child(1) { animation-delay: 0.1s; }
+.reference-card:nth-child(2) { animation-delay: 0.2s; }
+.reference-card:nth-child(3) { animation-delay: 0.3s; }
+.reference-card:nth-child(4) { animation-delay: 0.4s; }
+.reference-card:nth-child(5) { animation-delay: 0.5s; }
+.reference-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+
+/* Large screens - 1200px+ */
+@media (min-width: 1200px) {
+    .healthcare-hero-title {
+        font-size: 3.75rem;
+    }
+}
+
+/* Medium screens - 992px to 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .healthcare-hero-title {
+        font-size: 3.25rem;
+    }
+    
+    .what-we-do-mega-menu .mega-menu-content {
+        margin-left: calc(40vw - 50%);
+    }
+}
+
+/* Small-Medium screens - 768px to 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .healthcare-hero-section {
+        min-height: 500px;
+        padding: 3rem 0;
+    }
+    
+    .healthcare-hero-title {
+        font-size: 2.75rem;
+    }
+    
+    .healthcare-intro-section .section-title-with-highlight,
+    .industry-services-section .section-title-with-highlight,
+    .industry-products-section .section-title-with-highlight,
+    .industry-references-section .section-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .healthcare-intro-section .section-title-with-highlight::after,
+    .industry-services-section .section-title-with-highlight::after,
+    .industry-products-section .section-title-with-highlight::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3rem;
+    }
+    
+    .healthcare-intro-text {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .service-card2,
+    .product-card1 {
+        min-height: 250px;
+    }
+    
+    .reference-header {
+        height: 120px;
+    }
+    
+    /* Mega menu tablet */
+    .what-we-do-mega-menu {
+        min-width: 90vw;
+    }
+    
+    .what-we-do-mega-menu .mega-menu-content {
+        margin-left: 0;
+    }
+}
+
+/* Mobile screens - jusqu'à 767px */
+@media (max-width: 767px) {
+    .healthcare-hero-section {
+        min-height: 450px;
+        padding: 2.5rem 0;
+        background-attachment: scroll;
+    }
+    
+    .healthcare-hero-title {
+        font-size: 2.25rem;
+        text-align: center;
+    }
+    
+    .healthcare-intro-section .section-title-with-highlight,
+    .industry-services-section .section-title-with-highlight,
+    .industry-products-section .section-title-with-highlight,
+    .industry-references-section .section-title {
+        font-size: 1.75rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .healthcare-intro-section .section-title-with-highlight::after,
+    .industry-services-section .section-title-with-highlight::after,
+    .industry-products-section .section-title-with-highlight::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2.5rem;
+    }
+    
+    .healthcare-intro-text {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .service-card2,
+    .product-card1 {
+        padding: 1.5rem;
+        min-height: 200px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-card-title,
+    .product-card-title {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .service-card-title::after,
+    .product-card-title::after {
+        width: 80px;
+    }
+    
+    .service-feature span,
+    .product-feature span {
+        font-size: 1rem;
+    }
+    
+    .check-icon {
+        width: 1rem;
+        height: 1rem;
+    }
+    
+    .reference-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .reference-header {
+        height: 100px;
+    }
+    
+    .reference-flag {
+        width: 48px;
+        height: 32px;
+    }
+    
+    .reference-description {
+        font-size: 1.125rem;
+    }
+    
+    .reference-partner {
+        height: 30px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    /* Mega menu mobile */
+    .what-we-do-mega-menu {
+        min-width: 280px;
+        max-width: 320px;
+        left: 0 !important;
+        transform: none;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-content {
+        flex-direction: column;
+        min-height: auto;
+        padding: 1rem 0;
+        margin-left: 0;
+    }
+
+    .what-we-do-mega-menu .mega-menu-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 1.5rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-title {
+        font-size: 1.375rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-description {
+        font-size: 0.9rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-right {
+        padding: 1rem 1.5rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-item {
+        font-size: 1rem;
+    }
+}
+
+/* Very small screens - jusqu'à 575px */
+@media (max-width: 575px) {
+    .healthcare-hero-section {
+        min-height: 400px;
+        padding: 2rem 0;
+    }
+    
+    .healthcare-hero-title {
+        font-size: 2rem;
+    }
+    
+    .healthcare-intro-section .section-title-with-highlight,
+    .industry-services-section .section-title-with-highlight,
+    .industry-products-section .section-title-with-highlight,
+    .industry-references-section .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .healthcare-intro-section .section-title-with-highlight::after,
+    .industry-services-section .section-title-with-highlight::after,
+    .industry-products-section .section-title-with-highlight::after {
+        width: 2rem;
+    }
+    
+    .healthcare-intro-text {
+        font-size: 0.95rem;
+    }
+    
+    .service-card2,
+    .product-card1 {
+        padding: 1rem;
+    }
+    
+    .service-card-title,
+    .product-card-title {
+        font-size: 0.9rem;
+    }
+    
+    .service-card-title::after,
+    .product-card-title::after {
+        width: 60px;
+    }
+    
+    .service-feature span,
+    .product-feature span {
+        font-size: 0.9rem;
+    }
+    
+    .check-icon {
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+    
+    .reference-description {
+        font-size: 1rem;
+    }
+    
+    /* Mega menu très petit mobile */
+    .what-we-do-mega-menu {
+        min-width: 260px;
+        max-width: 280px;
+    }
+
+    .what-we-do-mega-menu .mega-menu-title {
+        font-size: 1.25rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-description {
+        font-size: 0.85rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-item {
+        font-size: 0.9rem;
+    }
+}
+
+/* ==============================================
+   ACCESSIBILITÉ ET ÉTATS SPÉCIAUX
+   ============================================== */
+
+/* Support high contrast mode */
+@media (prefers-contrast: high) {
+    .service-card2,
+    .product-card1,
+    .reference-card {
+        border: 2px solid #333;
+    }
+}
+
+/* Support reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .service-card2,
+    .product-card1,
+    .reference-card {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .service-card2:hover,
+    .product-card1:hover,
+    .reference-card:hover {
+        transform: none;
+    }
+    
+    .healthcare-hero-section {
+        background-attachment: scroll;
+    }
+}
+
+.reference-card {
+  cursor: auto;   
+}
+
+/* Focus states pour l'accessibilité */
+.service-card2:focus,
+.product-card1:focus,
+.reference-card:focus,
+.reference-link:focus {
+    outline-offset: 2px;
+}
+
+/* Keyboard navigation */
+.keyboard-navigation .service-card2:focus,
+.keyboard-navigation .product-card1:focus,
+.keyboard-navigation .reference-card:focus,
+.keyboard-navigation .reference-link:focus {
+    outline-offset: 2px !important;
+}
+
+/* ==============================================
+   UTILITAIRES ET CORRECTIONS
+   ============================================== */
+
+/* Correction des débordements */
+.industries-served-page {
+    overflow-x: hidden;
+}
+
+/* Amélioration de la lisibilité */
+.service-feature span,
+.product-feature span,
+.reference-description {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.healthcare-intro-text {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   CORRECTIONS SPÉCIFIQUES ZOOM
+   ============================================== */
+
+/* Assurer le rendu correct à tous niveaux de zoom */
+@supports (zoom: 1) {
+    .healthcare-hero-section {
+        min-height: 37.5rem; /* 600px en rem */
+    }
+    
+    .service-card2,
+    .product-card1 {
+        min-height: 15rem; /* Hauteur minimum adaptative */
+    }
+}
+
+/* Correction des polices pour Safari */
+@supports (-webkit-appearance: none) {
+    .healthcare-hero-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Spectral', serif;
+    }
+    
+    .service-feature span,
+    .product-feature span,
+    .reference-description {
+        font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+    }
+}
