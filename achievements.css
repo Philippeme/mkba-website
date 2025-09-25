@@ -407,8 +407,8 @@
     height: 43px;
     object-fit: cover;
     background: #fff;
-    border: none;
-    padding: 0;
+    border: 1px solid #ccc;   
+    padding: 4px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: absolute;
     top: 1rem;
