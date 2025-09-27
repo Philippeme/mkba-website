@@ -62,7 +62,7 @@ const achievementsTranslations = {
         // Cartes accomplissements
         achievement_desc_1: "Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at",
         achievement_desc_2: "Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam",
-        read_more_btn: "Lire plus",
+        read_more_btn: 'Lire plus <i class="fas fa-arrow-right ms-2"></i>',
         
         // Témoignages
         testimonials_title: "Témoignages",
@@ -122,7 +122,7 @@ const achievementsTranslations = {
         // Cartes accomplissements
         achievement_desc_1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore",
         achievement_desc_2: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
-        read_more_btn: "Read more",
+        read_more_btn: 'Read more <i class="fas fa-arrow-right ms-2"></i>',
         
         // Témoignages
         testimonials_title: "Testimonials",
@@ -244,7 +244,7 @@ function initAchievementsInteractiveMap() {
 
         // Style CSS pour les tuiles en gris
         const mapStyle = document.createElement('style');
-        mapStyle.textContent = `
+        mapStyle.innerHTML = `
             .achievements-map-tiles {
                 background: #F5F5F5;
             }
@@ -505,7 +505,7 @@ function resetAllFilters() {
     // Animation du bouton de réinitialisation
     if (resetBtn) {
         resetBtn.style.transform = 'scale(0.95)';
-        resetBtn.textContent = 'Réinitialisation...';
+        resetBtn.innerHTML = 'Réinitialisation...';
         resetBtn.disabled = true;
     }
 
@@ -537,7 +537,7 @@ function resetAllFilters() {
         // Restaurer le bouton
         if (resetBtn) {
             resetBtn.style.transform = '';
-            resetBtn.textContent = achievementsTranslations[currentLanguageAchievements].reset_filters;
+            resetBtn.innerHTML = achievementsTranslations[currentLanguageAchievements].reset_filters;
             resetBtn.disabled = false;
         }
 
@@ -575,7 +575,7 @@ function performAchievementsSearch() {
         // Filtrer par mots-clés (rechercher dans la description)
         if (keywords) {
             const description = card.querySelector('.achievement-description');
-            if (description && !description.textContent.toLowerCase().includes(keywords.toLowerCase())) {
+            if (description && !description.innerHTML.toLowerCase().includes(keywords.toLowerCase())) {
                 shouldShow = false;
             }
         }
@@ -622,10 +622,10 @@ function showAchievementsSearchResults(count) {
     // Afficher le message
     resultsIndicator.style.opacity = '1';
     resultsIndicator.style.display = 'block';
-    resultsIndicator.textContent = `${count} accomplissement(s) trouvé(s)`;
+    resultsIndicator.innerHTML = `${count} accomplissement(s) trouvé(s)`;
     
     if (count === 0) {
-        resultsIndicator.textContent = 'Aucun accomplissement ne correspond à vos critères de recherche.';
+        resultsIndicator.innerHTML = 'Aucun accomplissement ne correspond à vos critères de recherche.';
         resultsIndicator.style.background = '#fff3cd';
         resultsIndicator.style.borderLeftColor = '#ffc107';
     } else {
@@ -694,7 +694,7 @@ function initTestimonialsInteractions() {
         
         const orgName = card.querySelector('.org-name');
         if (orgName) {
-            card.setAttribute('aria-label', `Témoignage de ${orgName.textContent}`);
+            card.setAttribute('aria-label', `Témoignage de ${orgName.innerHTML}`);
         }
     });
 
@@ -705,13 +705,13 @@ function initTestimonialsInteractions() {
             
             // Animation du bouton
             this.style.transform = 'scale(0.95)';
-            this.textContent = 'Chargement...';
+            this.innerHTML = 'Chargement...';
             this.disabled = true;
             
             // Simuler le chargement
             setTimeout(() => {
                 this.style.transform = '';
-                this.textContent = achievementsTranslations[currentLanguageAchievements].show_more_testimonials;
+                this.innerHTML = achievementsTranslations[currentLanguageAchievements].show_more_testimonials;
                 this.disabled = false;
                 
                 // Ici, on pourrait charger plus de témoignages via AJAX
@@ -881,7 +881,7 @@ function setLanguageAchievementsPage(lang) {
             } else if (element.hasAttribute('title')) {
                 element.title = pageTranslations[key];
             } else {
-                element.textContent = pageTranslations[key];
+                element.innerHTML = pageTranslations[key];
             }
         }
         // Sinon utiliser les traductions générales si disponibles
@@ -895,7 +895,7 @@ function setLanguageAchievementsPage(lang) {
                 if (generalTranslation.includes('<i class=')) {
                     element.innerHTML = generalTranslation;
                 } else {
-                    element.textContent = generalTranslation;
+                    element.innerHTML = generalTranslation;
                 }
             }
         }
@@ -994,7 +994,7 @@ function initAchievementCardsInteractions() {
         
         const description = card.querySelector('.achievement-description');
         if (description) {
-            card.setAttribute('aria-label', `Projet: ${description.textContent.substring(0, 50)}...`);
+            card.setAttribute('aria-label', `Projet: ${description.innerHTML.substring(0, 50)}...`);
         }
         
         card.addEventListener('keydown', function(e) {
@@ -1016,7 +1016,7 @@ function initAchievementCardsInteractions() {
 function showAchievementsNotification(message) {
     const notification = document.createElement('div');
     notification.className = 'achievements-notification';
-    notification.textContent = message;
+    notification.innerHTML = message;
     notification.style.cssText = `
         position: fixed;
         top: calc(var(--total-header-height) + 1rem);
@@ -1102,7 +1102,7 @@ function initAchievementsErrorHandling() {
                 e.target.style.display = 'none';
                 const fallback = document.createElement('div');
                 fallback.className = 'flag-fallback';
-                fallback.textContent = 'Flag';
+                fallback.innerHTML = 'Flag';
                 fallback.style.cssText = `
                     width: 64px;
                     height: 43px;

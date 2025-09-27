@@ -1,0 +1,1143 @@
+/* ==============================================
+   STYLES SPÉCIFIQUES POUR LA PAGE DÉTAIL PROJET MK BA
+   ============================================== */
+
+/* Variables spécifiques à la page détail projet */
+:root {
+    --project-hero-bg: #005FAC;
+    --project-purple: #6917EE;
+    --project-content-bg: #F5F5F5;
+    --social-bg: #F8F9FA;
+    --social-hover-linkedin: #0077B5;
+    --social-hover-youtube: #FF0000;
+    --social-hover-twitter: #000000;
+}
+
+/* ==============================================
+   HEADER ADAPTATION - CONFORME AUX PAGES EXISTANTES
+   ============================================== */
+
+.project-detail-page .navbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+}
+
+.project-detail-page .navbar .nav-link {
+    color: var(--primary-blue) !important;
+    font-weight: 400;
+}
+
+.project-detail-page .navbar .nav-link:hover {
+    color: var(--primary-orange) !important;
+}
+
+.project-detail-page .navbar .nav-link.active {
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 1.7rem !important;
+    margin-bottom: -19rem;
+}
+
+.project-detail-page .navbar .contact-btn {
+    border-color: var(--primary-blue) !important;
+    color: var(--primary-blue) !important;
+}
+
+.project-detail-page .navbar .contact-btn:hover {
+    background-color: var(--primary-blue) !important;
+    color: var(--white) !important;
+}
+
+.project-detail-page .navbar .language-icon {
+    color: var(--primary-blue) !important;
+}
+
+.project-detail-page .top-banner .search-trigger:hover {
+    color: var(--primary-blue) !important;
+    opacity: 1;
+}
+
+/* ==============================================
+   HERO SECTION DÉTAIL PROJET
+   ============================================== */
+
+.project-hero-section {
+    background: var(--project-hero-bg);
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0;
+    margin-top: 0;
+}
+
+.project-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    width: 100%;
+}
+
+.project-hero-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 2.8125rem; /* 45px */
+    font-weight: 600;
+    color: #F5F5F4;
+    margin: 0 0 1.875rem 0; /* 30px bottom */
+    line-height: 1.2;
+    letter-spacing: 0.025rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+}
+
+/* Métadonnées du projet */
+.project-metadata {
+    margin-bottom: 1.875rem; /* 30px */
+}
+
+.metadata-item {
+    margin-bottom: 0.75rem; /* 12px */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: var(--white);
+}
+
+.metadata-label {
+    font-weight: 400;
+    margin-right: 0.5rem;
+}
+
+.metadata-value {
+    font-weight: 400;
+}
+
+.partner-name {
+    font-weight: 400;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+/* Section de téléchargement */
+.download-section {
+    margin-top: 0.9375rem; /* 15px */
+}
+
+.download-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: -0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.download-container:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+.download-icon-circle {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.download-icon-circle i {
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.download-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.download-label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+}
+
+.download-size {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--white);
+    opacity: 0.8;
+}
+
+/* ==============================================
+   SECTION DE CONTENU AVEC SIDEBAR
+   ============================================== */
+
+.project-content-section {
+    background: var(--white);
+    padding: 2.5rem 0;
+}
+
+/* Sidebar sociale */
+.social-sidebar {
+    position: sticky;
+    padding: 2rem 0;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* 12px */
+    align-items: flex-start;
+    margin-top: -2rem;
+    
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid #E0E0E0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon i {
+    font-size: 1rem;
+    color: #0A0B0D;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.social-icon.linkedin:hover {
+    background: var(--social-hover-linkedin);
+    border-color: var(--social-hover-linkedin);
+}
+
+.social-icon.linkedin:hover i {
+    color: var(--white);
+}
+
+.social-icon.youtube:hover {
+    background: var(--social-hover-youtube);
+    border-color: var(--social-hover-youtube);
+}
+
+.social-icon.youtube:hover i {
+    color: var(--white);
+}
+
+.social-icon.twitter:hover {
+    background: var(--social-hover-twitter);
+    border-color: var(--social-hover-twitter);
+}
+
+.social-icon.twitter:hover i {
+    color: var(--white);
+}
+
+/* Zone de contenu textuel */
+.main-content {
+    padding-left: 2.5rem;
+}
+
+.content-block {
+    margin: 0 0 2rem -18rem;
+}
+
+.content-text-main {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #0A0B0D;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   CONTENU TEXTUEL SECONDAIRE
+   ============================================== */
+
+.secondary-content-section {
+    background: var(--white);
+    padding: 1.875rem 0; /* 30px */
+    margin-top: -5rem;
+}
+
+.secondary-content-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #707070;
+    line-height: 1.5;
+    margin-bottom: 0;
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+}
+
+/* ==============================================
+   SECTIONS AVEC TITRES DÉCORATIFS
+   ============================================== */
+
+.decorated-section {
+    background: var(--white);
+    padding: 1rem 0 1.5rem 0; /* 50px top, 24px bottom */
+}
+
+.section-title-with-highlight {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2.1875rem; /* 35px */
+    font-weight: 600;
+    color: #0A0B0D;
+    margin-bottom: 1.5rem; /* 24px */
+    text-align: left;
+    position: relative;
+    z-index: 0;
+    line-height: 1.2;
+}
+
+.section-title-with-highlight::after {
+    content: '';
+    position: absolute;
+    left: 1ch;
+    top: 0;
+    bottom: 0;
+    width: 3.75rem; /* 60px */
+    height: 100%;
+    background-color: var(--highlight-beige);
+    border-radius: 0;
+    z-index: -1;
+}
+
+.decorated-content {
+    margin-top: 1.5rem;
+}
+
+.decorated-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #0A0B0D;
+    line-height: 1.5;
+    margin-bottom: 1.25rem; /* 20px */
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Listes à puces avec carrés bleus */
+.bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0; /* 20px */
+}
+
+.bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem; /* 14px pour interlignage 1.4 */
+    line-height: 1.4;
+}
+
+.bullet-square {
+    width: 12px;
+    height: 11px;
+    background-color: #005FAC;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+}
+
+.bullet-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #565656;
+    line-height: 1.4;
+    flex: 1;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTIONS D'IMAGES
+   ============================================== */
+
+.image-section {
+    background: var(--white);
+    padding: 3.125rem 0; /* 50px */
+    margin: -4rem 0 -0.5rem 0; /* -64px top to overlap hero, 32px bottom */
+}
+
+.image-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.project-image {
+    width: 100%;
+    max-width: 100%;
+    height: 37rem;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ==============================================
+   SECTION BICOLONNE IMAGE-TEXTE
+   ============================================== */
+
+.image-text-section {
+    background: var(--white);
+    padding: 3.125rem 0; /* 50px */
+    margin-top: -3.275rem;
+}
+
+.contextual-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.text-content {
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.bicolumn-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #0A0B0D;
+    line-height: 1.5;
+    margin-bottom: 0.25rem; /* 20px */
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   PARAGRAPHE FINAL
+   ============================================== */
+
+.final-paragraph-section {
+    background: var(--white);
+    padding: 0.5rem 0;
+    margin-top: -1.25rem;
+}
+
+.final-paragraph-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    color: #0A0B0D;
+    line-height: 1.5;
+    margin-bottom: 0;
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+}
+
+/* ==============================================
+   SECTION PARTENAIRES - CARROUSEL
+   ============================================== */
+
+.partners-section {
+    background: var(--white);
+    padding: 2.5rem 0; /* 50px */
+    margin-top: -0.25rem;
+}
+
+/* Carrousel Bootstrap avec auto-scroll continu */
+.partners-carousel-container {
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    padding: 1rem 0;
+    margin-top: 1rem;
+}
+
+.carousel-inner {
+    overflow: hidden;
+    position: relative;
+    width: calc(100% - 4rem); /* largeur moins la marge totale */
+    margin: 0 2rem; /* marge des deux côtés */
+}
+
+/* Items du carrousel */
+.partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    padding: 0 1rem;
+    transition: all 0.3s ease;
+}
+
+.partner-img {
+    max-height: 80px;
+    max-width: 150px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.partner-logo:hover .partner-img {
+    transform: scale(1.05);
+}
+
+/* Contrôles personnalisés du carrousel Bootstrap */
+.custom-carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-size: 0.9rem;
+}
+
+.custom-carousel-control:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+    color: var(--white);
+}
+
+.carousel-control-prev.custom-carousel-control {
+    left: 0.25rem;
+}
+
+.carousel-control-next.custom-carousel-control {
+    right: 0.25rem;
+}
+
+/* ==============================================
+   SECTION PROJETS SIMILAIRES
+   ============================================== */
+
+.similar-projects-section {
+    background: var(--white);
+    padding: 3.125rem 0; /* 50px */
+    margin-top: -3rem;
+}
+
+.similar-projects-grid {
+    margin-top: 2rem;
+}
+
+/* Cartes de projets similaires */
+.similar-project-card {
+    background: var(--white);
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.similar-project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-header-purple {
+    background: var(--project-purple);
+    height: 250px;
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.project-flag {
+    width: 64px;
+    height: 43px;
+    object-fit: cover;
+    background: #fff;
+    border-radius: 0;
+    padding: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.project-content {
+    background: var(--project-content-bg);
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.project-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5625rem; /* 25px */
+    font-weight: 400;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    flex: 1;
+    word-wrap: break-word;
+    hyphens: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #005FAC;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 1px solid #005FAC;
+    background: var(--white);
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin-bottom: 1rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.project-read-more:hover {
+    background: #005FAC;
+    color: var(--white);
+    transform: translateX(2px);
+    text-decoration: none;
+}
+
+.project-partner-logo {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    height: 37px;
+    width: 74px;
+    object-fit: contain;
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+
+/* Medium screens - 992px to 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .project-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .main-content {
+        padding-left: 2rem;
+    }
+    
+    .text-content {
+        padding-left: 2rem;
+    }
+}
+
+/* Small-Medium screens - 768px to 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .project-hero-section {
+        min-height: 400px;
+        height: 400px;
+        padding: 3rem 0;
+    }
+    
+    .project-hero-title {
+        font-size: 2.25rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-metadata {
+        text-align: center;
+    }
+    
+    .download-section {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .section-title-with-highlight {
+        text-align: center;
+    }
+    
+    .section-title-with-highlight::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3rem;
+    }
+    
+    .main-content {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+    
+    .text-content {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+    
+    .social-sidebar {
+        position: static;
+        margin-bottom: 2rem;
+    }
+    
+    .social-icons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .project-header-purple {
+        height: 180px;
+    }
+    
+    .project-description {
+        font-size: 1.25rem;
+    }
+}
+
+/* Mobile screens - jusqu'à 767px */
+@media (max-width: 767px) {
+    .project-hero-section {
+        min-height: 350px;
+        height: 350px;
+        padding: 2.5rem 0;
+    }
+    
+    .project-hero-title {
+        font-size: 1.75rem;
+        text-align: center;
+        margin-bottom: 1.25rem;
+    }
+    
+    .project-metadata {
+        text-align: center;
+        font-size: 1rem;
+    }
+    
+    .metadata-item {
+        margin-bottom: 0.5rem;
+    }
+    
+    .download-section {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .download-container {
+        gap: 0.75rem;
+    }
+    
+    .download-icon-circle {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .download-label {
+        font-size: 0.9rem;
+    }
+    
+    .download-size {
+        font-size: 0.8rem;
+    }
+    
+    .section-title-with-highlight {
+        font-size: 1.75rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .section-title-with-highlight::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2.5rem;
+    }
+    
+    .content-text-main,
+    .secondary-content-text,
+    .decorated-text,
+    .bicolumn-text,
+    .final-paragraph-text {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .bullet-text {
+        font-size: 1rem;
+    }
+    
+    .main-content {
+        padding-left: 0;
+        margin-top: 2rem;
+    }
+    
+    .text-content {
+        padding-left: 0;
+        margin-top: 1.5rem;
+    }
+    
+    .social-sidebar {
+        position: static;
+        margin-bottom: 1.5rem;
+        padding: 1rem 0;
+    }
+    
+    .social-icons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .social-icon i {
+        font-size: 0.9rem;
+    }
+    
+    .custom-carousel-control {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+    }
+    
+    .carousel-control-prev.custom-carousel-control {
+        left: 10px;
+    }
+    
+    .carousel-control-next.custom-carousel-control {
+        right: 10px;
+    }
+    
+    .partner-logo {
+        min-width: 100px;
+    }
+    
+    .partner-img {
+        max-height: 60px;
+        max-width: 120px;
+    }
+    
+    .similar-project-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-header-purple {
+        height: 140px;
+    }
+    
+    .project-flag {
+        width: 48px;
+        height: 32px;
+    }
+    
+    .project-description {
+        font-size: 1.125rem;
+    }
+    
+    .project-partner-logo {
+        height: 30px;
+        width: 60px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .project-content {
+        padding: 1.25rem;
+    }
+}
+
+/* Very small screens - jusqu'à 575px */
+@media (max-width: 575px) {
+    .project-hero-section {
+        min-height: 320px;
+        height: 320px;
+        padding: 2rem 0;
+    }
+    
+    .project-hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-title-with-highlight {
+        font-size: 1.5rem;
+    }
+    
+    .section-title-with-highlight::after {
+        width: 2rem;
+    }
+    
+    .content-text-main,
+    .secondary-content-text,
+    .decorated-text,
+    .bicolumn-text,
+    .final-paragraph-text {
+        font-size: 0.95rem;
+    }
+    
+    .bullet-text {
+        font-size: 0.95rem;
+    }
+    
+    .metadata-item {
+        font-size: 0.9rem;
+    }
+    
+    .download-label {
+        font-size: 0.85rem;
+    }
+    
+    .download-size {
+        font-size: 0.75rem;
+    }
+    
+    .custom-carousel-control {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+    
+    .carousel-control-prev.custom-carousel-control {
+        left: 5px;
+    }
+    
+    .carousel-control-next.custom-carousel-control {
+        right: 5px;
+    }
+    
+    .partner-logo {
+        min-width: 80px;
+    }
+    
+    .partner-img {
+        max-height: 50px;
+        max-width: 100px;
+    }
+    
+    .project-header-purple {
+        height: 120px;
+    }
+    
+    .project-description {
+        font-size: 1rem;
+    }
+}
+
+/* ==============================================
+   ANIMATIONS AU SCROLL
+   ============================================== */
+
+.similar-project-card,
+.social-icon,
+.partner-logo {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.similar-project-card:nth-child(1) { animation-delay: 0.1s; }
+.similar-project-card:nth-child(2) { animation-delay: 0.2s; }
+.similar-project-card:nth-child(3) { animation-delay: 0.3s; }
+.similar-project-card:nth-child(4) { animation-delay: 0.4s; }
+
+.social-icon:nth-child(1) { animation-delay: 0.1s; }
+.social-icon:nth-child(2) { animation-delay: 0.2s; }
+.social-icon:nth-child(3) { animation-delay: 0.3s; }
+
+.partner-logo:nth-child(1) { animation-delay: 0.1s; }
+.partner-logo:nth-child(2) { animation-delay: 0.2s; }
+.partner-logo:nth-child(3) { animation-delay: 0.3s; }
+.partner-logo:nth-child(4) { animation-delay: 0.4s; }
+.partner-logo:nth-child(5) { animation-delay: 0.5s; }
+.partner-logo:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================================
+   ACCESSIBILITÉ ET ÉTATS SPÉCIAUX
+   ============================================== */
+
+/* Support high contrast mode */
+@media (prefers-contrast: high) {
+    .similar-project-card,
+    .social-icon {
+        border: 2px solid #333;
+    }
+    
+    .download-icon-circle {
+        border: 2px solid #fff;
+    }
+}
+
+/* Support reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .similar-project-card,
+    .social-icon,
+    .partner-logo {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .similar-project-card:hover,
+    .social-icon:hover,
+    .partner-logo:hover .partner-img {
+        transform: none;
+    }
+    
+    .download-container:hover {
+        transform: none;
+    }
+    
+    .project-read-more:hover {
+        transform: none;
+    }
+}
+
+.similar-project-card {
+  cursor: auto;   
+}
+
+/* Focus states pour l'accessibilité */
+.similar-project-card:focus,
+.social-icon:focus,
+.project-read-more:focus,
+.download-container:focus,
+.custom-carousel-control:focus {
+    outline-offset: 2px;
+}
+
+/* Keyboard navigation */
+.keyboard-navigation .similar-project-card:focus,
+.keyboard-navigation .social-icon:focus,
+.keyboard-navigation .project-read-more:focus,
+.keyboard-navigation .download-container:focus {
+    outline-offset: 2px !important;
+}
+
+/* ==============================================
+   UTILITAIRES ET CORRECTIONS
+   ============================================== */
+
+/* Correction des débordements */
+.project-detail-page {
+    overflow-x: hidden;
+}
+
+/* Amélioration de la lisibilité */
+.content-text-main,
+.secondary-content-text,
+.decorated-text,
+.bicolumn-text,
+.final-paragraph-text,
+.bullet-text,
+.project-description {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   CORRECTIONS SPÉCIFIQUES ZOOM
+   ============================================== */
+
+/* Assurer le rendu correct à tous niveaux de zoom */
+@supports (zoom: 1) {
+    .project-hero-section {
+        min-height: 31.25rem; /* 500px en rem */
+    }
+    
+    .similar-project-card {
+        min-height: 20rem; /* Hauteur minimum adaptative */
+    }
+}
+
+/* Correction des polices pour Safari */
+@supports (-webkit-appearance: none) {
+    .project-hero-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Barlow', sans-serif;
+    }
+    
+    .content-text-main,
+    .secondary-content-text,
+    .decorated-text,
+    .bicolumn-text,
+    .final-paragraph-text,
+    .bullet-text,
+    .project-description {
+        font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+    }
+}
+
+/* État clickable pour les cartes */
+.similar-project-card {
+    cursor: auto;
+}
+
+.download-container {
+    cursor: pointer;
+}

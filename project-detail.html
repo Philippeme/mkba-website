@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+    <title data-i18n="page_title_project_detail">Détail Projet - MK BA</title>
+    <meta name="description" content="Découvrez en détail ce projet MK BA - solutions technologiques innovantes pour l'environnement et le changement climatique en partenariat avec UNICEF Cameroun.">
+    <meta name="keywords" content="MK BA, projet, détail, UNICEF, environnement, changement climatique, solutions technologiques">
+    <meta name="author" content="MK Business Analysis">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mk-ba.com/project-detail">
+    <meta property="og:title" content="Détail Projet - MK BA">
+    <meta property="og:description" content="Découvrez en détail ce projet MK BA - solutions innovantes">
+    <meta property="og:image" content="./assets/images/mkba-og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="achievements.css">
+    <link rel="stylesheet" href="solutions.css">
+    <link rel="stylesheet" href="our-team.css">
+    <link rel="stylesheet" href="project-detail.css">
+
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./assets/images/project-tech-interface.png" as="image">
+    <link rel="preload" href="./assets/images/modern-office-workspace.png" as="image">
+</head>
+
+<body class="project-detail-page zoom-optimized">
+    <!-- Top Banner with Search Only -->
+    <div class="top-banner">
+        <div class="container-fluid px-3">
+            <div class="top-banner-content">
+                <div class="search-section">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-trigger" onclick="toggleSearch()" tabindex="0" role="button"
+                            aria-label="Ouvrir la recherche">
+                            <i class="fas fa-search search-icon-right" aria-hidden="true"></i>
+                            <span data-i18n="search_placeholder">Recherche dans MK BA</span>
+                        </div>
+                        <div class="search-input-container" id="searchInputContainer">
+                            <input type="search" class="search-input" placeholder="Recherche dans MK BA..."
+                                data-i18n-placeholder="search_placeholder" aria-label="Champ de recherche">
+                            <button class="search-close" onclick="toggleSearch()" aria-label="Fermer la recherche">
+                                <i class="fas fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Navigation principale">
+            <div class="container-fluid px-3">
+                <!-- Logo à gauche -->
+                <a class="navbar-brand" href="index.html" aria-label="Retour à l'accueil MK BA">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="brand-logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <!-- Navigation au centre -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown mega-menu-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="whoWeAreDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_who_we_are">
+                                Qui nous sommes
+                            </a>
+                            <div class="dropdown-menu who-we-are-mega-menu" aria-labelledby="whoWeAreDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="dropdown_title">Qui nous sommes</h5>
+                                            <p class="mega-menu-description" data-i18n="dropdown_description">
+                                                Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence technologique en Afrique.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">
+                                                        Nous sommes MK BA
+                                                    </a>
+                                                    <a class="mega-menu-item" href="our-team.html" data-i18n="nav_our_team">
+                                                        Notre équipe
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_sustainability">
+                                                        Notre engagement pour la durabilité
+                                                    </a>
+                                                </div>
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_technologies">
+                                                        Technologies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_work_with_us">
+                                                        Travailler avec nous
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#what-we-do" data-i18n="nav_what_we_do">Ce que nous faisons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="achievements.html" data-i18n="nav_achievements">Réalisations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#news" data-i18n="nav_news">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact-btn" href="index.html#contact" data-i18n="nav_contact">Nous contacter</a>
+                        </li>
+                    </ul>
+
+                    <!-- Sélecteur de langue à l'extrémité droite -->
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link language-selector-nav" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="Sélection de langue">
+                                <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bannière Fil d'Ariane -->
+    <section class="breadcrumb-banner">
+        <div class="container-fluid px-3">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="achievements.html" data-i18n="breadcrumb_achievements">Achievements</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span data-i18n="breadcrumb_project_title">Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac.</span>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Hero Section - Détail du projet -->
+    <section id="project-hero" class="project-hero-section" role="banner">
+        <div class="hero-overlay"></div>
+        <div class="container-fluid px-3">
+            <div class="row align-items-center justify-content-start">
+                <div class="col-12">
+                    <div class="project-hero-content">
+                        <h1 class="project-hero-title" data-i18n="project_hero_title">
+                            Voyez ce jeu exquis wallon, de graphie en kit mais bref. Portez ce vieux whisky au juge blond qui fume sur son île intérieure, à côté de l'alcôve.
+                        </h1>
+                        
+                        <div class="project-metadata">
+                            <div class="metadata-item">
+                                <span class="metadata-label" data-i18n="industry_label">Industrie :</span>
+                                <span class="metadata-value" data-i18n="industry_value">Environnement et changement climatique</span>
+                            </div>
+                            <div class="metadata-item">
+                                <span class="metadata-value partner-name" data-i18n="partner_name">UNICEF Cameroun</span>
+                            </div>
+                            <div class="metadata-item">
+                                <span class="metadata-label" data-i18n="duration_label">Durée :</span>
+                                <span class="metadata-value" data-i18n="duration_value">20 MOIS</span>
+                            </div>
+                        </div>
+
+                        <div class="download-section">
+                            <div class="download-container">
+                                <div class="download-icon-circle">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <div class="download-text">
+                                    <span class="download-label" data-i18n="download_label">Télécharger le rapport</span>
+                                    <span class="download-size" data-i18n="download_size">111 KB pdf</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section de contenu avec sidebar -->
+    <section id="project-content" class="project-content-section">
+        <div class="container-fluid px-3">
+            <div class="row">
+                <!-- Sidebar sociale (30%) -->
+                <div class="col-lg-3 col-md-4 col-12">
+                    <div class="social-sidebar">
+                        <div class="social-icons">
+                            <a href="#" class="social-icon linkedin" aria-label="Partager sur LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-icon youtube" aria-label="Partager sur YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="social-icon twitter" aria-label="Partager sur X (Twitter)">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zone de contenu textuel (70%) -->
+                <div class="col-lg-9 col-md-8 col-12">
+                    <div class="main-content">
+                        <div class="content-block">
+                            <p class="content-text-main" data-i18n="content_text_initial">
+                                Aenean sed nibh a magna posuere tempor. Nunc faucibus pellentesque nunc in aliquet. Donec congue, nunc vel tempor congue, enim sapien lobortis ipsum, in volutpat sem ex in ligula. Nunc purus est, consequat condimentum faucibus sed, iaculis sit amet massa. Fusce ac condimentum turpis. Ut consequat lacinia augue, vitae aliquam sapien ullamcorper at. Donec efficitur, ligula ut lacinia viverra, lorem lacus condimentum leo, eu luctus dolor ex at quam. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu textuel secondaire -->
+    <section id="secondary-content" class="secondary-content-section">
+        <div class="container-fluid px-3">
+            <p class="secondary-content-text" data-i18n="secondary_content_text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquam erat, sed diam voluptua.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section avec titre décoratif -->
+    <section id="decorated-section-1" class="decorated-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="decorated_title_1">Lorem ipsum dolor sit amet</h2>
+            
+            <div class="decorated-content">
+                <p class="decorated-text" data-i18n="decorated_text_1">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                </p>
+                
+                <ul class="bullet-list">
+                    <li class="bullet-item">
+                        <span class="bullet-square"></span>
+                        <span class="bullet-text" data-i18n="bullet_text_1">Implication du client dans le recueil des attentes, les études et la conception</span>
+                    </li>
+                    <li class="bullet-item">
+                        <span class="bullet-square"></span>
+                        <span class="bullet-text" data-i18n="bullet_text_2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut arcu libero, pulvinar non massa sed, accumsan scelerisque dui. Morbi purus mauris, vulputate quis felis nec, fermentum aliquam orci. Quisque ornare iaculis placerat.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image illustrative intégrée -->
+    <section id="tech-image-section" class="image-section">
+        <div class="container-fluid px-3">
+            <div class="image-container">
+                <img src="./assets/images/project-tech-interface.png" 
+                     alt="Interface technologique - main et écran tactile" 
+                     class="project-image"
+                     loading="lazy"
+                     data-i18n-alt="tech_interface_alt">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section répliquée avec titre décoratif -->
+    <section id="decorated-section-1" class="decorated-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="decorated_title_2">Lorem ipsum dolor sit amet</h2>
+            
+            <div class="decorated-content">
+                <p class="decorated-text" data-i18n="decorated_text_2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                </p>
+                
+                <ul class="bullet-list">
+                    <li class="bullet-item">
+                        <span class="bullet-square"></span>
+                        <span class="bullet-text" data-i18n="bullet_text_3">Implication du client dans le recueil des attentes, les études et la conception</span>
+                    </li>
+                    <li class="bullet-item">
+                        <span class="bullet-square"></span>
+                        <span class="bullet-text" data-i18n="bullet_text_4">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut arcu libero, pulvinar non massa sed, accumsan scelerisque dui. Morbi purus mauris, vulputate quis felis nec, fermentum aliquam orci. Quisque ornare iaculis placerat.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section de contenu avec image bicolonne -->
+    <section id="image-text-section" class="image-text-section">
+        <div class="container-fluid px-3">
+            <div class="row align-items-center">
+                <!-- Image contextuelle (50%) -->
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="image-container">
+                        <img src="./assets/images/modern-office-workspace.png" 
+                             alt="Environnement de bureau moderne avec multiples postes de travail" 
+                             class="contextual-image"
+                             loading="lazy"
+                             data-i18n-alt="office_workspace_alt">
+                    </div>
+                </div>
+
+                <!-- Contenu textuel associé (50%) -->
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="text-content">
+                        <p class="bicolumn-text" data-i18n="bicolumn_text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                        </p>
+                        
+                        <ul class="bullet-list">
+                            <li class="bullet-item">
+                                <span class="bullet-square"></span>
+                                <span class="bullet-text" data-i18n="bullet_text_5">Maecenas interdum lorem eleifend orci aliquam mollis. Aliquam non</span>
+                            </li>
+                            <li class="bullet-item">
+                                <span class="bullet-square"></span>
+                                <span class="bullet-text" data-i18n="bullet_text_6">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut arcu libero, pulvinar non massa sed,</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paragraphe séparé -->
+    <section id="final-paragraph" class="final-paragraph-section">
+        <div class="container-fluid px-3">
+            <p class="final-paragraph-text" data-i18n="final_paragraph_text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Partenaires -->
+    <section id="partners" class="partners-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="partners_title">Partenaires</h2>
+
+            <!-- Carrousel de logos partenaires -->
+            <div class="partners-carousel-container">
+                <div id="partnersCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                    <div class="carousel-inner">
+                        <!-- Slide 1 : 6 premiers logos -->
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-center align-items-center gap-4">
+                                <div class="partner-logo">
+                                    <img src="./assets/images/partners/cordaid.png" alt="Cordaid" loading="lazy"
+                                        class="partner-img">
+                                </div>
+                                <div class="partner-logo">
+                                    <img src="./assets/images/partners/cfi.png" alt="CFI Développement Médias" loading="lazy"
+                                        class="partner-img">
+                                </div>
+                                <div class="partner-logo">
+                                    <img src="./assets/images/partners/world-vision.png" alt="World Vision"
+                                        loading="lazy" class="partner-img">
+                                </div>
+                                <div class="partner-logo">
+                                    <img src="./assets/images/partners/invisible-children.png" alt="Invisible Children"
+                                        loading="lazy" class="partner-img">
+                                </div>
+                                <div class="partner-logo">
+                                    <img src="./assets/images/partners/solidarites.png" alt="Solidarités International"
+                                        loading="lazy" class="partner-img">
+                                </div>
+                                <div class="partner-logo">
+                                    <img src="./assets/images/partners/oxfam.png" alt="Oxfam" loading="lazy"
+                                        class="partner-img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 : 2 logos suivants -->
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <div class="partner-logo">
+                                    <img src="./assets/images/partners/oag.png" alt="OAG" loading="lazy"
+                                        class="partner-img">
+                                </div>
+                                <div class="partner-logo">
+                                    <img src="./assets/images/partners/pnud.png" alt="PNUD" loading="lazy"
+                                        class="partner-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contrôles du carrousel -->
+                    <button class="carousel-control-prev custom-carousel-control" type="button"
+                        data-bs-target="#partnersCarousel" data-bs-slide="prev" aria-label="Précédent">
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next custom-carousel-control" type="button"
+                        data-bs-target="#partnersCarousel" data-bs-slide="next" aria-label="Suivant">
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets similaires -->
+    <section id="similar-projects" class="similar-projects-section">
+        <div class="container-fluid px-3">
+            <h2 class="section-title-with-highlight" data-i18n="similar_projects_title">Projets similaires</h2>
+
+            <!-- Grille de projets recommandés -->
+            <div class="similar-projects-grid">
+                <div class="row g-4">
+                    <!-- Projet similaire 1 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="similar-project-card">
+                            <div class="project-header-purple">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Bénin" class="project-flag">
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description" data-i18n="similar_project_desc_1">
+                                    Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at
+                                </p>
+                                <a href="#" class="project-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="project-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projet similaire 2 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="similar-project-card">
+                            <div class="project-header-purple">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Bénin" class="project-flag">
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description" data-i18n="similar_project_desc_2">
+                                    Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam
+                                </p>
+                                <a href="#" class="project-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="project-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projet similaire 3 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="similar-project-card">
+                            <div class="project-header-purple">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Bénin" class="project-flag">
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description" data-i18n="similar_project_desc_1">
+                                    Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at
+                                </p>
+                                <a href="#" class="project-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="project-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projet similaire 4 -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                        <div class="similar-project-card">
+                            <div class="project-header-purple">
+                                <img src="./assets/images/flags/Flag_of_Benin@2x.png" alt="Drapeau Bénin" class="project-flag">
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description" data-i18n="similar_project_desc_2">
+                                    Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam
+                                </p>
+                                <a href="#" class="project-read-more" data-i18n="read_more_btn">
+                                    Lire plus <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <img src="./assets/icons/undp-seeklogo@2x.png" alt="Logo UNDP" class="project-partner-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer" role="contentinfo">
+        <div class="container-fluid px-3">
+            <div class="footer-content">
+                <!-- Colonne 1: Logo + slogan -->
+                <div class="footer-brand-section">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA Footer" class="footer-logo">
+                    <p class="footer-description">MK Business Analysis</p>
+                </div>
+
+                <!-- Colonne 2: Qui nous sommes -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="we-are-mkba.html" data-i18n="footer_who_are_mkba">Qui sommes-nous MK BA</a></li>
+                        <li><a href="our-team.html" data-i18n="footer_our_team">Notre équipe</a></li>
+                        <li><a href="#" data-i18n="footer_sustainability">Notre engagement pour la durabilité</a></li>
+                        <li><a href="#" data-i18n="footer_technologies">Technologies</a></li>
+                        <li><a href="#" data-i18n="footer_work_with_us">Travailler avec nous</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Ce que nous faisons -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="industries-served.html" data-i18n="footer_industries">Industries servies</a></li>
+                        <li><a href="#" data-i18n="footer_services">Services</a></li>
+                        <li><a href="#" data-i18n="footer_solutions">Solutions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Réalisations -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_achievements">Réalisations</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="achievements.html" data-i18n="footer_achievements_link">Réalisations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5: Contacts -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_contacts">Contacts</h4>
+                    <address class="contact-info">
+                        <p data-i18n="footer_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@mk-ba.com">info@mk-ba.com</a></p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+237695478987">+237 695 478 987</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom-section">
+                <nav class="footer-legal" aria-label="Liens légaux">
+                    <a href="#" data-i18n="footer_legal_mentions">Mentions légales</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_privacy">Politique de Confidentialité</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_terms">Termes et conditions</a>
+                </nav>
+
+                <p class="footer-copyright" data-i18n="footer_copyright">Copyright © 2025. Tous droits réservés</p>
+            </div>
+        </div>
+
+        <!-- Bas de page (bande grise foncée) -->
+        <div class="footer-bottom-band">
+            <div class="container-fluid px-3">
+                <small data-i18n="footer_powered">Powered by MK BA</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="project-detail.js" defer></script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": "https://mk-ba.com/project-detail",
+        "name": "Détail Projet - MK BA",
+        "description": "Découvrez en détail ce projet MK BA - solutions technologiques innovantes",
+        "publisher": {
+            "@type": "Organization",
+            "name": "MK Business Analysis"
+        },
+        "url": "https://mk-ba.com/project-detail",
+        "author": {
+            "@type": "Organization",
+            "name": "MK Business Analysis"
+        },
+        "about": {
+            "@type": "Project",
+            "name": "Projet Environnement et Changement Climatique",
+            "partner": "UNICEF Cameroun",
+            "industry": "Environnement et changement climatique",
+            "duration": "20 MOIS"
+        }
+    }
+    </script>
+</body>
+
+</html>

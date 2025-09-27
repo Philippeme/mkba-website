@@ -87,7 +87,7 @@ const industriesServedTranslations = {
         industry_references_title: "Références liées à cette industrie",
         reference_1_description: "Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at",
         reference_2_description: "Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam",
-        reference_read_more: "Lire plus"
+        reference_read_more: 'Lire plus <i class="fas fa-arrow-right ms-2"></i>',
     },
     
     en: {
@@ -169,7 +169,7 @@ const industriesServedTranslations = {
         industry_references_title: "Industry-related references",
         reference_1_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore",
         reference_2_description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
-        reference_read_more: "Read more"
+        reference_read_more: 'Read more <i class="fas fa-arrow-right ms-2"></i>',
     }
 };
 
@@ -501,12 +501,12 @@ function initAdvancedAnimationEffects() {
     // Effet de révélation progressive pour les longs textes
     const longTexts = document.querySelectorAll('.healthcare-intro-text, .reference-description');
     longTexts.forEach(text => {
-        const words = text.textContent.split(' ');
+        const words = text.innerHTML.split(' ');
         text.innerHTML = '';
         
         words.forEach((word, index) => {
             const span = document.createElement('span');
-            span.textContent = word + ' ';
+            span.innerHTML = word + ' ';
             span.style.opacity = '0';
             span.style.transition = `opacity 0.3s ease ${index * 0.05}s`;
             text.appendChild(span);
@@ -537,7 +537,7 @@ function initAdvancedAnimationEffects() {
                 current = target;
                 clearInterval(timer);
             }
-            element.textContent = Math.floor(current);
+            element.innerHTML = Math.floor(current);
         }, 20);
     }
     
@@ -557,7 +557,7 @@ function initAdvancedAnimationEffects() {
 // Ajout des keyframes CSS via JavaScript
 function addAnimationKeyframes() {
     const style = document.createElement('style');
-    style.textContent = `
+    style.innerHTML = `
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -637,7 +637,7 @@ function initIndustriesCardsInteractions() {
         
         // Support clavier et clic
         card.addEventListener('click', function() {
-            const serviceTitle = this.querySelector('.service-card-title')?.textContent;
+            const serviceTitle = this.querySelector('.service-card-title')?.innerHTML;
             console.log(`Clic sur service: ${serviceTitle}`);
             
             // Animation de clic
@@ -653,7 +653,7 @@ function initIndustriesCardsInteractions() {
         
         const serviceTitle = card.querySelector('.service-card-title');
         if (serviceTitle) {
-            card.setAttribute('aria-label', `Service: ${serviceTitle.textContent}`);
+            card.setAttribute('aria-label', `Service: ${serviceTitle.innerHTML}`);
         }
         
         card.addEventListener('keydown', function(e) {
@@ -689,7 +689,7 @@ function initIndustriesCardsInteractions() {
         });
         
         card.addEventListener('click', function() {
-            const productTitle = this.querySelector('.product-card-title')?.textContent;
+            const productTitle = this.querySelector('.product-card-title')?.innerHTML;
             console.log(`Clic sur produit: ${productTitle}`);
         });
         
@@ -699,7 +699,7 @@ function initIndustriesCardsInteractions() {
         
         const productTitle = card.querySelector('.product-card-title');
         if (productTitle) {
-            card.setAttribute('aria-label', `Produit: ${productTitle.textContent}`);
+            card.setAttribute('aria-label', `Produit: ${productTitle.innerHTML}`);
         }
         
         card.addEventListener('keydown', function(e) {
@@ -753,7 +753,7 @@ function initIndustriesCardsInteractions() {
         
         const referenceDesc = card.querySelector('.reference-description');
         if (referenceDesc) {
-            card.setAttribute('aria-label', `Référence: ${referenceDesc.textContent.substring(0, 50)}...`);
+            card.setAttribute('aria-label', `Référence: ${referenceDesc.innerHTML.substring(0, 50)}...`);
         }
     });
 }
@@ -779,7 +779,7 @@ function setLanguageIndustriesPage(lang) {
             } else if (element.hasAttribute('title')) {
                 element.title = pageTranslations[key];
             } else {
-                element.textContent = pageTranslations[key];
+                element.innerHTML = pageTranslations[key];
             }
         }
         // Sinon utiliser les traductions générales si disponibles
@@ -793,7 +793,7 @@ function setLanguageIndustriesPage(lang) {
                 if (generalTranslation.includes('<i class=')) {
                     element.innerHTML = generalTranslation;
                 } else {
-                    element.textContent = generalTranslation;
+                    element.innerHTML = generalTranslation;
                 }
             }
         }
@@ -977,7 +977,7 @@ function initIndustriesAnalytics() {
     // Tracking des clics sur les services
     serviceCards.forEach((card, index) => {
         card.addEventListener('click', function() {
-            const serviceTitle = this.querySelector('.service-card-title')?.textContent;
+            const serviceTitle = this.querySelector('.service-card-title')?.innerHTML;
             console.log(`Analytics: Clic sur service "${serviceTitle}" (position: ${index + 1})`);
         });
     });
@@ -985,7 +985,7 @@ function initIndustriesAnalytics() {
     // Tracking des clics sur les produits
     productCards.forEach((card, index) => {
         card.addEventListener('click', function() {
-            const productTitle = this.querySelector('.product-card-title')?.textContent;
+            const productTitle = this.querySelector('.product-card-title')?.innerHTML;
             console.log(`Analytics: Clic sur produit "${productTitle}" (position: ${index + 1})`);
         });
     });
@@ -1016,7 +1016,7 @@ function initErrorHandlingAndPerformanceIndustries() {
                 e.target.style.display = 'none';
                 const fallback = document.createElement('div');
                 fallback.className = 'flag-fallback';
-                fallback.textContent = 'Flag';
+                fallback.innerHTML = 'Flag';
                 fallback.style.cssText = `
                     width: 64px;
                     height: 43px;
