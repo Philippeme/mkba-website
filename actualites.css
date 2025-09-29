@@ -1,0 +1,622 @@
+/* ==============================================
+   STYLES SPÉCIFIQUES POUR LA PAGE ACTUALITÉS
+   ============================================== */
+
+/* Variables spécifiques à la page Actualités */
+:root {
+    --actualites-hero-bg: #005FAC;
+    --actualites-blue: #005FAC;
+    --actualites-content-bg: #F5F5F5;
+    --actualites-text-dark: #333333;
+    --actualites-text-gray: #565656;
+    --actualites-border-gray: #707070;
+}
+
+/* ==============================================
+   HEADER ADAPTATION - CONFORME AUX PAGES EXISTANTES
+   ============================================== */
+
+.actualites-page .navbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+}
+
+.actualites-page .navbar .nav-link {
+    color: var(--primary-blue) !important;
+    font-weight: 400;
+}
+
+.actualites-page .navbar .nav-link:hover {
+    color: var(--primary-orange) !important;
+}
+
+.actualites-page .navbar .nav-link.active {
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 1.7rem !important;
+    margin-bottom: -19rem;
+}
+
+.actualites-page .navbar .contact-btn {
+    border-color: var(--primary-blue) !important;
+    color: var(--primary-blue) !important;
+}
+
+.actualites-page .navbar .contact-btn:hover {
+    background-color: var(--primary-blue) !important;
+    color: var(--white) !important;
+}
+
+.actualites-page .navbar .language-icon {
+    color: var(--primary-blue) !important;
+}
+
+.actualites-page .top-banner .search-trigger:hover {
+    color: var(--primary-blue) !important;
+    opacity: 1;
+}
+
+/* ==============================================
+   HERO SECTION ACTUALITÉS
+   ============================================== */
+
+.actualites-hero-section {
+    background: var(--actualites-hero-bg);
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0;
+    margin-top: 0;
+}
+
+.actualites-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+}
+
+.actualites-hero-title {
+    font-family: 'Spectral', serif;
+    font-size: 4.375rem; /* 70px */
+    font-weight: 400;
+    color: var(--white);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: 0.125rem; /* 2px */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   SECTION TITRE DE CONTENU
+   ============================================== */
+
+.all-actualites-section {
+    background: var(--white);
+    padding: 3rem 0;
+}
+
+.section-title-simple {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 600;
+    color: var(--actualites-text-dark);
+    margin-bottom: 2.5rem;
+    text-align: left;
+    position: relative;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   GRILLE D'ARTICLES D'ACTUALITÉ
+   ============================================== */
+
+.actualites-grid {
+    margin-top: 2rem;
+}
+
+.actualites-grid .row {
+    --bs-gutter-x: 1.875rem; /* 30px */
+    --bs-gutter-y: 1.875rem;
+}
+
+/* Cartes d'actualité */
+.actualite-card {
+    background: var(--background-gray);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    min-height: 37rem; /* 560px - hauteur fixe pour uniformité */
+    border: 1px solid var(--border-light);
+    border-bottom: 5px solid transparent;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.actualite-card:hover {
+    transform: translateY(-0.3125rem);
+    box-shadow: 0 0.75rem 1.875rem rgba(0, 0, 0, 0.12);
+    border-bottom: 5px solid var(--actualites-blue);
+}
+
+/* Image d'article */
+.actualite-image {
+    height: 15.625rem; /* 250px */
+    overflow: hidden;
+    position: relative;
+}
+
+.actualite-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.actualite-card:hover .actualite-image img {
+    transform: scale(1.05);
+}
+
+/* Zone de contenu textuel */
+.actualite-content {
+    background: var(--actualites-content-bg);
+    padding: 1.8rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Date de publication */
+.actualite-date {
+    font-family: inherit;
+    font-size: 1rem; /* 16px */
+    color: var(--actualites-text-dark);
+    margin-bottom: 0.75rem;
+    display: block;
+    font-weight: 400;
+}
+
+/* Titre de l'article */
+.actualite-title {
+    font-family: inherit;
+    font-size: 1.5625rem; /* 25px */
+    font-weight: 400;
+    color: var(--actualites-blue);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    flex: 0 0 auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Extrait de l'article */
+.actualite-excerpt {
+    font-family: inherit;
+    font-size: 1.125rem; /* 18px */
+    font-weight: 400;
+    color: var(--actualites-text-gray);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Conteneur du lien - aligné à droite et poussé en bas */
+.actualite-link-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+/* Lien d'action "Voir plus" - masqué par défaut, visible au hover */
+.actualite-link {
+    font-family: inherit;
+    color: var(--actualites-blue);
+    text-decoration: none;
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(0.625rem);
+}
+
+.actualite-card:hover .actualite-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.actualite-link i {
+    font-size: 0.875rem;
+    transition: transform 0.3s ease;
+}
+
+.actualite-link:hover {
+    color: var(--primary-orange);
+}
+
+.actualite-link:hover i {
+    transform: translateX(3px);
+}
+
+/* ==============================================
+   SYSTÈME DE PAGINATION
+   ============================================== */
+
+.pagination-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3.125rem; /* 50px */
+    margin-bottom: 3.75rem; /* 60px */
+}
+
+.pagination-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.5rem; /* 8px */
+}
+
+.pagination-item {
+    display: flex;
+}
+
+.pagination-btn {
+    width: 3.1875rem; /* 51px */
+    height: 2.8125rem; /* 45px */
+    border: 0.25px solid var(--actualites-border-gray);
+    background: var(--white);
+    color: var(--actualites-border-gray);
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.25rem; /* 20px */
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+}
+
+.pagination-btn:hover:not(:disabled):not(.active) {
+    background: #E3F2FD;
+    border-color: var(--actualites-border-gray);
+}
+
+.pagination-btn.active {
+    background: var(--actualites-blue);
+    color: var(--white);
+    border: none;
+    font-weight: 400;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-btn:disabled:hover {
+    background: var(--white);
+    border-color: var(--actualites-border-gray);
+}
+
+.pagination-prev,
+.pagination-next {
+    font-size: 1rem;
+}
+
+/* ==============================================
+   ANIMATIONS AU SCROLL
+   ============================================== */
+
+.actualite-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.actualite-card:nth-child(1) { animation-delay: 0.1s; }
+.actualite-card:nth-child(2) { animation-delay: 0.2s; }
+.actualite-card:nth-child(3) { animation-delay: 0.3s; }
+.actualite-card:nth-child(4) { animation-delay: 0.4s; }
+.actualite-card:nth-child(5) { animation-delay: 0.5s; }
+.actualite-card:nth-child(6) { animation-delay: 0.6s; }
+.actualite-card:nth-child(7) { animation-delay: 0.7s; }
+.actualite-card:nth-child(8) { animation-delay: 0.8s; }
+.actualite-card:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================================
+   RESPONSIVE DESIGN
+   ============================================== */
+
+/* Large screens - 1200px+ */
+@media (min-width: 1200px) {
+    .actualites-hero-title {
+        font-size: 4.375rem;
+    }
+    
+    .section-title-simple {
+        font-size: 2.5rem;
+    }
+}
+
+/* Medium screens - 992px to 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .actualites-hero-title {
+        font-size: 3.75rem;
+    }
+    
+    .section-title-simple {
+        font-size: 2.25rem;
+    }
+}
+
+/* Small-Medium screens - 768px to 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .actualites-hero-section {
+        min-height: 300px;
+        height: 300px;
+        padding: 3rem 0;
+    }
+    
+    .actualites-hero-title {
+        font-size: 3rem;
+    }
+    
+    .section-title-simple {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .actualites-grid .row {
+        --bs-gutter-x: 1.5rem;
+    }
+    
+    .actualite-image {
+        height: 11.25rem; /* 180px */
+    }
+    
+    .actualite-title {
+        font-size: 1.375rem;
+    }
+    
+    .actualite-excerpt {
+        font-size: 1rem;
+    }
+    
+    .pagination-container {
+        justify-content: center;
+    }
+}
+
+/* Mobile screens - jusqu'à 767px */
+@media (max-width: 767px) {
+    .actualites-hero-section {
+        min-height: 200px;
+        height: 200px;
+        padding: 2.5rem 0;
+        background-attachment: scroll;
+    }
+    
+    .actualites-hero-title {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    .section-title-simple {
+        font-size: 1.75rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .actualites-grid .row {
+        --bs-gutter-x: 1rem;
+    }
+    
+    .actualite-card {
+        margin-bottom: 1.5rem;
+        min-height: 30rem; /* 480px */
+    }
+    
+    .actualite-image {
+        height: 10rem; /* 160px */
+    }
+    
+    .actualite-content {
+        padding: 1.25rem;
+    }
+    
+    .actualite-title {
+        font-size: 1.25rem;
+    }
+    
+    .actualite-excerpt {
+        font-size: 1rem;
+    }
+    
+    .pagination-container {
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .pagination-list {
+        gap: 0.375rem;
+    }
+    
+    .pagination-btn {
+        width: 2.5rem;
+        height: 2.25rem;
+        font-size: 1rem;
+    }
+}
+
+/* Very small screens - jusqu'à 575px */
+@media (max-width: 575px) {
+    .actualites-hero-section {
+        min-height: 150px;
+        height: 150px;
+        padding: 2rem 0;
+    }
+    
+    .actualites-hero-title {
+        font-size: 2.25rem;
+    }
+    
+    .section-title-simple {
+        font-size: 1.5rem;
+    }
+    
+    .actualite-image {
+        height: 10rem; /* 160px */
+    }
+    
+    .actualite-content {
+        padding: 1rem;
+    }
+    
+    .actualite-title {
+        font-size: 1.125rem;
+    }
+    
+    .actualite-excerpt {
+        font-size: 0.95rem;
+    }
+    
+    .pagination-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* ==============================================
+   ACCESSIBILITÉ ET ÉTATS SPÉCIAUX
+   ============================================== */
+
+/* Support high contrast mode */
+@media (prefers-contrast: high) {
+    .actualite-card {
+        border: 2px solid #333;
+    }
+    
+    .pagination-btn {
+        border: 2px solid var(--actualites-border-gray);
+    }
+}
+
+/* Support reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .actualite-card {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .actualite-card:hover {
+        transform: none;
+    }
+    
+    .actualites-hero-section {
+        background-attachment: scroll;
+    }
+}
+
+/* Focus states pour l'accessibilité */
+.actualite-card:focus,
+.actualite-link:focus,
+.pagination-btn:focus {
+    outline-offset: 2px;
+}
+
+/* Keyboard navigation */
+.keyboard-navigation .actualite-card:focus,
+.keyboard-navigation .actualite-link:focus,
+.keyboard-navigation .pagination-btn:focus {
+    outline-offset: 2px !important;
+}
+
+/* ==============================================
+   UTILITAIRES ET CORRECTIONS
+   ============================================== */
+
+/* Correction des débordements */
+.actualites-page {
+    overflow-x: hidden;
+}
+
+/* Amélioration de la lisibilité */
+.actualite-title,
+.actualite-excerpt {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ==============================================
+   CORRECTIONS SPÉCIFIQUES ZOOM
+   ============================================== */
+
+/* Assurer le rendu correct à tous niveaux de zoom */
+@supports (zoom: 1) {
+    .actualites-hero-section {
+        min-height: 25rem; /* 400px en rem */
+    }
+    
+    .actualite-card {
+        min-height: 30rem; /* Hauteur minimum adaptative */
+    }
+}
+
+/* Correction des polices pour Safari */
+@supports (-webkit-appearance: none) {
+    .actualites-hero-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Spectral', serif;
+    }
+    
+    .actualite-title,
+    .actualite-excerpt {
+        font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+    }
+}
