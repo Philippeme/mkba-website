@@ -283,7 +283,7 @@
 }
 
 .actualites-reset-btn:hover {
-    background: var(--actualites-blue);
+    background: #a855f7;
     color: white;
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(0, 95, 172, 0.2);
