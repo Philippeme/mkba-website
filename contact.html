@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
+    <title data-i18n="page_title_contact">Contactez-nous - MK BA</title>
+    <meta name="description" content="Contactez MK BA pour vos projets de transformation numérique et solutions technologiques en Afrique. Formulaire de contact et coordonnées.">
+    <meta name="keywords" content="MK BA, contact, devis, consultation, technologie, Afrique, e-gouvernance">
+    <meta name="author" content="MK Business Analysis">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mk-ba.com/contact">
+    <meta property="og:title" content="Contactez-nous - MK BA">
+    <meta property="og:description" content="Contactez MK BA pour vos projets technologiques">
+    <meta property="og:image" content="./assets/images/mkba-og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="solutions.css">
+    <link rel="stylesheet" href="contact.css">
+
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./assets/images/contact-hero.png" as="image">
+</head>
+
+<body class="contact-page zoom-optimized">
+    <!-- Top Banner with Search Only -->
+    <div class="top-banner">
+        <div class="container-fluid px-3">
+            <div class="top-banner-content">
+                <div class="search-section">
+                    <div class="search-container" id="searchContainer">
+                        <div class="search-trigger" onclick="toggleSearch()" tabindex="0" role="button"
+                            aria-label="Ouvrir la recherche">
+                            <i class="fas fa-search search-icon-right" aria-hidden="true"></i>
+                            <span data-i18n="search_placeholder">Recherche dans MK BA</span>
+                        </div>
+                        <div class="search-input-container" id="searchInputContainer">
+                            <input type="search" class="search-input" placeholder="Recherche dans MK BA..."
+                                data-i18n-placeholder="search_placeholder" aria-label="Champ de recherche">
+                            <button class="search-close" onclick="toggleSearch()" aria-label="Fermer la recherche">
+                                <i class="fas fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Navigation principale">
+            <div class="container-fluid px-3">
+                <!-- Logo à gauche -->
+                <a class="navbar-brand" href="index.html" aria-label="Retour à l'accueil MK BA">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA" class="brand-logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <!-- Navigation au centre -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown mega-menu-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="whoWeAreDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_who_we_are">
+                                Qui nous sommes
+                            </a>
+                            <div class="dropdown-menu who-we-are-mega-menu" aria-labelledby="whoWeAreDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="dropdown_title">Qui nous sommes</h5>
+                                            <p class="mega-menu-description" data-i18n="dropdown_description">
+                                                Découvrez notre équipe, nos valeurs et notre engagement pour l'excellence technologique en Afrique.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="we-are-mkba.html" data-i18n="nav_we_are_mkba">
+                                                        Nous sommes MK BA
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_our_team">
+                                                        Notre équipe
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_sustainability">
+                                                        Notre engagement pour la durabilité
+                                                    </a>
+                                                </div>
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_technologies">
+                                                        Technologies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="#" data-i18n="nav_work_with_us">
+                                                        Travailler avec nous
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#what-we-do" data-i18n="nav_what_we_do">Ce que nous faisons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="achievements.html" data-i18n="nav_achievements">Réalisations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#news" data-i18n="nav_news">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact-btn" href="contact.html" data-i18n="nav_contact">Contact us</a>
+                        </li>
+                    </ul>
+
+                    <!-- Sélecteur de langue à l'extrémité droite -->
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link language-selector-nav" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="Sélection de langue">
+                                <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end language-dropdown">
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('fr')">Français</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="setLanguage('en')">English</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bannière Fil d'Ariane -->
+    <section class="breadcrumb-banner">
+        <div class="container-fluid px-3">
+            <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span data-i18n="nav_contact">Contactez-nous</span>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Hero Section Contact -->
+    <section id="contact-hero" class="contact-hero-section" role="banner">
+        <div class="hero-overlay"></div>
+        <div class="contact-hero-image">
+            <img src="./assets/images/contact-hero.png" alt="Contactez MK BA" class="hero-image">
+        </div>
+        <div class="container-fluid px-3">
+            <div class="row align-items-center justify-content-start">
+                <div class="col-12">
+                    <div class="contact-hero-content">
+                        <h1 class="contact-hero-title" data-i18n="contact_hero_title">
+                            Contactez-nous
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section principale de contact -->
+    <section id="contact-main" class="contact-main-section">
+        <div class="container-fluid px-3">
+            <div class="contact-container">
+                <div class="row g-0">
+                    <!-- Formulaire de contact - 60% -->
+                    <div class="col-lg-7 col-md-12">
+                        <div class="contact-form-section">
+                            <h2 class="contact-form-title" data-i18n="contact_form_title">Écrivez - nous</h2>
+                            
+                            <form id="contactForm" class="contact-form" novalidate>
+                                <!-- Première ligne - Nom et Téléphone -->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="contact-name" data-i18n="contact_name_label">Nom *</label>
+                                        <input type="text" id="contact-name" name="name" class="form-control" required>
+                                        <div class="invalid-feedback" data-i18n="contact_name_error">Veuillez saisir votre nom</div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="contact-phone" data-i18n="contact_phone_label">Téléphone *</label>
+                                        <div class="phone-input-wrapper">
+                                            <div class="country-selector">
+                                                <select id="country-code" class="form-select">
+                                                    <option value="+243" selected>+243</option>
+                                                    <option value="+237">+237</option>
+                                                    <option value="+225">+225</option>
+                                                    <option value="+221">+221</option>
+                                                    <option value="+223">+223</option>
+                                                    <option value="+229">+229</option>
+                                                    <option value="+261">+261</option>
+                                                    <option value="+230">+230</option>
+                                                    <option value="+269">+269</option>
+                                                    <option value="+33">+33</option>
+                                                </select>
+                                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                                            </div>
+                                            <input type="tel" id="contact-phone" name="phone" class="form-control phone-number" required>
+                                        </div>
+                                        <div class="invalid-feedback" data-i18n="contact_phone_error">Veuillez saisir votre numéro de téléphone</div>
+                                    </div>
+                                </div>
+
+                                <!-- Deuxième ligne - Email et Entreprise -->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="contact-email" data-i18n="contact_email_label">Email *</label>
+                                        <input type="email" id="contact-email" name="email" class="form-control" required>
+                                        <div class="invalid-feedback" data-i18n="contact_email_error">Veuillez saisir une adresse email valide</div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="contact-company" data-i18n="contact_company_label">Entreprise</label>
+                                        <input type="text" id="contact-company" name="company" class="form-control">
+                                    </div>
+                                </div>
+
+                                <!-- Troisième ligne - Message -->
+                                <div class="form-group full-width">
+                                    <label for="contact-message" data-i18n="contact_message_label">Message *</label>
+                                    <div class="message-wrapper">
+                                        <textarea id="contact-message" name="message" class="form-control message-textarea" rows="7" required></textarea>
+                                        <i class="fas fa-microphone voice-icon" title="Dictée vocale"></i>
+                                    </div>
+                                    <div class="invalid-feedback" data-i18n="contact_message_error">Veuillez saisir votre message</div>
+                                </div>
+
+                                <!-- Téléversement de fichier -->
+                                <div class="file-upload-section">
+                                    <label for="file-upload" class="file-upload-btn">
+                                        <i class="fas fa-paperclip"></i>
+                                        <span data-i18n="contact_file_upload">Téléverser un fichier</span>
+                                    </label>
+                                    <input type="file" id="file-upload" name="attachment" class="file-input" multiple 
+                                           accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png">
+                                    <div class="file-list" id="fileList"></div>
+                                </div>
+
+                                <!-- Bouton d'envoi -->
+                                <div class="submit-section">
+                                    <button type="submit" class="btn-submit" data-i18n="contact_submit">
+                                        Envoyer
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Section coordonnées - 40% -->
+                    <div class="col-lg-5 col-md-12">
+                        <div class="contact-info-section">
+                            <h3 class="contact-info-title" data-i18n="contact_info_title">Nos coordonnées</h3>
+                            
+                            <div class="contact-separator"></div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <a href="mailto:joel.kuate@mk-groupe.com">joel.kuate@mk-groupe.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-separator"></div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <a href="tel:+237695478987">+237 695 478 987</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-separator"></div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <span data-i18n="contact_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</span>
+                                </div>
+                            </div>
+                            
+                            <div class="social-section">
+                                <div class="social-header">
+                                    <h4 class="social-title" data-i18n="contact_social_title">Suivez nous sur</h4>
+                                    <div class="social-links">
+                                        <a href="#" aria-label="Facebook" class="social-link">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="#" aria-label="LinkedIn" class="social-link">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="#" aria-label="YouTube" class="social-link">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                        <a href="#" aria-label="WhatsApp" class="social-link">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer" role="contentinfo">
+        <div class="container-fluid px-3">
+            <div class="footer-content">
+                <!-- Colonne 1: Logo + slogan -->
+                <div class="footer-brand-section">
+                    <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA Footer" class="footer-logo">
+                    <p class="footer-description">MK Business Analysis</p>
+                </div>
+
+                <!-- Colonne 2: Qui nous sommes -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="we-are-mkba.html" data-i18n="footer_who_are_mkba">Qui sommes-nous MK BA</a></li>
+                        <li><a href="#" data-i18n="footer_our_team">Notre équipe</a></li>
+                        <li><a href="#" data-i18n="footer_sustainability">Notre engagement pour la durabilité</a></li>
+                        <li><a href="#" data-i18n="footer_technologies">Technologies</a></li>
+                        <li><a href="#" data-i18n="footer_work_with_us">Travailler avec nous</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Ce que nous faisons -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="industries-served.html" data-i18n="footer_industries">Industries servies</a></li>
+                        <li><a href="#" data-i18n="footer_services">Services</a></li>
+                        <li><a href="#" data-i18n="footer_solutions">Solutions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Réalisations -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_achievements">Réalisations</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="achievements.html" data-i18n="footer_achievements_link">Réalisations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5: Contacts -->
+                <div class="footer-column">
+                    <h4 class="footer-title" data-i18n="footer_contacts">Contacts</h4>
+                    <address class="contact-info">
+                        <p data-i18n="footer_address">Rue 16-Maille 18, Cité SAD Banga-Japoma, Douala Cameroun</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@mk-ba.com">info@mk-ba.com</a></p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+237695478987">+237 695 478 987</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom-section">
+                <nav class="footer-legal" aria-label="Liens légaux">
+                    <a href="#" data-i18n="footer_legal_mentions">Mentions légales</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_privacy">Politique de Confidentialité</a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="#" data-i18n="footer_terms">Termes et conditions</a>
+                </nav>
+
+                <p class="footer-copyright" data-i18n="footer_copyright">Copyright © 2025. Tous droits réservés</p>
+            </div>
+        </div>
+
+        <!-- Bas de page (bande grise foncée) -->
+        <div class="footer-bottom-band">
+            <div class="container-fluid px-3">
+                <small data-i18n="footer_powered">Powered by MK BA</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+    <script src="contact.js" defer></script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "@id": "https://mk-ba.com/contact",
+        "name": "Contactez-nous - MK BA",
+        "description": "Page de contact de MK Business Analysis",
+        "publisher": {
+            "@type": "Organization",
+            "name": "MK Business Analysis",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Rue 16-Maille 18, Cité SAD Banga-Japoma",
+                "addressLocality": "Douala",
+                "addressCountry": "CM"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+237-695-478-987",
+                "email": "joel.kuate@mk-groupe.com",
+                "contactType": "customer service"
+            }
+        },
+        "url": "https://mk-ba.com/contact"
+    }
+    </script>
+</body>
+
+</html>

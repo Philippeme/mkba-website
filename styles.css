@@ -1381,7 +1381,7 @@ body {
 .news-card:hover {
     transform: translateY(-0.3125rem);
     box-shadow: 0 0.75rem 1.875rem rgba(0, 0, 0, 0.12);
-    border-bottom: 3px solid var(--primary-blue);
+    border-bottom: 5px solid var(--primary-blue);
 }
 
 .news-image {
