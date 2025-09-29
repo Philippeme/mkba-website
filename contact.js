@@ -863,4 +863,5 @@ window.ContactPage = {
     submitContactForm,
     showContactNotification,
     contactTranslations
+
 };

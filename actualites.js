@@ -7,6 +7,12 @@ let actualitesAnimationsInitialized = false;
 let currentLanguageActualites = 'fr';
 let currentPage = 1;
 let totalPages = 4;
+let actualitesFilters = {
+    keywords: '',
+    day: '',
+    month: '',
+    category: ''
+};
 
 // Traductions spécifiques à la page Actualités
 const actualitesTranslations = {
@@ -21,14 +27,49 @@ const actualitesTranslations = {
         // Section titre
         all_actualites_title: "Toutes les actualités",
         
+        // Filtres et recherche
+        search_keywords_placeholder: "Recherche par mots-clés",
+        filter_day: "Jour",
+        filter_month: "Mois",
+        filter_category: "Catégorie",
+        search_button: "Rechercher",
+        reset_filters: "Réinitialiser",
+        
+        // Mois
+        month_jan: "Janvier",
+        month_feb: "Février",
+        month_mar: "Mars",
+        month_apr: "Avril",
+        month_may: "Mai",
+        month_jun: "Juin",
+        month_jul: "Juillet",
+        month_aug: "Août",
+        month_sep: "Septembre",
+        month_oct: "Octobre",
+        month_nov: "Novembre",
+        month_dec: "Décembre",
+        
+        // Catégories
+        cat_technology: "Services liés à l'industrie",
+        cat_innovation: "Technologie & Innovation",
+        cat_projects: "Projets",
+        cat_partnerships: "Partenariats",
+        cat_events: "Événements",
+        
         // Articles
         actualite_1_title: "Aliquam in bibendum mauris. Sed vitae erat vel velit blandit",
         actualite_1_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec di. Morbi mauris",
-        actualite_2_title: "Fusce at nisl eget dolor rhoncus facilisis. Mauris ante nisl,",
+        actualite_2_title: "Fusce at nisi eget dolor rhoncus facilisis. Mauris ante nisl,",
         actualite_2_excerpt: "Aenean sed nibh a magna posuere tempor. Nunc faucibus pellentesque nunc in aliquet. Donec congue, nunc vel tempor congue, enim",
         actualite_3_title: "Duis rhoncus dui venenatis consequat porttitor. Etiam",
         actualite_3_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris",
         see_more_link: 'Voir plus <i class="fas fa-arrow-right"></i>',
+        
+        // Messages
+        no_results: "Aucun article ne correspond à vos critères de recherche.",
+        results_found: "article(s) trouvé(s)",
+        filters_applied: "Filtres appliqués",
+        filters_reset: "Filtres réinitialisés"
     },
     
     en: {
@@ -42,6 +83,35 @@ const actualitesTranslations = {
         // Section titre
         all_actualites_title: "All news",
         
+        // Filtres et recherche
+        search_keywords_placeholder: "Search by keywords",
+        filter_day: "Day",
+        filter_month: "Month",
+        filter_category: "Category",
+        search_button: "Search",
+        reset_filters: "Reset",
+        
+        // Mois
+        month_jan: "January",
+        month_feb: "February",
+        month_mar: "March",
+        month_apr: "April",
+        month_may: "May",
+        month_jun: "June",
+        month_jul: "July",
+        month_aug: "August",
+        month_sep: "September",
+        month_oct: "October",
+        month_nov: "November",
+        month_dec: "December",
+        
+        // Catégories
+        cat_technology: "Industry Services",
+        cat_innovation: "Technology and Innovation",
+        cat_projects: "Projects",
+        cat_partnerships: "Partnerships",
+        cat_events: "Events",
+        
         // Articles
         actualite_1_title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         actualite_1_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec di. Morbi mauris",
@@ -49,9 +119,313 @@ const actualitesTranslations = {
         actualite_2_excerpt: "Aenean sed nibh a magna posuere tempor. Nunc faucibus pellentesque nunc in aliquet. Donec congue, nunc vel tempor congue, enim",
         actualite_3_title: "Duis aute irure dolor in reprehenderit in voluptate",
         actualite_3_excerpt: "Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris",
-        see_more_link: 'Read more  <i class="fas fa-arrow-right"></i>',
+        see_more_link: 'Read more <i class="fas fa-arrow-right"></i>',
+        
+        // Messages
+        no_results: "No articles match your search criteria.",
+        results_found: "article(s) found",
+        filters_applied: "Filters applied",
+        filters_reset: "Filters reset"
     }
 };
+
+// ==============================================
+// SYSTÈME DE RECHERCHE ET FILTRAGE
+// ==============================================
+
+function initSearchAndFilterSystem() {
+    const keywordInput = document.getElementById('actualites-keyword-search');
+    const dayFilter = document.getElementById('day-filter');
+    const monthFilter = document.getElementById('month-filter');
+    const categoryFilter = document.getElementById('category-filter');
+    const searchBtn = document.getElementById('search-btn');
+    const resetBtn = document.getElementById('reset-filters-btn');
+
+    // Initialiser les interactions des dropdowns
+    initFilterDropdownInteractions();
+
+    // Gestion de la recherche par mots-clés
+    if (keywordInput) {
+        keywordInput.addEventListener('input', (e) => {
+            actualitesFilters.keywords = e.target.value.trim();
+            updateResetButtonVisibility();
+            debounceActualitesFilter();
+        });
+
+        keywordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performActualitesFilter();
+            }
+        });
+    }
+
+    // Gestion des filtres
+    if (dayFilter) {
+        dayFilter.addEventListener('change', (e) => {
+            actualitesFilters.day = e.target.value;
+            updateResetButtonVisibility();
+            debounceActualitesFilter();
+        });
+    }
+
+    if (monthFilter) {
+        monthFilter.addEventListener('change', (e) => {
+            actualitesFilters.month = e.target.value;
+            updateResetButtonVisibility();
+            debounceActualitesFilter();
+        });
+    }
+
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', (e) => {
+            actualitesFilters.category = e.target.value;
+            updateResetButtonVisibility();
+            debounceActualitesFilter();
+        });
+    }
+
+    // Bouton de recherche
+    if (searchBtn) {
+        searchBtn.addEventListener('click', performActualitesFilter);
+    }
+
+    // Bouton de réinitialisation
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetActualitesFilters);
+    }
+}
+
+// Initialiser les interactions des dropdowns avec animations
+function initFilterDropdownInteractions() {
+    const filterSelects = document.querySelectorAll('.actualites-filter-select');
+    
+    filterSelects.forEach(select => {
+        const wrapper = select.parentElement;
+        const icon = wrapper.querySelector('.filter-icon');
+        
+        if (!icon) return;
+
+        // Événements pour l'animation de l'icône
+        select.addEventListener('focus', () => {
+            icon.style.transform = 'translateY(-50%) rotate(180deg)';
+            icon.style.color = 'var(--actualites-blue)';
+        });
+
+        select.addEventListener('blur', () => {
+            icon.style.transform = 'translateY(-50%) rotate(0deg)';
+            icon.style.color = 'var(--actualites-border-gray)';
+        });
+
+        // Animation lors du clic
+        select.addEventListener('mousedown', () => {
+            icon.style.transform = 'translateY(-50%) rotate(180deg)';
+            icon.style.color = 'var(--actualites-blue)';
+        });
+
+        // Feedback visuel
+        select.addEventListener('click', () => {
+            wrapper.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                wrapper.style.transform = '';
+            }, 100);
+        });
+    });
+}
+
+// Mettre à jour la visibilité du bouton de réinitialisation
+function updateResetButtonVisibility() {
+    const resetBtn = document.getElementById('reset-filters-btn');
+    if (!resetBtn) return;
+
+    const hasFilters = Object.values(actualitesFilters).some(value => value !== '');
+    
+    if (hasFilters) {
+        resetBtn.classList.add('show');
+    } else {
+        resetBtn.classList.remove('show');
+    }
+}
+
+// Réinitialiser tous les filtres
+function resetActualitesFilters() {
+    const resetBtn = document.getElementById('reset-filters-btn');
+    const keywordInput = document.getElementById('actualites-keyword-search');
+    const filterSelects = document.querySelectorAll('.actualites-filter-select');
+
+    // Animation du bouton
+    if (resetBtn) {
+        resetBtn.style.transform = 'scale(0.95)';
+        resetBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        resetBtn.disabled = true;
+    }
+
+    setTimeout(() => {
+        // Réinitialiser les valeurs
+        actualitesFilters = {
+            keywords: '',
+            day: '',
+            month: '',
+            category: ''
+        };
+
+        // Réinitialiser les champs
+        if (keywordInput) {
+            keywordInput.value = '';
+        }
+
+        filterSelects.forEach(select => {
+            select.selectedIndex = 0;
+        });
+
+        // Effectuer la recherche (afficher tous les résultats)
+        performActualitesFilter();
+
+        // Masquer le bouton de réinitialisation
+        updateResetButtonVisibility();
+
+        // Restaurer le bouton
+        if (resetBtn) {
+            resetBtn.style.transform = '';
+            resetBtn.innerHTML = '<i class="fas fa-redo"></i>';
+            resetBtn.disabled = false;
+        }
+
+        // Notification
+        showActualitesNotification(actualitesTranslations[currentLanguageActualites].filters_reset);
+    }, 500);
+}
+
+// Debounce pour le filtrage
+let actualitesFilterTimeout;
+function debounceActualitesFilter() {
+    clearTimeout(actualitesFilterTimeout);
+    actualitesFilterTimeout = setTimeout(performActualitesFilter, 500);
+}
+
+// Fonction principale de filtrage
+function performActualitesFilter() {
+    const { keywords, day, month, category } = actualitesFilters;
+    
+    console.log('Filtrage avec critères:', actualitesFilters);
+
+    const cards = document.querySelectorAll('.actualite-card');
+    const grid = document.getElementById('actualites-grid');
+    const noResultsMsg = document.getElementById('no-results-message');
+    let visibleCount = 0;
+
+    // Animation de début de filtrage
+    if (grid) {
+        grid.style.opacity = '0.7';
+    }
+
+    // Appliquer les filtres à chaque carte
+    cards.forEach((card, index) => {
+        let shouldShow = true;
+
+        // Filtrer par mots-clés (recherche dans titre et extrait)
+        if (keywords) {
+            const title = card.querySelector('.actualite-title');
+            const excerpt = card.querySelector('.actualite-excerpt');
+            const titleText = title ? title.textContent.toLowerCase() : '';
+            const excerptText = excerpt ? excerpt.textContent.toLowerCase() : '';
+            const searchTerm = keywords.toLowerCase();
+            
+            if (!titleText.includes(searchTerm) && !excerptText.includes(searchTerm)) {
+                shouldShow = false;
+            }
+        }
+
+        // Filtrer par jour
+        if (day && shouldShow) {
+            const dateAttr = card.getAttribute('data-date');
+            if (dateAttr) {
+                const cardDay = dateAttr.split('-')[2];
+                if (parseInt(cardDay) !== parseInt(day)) {
+                    shouldShow = false;
+                }
+            }
+        }
+
+        // Filtrer par mois
+        if (month && shouldShow) {
+            const dateAttr = card.getAttribute('data-date');
+            if (dateAttr) {
+                const cardMonth = dateAttr.split('-')[1];
+                if (cardMonth !== month) {
+                    shouldShow = false;
+                }
+            }
+        }
+
+        // Filtrer par catégorie
+        if (category && shouldShow) {
+            const cardCategory = card.getAttribute('data-category');
+            if (cardCategory !== category) {
+                shouldShow = false;
+            }
+        }
+
+        // Appliquer les animations et l'affichage
+        const cardCol = card.parentElement;
+        
+        if (shouldShow) {
+            // Animation d'apparition
+            card.classList.remove('filtering-out');
+            card.classList.add('filtering-in');
+            
+            setTimeout(() => {
+                cardCol.style.display = 'block';
+                card.style.display = 'flex';
+            }, 50);
+            
+            visibleCount++;
+        } else {
+            // Animation de disparition
+            card.classList.add('filtering-out');
+            card.classList.remove('filtering-in');
+            
+            setTimeout(() => {
+                cardCol.style.display = 'none';
+            }, 300);
+        }
+    });
+
+    // Animation de fin de filtrage
+    setTimeout(() => {
+        if (grid) {
+            grid.style.opacity = '1';
+        }
+    }, 400);
+
+    // Afficher/masquer le message "Aucun résultat"
+    if (noResultsMsg) {
+        if (visibleCount === 0) {
+            noResultsMsg.style.display = 'block';
+            noResultsMsg.style.animation = 'fadeIn 0.5s ease';
+        } else {
+            noResultsMsg.style.display = 'none';
+        }
+    }
+
+    // Afficher le nombre de résultats
+    showFilterResults(visibleCount);
+    
+    console.log(`Résultats du filtrage: ${visibleCount} article(s) trouvé(s)`);
+}
+
+// Afficher le nombre de résultats du filtrage
+function showFilterResults(count) {
+    const hasActiveFilters = Object.values(actualitesFilters).some(value => value !== '');
+    
+    if (!hasActiveFilters) return; // Ne rien afficher si aucun filtre n'est actif
+    
+    const resultsText = actualitesTranslations[currentLanguageActualites].results_found;
+    const message = `${count} ${resultsText}`;
+    
+    // Créer une notification temporaire
+    showActualitesNotification(message, count === 0 ? 'warning' : 'success');
+}
 
 // ==============================================
 // GESTION DE LA PAGINATION
@@ -96,8 +470,6 @@ function navigateToPage(pageNum) {
     
     // Simuler le chargement des nouveaux articles
     loadArticles(pageNum);
-    
-    console.log(`Navigation vers la page ${pageNum}`);
 }
 
 function updatePaginationButtons() {
@@ -154,11 +526,9 @@ function loadArticles(pageNum) {
         actualitesGrid.style.opacity = '1';
         actualitesGrid.style.pointerEvents = '';
         
-        showActualitesNotification(`Page ${pageNum} chargée`);
-        
         // Réinitialiser les animations
         const cards = document.querySelectorAll('.actualite-card');
-        cards.forEach((card, index) => {
+        cards.forEach((card) => {
             card.style.animation = 'none';
             setTimeout(() => {
                 card.style.animation = '';
@@ -279,6 +649,27 @@ function initActualitesScrollAnimations() {
         titleObserver.observe(sectionTitle);
     }
     
+    // Animation de l'interface de filtrage
+    const filterWrapper = document.querySelector('.actualites-filter-wrapper');
+    if (filterWrapper) {
+        const filterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }, 300);
+                    filterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        filterWrapper.style.opacity = '0';
+        filterWrapper.style.transform = 'translateX(30px)';
+        filterWrapper.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        filterObserver.observe(filterWrapper);
+    }
+    
     actualitesAnimationsInitialized = true;
 }
 
@@ -317,6 +708,15 @@ function setLanguageActualitesPage(lang) {
             } else {
                 element.innerHTML = generalTranslation;
             }
+        }
+    });
+    
+    // Mettre à jour les placeholders avec data-i18n-placeholder
+    const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+    placeholderElements.forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (pageTranslations[key]) {
+            element.placeholder = pageTranslations[key];
         }
     });
     
@@ -370,15 +770,27 @@ function initActualitesLazyLoading() {
 // NOTIFICATIONS
 // ==============================================
 
-function showActualitesNotification(message) {
+function showActualitesNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = 'actualites-notification';
-    notification.innerHTML = message;
+    
+    let bgColor = '#005FAC';
+    let icon = 'fa-info-circle';
+    
+    if (type === 'success') {
+        bgColor = '#28a745';
+        icon = 'fa-check-circle';
+    } else if (type === 'warning') {
+        bgColor = '#ffc107';
+        icon = 'fa-exclamation-triangle';
+    }
+    
+    notification.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
     notification.style.cssText = `
         position: fixed;
         top: calc(var(--total-header-height) + 1rem);
         right: 1.25rem;
-        background: #005FAC;
+        background: ${bgColor};
         color: white;
         padding: 1rem 2rem;
         border-radius: 0.3125rem;
@@ -387,6 +799,9 @@ function showActualitesNotification(message) {
         transition: all 0.3s ease;
         opacity: 0;
         transform: translateX(100%);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     `;
     
     document.body.appendChild(notification);
@@ -507,6 +922,7 @@ function initBrowserHistory() {
 
 function initActualitesPage() {
     // Initialiser toutes les fonctionnalités
+    initSearchAndFilterSystem();
     initPagination();
     initActualiteCardsInteractions();
     initActualitesScrollAnimations();
@@ -556,7 +972,6 @@ let actualitesResizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(actualitesResizeTimeout);
     actualitesResizeTimeout = setTimeout(() => {
-        // Réajuster les éléments si nécessaire
         console.log('Fenêtre redimensionnée - Page Actualités');
     }, 250);
 });
@@ -566,5 +981,7 @@ window.ActualitesPage = {
     initActualitesPage,
     setLanguageActualitesPage,
     navigateToPage,
+    performActualitesFilter,
+    resetActualitesFilters,
     actualitesTranslations
 };

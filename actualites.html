@@ -167,7 +167,7 @@
                 <div class="col-12">
                     <div class="actualites-hero-content">
                         <h1 class="actualites-hero-title" data-i18n="actualites_hero_title">
-                            Actualité
+                            Actualités
                         </h1>
                     </div>
                 </div>
@@ -178,16 +178,94 @@
     <!-- Section titre de contenu -->
     <section id="all-actualites" class="all-actualites-section">
         <div class="container-fluid px-3">
-            <h2 class="section-title-simple" data-i18n="all_actualites_title">
-                Toutes les actualités
-            </h2>
+            <!-- En-tête avec titre et filtres -->
+            <div class="actualites-header-section">
+                <h2 class="section-title-simple" data-i18n="all_actualites_title">
+                    Toutes les actualités
+                </h2>
+
+                <!-- Interface de recherche et filtrage - Positionnée à droite -->
+                <div class="actualites-filter-wrapper">
+                    <div class="actualites-search-bar">
+                        <div class="search-input-group">
+                            <input type="text" id="actualites-keyword-search" class="actualites-filter-input" 
+                                   placeholder="Recherche par mots-clés" data-i18n-placeholder="search_keywords_placeholder">
+                            <i class="fas fa-search search-input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="actualites-filters-group">
+                        <div class="filter-item">
+                            <div class="filter-select-wrapper">
+                                <select class="actualites-filter-select" id="day-filter">
+                                    <option value="" data-i18n="filter_day">Jour</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                </select>
+                                <i class="fas fa-chevron-down filter-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="filter-item">
+                            <div class="filter-select-wrapper">
+                                <select class="actualites-filter-select" id="month-filter">
+                                    <option value="" data-i18n="filter_month">Mois</option>
+                                    <option value="01" data-i18n="month_jan">Janvier</option>
+                                    <option value="02" data-i18n="month_feb">Février</option>
+                                    <option value="03" data-i18n="month_mar">Mars</option>
+                                    <option value="04" data-i18n="month_apr">Avril</option>
+                                    <option value="05" data-i18n="month_may">Mai</option>
+                                    <option value="06" data-i18n="month_jun">Juin</option>
+                                    <option value="07" data-i18n="month_jul">Juillet</option>
+                                    <option value="08" data-i18n="month_aug">Août</option>
+                                    <option value="09" data-i18n="month_sep">Septembre</option>
+                                    <option value="10" data-i18n="month_oct">Octobre</option>
+                                    <option value="11" data-i18n="month_nov">Novembre</option>
+                                    <option value="12" data-i18n="month_dec">Décembre</option>
+                                </select>
+                                <i class="fas fa-chevron-down filter-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="filter-item">
+                            <div class="filter-select-wrapper">
+                                <select class="actualites-filter-select" id="category-filter">
+                                    <option value="" data-i18n="filter_category">Catégorie</option>
+                                    <option value="technology" data-i18n="cat_technology">Services liés à l'industrie</option>
+                                    <option value="innovation" data-i18n="cat_innovation">Technologie & Innovation</option>
+                                    <option value="projects" data-i18n="cat_projects">Projets</option>
+                                    <option value="partnerships" data-i18n="cat_partnerships">Partenariats</option>
+                                    <option value="events" data-i18n="cat_events">Événements</option>
+                                </select>
+                                <i class="fas fa-chevron-down filter-icon"></i>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn actualites-search-btn" id="search-btn" data-i18n="search_button">
+                            Rechercher
+                        </button>
+
+                        <button type="button" class="btn actualites-reset-btn" id="reset-filters-btn" data-i18n="reset_filters">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
             <!-- Grille d'articles d'actualité -->
-            <div class="actualites-grid">
+            <div class="actualites-grid" id="actualites-grid">
                 <div class="row g-4">
                     <!-- Article 1 -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                        <article class="actualite-card">
+                        <article class="actualite-card" data-date="2025-04-20" data-category="technology">
                             <div class="actualite-image">
                                 <img src="./assets/images/actus/actu1.png" alt="Coucher de soleil dramatique" loading="lazy">
                             </div>
@@ -208,7 +286,7 @@
 
                     <!-- Article 2 -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                        <article class="actualite-card">
+                        <article class="actualite-card" data-date="2025-04-20" data-category="innovation">
                             <div class="actualite-image">
                                 <img src="./assets/images/actus/actu4.png" alt="Scène urbaine avec personne en rouge" loading="lazy">
                             </div>
@@ -229,7 +307,7 @@
 
                     <!-- Article 3 -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                        <article class="actualite-card">
+                        <article class="actualite-card" data-date="2025-04-20" data-category="projects">
                             <div class="actualite-image">
                                 <img src="./assets/images/actus/actu3.png" alt="Maison verte dans la végétation" loading="lazy">
                             </div>
@@ -248,14 +326,14 @@
                         </article>
                     </div>
 
-                    <!-- Article 4 -->
+                    <!-- Articles 4-9 suivent le même pattern -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                        <article class="actualite-card">
+                        <article class="actualite-card" data-date="2025-03-15" data-category="partnerships">
                             <div class="actualite-image">
                                 <img src="./assets/images/actus/actu1.png" alt="Coucher de soleil dramatique" loading="lazy">
                             </div>
                             <div class="actualite-content">
-                                <time class="actualite-date" datetime="2025-04-20">20 Avril 2025</time>
+                                <time class="actualite-date" datetime="2025-03-15">15 Mars 2025</time>
                                 <h3 class="actualite-title" data-i18n="actualite_1_title">Aliquam in bibendum mauris. Sed vitae erat vel velit blandit</h3>
                                 <p class="actualite-excerpt" data-i18n="actualite_1_excerpt">
                                     Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec di. Morbi mauris
@@ -269,14 +347,13 @@
                         </article>
                     </div>
 
-                    <!-- Article 5 -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                        <article class="actualite-card">
+                        <article class="actualite-card" data-date="2025-02-10" data-category="events">
                             <div class="actualite-image">
                                 <img src="./assets/images/actus/actu2.png" alt="Scène urbaine avec personne en rouge" loading="lazy">
                             </div>
                             <div class="actualite-content">
-                                <time class="actualite-date" datetime="2025-04-20">20 Avril 2025</time>
+                                <time class="actualite-date" datetime="2025-02-10">10 Février 2025</time>
                                 <h3 class="actualite-title" data-i18n="actualite_2_title">Fusce at nisi eget dolor rhoncus facilisis. Mauris ante nisl,</h3>
                                 <p class="actualite-excerpt" data-i18n="actualite_2_excerpt">
                                     Aenean sed nibh a magna posuere tempor. Nunc faucibus pellentesque nunc in aliquet. Donec congue, nunc vel tempor congue, enim
@@ -290,14 +367,13 @@
                         </article>
                     </div>
 
-                    <!-- Article 6 -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                        <article class="actualite-card">
+                        <article class="actualite-card" data-date="2025-01-25" data-category="technology">
                             <div class="actualite-image">
                                 <img src="./assets/images/actus/actu3.png" alt="Maison verte dans la végétation" loading="lazy">
                             </div>
                             <div class="actualite-content">
-                                <time class="actualite-date" datetime="2025-04-20">20 Avril 2025</time>
+                                <time class="actualite-date" datetime="2025-01-25">25 Janvier 2025</time>
                                 <h3 class="actualite-title" data-i18n="actualite_3_title">Duis rhoncus dui venenatis consequat porttitor. Etiam</h3>
                                 <p class="actualite-excerpt" data-i18n="actualite_3_excerpt">
                                     Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris
@@ -311,14 +387,13 @@
                         </article>
                     </div>
 
-                    <!-- Article 7 -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                        <article class="actualite-card">
+                        <article class="actualite-card" data-date="2025-04-05" data-category="innovation">
                             <div class="actualite-image">
                                 <img src="./assets/images/actus/actu1.png" alt="Coucher de soleil dramatique" loading="lazy">
                             </div>
                             <div class="actualite-content">
-                                <time class="actualite-date" datetime="2025-04-20">20 Avril 2025</time>
+                                <time class="actualite-date" datetime="2025-04-05">5 Avril 2025</time>
                                 <h3 class="actualite-title" data-i18n="actualite_1_title">Aliquam in bibendum mauris. Sed vitae erat vel velit blandit</h3>
                                 <p class="actualite-excerpt" data-i18n="actualite_1_excerpt">
                                     Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec di. Morbi mauris
@@ -332,14 +407,13 @@
                         </article>
                     </div>
 
-                    <!-- Article 8 -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                        <article class="actualite-card">
+                        <article class="actualite-card" data-date="2025-03-30" data-category="projects">
                             <div class="actualite-image">
                                 <img src="./assets/images/actus/actu2.png" alt="Scène urbaine avec personne en rouge" loading="lazy">
                             </div>
                             <div class="actualite-content">
-                                <time class="actualite-date" datetime="2025-04-20">20 Avril 2025</time>
+                                <time class="actualite-date" datetime="2025-03-30">30 Mars 2025</time>
                                 <h3 class="actualite-title" data-i18n="actualite_2_title">Fusce at nisi eget dolor rhoncus facilisis. Mauris ante nisl,</h3>
                                 <p class="actualite-excerpt" data-i18n="actualite_2_excerpt">
                                     Aenean sed nibh a magna posuere tempor. Nunc faucibus pellentesque nunc in aliquet. Donec congue, nunc vel tempor congue, enim
@@ -353,14 +427,13 @@
                         </article>
                     </div>
 
-                    <!-- Article 9 -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                        <article class="actualite-card">
+                        <article class="actualite-card" data-date="2025-02-20" data-category="partnerships">
                             <div class="actualite-image">
                                 <img src="./assets/images/actus/actu3.png" alt="Maison verte dans la végétation" loading="lazy">
                             </div>
                             <div class="actualite-content">
-                                <time class="actualite-date" datetime="2025-04-20">20 Avril 2025</time>
+                                <time class="actualite-date" datetime="2025-02-20">20 Février 2025</time>
                                 <h3 class="actualite-title" data-i18n="actualite_3_title">Duis rhoncus dui venenatis consequat porttitor. Etiam</h3>
                                 <p class="actualite-excerpt" data-i18n="actualite_3_excerpt">
                                     Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in, tincidunt nec dui. Morbi mauris
@@ -373,6 +446,12 @@
                             </div>
                         </article>
                     </div>
+                </div>
+
+                <!-- Message "Aucun résultat" -->
+                <div class="no-results-message" id="no-results-message" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <p data-i18n="no_results">Aucun article ne correspond à vos critères de recherche.</p>
                 </div>
             </div>
 
@@ -412,13 +491,11 @@
     <footer id="contact" class="footer" role="contentinfo">
         <div class="container-fluid px-3">
             <div class="footer-content">
-                <!-- Colonne 1: Logo + slogan -->
                 <div class="footer-brand-section">
                     <img src="./assets/images/mkba-logo-footer.png" alt="Logo MK BA Footer" class="footer-logo">
                     <p class="footer-description">MK Business Analysis</p>
                 </div>
 
-                <!-- Colonne 2: Qui nous sommes -->
                 <div class="footer-column">
                     <h4 class="footer-title" data-i18n="footer_who_we_are">Qui nous sommes</h4>
                     <ul class="footer-links" role="list">
@@ -430,7 +507,6 @@
                     </ul>
                 </div>
 
-                <!-- Colonne 3: Ce que nous faisons -->
                 <div class="footer-column">
                     <h4 class="footer-title" data-i18n="footer_what_we_do">Ce que nous faisons</h4>
                     <ul class="footer-links" role="list">
@@ -440,7 +516,6 @@
                     </ul>
                 </div>
 
-                <!-- Colonne 4: Réalisations -->
                 <div class="footer-column">
                     <h4 class="footer-title" data-i18n="footer_achievements">Réalisations</h4>
                     <ul class="footer-links" role="list">
@@ -448,7 +523,6 @@
                     </ul>
                 </div>
 
-                <!-- Colonne 5: Contacts -->
                 <div class="footer-column">
                     <h4 class="footer-title" data-i18n="footer_contacts">Contacts</h4>
                     <address class="contact-info">
@@ -474,7 +548,6 @@
             </div>
         </div>
 
-        <!-- Bas de page (bande grise foncée) -->
         <div class="footer-bottom-band">
             <div class="container-fluid px-3">
                 <small data-i18n="footer_powered">Powered by MK BA</small>
@@ -487,7 +560,6 @@
     <script src="app.js" defer></script>
     <script src="actualites.js" defer></script>
 
-    <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
