@@ -74,7 +74,7 @@
 
 .technologies-container {
     padding: 1.5rem;
-    margin: -2rem auto;
+    margin: -2.5rem auto;
     width: calc(70% - 2rem); /* Même largeur que le container principal mais sans les paddings */
     max-width: calc(1500px - 2rem);
     margin-left: auto;
@@ -147,7 +147,7 @@
     font-size: 1.5625rem; /* 25px */
     font-weight: 600;
     color: var(--tech-section-blue);
-    margin-bottom: 1.5rem;
+    margin: 0.75rem 0 1.5rem 0;
     text-align: left;
 }
 
