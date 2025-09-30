@@ -140,7 +140,7 @@
 
 /* Sections de technologies */
 .tech-section {
-    margin-bottom: 3rem;
+    margin-bottom: 0.5rem;
 }
 
 .tech-section-title {
@@ -168,7 +168,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.25rem;
 }
 
 /* Rangées de rectangles */

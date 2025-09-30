@@ -1,4 +1,6 @@
 /* Variables CSS - Optimisées pour le zoom et la responsivité */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+
 :root {
     --primary-orange: #f18221;
     --primary-blue: #005FAC;

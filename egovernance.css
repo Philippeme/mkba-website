@@ -150,7 +150,7 @@
 
 .prestation-number {
     font-size: 2.5rem; /* 40px */
-    font-weight: bold;
+    font-weight: 500;
     color: var(--egovernance-blue);
     margin-bottom: 1rem;
     line-height: 1;
@@ -685,6 +685,7 @@
     height: 100%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
+    opacity: 1;
     display: flex;
     flex-direction: column;
 }
