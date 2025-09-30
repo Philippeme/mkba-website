@@ -29,7 +29,7 @@
 }
 
 .achievements-page .navbar .nav-link:hover {
-    color: var(--primary-orange) !important;
+    color: var(--primary-blue) !important;
 }
 
 .achievements-page .navbar .nav-link.active {

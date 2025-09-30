@@ -28,7 +28,7 @@
 }
 
 .developpement-page .navbar .nav-link:hover {
-    color: var(--primary-orange) !important;
+    color: var(--primary-blue) !important;
 }
 
 .developpement-page .navbar .nav-link.active {

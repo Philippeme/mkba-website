@@ -29,7 +29,7 @@
 }
 
 .project-detail-page .navbar .nav-link:hover {
-    color: var(--primary-orange) !important;
+    color: var(--primary-blue) !important;
 }
 
 .project-detail-page .navbar .nav-link.active {

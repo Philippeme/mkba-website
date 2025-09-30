@@ -27,7 +27,7 @@
 }
 
 .industries-served-page .navbar .nav-link:hover {
-    color: var(--primary-orange) !important;
+    color: var(--primary-blue) !important;
 }
 
 .industries-served-page .navbar .nav-link.active {
@@ -83,7 +83,7 @@
     display: flex;
     align-items: stretch;
     min-height: 200px;
-    margin-left: calc(44vw - 40%);
+    margin-left: calc(30vw - 43%);
     padding: 2rem 0;
 }
 
@@ -123,7 +123,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    width: 100%;
+    width: 40%;
 }
 
 .what-we-do-mega-menu .mega-menu-column {

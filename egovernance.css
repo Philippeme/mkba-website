@@ -28,7 +28,7 @@
 }
 
 .egovernance-page .navbar .nav-link:hover {
-    color: var(--primary-orange) !important;
+    color: var(--primary-blue) !important;
 }
 
 .egovernance-page .navbar .nav-link.active {
@@ -738,12 +738,13 @@
 
 .solution-card {
     background: var(--white);
-    border: 1px solid #707070;
+    border: 0.25px solid #707070;
     border-radius: 10px;
     padding: 2rem;
     height: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    opacity: 1;
     display: flex;
     flex-direction: column;
     text-align: center;
