@@ -250,6 +250,7 @@
     justify-content: flex-start;
     flex-wrap: nowrap;        
     white-space: nowrap;
+    gap: 0.5rem;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -276,7 +277,7 @@
 .breadcrumb-item + .breadcrumb-item::before {
     content: "|";
     color: var(--text-medium);
-    margin: 0 1rem;
+    margin: 0;
 }
 
 /* ==============================================
