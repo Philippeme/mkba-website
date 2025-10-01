@@ -203,6 +203,15 @@
     border-color: var(--primary-blue);
 }
 
+/* Rectangle LARGE - 6 fois la largeur d'un rectangle normal */
+.tech-rectangle-wide {
+    width: 36.75rem; /* 6.125rem × 6 = 36.75rem (480px) */
+    min-width: 36.75rem;
+    justify-content: flex-start;
+    padding: 0 1rem;
+    margin-left: auto; /* Alignement avec la colonne Desktop (côté droit) */
+}
+
 /* Rectangle avec dropdown */
 .tech-rectangle.dropdown-rectangle {
     position: relative;
@@ -331,6 +340,12 @@
         width: 4.5rem; /* 72px */
         height: 2.8125rem; /* 45px */
     }
+    
+    /* Rectangle large ajusté pour tablette */
+    .tech-rectangle-wide {
+        width: 27rem; /* 4.5rem × 6 = 27rem */
+        min-width: 27rem;
+    }
 }
 
 /* Mobile - jusqu'à 767px */
@@ -397,6 +412,13 @@
         font-size: 0.75rem;
         margin-bottom: 0.375rem;
     }
+    
+    /* Rectangle large ajusté pour mobile - 100% de largeur */
+    .tech-rectangle-wide {
+        width: 100%;
+        min-width: unset;
+        max-width: 100%;
+    }
 }
 
 /* Très petit mobile - jusqu'à 575px */
@@ -441,6 +463,14 @@
         height: 2.25rem; /* 36px */
         font-size: 0.7rem;
         margin-bottom: 0.25rem;
+    }
+    
+    /* Rectangle large en pleine largeur pour très petit mobile */
+    .tech-rectangle-wide {
+        width: 100%;
+        min-width: unset;
+        padding: 0 0.5rem;
+        font-size: 0.7rem;
     }
 }
 
@@ -517,5 +547,9 @@
         border: 1px solid #000 !important;
         background: white !important;
         box-shadow: none !important;
+    }
+    
+    .tech-rectangle-wide {
+        page-break-inside: avoid;
     }
 }

@@ -178,87 +178,9 @@
     <!-- Section titre de contenu -->
     <section id="all-actualites" class="all-actualites-section">
         <div class="container-fluid px-3">
-            <!-- En-tête avec titre et filtres -->
-            <div class="actualites-header-section">
                 <h2 class="section-title-simple" data-i18n="all_actualites_title">
                     Toutes les actualités
                 </h2>
-
-                <!-- Interface de recherche et filtrage - Positionnée à droite -->
-                <div class="actualites-filter-wrapper">
-                    <div class="actualites-search-bar">
-                        <div class="search-input-group">
-                            <input type="text" id="actualites-keyword-search" class="actualites-filter-input" 
-                                   placeholder="Recherche par mots-clés" data-i18n-placeholder="search_keywords_placeholder">
-                            <i class="fas fa-search search-input-icon"></i>
-                        </div>
-                    </div>
-
-                    <div class="actualites-filters-group">
-                        <div class="filter-item">
-                            <div class="filter-select-wrapper">
-                                <select class="actualites-filter-select" id="day-filter">
-                                    <option value="" data-i18n="filter_day">Jour</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                    <option value="25">25</option>
-                                    <option value="30">30</option>
-                                </select>
-                                <i class="fas fa-chevron-down filter-icon"></i>
-                            </div>
-                        </div>
-
-                        <div class="filter-item">
-                            <div class="filter-select-wrapper">
-                                <select class="actualites-filter-select" id="month-filter">
-                                    <option value="" data-i18n="filter_month">Mois</option>
-                                    <option value="01" data-i18n="month_jan">Janvier</option>
-                                    <option value="02" data-i18n="month_feb">Février</option>
-                                    <option value="03" data-i18n="month_mar">Mars</option>
-                                    <option value="04" data-i18n="month_apr">Avril</option>
-                                    <option value="05" data-i18n="month_may">Mai</option>
-                                    <option value="06" data-i18n="month_jun">Juin</option>
-                                    <option value="07" data-i18n="month_jul">Juillet</option>
-                                    <option value="08" data-i18n="month_aug">Août</option>
-                                    <option value="09" data-i18n="month_sep">Septembre</option>
-                                    <option value="10" data-i18n="month_oct">Octobre</option>
-                                    <option value="11" data-i18n="month_nov">Novembre</option>
-                                    <option value="12" data-i18n="month_dec">Décembre</option>
-                                </select>
-                                <i class="fas fa-chevron-down filter-icon"></i>
-                            </div>
-                        </div>
-
-                        <div class="filter-item">
-                            <div class="filter-select-wrapper">
-                                <select class="actualites-filter-select" id="category-filter">
-                                    <option value="" data-i18n="filter_category">Catégorie</option>
-                                    <option value="technology" data-i18n="cat_technology">Services liés à l'industrie</option>
-                                    <option value="innovation" data-i18n="cat_innovation">Technologie & Innovation</option>
-                                    <option value="projects" data-i18n="cat_projects">Projets</option>
-                                    <option value="partnerships" data-i18n="cat_partnerships">Partenariats</option>
-                                    <option value="events" data-i18n="cat_events">Événements</option>
-                                </select>
-                                <i class="fas fa-chevron-down filter-icon"></i>
-                            </div>
-                        </div>
-
-                        <button type="button" class="btn actualites-search-btn" id="search-btn" data-i18n="search_button">
-                            Rechercher
-                        </button>
-
-                        <button type="button" class="btn actualites-reset-btn" id="reset-filters-btn" data-i18n="reset_filters">
-                            <i class="fas fa-redo"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
 
             <!-- Grille d'articles d'actualité -->
             <div class="actualites-grid" id="actualites-grid">
