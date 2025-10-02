@@ -10,7 +10,7 @@ let currentLanguageArticle = 'fr';
 const articleDetailTranslations = {
     fr: {
         // Meta et navigation
-        page_title_article: "Proin ac quam et lectus vestibulum blandit - MK BA",
+        page_title_article: "Détail Actualité - MK BA",
         
         // Fil d'Ariane
         breadcrumb_news: "Actualités",
@@ -70,7 +70,7 @@ const articleDetailTranslations = {
     
     en: {
         // Meta et navigation
-        page_title_article: "Proin ac quam et lectus vestibulum blandit - MK BA",
+        page_title_article: "Project Detail - MK BA",
         
         // Fil d'Ariane
         breadcrumb_news: "News",

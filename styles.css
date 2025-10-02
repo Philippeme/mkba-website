@@ -1677,8 +1677,8 @@ body {
     border-radius: 0;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
-    margin-top: 7px;
-    min-width: 132vw;
+    margin-top: 18px;
+    min-width: 143vw;
     left: 50% !important;
     transform: translateX(-50%);
     position: absolute;
@@ -1696,7 +1696,7 @@ body {
     display: flex;
     align-items: stretch;
     min-height: 200px;
-    margin-left: calc(44vw - 40%);
+    margin-left: calc(48vw - 51%);
     padding: 2rem 0;
 }
 
@@ -1733,7 +1733,7 @@ body {
 
 .mega-menu-links {
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem 7rem;
     width: 100%;
 }
