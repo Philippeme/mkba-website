@@ -46,7 +46,7 @@
 }
 
 .achievements-page .navbar .contact-btn:hover {
-    background-color: var(--primary-blue) !important;
+    border-color: 0.5px solid var(--white) !important;
     color: var(--white) !important;
 }
 

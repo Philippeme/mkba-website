@@ -325,7 +325,7 @@ body {
 }
 
 .contact-btn {
-    border: 1px solid var(--white) !important;
+    border: 0.5px solid var(--white) !important;
     border-radius: var(--border-radius);
     padding: 0.4rem 1.2rem !important;
     margin-left: 1rem;
@@ -335,9 +335,15 @@ body {
 }
 
 .contact-btn:hover {
-    background-color: #F08A5D;
+    background: transparent linear-gradient(
+        270deg, 
+        #FFA677 0%, 
+        #F8894A 34%, 
+        #F8894A 62%, 
+        #ED6A18 100%
+    ) 0% 0% no-repeat padding-box;
     color: var(--white) !important;
-    border-color: var(--white);
+    border-color: 0.5px solid var(--white);
     transform: translateY(-0.0625rem);
     box-shadow: 0 0.125rem 0.5rem rgba(255, 255, 255, 0.2);
 }
