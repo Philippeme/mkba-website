@@ -1683,7 +1683,7 @@ body {
     border-radius: 0;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
-    margin-top: 18px;
+    margin-top: 5px;
     min-width: 143vw;
     left: 50% !important;
     transform: translateX(-50%);
@@ -1782,6 +1782,116 @@ body {
     padding-left: 0.75rem;
 }
 
+.what-we-do-mega-menu {
+    background: var(--white);
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    margin-top: 5px;
+    min-width: 143vw;
+    left: 50% !important;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 100%;
+}
+
+.what-we-do-mega-menu .mega-menu-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.what-we-do-mega-menu .mega-menu-content {
+    display: flex;
+    align-items: stretch;
+    min-height: 200px;
+    margin-left: calc(30vw - 43%);
+    padding: 2rem 0;
+}
+
+.what-we-do-mega-menu .mega-menu-left {
+    flex: 1;
+    padding: 2rem;
+    background: var(--background-gray);
+    border-right: 1px solid var(--border-light);
+}
+
+.what-we-do-mega-menu .mega-menu-title {
+    color: #333333;
+    font-weight: 430;
+    margin-bottom: 1rem;
+    font-size: 30px;
+    word-wrap: break-word;
+}
+
+.what-we-do-mega-menu .mega-menu-description {
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 0;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.what-we-do-mega-menu .mega-menu-right {
+    flex: 2;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.what-we-do-mega-menu .mega-menu-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 40%;
+}
+
+.what-we-do-mega-menu .mega-menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.what-we-do-mega-menu .mega-menu-item {
+    color: #333333 !important;
+    padding: 0.5rem 0;
+    font-size: 18px;
+    font-weight: 400;
+    background: transparent;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+    word-wrap: break-word;
+}
+
+.what-we-do-mega-menu .mega-menu-item:last-child {
+    border-bottom: none;
+}
+
+.what-we-do-mega-menu .mega-menu-item:hover,
+.what-we-do-mega-menu .mega-menu-item:focus {
+    background-color: rgba(0, 102, 204, 0.05);
+    color: var(--primary-orange) !important;
+    transform: translateX(3px);
+}
+
+.what-we-do-mega-menu .mega-menu-item.active {
+    background-color: rgba(0, 102, 204, 0.1);
+    color: var(--primary-blue) !important;
+    font-weight: 600;
+    border-left: 3px solid var(--primary-blue);
+    padding-left: 0.75rem;
+}
+
+/* Animation du mega menu */
+.what-we-do-mega-menu {
+    animation: megaMenuSlideIn 0.3s ease forwards;
+}
+
 /* ==============================================
    RESPONSIVE DESIGN - BREAKPOINTS ÉTENDUS
    ============================================== */
@@ -1816,6 +1926,10 @@ body {
         margin-left: 6rem;
         margin-right: 6rem;
     }
+
+    .what-we-do-mega-menu .mega-menu-content {
+        margin-left: calc(40vw - 50%);
+    }
     
     .search-section {
         margin-right: -8rem;
@@ -1848,6 +1962,10 @@ body {
     
     .search-section {
         margin-right: -6rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-content {
+        margin-left: calc(40vw - 50%);
     }
     
     .hero-title {
@@ -1911,6 +2029,14 @@ body {
     .search-section {
         justify-content: center;
         margin-right: 0;
+    }
+
+     .what-we-do-mega-menu {
+        min-width: 90vw;
+    }
+    
+    .what-we-do-mega-menu .mega-menu-content {
+        margin-left: 0;
     }
     
     .hero-title {
@@ -2005,6 +2131,51 @@ body {
         height: var(--navbar-height);
         top: var(--banner-height);
         padding: 0.5rem 0;
+    }
+
+    .what-we-do-mega-menu {
+        min-width: 280px;
+        max-width: 320px;
+        left: 0 !important;
+        transform: none;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-content {
+        flex-direction: column;
+        min-height: auto;
+        padding: 1rem 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .what-we-do-mega-menu .mega-menu-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 1.5rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-title {
+        font-size: 1.375rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-description {
+        font-size: 0.9rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-right {
+        padding: 1rem 1.5rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-links {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .what-we-do-mega-menu .mega-menu-item {
+        font-size: 1rem;
     }
     
     .hero-section {
@@ -2353,6 +2524,23 @@ body {
         height: var(--navbar-height);
         top: var(--banner-height);
     }
+
+    .what-we-do-mega-menu {
+        min-width: 260px;
+        max-width: 280px;
+    }
+
+    .what-we-do-mega-menu .mega-menu-title {
+        font-size: 1.25rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-description {
+        font-size: 0.85rem;
+    }
+
+    .what-we-do-mega-menu .mega-menu-item {
+        font-size: 0.9rem;
+    }
     
     .hero-section {
         margin-top: calc(-1 * var(--total-header-height));
@@ -2659,6 +2847,14 @@ body {
     .mega-menu-left {
         border-right: 2px solid var(--text-dark);
     }
+
+    .what-we-do-mega-menu {
+        border: 2px solid var(--text-dark);
+    }
+    
+    .what-we-do-mega-menu .mega-menu-left {
+        border-right: 2px solid var(--text-dark);
+    }
     
     .mega-menu-item {
         border-bottom: 2px solid rgba(0, 102, 204, 0.3);
@@ -2689,6 +2885,14 @@ body {
     
     .who-we-are-mega-menu {
         animation: none;
+    }
+
+    .what-we-do-mega-menu {
+        animation: none;
+    }
+    
+    .what-we-do-mega-menu .mega-menu-item:hover {
+        transform: none;
     }
     
     .mega-menu-item,
