@@ -1122,7 +1122,7 @@ body {
 }
 
 .full-width-indicators-section .row {
-    --bs-gutter-x: 4rem;
+    --bs-gutter-x: 18rem !important;
     --bs-gutter-y: 2rem;
 }
 
