@@ -5,7 +5,7 @@ let searchExpanded = false;
 let lastScrollTop = 0;
 let interactiveMap = null; // Variable pour la carte Leaflet
 let megaMenuOpen = false;
-let whatWeDoMegaMenuOpen = false;
+let homeWhatWeDoMegaMenuOpen = false;
 
 // Translations data - Conformes aux maquettes
 const translationsData = {
@@ -359,14 +359,14 @@ function initWhatWeDoMegaMenuHomePage() {
             
             // Système hover personnalisé
             megaMenuDropdown.addEventListener('mouseenter', function() {
-                whatWeDoMegaMenuOpen = true;
+                homeWhatWeDoMegaMenuOpen = true;
                 dropdownMenu.classList.add('show');
                 navbar.classList.add('mega-menu-open');
                 updateMegaMenuStyles(true);
             });
             
             megaMenuDropdown.addEventListener('mouseleave', function() {
-                whatWeDoMegaMenuOpen = false;
+                homeWhatWeDoMegaMenuOpen = false;
                 dropdownMenu.classList.remove('show');
                 navbar.classList.remove('mega-menu-open');
                 updateMegaMenuStyles(false);
@@ -374,8 +374,8 @@ function initWhatWeDoMegaMenuHomePage() {
             
             // Fermer seulement en cliquant à l'extérieur
             document.addEventListener('click', function(e) {
-                if (whatWeDoMegaMenuOpen && !megaMenuDropdown.contains(e.target)) {
-                    whatWeDoMegaMenuOpen = false;
+                if (homeWhatWeDoMegaMenuOpen && !megaMenuDropdown.contains(e.target)) {
+                    homeWhatWeDoMegaMenuOpen = false;
                     dropdownMenu.classList.remove('show');
                     navbar.classList.remove('mega-menu-open');
                     updateMegaMenuStyles(false);
@@ -1152,56 +1152,8 @@ function initOptimizedSections() {
     initAchievementsInteractions();
     initNewsInteractions();
     initLazyLoadingOptimized();
-    addDynamicStyles();
 
     console.log('Sections optimisées initialisées avec succès');
-}
-
-// ==============================================
-// STYLES DYNAMIQUES pour les animations
-// ==============================================
-
-function addDynamicStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .indicator-card,
-        .achievement-card,
-        .news-card {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .indicator-card.animate-in,
-        .achievement-card.animate-in,
-        .news-card.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .news-image img.loading {
-            opacity: 0.7;
-            filter: blur(5px);
-            transition: all 0.3s ease;
-        }
-        
-        .news-image img.loaded {
-            opacity: 1;
-            filter: blur(0);
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-            .indicator-card,
-            .achievement-card,
-            .news-card {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
-    `;
-
-    document.head.appendChild(style);
 }
 
 // ==============================================
@@ -1323,26 +1275,6 @@ function initSmoothScroll() {
             }
         });
     });
-}
-
-// Animation des éléments au scroll
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    const elementsToAnimate = document.querySelectorAll('.service-card, .product-card');
-    elementsToAnimate.forEach(el => observer.observe(el));
 }
 
 // Gestion des cards produits
@@ -1493,7 +1425,6 @@ function initWebsite() {
 
     // Initialiser les fonctionnalités de base
     initSmoothScroll();
-    initScrollAnimations();
     initProductCards();
     initSearch();
     initMobileMenu();

@@ -282,69 +282,6 @@ function initArticleDetailScrollAnimations() {
         heroObserver.observe(heroTitle);
     }
     
-    // Animation du titre principal
-    const mainTitle = document.querySelector('.article-main-title');
-    if (mainTitle) {
-        const titleObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateX(0)';
-                    }, 200);
-                    titleObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        mainTitle.style.opacity = '0';
-        mainTitle.style.transform = 'translateX(-30px)';
-        mainTitle.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        titleObserver.observe(mainTitle);
-    }
-    
-    // Animation des titres de section
-    const sectionTitles = document.querySelectorAll('.section-title-decorated, .section-title-decorated-alt');
-    sectionTitles.forEach(title => {
-        const titleObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateX(0)';
-                    }, 200);
-                    titleObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        title.style.opacity = '0';
-        title.style.transform = 'translateX(-30px)';
-        title.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        titleObserver.observe(title);
-    });
-    
-    // Animation de la sidebar
-    const sidebar = document.querySelector('.social-share-sidebar');
-    if (sidebar) {
-        const sidebarObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, 300);
-                    sidebarObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        sidebar.style.opacity = '0';
-        sidebar.style.transform = 'translateY(30px)';
-        sidebar.style.transition = 'all 0.6s ease-out';
-        sidebarObserver.observe(sidebar);
-    }
-    
     articleDetailAnimationsInitialized = true;
 }
 

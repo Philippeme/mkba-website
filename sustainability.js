@@ -273,38 +273,6 @@ function initDocumentDownloads() {
 }
 
 // ==============================================
-// ANIMATIONS AU SCROLL
-// ==============================================
-
-function initScrollAnimations() {
-    const animateOnScrollElements = document.querySelectorAll(
-        '.content-section-title, .content-section-subtitle, .content-description, ' +
-        '.sidebar-title, .card-title, .card-subtitle, .cards-description p, ' +
-        '.section-title-with-highlight, .sustainability-list, .content-paragraph'
-    );
-    
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                scrollObserver.unobserve(entry.target);
-            }
-        });
-    }, { 
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    animateOnScrollElements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = `all 0.6s ease ${index * 0.1}s`;
-        scrollObserver.observe(element);
-    });
-}
-
-// ==============================================
 // GESTION DES TRADUCTIONS
 // ==============================================
 
@@ -462,7 +430,7 @@ function initAdvancedAccessibility() {
         document.body.classList.add('reduced-motion');
         
         // Désactiver les animations
-        const animatedElements = document.querySelectorAll('.colored-card, .document-item');
+        const animatedElements = document.querySelectorAll('.colored-card');
         animatedElements.forEach(element => {
             element.style.animation = 'none';
             element.style.transition = 'none';
@@ -508,7 +476,6 @@ function initSustainabilityPage() {
         initMegaMenuSustainability();
         initColoredCardsInteractions();
         initDocumentDownloads();
-        initScrollAnimations();
         initSmoothScrollSustainability();
         initPerformanceOptimizations();
         initAdvancedAccessibility();

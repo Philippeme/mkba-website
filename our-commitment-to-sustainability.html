@@ -26,6 +26,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="we-are-mkba.css">
+    <link rel="stylesheet" href="services.css">
     <link rel="stylesheet" href="sustainability.css">
 
     <!-- Preload des ressources critiques -->
@@ -117,8 +118,39 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html#what-we-do" data-i18n="nav_what_we_do">Ce que nous faisons</a>
+                        <li class="nav-item dropdown mega-menu-dropdown what-we-do-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="whatWeDoDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_what_we_do">
+                                Ce que nous faisons
+                            </a>
+                            <!-- NOUVEAU MEGA MENU CONFORME À LA MAQUETTE -->
+                            <div class="dropdown-menu what-we-do-mega-menu" aria-labelledby="whatWeDoDropdown">
+                                <div class="mega-menu-container">
+                                    <div class="mega-menu-content">
+                                        <div class="mega-menu-left">
+                                            <h5 class="mega-menu-title" data-i18n="what_we_do_mega_title">Ce que nous faisons</h5>
+                                            <p class="mega-menu-description" data-i18n="what_we_do_mega_description">
+                                                Aliquam faucibus, odio nec commodo aliquam, neque felis placerat dui, a porta ante lectus dapibus est. Aliquam a bibendum mi, sed condimentum est. Mauris arcu odio, vestibulum quis imperdiet cursus, sodales vitae dui.
+                                            </p>
+                                        </div>
+                                        <div class="mega-menu-right">
+                                            <div class="mega-menu-links">
+                                                <div class="mega-menu-column">
+                                                    <a class="mega-menu-item" href="industries-served.html" data-i18n="nav_industries_served">
+                                                        Industries servies
+                                                    </a>
+                                                    <a class="mega-menu-item" href="services.html" data-i18n="nav_services">
+                                                        Services
+                                                    </a>
+                                                    <a class="mega-menu-item" href="solutions.html" data-i18n="nav_solutions">
+                                                        Solutions
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="achievements.html" data-i18n="nav_achievements">Réalisations</a>

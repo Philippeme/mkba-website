@@ -792,69 +792,7 @@ function initAchievementsScrollAnimations() {
         heroTitle.style.transition = 'all 1s ease-out';
         heroObserver.observe(heroTitle);
     }
-    
-    // Animation des titres de section (avec et sans carré beige)
-    const sectionTitles = document.querySelectorAll('.section-title-with-highlight, .section-title-no-highlight');
-    sectionTitles.forEach((title, index) => {
-        const titleObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateX(0)';
-                        entry.target.classList.add('animate-in');
-                    }, 200);
-                    titleObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        title.style.opacity = '0';
-        title.style.transform = 'translateX(-30px)';
-        title.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        titleObserver.observe(title);
-    });
-    
-    // Animation des cartes accomplissements
-    const achievementCards = document.querySelectorAll('.achievement-project-card');
-    achievementCards.forEach((card, index) => {
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0) scale(1)';
-                        entry.target.classList.add('animate-in');
-                    }, index * 200);
-                    cardObserver.unobserve(entry.target);
-                }
-            });
-        }, { ...observerOptions, threshold: 0.2 });
-        
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px) scale(0.95)';
-        card.style.transition = 'all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        cardObserver.observe(card);
-    });
-    
-    // Animation de la section de recherche
-    const searchContainer = document.querySelector('.achievements-search-container');
-    if (searchContainer) {
-        const searchObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    searchObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        searchContainer.style.opacity = '0';
-        searchContainer.style.transform = 'translateY(30px)';
-        searchContainer.style.transition = 'all 0.6s ease-out';
-        searchObserver.observe(searchContainer);
-    }
+
     
     achievementsAnimationsInitialized = true;
 }

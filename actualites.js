@@ -267,28 +267,6 @@ function initActualitesScrollAnimations() {
         heroObserver.observe(heroTitle);
     }
     
-    // Animation du titre de section
-    const sectionTitle = document.querySelector('.section-title-simple');
-    if (sectionTitle) {
-        const titleObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateX(0)';
-                        entry.target.classList.add('animate-in');
-                    }, 200);
-                    titleObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        sectionTitle.style.opacity = '0';
-        sectionTitle.style.transform = 'translateX(-30px)';
-        sectionTitle.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        titleObserver.observe(sectionTitle);
-    }
-    
     actualitesAnimationsInitialized = true;
 }
 

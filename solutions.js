@@ -574,9 +574,8 @@ function initSolutionsScrollAnimations() {
     // Animation des sections hero et intro
     const heroContent = document.querySelector('.solutions-hero-content');
     const heroIllustration = document.querySelector('.solutions-hero-illustration');
-    const introText = document.querySelector('.solutions-intro-text');
     
-    [heroContent, heroIllustration, introText].forEach((element, index) => {
+    [heroContent, heroIllustration].forEach((element, index) => {
         if (element) {
             const elementObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {

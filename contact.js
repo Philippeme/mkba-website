@@ -581,41 +581,6 @@ function initVoiceInput() {
 }
 
 // ==============================================
-// ANIMATIONS AU SCROLL
-// ==============================================
-
-function initContactScrollAnimations() {
-    if (contactAnimationsInitialized) return;
-    
-    const observerOptions = {
-        root: null,
-        rootMargin: '-10% 0px -10% 0px',
-        threshold: [0.1, 0.3]
-    };
-    
-    // Animation des sections principales
-    const sections = document.querySelectorAll('.contact-form-section, .contact-info-section');
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                sectionObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    sections.forEach((section, index) => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = `all 0.8s ease ${index * 0.2}s`;
-        sectionObserver.observe(section);
-    });
-    
-    contactAnimationsInitialized = true;
-}
-
-// ==============================================
 // GESTION DES TRADUCTIONS
 // ==============================================
 
@@ -798,7 +763,6 @@ function initContactPage() {
     initContactForm();
     initFileUpload();
     initContactHeroAnimations();
-    initContactScrollAnimations();
     initCountrySelector();
     initVoiceInput();
     initContactAccessibility();

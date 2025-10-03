@@ -384,9 +384,8 @@ function initServicesScrollAnimations() {
     // Animation des sections hero et intro
     const heroContent = document.querySelector('.services-hero-content');
     const heroIllustration = document.querySelector('.services-hero-illustration');
-    const introText = document.querySelector('.services-intro-text');
     
-    [heroContent, heroIllustration, introText].forEach((element, index) => {
+    [heroContent, heroIllustration].forEach((element, index) => {
         if (element) {
             const elementObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {

@@ -119,26 +119,8 @@ function toggleDropdown(dropdownRect) {
         dropdownsOpen.add(dropdownId);
         dropdownRect.setAttribute('aria-expanded', 'true');
         
-        // Animer les nouveaux rectangles
-        animateDropdownRectangles(dropdownContent);
-        
         console.log(`Dropdown ${dropdownId} ouvert`);
     }
-}
-
-function animateDropdownRectangles(dropdownContent) {
-    const rectangles = dropdownContent.querySelectorAll('.tech-rectangle');
-    
-    rectangles.forEach((rect, index) => {
-        rect.style.opacity = '0';
-        rect.style.transform = 'translateY(10px)';
-        
-        setTimeout(() => {
-            rect.style.opacity = '1';
-            rect.style.transform = 'translateY(0)';
-            rect.style.transition = 'all 0.3s ease';
-        }, index * 100);
-    });
 }
 
 function closeAllDropdowns() {
@@ -147,45 +129,6 @@ function closeAllDropdowns() {
         if (dropdownRect && dropdownRect.classList.contains('expanded')) {
             toggleDropdown(dropdownRect);
         }
-    });
-}
-
-// ==============================================
-// ANIMATION PROGRESSIVE DES ÉLÉMENTS
-// ==============================================
-
-function initProgressiveLoading() {
-    const sections = document.querySelectorAll('.tech-section');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const rectangles = entry.target.querySelectorAll('.tech-rectangle');
-                
-                rectangles.forEach((rect, index) => {
-                    setTimeout(() => {
-                        rect.style.opacity = '1';
-                        rect.style.transform = 'translateY(0)';
-                    }, index * 50);
-                });
-                
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    sections.forEach(section => {
-        const rectangles = section.querySelectorAll('.tech-rectangle');
-        rectangles.forEach(rect => {
-            rect.style.opacity = '0';
-            rect.style.transform = 'translateY(20px)';
-            rect.style.transition = 'all 0.4s ease';
-        });
-        
-        observer.observe(section);
     });
 }
 
@@ -307,7 +250,6 @@ function initTechnologiesPage() {
     
     try {
         // Initialiser les fonctionnalités de base
-        initProgressiveLoading();
         initDropdownRectangles();
         initTechAccessibility();
         

@@ -215,79 +215,6 @@ function updateWhatWeDoMegaMenuStylesDevelopment(isOpen) {
 }
 
 // ==============================================
-// ANIMATIONS DES SECTIONS
-// ==============================================
-
-function initDevelopmentAnimations() {
-    if (developmentAnimationsInitialized) return;
-    
-    // Animation des cartes de services
-    const serviceCards = document.querySelectorAll('.service-card1');
-    serviceCards.forEach((card, index) => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 150);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s ease';
-        observer.observe(card);
-    });
-    
-    // Animation des références
-    const referenceItems = document.querySelectorAll('.reference-item');
-    referenceItems.forEach((item, index) => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 200);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(30px)';
-        item.style.transition = 'all 0.8s ease';
-        observer.observe(item);
-    });
-    
-    // Animation des témoignages
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    testimonialCards.forEach((card, index) => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 200);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.8s ease';
-        observer.observe(card);
-    });
-    
-    developmentAnimationsInitialized = true;
-}
-
-// ==============================================
 // INTERACTIONS AVEC LES ÉLÉMENTS
 // ==============================================
 
@@ -551,7 +478,6 @@ function initAccessibilityDevelopmentPage() {
 function initDevelopmentPage() {
     // Initialiser toutes les fonctionnalités spécifiques
     initWhatWeDoMegaMenuDevelopment();
-    initDevelopmentAnimations();
     initDevelopmentInteractions();
     initBreadcrumbNavigationDevelopment();
     initSmoothScrollDevelopmentPage();
@@ -702,7 +628,6 @@ window.DevelopmentPage = {
     initDevelopmentPage,
     setLanguageDevelopmentPage,
     initWhatWeDoMegaMenuDevelopment,
-    initDevelopmentAnimations,
     initDevelopmentInteractions,
     developmentTranslations
 };
