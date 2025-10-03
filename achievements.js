@@ -973,20 +973,40 @@ function initAchievementCardsInteractions() {
             }
         });
         
-        // Gestion des liens "Lire plus"
+        // Gestion des liens "Lire plus" - CORRECTION ICI
         const readMoreLink = card.querySelector('.achievement-read-more');
         if (readMoreLink) {
             readMoreLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log(`Navigation vers le projet ${index + 1}`);
+                const href = this.getAttribute('href');
                 
-                // Animation du lien
+                // Empêcher seulement si c'est un lien placeholder (#)
+                if (href === '#' || !href) {
+                    e.preventDefault();
+                    console.log(`Clic sur projet ${index + 1} (lien placeholder)`);
+                } else {
+                    // Pour les vrais liens (project-detail.html, etc.)
+                    console.log(`Navigation vers: ${href}`);
+                    // Laisser le comportement par défaut (navigation)
+                }
+                
+                // Animation du lien dans tous les cas
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     this.style.transform = '';
                 }, 150);
             });
         }
+        
+        // Clic sur toute la carte
+        card.addEventListener('click', function(e) {
+            // Éviter le double clic si on clique sur le bouton
+            if (!e.target.closest('.achievement-read-more')) {
+                const readMoreLink = this.querySelector('.achievement-read-more');
+                if (readMoreLink) {
+                    readMoreLink.click();
+                }
+            }
+        });
         
         // Accessibilité
         card.setAttribute('tabindex', '0');
