@@ -1,5 +1,5 @@
 /* ==============================================
-   STYLES COMPLETS POUR LA PAGE OUR TEAM - VERSION COMPLÈTE AVEC MODIFICATIONS
+   STYLES COMPLETS POUR LA PAGE OUR TEAM - UPLOAD CORRIGÉ
    ============================================== */
 
 /* Variables CSS spécifiques */
@@ -272,7 +272,7 @@
 }
 
 /* ==============================================
-   HERO SECTION "OUR TEAM" - CORRECTIONS ALIGNEMENT
+   HERO SECTION "OUR TEAM"
    ============================================== */
 
 .our-team-hero {
@@ -294,7 +294,6 @@
     letter-spacing: -0.5px;
 }
 
-/* CORRECTION 1: ALIGNEMENT ET EXTENSION DU PARAGRAPHE HERO */
 .our-team-hero .hero-description {
     font-size: 20px;
     color: #313131;
@@ -306,7 +305,6 @@
     margin-right: -7rem;
 }
 
-/* Mise en évidence de "MK BA" dans le paragraphe hero */
 .our-team-hero .hero-description .highlight-mkba {
     color: #1B4F72;
     font-weight: 600;
@@ -483,7 +481,6 @@
     margin-right: auto;
 }
 
-/* Carrousel Bootstrap avec auto-scroll continu */
 .partners-carousel-container {
     position: relative;
     overflow: hidden;
@@ -495,11 +492,10 @@
 .carousel-inner {
     overflow: hidden;
     position: relative;
-    width: calc(100% - 4rem); /* largeur moins la marge totale */
-    margin: 0 2rem; /* marge des deux côtés */
+    width: calc(100% - 4rem);
+    margin: 0 2rem;
 }
 
-/* Items du carrousel */
 .partner-logo {
     display: flex;
     align-items: center;
@@ -521,7 +517,6 @@
     transform: scale(1.05);
 }
 
-/* Contrôles personnalisés du carrousel Bootstrap */
 .custom-carousel-control {
     position: absolute;
     top: 50%;
@@ -621,7 +616,7 @@
 }
 
 /* ==============================================
-   SECTION "JOIN US" - CORRECTIONS
+   SECTION "JOIN US"
    ============================================== */
 
 #join-us {
@@ -639,7 +634,6 @@
     line-height: 1.2;
 }
 
-/* CORRECTION 2: EXTENSION DU PARAGRAPHE VERS LA DROITE */
 .join-us-description {
     font-size: 25px;
     color: #313131;
@@ -651,7 +645,7 @@
 }
 
 /* ==============================================
-   FORMULAIRE "CANDIDATURE SPONTANÉE" - CORRECTIONS COMPLÈTES
+   FORMULAIRE "CANDIDATURE SPONTANÉE"
    ============================================== */
 
 #application-form {
@@ -669,7 +663,6 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Header du formulaire */
 .form-header {
     background: linear-gradient(135deg, #EBF4FD 0%, #FFFFFF 100%);
     padding: 2.5rem;
@@ -717,7 +710,6 @@
     line-height: 1.4;
 }
 
-/* Corps du formulaire */
 .form-body {
     background: var(--white);
     padding: 2.5rem;
@@ -725,7 +717,6 @@
     border-top: none;
 }
 
-/* Labels du formulaire */
 .form-label {
     font-size: 18px;
     font-weight: 490;
@@ -733,7 +724,6 @@
     margin-bottom: 0.5rem;
 }
 
-/* Champs de formulaire */
 .form-control,
 .form-select {
     height: 45px;
@@ -766,7 +756,7 @@
 }
 
 /* ==============================================
-   DROPDOWN TELEPHONE CORRIGÉ
+   DROPDOWN TELEPHONE
    ============================================== */
 
 .phone-input-group {
@@ -809,7 +799,7 @@
 }
 
 /* ==============================================
-   SELECTS STYLISÉS AVEC DROPDOWNS VISUELS - CSS PUR
+   SELECTS STYLISÉS AVEC DROPDOWNS VISUELS
    ============================================== */
 
 .select-wrapper {
@@ -882,7 +872,6 @@
     transform: translateY(-50%) rotate(180deg);
 }
 
-/* Options de genre */
 .gender-options {
     display: flex;
     gap: 2rem;
@@ -916,7 +905,7 @@
 }
 
 /* ==============================================
-   SECTION UPLOAD DE FICHIERS CORRIGÉE
+   SECTION UPLOAD DE FICHIERS - STYLE CONTACT ADAPTÉ
    ============================================== */
 
 .file-upload-section {
@@ -924,6 +913,7 @@
     padding: 2rem;
     border-top: 1px solid #E5E5E5;
     margin-top: 2rem;
+    position: relative;
 }
 
 .upload-header {
@@ -954,11 +944,11 @@
 
 /* Zone de drop */
 .drop-zone {
-    height: 200px;
+    height: 283px;
     width: 100%;
-    border: 2px dashed #BDC3C7;
+    border: 1px dashed #707070;
     background: var(--select-bg-color);
-    border-radius: 8px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -966,6 +956,7 @@
     transition: all 0.3s ease;
     position: relative;
     margin-top: 1rem;
+    z-index: 1;
 }
 
 .drop-zone:hover,
@@ -976,6 +967,7 @@
 
 .drop-zone-content {
     text-align: center;
+    pointer-events: none;
 }
 
 .upload-icon {
@@ -999,17 +991,26 @@
     height: 100%;
     opacity: 0;
     cursor: pointer;
+    z-index: 2;
 }
 
-/* CORRECTION 5: AFFICHAGE DES FICHIERS UPLOADÉS SOUS LA ZONE DE DROP */
+/* ==============================================
+   AFFICHAGE DES FICHIERS UPLOADÉS - STYLE CONTACT
+   ============================================== */
+
 .uploaded-files-display {
     margin-top: 1.5rem;
-    padding: 1rem 0;
+    padding-top: 1rem;
     display: none;
+    width: 100%;
+    min-height: 50px;
+    position: relative;
+    clear: both;
+    z-index: 1;
 }
 
 .uploaded-files-display.has-files {
-    display: block;
+    display: block !important;
 }
 
 .uploaded-files-title {
@@ -1019,15 +1020,18 @@
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #E5E5E5;
+    display: block;
 }
 
-.uploaded-files-list {
+.file-list {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
+    position: relative;
 }
 
-.uploaded-file-item {
+.file-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1037,66 +1041,47 @@
     border-radius: 4px;
     transition: all 0.3s ease;
     animation: slideDownFadeIn 0.4s ease forwards;
+    width: 100%;
+    position: relative;
 }
 
-.uploaded-file-item:hover {
+.file-item:hover {
     border-color: #3498DB;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.uploaded-file-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex: 1;
-}
-
-.uploaded-file-icon {
-    color: #3498DB;
-    font-size: 1.2rem;
-}
-
-.uploaded-file-details {
-    flex: 1;
-}
-
-.uploaded-file-name {
-    font-size: 0.9rem;
+.file-name {
     color: #2C3E50;
+    font-size: 0.9rem;
     font-weight: 500;
-    margin-bottom: 0.2rem;
+    flex: 1;
 }
 
-.uploaded-file-remove {
-    background: none;
-    border: none;
+.file-remove {
     color: #e74c3c;
     cursor: pointer;
-    font-size: 1rem;
-    padding: 0.5rem;
-    border-radius: 3px;
+    font-size: 0.875rem;
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
 }
 
-.uploaded-file-remove:hover {
+.file-remove:hover {
     background: rgba(231, 76, 60, 0.1);
     transform: scale(1.1);
 }
 
 /* ==============================================
-   BOUTONS D'ACTION - ALIGNÉS À GAUCHE SELON MAQUETTE
+   BOUTONS D'ACTION - ALIGNÉS À GAUCHE
    ============================================== */
 
 .form-actions {
     display: flex;
-    justify-content: flex-start; /* CHANGÉ de space-between à flex-start */
+    justify-content: flex-start;
     align-items: center;
     margin-top: 2rem;
     margin-left: 2rem;
-    gap: 2rem; /* Espace entre les boutons */
+    gap: 2rem;
 }
 
 .btn-cancel {
@@ -1109,7 +1094,7 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    order: 1; /* Premier bouton à gauche */
+    order: 1;
 }
 
 .btn-cancel:hover {
@@ -1128,7 +1113,7 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    order: 2; /* Deuxième bouton à gauche */
+    order: 2;
 }
 
 .btn-submit:hover {
@@ -1150,17 +1135,14 @@
    ============================================== */
 
 @media (max-width: 768px) {
-    /* Header mobile */
     .our-team-page .navbar.our-team-nav {
         background: rgba(0, 0, 0, 0.8) !important;
     }
 
-    /* Breadcrumb mobile */
     .our-team-page .breadcrumb-banner {
         padding: 0.5rem 0;
     }
 
-    /* Hero section mobile */
     .our-team-hero {
         padding: 3rem 0;
     }
@@ -1177,14 +1159,12 @@
         margin-right: 0;
     }
 
-    /* Sections mobiles - paragraphes */
     #expertise-passion .section-subtitle,
     #join-us .join-us-description {
         max-width: 100%;
         text-align: left;
     }
 
-    /* Sections mobiles */
     .section-title-with-badge {
         font-size: 1.8rem;
     }
@@ -1194,7 +1174,6 @@
         width: 40px;
     }
 
-    /* Carrousel mobile */
     .custom-carousel-control {
         width: 35px;
         height: 35px;
@@ -1218,7 +1197,6 @@
         max-width: 120px;
     }
 
-    /* Mega menu mobile */
     .our-team-page .who-we-are-mega-menu {
         min-width: 280px;
         max-width: 320px;
@@ -1250,13 +1228,11 @@
         gap: 0.5rem;
     }
 
-    /* Values grid mobile */
     .values-grid .row {
         --bs-gutter-x: 1rem;
         --bs-gutter-y: 1.5rem;
     }
 
-    /* Formulaire mobile */
     .application-form-container {
         margin: 0 1rem;
     }
@@ -1274,7 +1250,6 @@
         width: 35px;
     }
 
-    /* Selects mobiles */
     .country-code-wrapper {
         width: 100px;
     }
@@ -1283,22 +1258,20 @@
         gap: 1rem;
     }
 
-    /* BOUTONS DU FORMULAIRE - MAINTENIR ALIGNEMENT À GAUCHE SUR MOBILE */
     .form-actions {
-        flex-direction: row; /* Garder en ligne sur mobile aussi */
-        justify-content: flex-start; /* Toujours aligné à gauche */
+        flex-direction: row;
+        justify-content: flex-start;
         gap: 1rem;
-        flex-wrap: wrap; /* Permettre le retour à la ligne si nécessaire */
+        flex-wrap: wrap;
     }
 
     .btn-cancel,
     .btn-submit {
-        min-width: 180px; /* Largeur minimum pour lisibilité */
+        min-width: 180px;
         padding: 15px 24px;
-        flex-shrink: 0; /* Empêcher la compression */
+        flex-shrink: 0;
     }
 
-    /* Drop zone mobile */
     .drop-zone {
         height: 150px;
     }
@@ -1307,28 +1280,19 @@
         font-size: 2rem;
     }
 
-    /* Drapeaux mobile */
     .flag-select {
         padding: 10px 35px 10px 45px;
         font-size: 0.9rem;
     }
-    
-    .selected-flag {
-        width: 20px;
-        height: 15px;
-        left: 12px;
-    }
 
-    /* Fichiers uploadés mobile */
-    .uploaded-file-item {
+    .file-item {
         padding: 0.6rem 0.8rem;
     }
 
-    .uploaded-file-name {
+    .file-name {
         font-size: 0.85rem;
     }
 
-    /* Indicateurs mobile */
     .our-team-page .indicator-card {
         margin-bottom: 1.5rem;
         min-height: 100px;
@@ -1347,7 +1311,6 @@
 }
 
 @media (max-width: 576px) {
-    /* Très petits écrans */
     .our-team-hero .hero-title1 {
         font-size: 1.8rem;
     }
@@ -1361,7 +1324,6 @@
         width: 30px;
     }
 
-    /* Carrousel très petits écrans */
     .custom-carousel-control {
         width: 30px;
         height: 30px;
@@ -1385,7 +1347,6 @@
         max-width: 100px;
     }
 
-    /* BOUTONS DU FORMULAIRE - TRÈS PETIT ÉCRAN */
     .form-actions {
         gap: 0.75rem;
     }
@@ -1397,7 +1358,6 @@
         padding: 12px 20px;
     }
 
-    /* Formulaire très petit écran */
     .form-header,
     .form-body {
         padding: 1rem;
@@ -1428,16 +1388,9 @@
         font-size: 0.9rem;
     }
 
-    /* Drapeaux très petit écran */
     .flag-select {
         padding: 8px 30px 8px 40px;
         font-size: 0.85rem;
-    }
-    
-    .selected-flag {
-        width: 18px;
-        height: 14px;
-        left: 10px;
     }
 
     .select-wrapper .select-arrow {
@@ -1445,7 +1398,6 @@
         font-size: 0.6rem;
     }
 
-    /* Mega menu très petit écran */
     .our-team-page .who-we-are-mega-menu {
         min-width: 260px;
         max-width: 280px;
@@ -1459,7 +1411,6 @@
         font-size: 0.85rem;
     }
 
-    /* Indicateurs très petit écran */
     .our-team-page .indicator-card::before {
         width: 40px;
         height: 40px;
@@ -1476,11 +1427,10 @@
     }
 }
 
-/* Pour les très petits écrans, on peut empiler les boutons si vraiment nécessaire */
 @media (max-width: 400px) {
     .form-actions {
         flex-direction: column;
-        align-items: flex-start; /* Alignement à gauche même en colonne */
+        align-items: flex-start;
         gap: 1rem;
     }
     
@@ -1558,7 +1508,6 @@
 .partner-logo:nth-child(5) { animation-delay: 0.5s; }
 .partner-logo:nth-child(6) { animation-delay: 0.6s; }
 
-/* Animation d'ouverture du mega menu */
 .our-team-page .who-we-are-mega-menu {
     animation: megaMenuSlideIn 0.3s ease forwards;
 }
@@ -1575,7 +1524,7 @@
 }
 
 /* ==============================================
-   STATES D'ACCESSIBILITÉ
+   ÉTATS D'ACCESSIBILITÉ
    ============================================== */
 
 .form-control:focus,
@@ -1584,7 +1533,7 @@
 .btn-cancel:focus,
 .btn-submit:focus,
 .custom-carousel-control:focus,
-.uploaded-file-remove:focus,
+.file-remove:focus,
 .our-team-page .mega-menu-item:focus {
     outline-offset: 2px;
 }
@@ -1600,7 +1549,7 @@
     
     .form-control,
     .form-select,
-    .uploaded-file-item {
+    .file-item {
         border-width: 2px;
     }
 
@@ -1614,7 +1563,7 @@
     .our-team-page .who-we-are-mega-menu,
     .value-item,
     .partner-logo,
-    .uploaded-file-item {
+    .file-item {
         animation: none;
         opacity: 1;
         transform: none;
@@ -1626,7 +1575,7 @@
     .btn-cancel,
     .btn-submit,
     .custom-carousel-control,
-    .uploaded-file-remove,
+    .file-remove,
     .drop-zone {
         transition: none !important;
     }

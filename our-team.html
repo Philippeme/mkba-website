@@ -154,7 +154,7 @@
         </nav>
     </header>
 
-    <!-- Bannière Fil d'Ariane - CORRIGÉ -->
+    <!-- Bannière Fil d'Ariane -->
     <section class="breadcrumb-banner">
         <div class="container">
             <nav aria-label="Fil d'Ariane" class="breadcrumb-nav">
@@ -422,7 +422,7 @@
         </div>
     </section>
 
-    <!-- Formulaire "CANDIDATURE SPONTANÉE" - AVEC DRAPEAUX ET BOUTONS ALIGNÉS -->
+    <!-- Formulaire "CANDIDATURE SPONTANÉE" - UPLOAD CORRIGÉ STYLE CONTACT -->
     <section id="application-form" class="py-5 bg-white">
         <div class="container">
             <div class="application-form-container">
@@ -576,14 +576,14 @@
                             </div>
                         </div>
 
-                        <!-- Section Upload de fichiers -->
+                        <!-- Section Upload de fichiers - CORRIGÉ STYLE CONTACT -->
                         <div class="file-upload-section">
                             <div class="upload-header">
                                 <h4 class="upload-title" data-i18n="upload_title">Téléverser votre Cv lettre de
                                     motivation</h4>
                                 <div class="upload-specs">
                                     <p data-i18n="upload_format">Format : Docx, pdf</p>
-                                    <p data-i18n="upload_size">Taille : Mo Maximum</p>
+                                    <p data-i18n="upload_size">Taille : 5 Mo Maximum</p>
                                 </div>
                             </div>
 
@@ -596,16 +596,16 @@
                                 <input type="file" id="fileInput" class="file-input" multiple accept=".pdf,.docx,.doc">
                             </div>
 
-                            <!-- Zone d'affichage "Depuis l'appareil" -->
-                            <div class="uploaded-files-display" id="uploadedFilesDisplay">
+                            <!-- Zone d'affichage des fichiers uploadés -->
+                            <div class="uploaded-files-display" id="uploadedFilesDisplay" style="background: transparent;">
                                 <p class="uploaded-files-title" data-i18n="uploaded_files_title">Depuis l'appareil</p>
-                                <div class="uploaded-files-list" id="uploadedFilesList">
+                                <div class="file-list" id="fileList">
                                     <!-- Les fichiers uploadés apparaîtront ici -->
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Boutons d'action - ALIGNÉS À GAUCHE -->
+                        <!-- Boutons d'action -->
                         <div class="form-actions">
                             <button type="button" class="btn btn-cancel" id="cancelBtn" data-i18n="btn_cancel">
                                 Annuler la candidature
