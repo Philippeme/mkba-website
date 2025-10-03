@@ -192,7 +192,7 @@
 .actualite-title {
     font-family: inherit;
     font-size: 1.5625rem; /* 25px */
-    font-weight: 400;
+    font-weight: 500;
     color: var(--actualites-blue);
     margin-bottom: 1rem;
     line-height: 1.4;
@@ -205,6 +205,11 @@
     text-overflow: ellipsis;
     word-wrap: break-word;
     hyphens: auto;
+    cursor: pointer;
+}
+
+.actualite-card:hover .actualite-title {
+    color: var(--primary-orange);
 }
 
 /* Extrait de l'article */
@@ -238,7 +243,7 @@
 /* Lien d'action "Voir plus" - masqué par défaut, visible au hover */
 .actualite-link {
     font-family: inherit;
-    color: var(--actualites-blue);
+    color: var(--actualites-blue) !important;
     text-decoration: none;
     font-size: 1rem; /* 16px */
     font-weight: 500;
@@ -263,7 +268,7 @@
 }
 
 .actualite-link:hover {
-    color: var(--primary-orange);
+    color: var(--primary-orange) !important;
 }
 
 .actualite-link:hover i {

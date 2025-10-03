@@ -1434,6 +1434,7 @@ body {
     transition: all 0.3s ease;
     word-wrap: break-word;
     hyphens: auto;
+    cursor: pointer;
 }
 
 .news-card:hover .news-title {
@@ -2927,6 +2928,10 @@ body {
 
 .nav-link.dropdown-toggle.active::after {
     display: none;
+}
+
+.news-title {  
+    cursor: pointer;
 }
 
 /* Loading states */
