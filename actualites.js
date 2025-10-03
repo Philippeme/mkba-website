@@ -189,14 +189,24 @@ function initActualiteCardsInteractions() {
 
         observer.observe(card);
 
-        // Interactions avec les liens
+        // Interactions avec les liens - CORRECTION ICI
         const actualiteLink = card.querySelector('.actualite-link');
         if (actualiteLink) {
             actualiteLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log(`Clic sur article ${index + 1}`);
+                const href = this.getAttribute('href');
                 
-                // Animation du lien
+                // Empêcher seulement si c'est un lien placeholder (#)
+                if (href === '#' || !href) {
+                    e.preventDefault();
+                    console.log(`Clic sur article ${index + 1} (lien placeholder)`);
+                } else {
+                    // Pour les vrais liens (article-detail.html, etc.)
+                    console.log(`Navigation vers: ${href}`);
+                    // Laisser le comportement par défaut (navigation)
+                    // Optionnel: ajouter une animation courte avant navigation
+                }
+                
+                // Animation du lien dans tous les cas
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     this.style.transform = '';
