@@ -337,7 +337,7 @@ body {
 .contact-btn:hover {
     background: transparent linear-gradient(
         270deg, 
-        #FFA677 0%, 
+        #FFA677 0%,     
         #F8894A 34%, 
         #F8894A 62%, 
         #ED6A18 100%
@@ -345,10 +345,10 @@ body {
     color: var(--white) !important;
     border-color: 0.5px solid var(--white);
     transform: translateY(-0.0625rem);
-    box-shadow: 0 0.125rem 0.5rem rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0.125rem 0.5rem rgba(255, 255, 255, 0.2); 
 }
 
-/* ==============================================
+/* ============================================== 
    SÉLECTEUR DE LANGUE - OPTIMISÉ
    ============================================== */
 

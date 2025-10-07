@@ -71,7 +71,7 @@
    MEGA MENU "WHO WE ARE" POUR OUR TEAM
    ============================================== */
 
-.our-team-page .who-we-are-mega-menu {
+.who-we-are-mega-menu {
     background: var(--white);
     border: none;
     border-radius: 0;
@@ -85,7 +85,7 @@
     top: 100%;
 }
 
-.our-team-page .mega-menu-container {
+.mega-menu-container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -93,7 +93,7 @@
 
 }
 
-.our-team-page .mega-menu-content {
+.mega-menu-content {
     display: flex;
     align-items: stretch;
     min-height: 200px;
@@ -101,21 +101,21 @@
     padding: 2rem 0;
 }
 
-.our-team-page .mega-menu-left {
+.mega-menu-left {
     flex: 1;
     padding: 2rem;
     background: var(--background-gray);
     border-right: 1px solid var(--border-light);
 }
 
-.our-team-page .mega-menu-title {
+.mega-menu-title {
     color: #333333;
     font-weight: 430;
     margin-bottom: 1rem;
     font-size: 30px;
 }
 
-.our-team-page .mega-menu-description {
+.mega-menu-description {
     color: #333333;
     font-size: 16px;
     line-height: 1.5;
@@ -124,27 +124,27 @@
     hyphens: auto;
 }
 
-.our-team-page .mega-menu-right {
+.mega-menu-right {
     flex: 2;
     padding: 2rem;
     display: flex;
     align-items: center;
 }
 
-.our-team-page .mega-menu-links {
+.mega-menu-links {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem 7rem;
     width: 100%;
 }
 
-.our-team-page .mega-menu-column {
+.mega-menu-column {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.our-team-page .mega-menu-item {
+.mega-menu-item {
     color: #333333 !important;
     padding: 0.5rem 0;
     font-size: 18px;
@@ -157,18 +157,18 @@
     word-wrap: break-word;
 }
 
-.our-team-page .mega-menu-item:last-child {
+.mega-menu-item:last-child {
     border-bottom: none;
 }
 
-.our-team-page .mega-menu-item:hover,
-.our-team-page .mega-menu-item:focus {
+.mega-menu-item:hover,
+.mega-menu-item:focus {
     background-color: rgba(0, 102, 204, 0.05);
     color: var(--primary-blue) !important;
     transform: translateX(3px);
 }
 
-.our-team-page .mega-menu-item.active {
+.mega-menu-item.active {
     background-color: rgba(0, 102, 204, 0.1);
     color: var(--primary-blue) !important;
     font-weight: 600;
