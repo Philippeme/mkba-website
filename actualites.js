@@ -189,24 +189,35 @@ function initActualiteCardsInteractions() {
 
         observer.observe(card);
 
-        // Interactions avec les liens - CORRECTION ICI
+        // NOUVEAU : Rendre le titre cliquable
+        const title = card.querySelector('.actualite-title');
         const actualiteLink = card.querySelector('.actualite-link');
+        
+        if (title && actualiteLink) {
+            const href = actualiteLink.getAttribute('href');
+            
+            // Rendre le titre cliquable
+            title.style.cursor = 'pointer';
+            title.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (href && href !== '#') {
+                    window.location.href = href;
+                }
+            });
+        }
+
+        // Gestion du lien "Voir plus"
         if (actualiteLink) {
             actualiteLink.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
                 
-                // Empêcher seulement si c'est un lien placeholder (#)
                 if (href === '#' || !href) {
                     e.preventDefault();
                     console.log(`Clic sur article ${index + 1} (lien placeholder)`);
                 } else {
-                    // Pour les vrais liens (article-detail.html, etc.)
                     console.log(`Navigation vers: ${href}`);
-                    // Laisser le comportement par défaut (navigation)
-                    // Optionnel: ajouter une animation courte avant navigation
                 }
                 
-                // Animation du lien dans tous les cas
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     this.style.transform = '';
@@ -218,7 +229,6 @@ function initActualiteCardsInteractions() {
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'article');
         
-        const title = card.querySelector('.actualite-title');
         if (title) {
             card.setAttribute('aria-label', `Article: ${title.textContent.substring(0, 50)}...`);
         }
