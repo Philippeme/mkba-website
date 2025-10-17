@@ -67,8 +67,8 @@
     background: var(--achievements-hero-bg);
     background-size: cover;
     background-position: center;
-    min-height: 600px;
-    height: 700px;
+    min-height: 500px;
+    height: 500px;
     display: flex;
     align-items: center;
     position: relative;
@@ -172,7 +172,7 @@
 /* Carte interactive adaptative */
 #achievements-interactive-map {
     height: 43.75rem; /* 700px en rem */
-    width: 70%;
+    width: 77%;
     max-width: 1250px;
     margin: 0 auto;
     z-index: 1;
@@ -448,7 +448,7 @@
 
 .achievement-header-purple {
     background: var(--achievements-purple);
-    height: 250px;
+    height: 185px;
     position: relative;
     padding: 1rem;
     display: flex;
@@ -771,7 +771,7 @@
 .show-more-testimonials {
     display: flex;
     justify-content: center;
-    margin-top: 2.5rem;
+    margin: 2.5rem 0 5rem 0;
 }
 
 .show-more-btn {

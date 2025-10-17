@@ -126,16 +126,16 @@
     border-radius: 0;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
-    margin-top: 18px;
+    margin-top: 12px;
     min-width: 132vw;
-    left: 50% !important;
-    transform: translateX(-50%);
+    left: 0 !important;
+    transform: none;
     position: absolute;
     top: 100%;
 }
 
 .what-we-do-mega-menu .mega-menu-container {
-    width: 100%;
+    width: 55vw;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
@@ -144,9 +144,11 @@
 .what-we-do-mega-menu .mega-menu-content {
     display: flex;
     align-items: stretch;
-    min-height: 200px;
-    margin-left: calc(30vw - 43%);
-    padding: 2rem 0;
+    min-height: 150px;
+    width: 137%;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 2rem 15px;
 }
 
 .what-we-do-mega-menu .mega-menu-left {
@@ -286,8 +288,8 @@
 
 .services-hero-section {
     background: var(--services-hero-bg);
-    min-height: 600px;
-    height: 700px;
+    min-height: 500px;
+    height: 500px;
     display: flex;
     align-items: center;
     position: relative;
@@ -366,7 +368,7 @@
 
 .services-grid-section {
     background: var(--white);
-    padding: 1rem 0 4rem 0;
+    padding: 1rem 0 6rem 0;
 }
 
 .services-section-title {

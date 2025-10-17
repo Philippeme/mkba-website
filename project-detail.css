@@ -265,7 +265,7 @@
 }
 
 .content-block {
-    margin: 0 0 2rem -18rem;
+    margin: 0 0 2rem -20rem;
 }
 
 .content-text-main {
@@ -507,7 +507,7 @@
 }
 
 .partner-img {
-    max-height: 80px;
+    max-height: 50px;
     max-width: 150px;
     object-fit: contain;
     transition: all 0.3s ease;
@@ -558,7 +558,7 @@
 
 .similar-projects-section {
     background: var(--white);
-    padding: 3.125rem 0; /* 50px */
+    padding: 3.125rem 0 6rem 0; /* 50px */
     margin-top: -3rem;
 }
 
@@ -586,7 +586,7 @@
 
 .project-header-purple {
     background: var(--project-purple);
-    height: 250px;
+    height: 185px;
     position: relative;
     padding: 1rem;
     display: flex;

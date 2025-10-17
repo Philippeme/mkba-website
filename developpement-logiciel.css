@@ -66,8 +66,8 @@
     background: var(--development-hero-bg);
     background-size: cover;
     background-position: center;
-    min-height: 600px;
-    height: 700px;
+    min-height: 500px;
+    height: 500px;
     display: flex;
     align-items: center;
     position: relative;
@@ -473,7 +473,7 @@
 
 .development-testimonials-section {
     background: var(--white);
-    padding: 2rem 0 4rem 0;
+    padding: 2rem 0 7rem 0;
     margin-top: -2rem;
 }
 

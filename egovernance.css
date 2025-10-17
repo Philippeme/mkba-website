@@ -65,8 +65,8 @@
 .egovernance-hero-section {
     background: var(--egovernance-hero-bg);
     background-size: cover;
-    min-height: 600px;
-    height: 700px;
+    min-height: 500px;
+    height: 500px;
     display: flex;
     align-items: center;
     position: relative;
@@ -208,7 +208,7 @@
     content: "";
     position: absolute;
     top: 0;
-    right: 17rem; /* décale la fausse bordure */
+    right: 13rem; /* décale la fausse bordure */
     bottom: -2rem;
     left: 22.5rem;
     border: 0.5px solid #005FAC;
@@ -301,6 +301,7 @@
     color: #707070;
     line-height: 1.6;
     margin-bottom: 1.2rem;
+    width: 97%;
     text-align: justify;
     word-wrap: break-word;
     hyphens: auto;
@@ -401,7 +402,7 @@
 
 .video-description {
     padding-left: 0;
-    transform: translateX(-8.5rem);
+    transform: translateX(-10rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -424,7 +425,7 @@
     line-height: 1.6;
     word-wrap: break-word;
     hyphens: auto;
-    width: 135%;   
+    width: 125%;   
     flex: 1;       
 }
 
@@ -443,8 +444,8 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 10%;         
-    right: 10%;        
+    left: 9%;         
+    right: 9%;        
     background: var(--egovernance-projects-bg);
     z-index: 0;       /* derrière le contenu */
 }
@@ -814,7 +815,7 @@
 
 .egovernance-testimonials-section {
     background: var(--white);
-    padding: 0.75rem 0; /* 60px */
+    padding: 0.75rem 0 6rem 0; /* 60px */
 }
 
 .egovernance-testimonials-section .section-title-with-highlight {

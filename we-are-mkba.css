@@ -65,10 +65,12 @@
     border-radius: 0;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
-    margin-top: 18px;
-    min-width: 135vw;
-    left: 50% !important;
-    transform: translateX(-50%);
+    margin-top: 12px;
+    width: 146vw;
+    min-width: 146vw;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none;
     position: absolute;
     top: 100%;
 }
@@ -84,8 +86,10 @@
     display: flex;
     align-items: stretch;
     min-height: 200px;
-    margin-left: calc(42vw - 45%);
-    padding: 2rem 0;
+    width: 70%;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 2rem 15px;
 }
 
 .mega-menu-left {
@@ -299,7 +303,7 @@
 }
 
 .title-block-header {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     color: #0A0B0D;
     margin-bottom: 1rem;
@@ -307,7 +311,7 @@
 }
 
 .title-block-text {
-    font-size: 30px;
+    font-size: 20px;
     color: #0A0B0D;
     line-height: 1.6;
     margin-bottom: -6rem;
@@ -325,7 +329,7 @@
 }
 
 .who-we-are-block-header {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     color: #0A0B0D;
     margin-bottom: 1rem;
@@ -333,7 +337,7 @@
 }
 
 .who-we-are-block-text {
-    font-size: 30px;
+    font-size: 20px;
     color: #0A0B0D;
     line-height: 1.6;
     margin-bottom: 2rem;
@@ -345,7 +349,7 @@
 }
 
 .who-we-are-right img {
-    width: 100%;
+    width: 75%;
     height: auto;
     max-height: 350px;
     object-fit: cover;
@@ -384,7 +388,7 @@
 
 /* Sous-titre en haut à gauche - même style que les titres h5 des sections "Titre" et "Who we are" */
 .section-subtitle-left {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     color: #0A0B0D;
     margin-bottom: 1rem;
@@ -394,7 +398,7 @@
 
 /* Titre principal - même style que les paragraphes des sections "Titre" et "Who we are" */
 .section-main-title {
-    font-size: 30px;
+    font-size: 20px;
     color: #0A0B0D;
     line-height: 1.6;
     margin-bottom: 3rem;
@@ -467,7 +471,7 @@
 
 /* Titre gras noir ≈30px selon spécifications */
 .why-card-title {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 400;
     color: #0A0B0D;
     margin-bottom: 1rem;
@@ -478,7 +482,7 @@
 
 /* Description gris foncé ≈20px selon spécifications */
 .why-card-description {
-    font-size: 20px;
+    font-size: 14px;
     color: #313131;
     line-height: 1.6;
     margin-bottom: 0;
@@ -496,7 +500,7 @@
 }
 
 #so-you-can .section-title-bold {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     color: #333;
     margin-bottom: 1rem;
@@ -555,7 +559,7 @@
 }
 
 .accordion-button span {
-    font-size: 1.5rem; 
+    font-size: 1.75rem; 
     font-weight: 430;
     line-height: 1.4;
 }
@@ -576,7 +580,7 @@
 .accordion-body {
     background: transparent;
     color: var(--text-medium);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 1.6;
     padding: 0 0 1.5rem 0;
 }
@@ -596,7 +600,7 @@
 }
 
 .section-title-bold {
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 700;
     color: #0A0B0D;
     margin-bottom: 3rem;
@@ -658,7 +662,7 @@
 
 /* Titre gras noir ≈20px selon spécifications */
 .client-card-title {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 700;
     color: #0A0B0D;
     margin-bottom: 0.5rem;
@@ -669,7 +673,7 @@
 
 /* Description gris foncé ≈20px avec flèche selon spécifications */
 .client-card-description {
-    font-size: 30px;
+    font-size: 20px;
     color: #0A0B0D;
     line-height: 1.6;
     margin-bottom: 0;
