@@ -3,9 +3,10 @@ let currentLanguage = 'fr';
 let translations = {};
 let searchExpanded = false;
 let lastScrollTop = 0;
-let interactiveMap = null; // Variable pour la carte Leaflet
+let interactiveMap = null;
 let megaMenuOpen = false;
 let homeWhatWeDoMegaMenuOpen = false;
+let mobileSidebarActive = false;
 
 // Translations data - Conformes aux maquettes
 const translationsData = {
@@ -262,42 +263,175 @@ const translationsData = {
     }
 };
 
-
 // ==============================================
-// FONCTION DE NAVIGATION INTER-PAGES
+// SIDEBAR MOBILE - NOUVEAU SYSTÈME
 // ==============================================
 
-function initInterPageNavigation() {
-    // Gérer la navigation depuis la page d'accueil vers la page We are MK BA
-    const whoWeAreLinks = document.querySelectorAll('a[href*="we-are-mkba"]');
-    whoWeAreLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            // Animation de transition douce
-            this.style.color = 'var(--primary-orange)';
+function createMobileSidebar() {
+    // Vérifier si la sidebar existe déjà
+    if (document.querySelector('.mobile-sidebar')) {
+        return;
+    }
 
-            // Preload de la page suivante si possible
-            if (link.href && !link.href.includes('#')) {
-                const prefetchLink = document.createElement('link');
-                prefetchLink.rel = 'prefetch';
-                prefetchLink.href = link.href;
-                document.head.appendChild(prefetchLink);
-            }
+    // Créer l'overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-sidebar-overlay';
+    overlay.addEventListener('click', closeMobileSidebar);
+
+    // Créer la sidebar
+    const sidebar = document.createElement('div');
+    sidebar.className = 'mobile-sidebar';
+    sidebar.innerHTML = `
+        <div class="mobile-sidebar-header">
+            <img src="./assets/images/Groupe 1@2x.png" alt="Logo MK BA" style="height: 30px;">
+            <button class="mobile-sidebar-close" aria-label="Fermer le menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-sidebar-content">
+            <div class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link has-submenu" data-submenu="who-we-are">
+                    <span data-i18n="nav_who_we_are">Qui nous sommes</span>
+                </a>
+                <div class="mobile-submenu" id="submenu-who-we-are">
+                    <div class="mobile-submenu-item">
+                        <a href="we-are-mkba.html" class="mobile-submenu-link" data-i18n="nav_we_are_mkba">Nous sommes MK BA</a>
+                    </div>
+                    <div class="mobile-submenu-item">
+                        <a href="our-team.html" class="mobile-submenu-link" data-i18n="nav_our_team">Notre équipe</a>
+                    </div>
+                    <div class="mobile-submenu-item">
+                        <a href="our-commitment-to-sustainability.html" class="mobile-submenu-link" data-i18n="nav_sustainability">Notre engagement pour la durabilité</a>
+                    </div>
+                    <div class="mobile-submenu-item">
+                        <a href="technologies.html" class="mobile-submenu-link" data-i18n="nav_technologies">Technologies</a>
+                    </div>
+                    <div class="mobile-submenu-item">
+                        <a href="#" class="mobile-submenu-link" data-i18n="nav_work_with_us">Travailler avec nous</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link has-submenu" data-submenu="what-we-do">
+                    <span data-i18n="nav_what_we_do">Ce que nous faisons</span>
+                </a>
+                <div class="mobile-submenu" id="submenu-what-we-do">
+                    <div class="mobile-submenu-item">
+                        <a href="industries-served.html" class="mobile-submenu-link" data-i18n="nav_industries_served">Industries servies</a>
+                    </div>
+                    <div class="mobile-submenu-item">
+                        <a href="services.html" class="mobile-submenu-link" data-i18n="nav_services">Services</a>
+                    </div>
+                    <div class="mobile-submenu-item">
+                        <a href="solutions.html" class="mobile-submenu-link" data-i18n="nav_solutions">Solutions</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="achievements.html" class="mobile-nav-link" data-i18n="nav_achievements">Réalisations</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="actualites.html" class="mobile-nav-link" data-i18n="nav_news">Actualités</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="contact.html" class="mobile-nav-link" data-i18n="nav_contact">Nous contacter</a>
+            </div>
+            <div class="mobile-language-selector">
+                <div class="mobile-language-title">Langue / Language</div>
+                <div class="mobile-language-buttons">
+                    <button class="mobile-language-btn ${currentLanguage === 'fr' ? 'active' : ''}" data-lang="fr">Français</button>
+                    <button class="mobile-language-btn ${currentLanguage === 'en' ? 'active' : ''}" data-lang="en">English</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Ajouter au DOM
+    document.body.appendChild(overlay);
+    document.body.appendChild(sidebar);
+
+    // Event listeners
+    sidebar.querySelector('.mobile-sidebar-close').addEventListener('click', closeMobileSidebar);
+
+    // Gestion des sous-menus
+    const submenuLinks = sidebar.querySelectorAll('.mobile-nav-link.has-submenu');
+    submenuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const submenuId = 'submenu-' + this.getAttribute('data-submenu');
+            const submenu = document.getElementById(submenuId);
+            
+            // Toggle le sous-menu
+            this.classList.toggle('active');
+            submenu.classList.toggle('active');
         });
     });
 
-    // Gérer la navigation de retour vers l'accueil
-    const homeLinks = document.querySelectorAll('a[href="index.html"], a[href="/"], a[href="#home"]');
-    homeLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            if (this.href.includes('index.html') || this.href.endsWith('/')) {
-                this.style.color = 'var(--primary-orange)';
-            }
+    // Gestion du sélecteur de langue mobile
+    const langButtons = sidebar.querySelectorAll('.mobile-language-btn');
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            setLanguage(lang);
+            
+            // Mettre à jour les boutons actifs
+            langButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
         });
+    });
+
+    // Appliquer les traductions
+    applyTranslationsToSidebar();
+}
+
+function openMobileSidebar() {
+    const sidebar = document.querySelector('.mobile-sidebar');
+    const overlay = document.querySelector('.mobile-sidebar-overlay');
+    
+    if (sidebar && overlay) {
+        mobileSidebarActive = true;
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeMobileSidebar() {
+    const sidebar = document.querySelector('.mobile-sidebar');
+    const overlay = document.querySelector('.mobile-sidebar-overlay');
+    
+    if (sidebar && overlay) {
+        mobileSidebarActive = false;
+        
+        // Fermer tous les sous-menus ouverts
+        const activeSubmenus = sidebar.querySelectorAll('.mobile-submenu.active');
+        const activeLinks = sidebar.querySelectorAll('.mobile-nav-link.has-submenu.active');
+        
+        activeSubmenus.forEach(submenu => submenu.classList.remove('active'));
+        activeLinks.forEach(link => link.classList.remove('active'));
+        
+        // Fermer la sidebar
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+function applyTranslationsToSidebar() {
+    const sidebar = document.querySelector('.mobile-sidebar');
+    if (!sidebar) return;
+
+    const elementsToTranslate = sidebar.querySelectorAll('[data-i18n]');
+    elementsToTranslate.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[key]) {
+            element.textContent = translations[key];
+        }
     });
 }
 
 // ==============================================
-// GESTION DU MEGA MENU "WHO WE ARE" - MISE À JOUR
+// GESTION DU MEGA MENU - MISE À JOUR RESPONSIVE
 // ==============================================
 
 function initMegaMenuHomePage() {
@@ -309,38 +443,41 @@ function initMegaMenuHomePage() {
         const dropdownMenu = megaMenuDropdown.querySelector('.who-we-are-mega-menu');
 
         if (dropdownToggle && dropdownMenu) {
-            // Supprimer l'attribut data-bs-toggle pour désactiver Bootstrap
-            dropdownToggle.removeAttribute('data-bs-toggle');
+            // Vérifier la taille de l'écran
+            if (window.innerWidth > 991) {
+                // Desktop: survol
+                dropdownToggle.removeAttribute('data-bs-toggle');
 
-            // Système hover personnalisé
-            megaMenuDropdown.addEventListener('mouseenter', function () {
-                megaMenuOpen = true;
-                dropdownMenu.classList.add('show');
-                navbar.classList.add('mega-menu-open');
-                updateMegaMenuStyles(true);
-            });
+                megaMenuDropdown.addEventListener('mouseenter', function () {
+                    megaMenuOpen = true;
+                    dropdownMenu.classList.add('show');
+                    navbar.classList.add('mega-menu-open');
+                    updateMegaMenuStyles(true);
+                });
 
-            megaMenuDropdown.addEventListener('mouseleave', function () {
-                megaMenuOpen = false;
-                dropdownMenu.classList.remove('show');
-                navbar.classList.remove('mega-menu-open');
-                updateMegaMenuStyles(false);
-            });
-
-            // Fermer seulement en cliquant à l'extérieur
-            document.addEventListener('click', function (e) {
-                if (megaMenuOpen && !megaMenuDropdown.contains(e.target)) {
+                megaMenuDropdown.addEventListener('mouseleave', function () {
                     megaMenuOpen = false;
                     dropdownMenu.classList.remove('show');
                     navbar.classList.remove('mega-menu-open');
                     updateMegaMenuStyles(false);
-                }
-            });
+                });
 
-            // Empêcher la fermeture lors du clic dans le menu
-            dropdownMenu.addEventListener('click', function (e) {
-                e.stopPropagation();
-            });
+                document.addEventListener('click', function (e) {
+                    if (megaMenuOpen && !megaMenuDropdown.contains(e.target)) {
+                        megaMenuOpen = false;
+                        dropdownMenu.classList.remove('show');
+                        navbar.classList.remove('mega-menu-open');
+                        updateMegaMenuStyles(false);
+                    }
+                });
+
+                dropdownMenu.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            } else {
+                // Mobile/Tablet: clic (géré par la sidebar)
+                dropdownToggle.removeAttribute('data-bs-toggle');
+            }
         }
     }
 }
@@ -354,38 +491,41 @@ function initWhatWeDoMegaMenuHomePage() {
         const dropdownMenu = megaMenuDropdown.querySelector('.what-we-do-mega-menu');
         
         if (dropdownToggle && dropdownMenu) {
-            // Supprimer l'attribut data-bs-toggle pour désactiver Bootstrap
-            dropdownToggle.removeAttribute('data-bs-toggle');
-            
-            // Système hover personnalisé
-            megaMenuDropdown.addEventListener('mouseenter', function() {
-                homeWhatWeDoMegaMenuOpen = true;
-                dropdownMenu.classList.add('show');
-                navbar.classList.add('mega-menu-open');
-                updateMegaMenuStyles(true);
-            });
-            
-            megaMenuDropdown.addEventListener('mouseleave', function() {
-                homeWhatWeDoMegaMenuOpen = false;
-                dropdownMenu.classList.remove('show');
-                navbar.classList.remove('mega-menu-open');
-                updateMegaMenuStyles(false);
-            });
-            
-            // Fermer seulement en cliquant à l'extérieur
-            document.addEventListener('click', function(e) {
-                if (homeWhatWeDoMegaMenuOpen && !megaMenuDropdown.contains(e.target)) {
+            // Vérifier la taille de l'écran
+            if (window.innerWidth > 991) {
+                // Desktop: survol
+                dropdownToggle.removeAttribute('data-bs-toggle');
+                
+                megaMenuDropdown.addEventListener('mouseenter', function() {
+                    homeWhatWeDoMegaMenuOpen = true;
+                    dropdownMenu.classList.add('show');
+                    navbar.classList.add('mega-menu-open');
+                    updateMegaMenuStyles(true);
+                });
+                
+                megaMenuDropdown.addEventListener('mouseleave', function() {
                     homeWhatWeDoMegaMenuOpen = false;
                     dropdownMenu.classList.remove('show');
                     navbar.classList.remove('mega-menu-open');
                     updateMegaMenuStyles(false);
-                }
-            });
-            
-            // Empêcher la fermeture lors du clic dans le menu
-            dropdownMenu.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (homeWhatWeDoMegaMenuOpen && !megaMenuDropdown.contains(e.target)) {
+                        homeWhatWeDoMegaMenuOpen = false;
+                        dropdownMenu.classList.remove('show');
+                        navbar.classList.remove('mega-menu-open');
+                        updateMegaMenuStyles(false);
+                    }
+                });
+                
+                dropdownMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            } else {
+                // Mobile/Tablet: clic (géré par la sidebar)
+                dropdownToggle.removeAttribute('data-bs-toggle');
+            }
         }
     }
 }
@@ -394,13 +534,11 @@ function updateMegaMenuStyles(isOpen) {
     const topBanner = document.querySelector('.top-banner');
 
     if (isOpen) {
-        // Styles quand le mega menu est ouvert
         document.body.classList.add('mega-menu-open');
         if (topBanner) {
             topBanner.classList.add('mega-menu-open');
         }
     } else {
-        // Styles par défaut
         document.body.classList.remove('mega-menu-open');
         if (topBanner) {
             topBanner.classList.remove('mega-menu-open');
@@ -409,10 +547,9 @@ function updateMegaMenuStyles(isOpen) {
 }
 
 // ==============================================
-// GESTION DE LA RECHERCHE (TOP BANNER)
+// GESTION DE LA RECHERCHE
 // ==============================================
 
-// Fonction de basculement de la recherche
 function toggleSearch() {
     const searchInputContainer = document.getElementById('searchInputContainer');
     const searchTrigger = document.querySelector('.top-banner .search-trigger');
@@ -432,7 +569,6 @@ function toggleSearch() {
     }
 }
 
-// Fonction pour effectuer une recherche
 function performSearch(query) {
     if (query.trim().length < 2) {
         return;
@@ -442,7 +578,6 @@ function performSearch(query) {
     displaySearchResults(results);
 }
 
-// Fonction de recherche dans le contenu local
 function searchInContent(query) {
     const searchableElements = document.querySelectorAll('[data-i18n]');
     const results = [];
@@ -461,7 +596,6 @@ function searchInContent(query) {
     return results.slice(0, 5);
 }
 
-// Trouver la section parente d'un élément
 function findParentSection(element) {
     let parent = element.closest('section');
     if (parent && parent.id) {
@@ -470,7 +604,6 @@ function findParentSection(element) {
     return 'content';
 }
 
-// Afficher les résultats de recherche
 function displaySearchResults(results) {
     if (results.length === 0) {
         showNotification('Aucun résultat trouvé');
@@ -481,7 +614,6 @@ function displaySearchResults(results) {
     if (firstResult.section) {
         const targetElement = document.getElementById(firstResult.section);
         if (targetElement) {
-            // Calculer la position avec la nouvelle hauteur fixe
             const headerHeight = getComputedStyle(document.documentElement).getPropertyValue('--total-header-height');
             const headerHeightPx = parseInt(headerHeight) || 130;
             const targetPosition = targetElement.offsetTop - headerHeightPx - 20;
@@ -497,12 +629,11 @@ function displaySearchResults(results) {
 }
 
 // ==============================================
-// GESTION DU SCROLL SYNCHRONISÉ - CORRECTION MAJEURE
+// GESTION DU SCROLL SYNCHRONISÉ
 // ==============================================
 
-// Gestion du scroll pour masquer/montrer la bannière avec synchronisation
 function handleTopBannerScroll() {
-    if (window.innerWidth <= 768) return; // Pas de masquage sur mobile
+    if (window.innerWidth <= 768) return;
 
     const topBanner = document.querySelector('.top-banner');
     const navbar = document.querySelector('.navbar');
@@ -510,12 +641,10 @@ function handleTopBannerScroll() {
     const st = window.pageYOffset || document.documentElement.scrollTop;
 
     if (st > lastScrollTop && st > 100) {
-        // Scroll vers le bas - masquer la bannière ET repositionner la navbar
         topBanner.classList.add('hide-on-scroll');
         navbar.classList.add('banner-hidden');
         body.classList.add('banner-hidden');
     } else {
-        // Scroll vers le haut - montrer la bannière ET remettre la navbar
         topBanner.classList.remove('hide-on-scroll');
         navbar.classList.remove('banner-hidden');
         body.classList.remove('banner-hidden');
@@ -524,26 +653,22 @@ function handleTopBannerScroll() {
     lastScrollTop = st <= 0 ? 0 : st;
 }
 
-// Gestion du scroll navbar avec synchronisation parfaite
 function handleNavbarScroll() {
     const navbar = document.querySelector('.navbar');
 
-    // Ajouter l'effet scrolled sans modifier la position
     if (window.scrollY > 100) {
         navbar.classList.add('navbar-scrolled');
     } else {
         navbar.classList.remove('navbar-scrolled');
     }
 
-    // Gérer la bannière de manière synchronisée
     handleTopBannerScroll();
 }
 
 // ==============================================
-// CARTE INTERACTIVE AVEC LEAFLET.JS
+// CARTE INTERACTIVE
 // ==============================================
 
-// Données des pays d'intervention avec coordonnées et statistiques
 const operatingCountries = [
     {
         name: "Cameroun",
@@ -610,9 +735,7 @@ const operatingCountries = [
     }
 ];
 
-// Fonction pour initialiser la carte interactive
 function initInteractiveMap() {
-    // Vérifier si Leaflet est disponible
     if (typeof L === 'undefined') {
         console.warn('Leaflet non disponible - Chargement depuis CDN...');
         loadLeafletAndInitMap();
@@ -626,9 +749,8 @@ function initInteractiveMap() {
     }
 
     try {
-        // Créer la carte centrée sur l'Afrique
         interactiveMap = L.map('interactive-map', {
-            center: [0, 20], // Centré sur l'Afrique
+            center: [0, 20],
             zoom: 2,
             minZoom: 2,
             maxZoom: 7,
@@ -638,16 +760,13 @@ function initInteractiveMap() {
             dragging: true
         });
 
-        // Ajouter la couche de fond OpenStreetMap avec style personnalisé
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '',
             maxZoom: 18,
             className: 'map-tiles'
         }).addTo(interactiveMap);
 
-        // Ajouter les marqueurs pour chaque pays d'intervention
         operatingCountries.forEach(country => {
-            // Créer le marqueur avec icône personnalisée - Position fixe
             const marker = L.marker(country.coordinates, {
                 icon: L.divIcon({
                     className: 'custom-marker',
@@ -664,12 +783,11 @@ function initInteractiveMap() {
                         position: relative;
                     "></div>`,
                     iconSize: [20, 20],
-                    iconAnchor: [10, 10], // Centre exact du marqueur
+                    iconAnchor: [10, 10],
                     popupAnchor: [0, -10]
                 })
             }).addTo(interactiveMap);
 
-            // Créer le contenu de l'infobulle
             const tooltipContent = `
                 <div class="custom-tooltip">
                     <div class="tooltip-header">
@@ -684,18 +802,16 @@ function initInteractiveMap() {
                 </div>
             `;
 
-            // Ajouter l'infobulle qui apparaît au survol - Position fixe
             marker.bindTooltip(tooltipContent, {
                 permanent: false,
                 direction: 'top',
-                offset: [0, -25], // Position fixe au-dessus du marqueur
+                offset: [0, -25],
                 className: 'leaflet-custom-tooltip',
-                sticky: false, // Désactiver sticky pour éviter le mouvement
+                sticky: false,
                 interactive: false,
                 opacity: 1
             });
 
-            // Événements de survol pour l'effet visuel - Position statique
             marker.on('mouseover', function (e) {
                 const pin = this.getElement().querySelector('.marker-pin');
                 if (pin) {
@@ -703,7 +819,6 @@ function initInteractiveMap() {
                     pin.style.zIndex = '1000';
                     pin.style.background = '#FF8C42';
                 }
-                // Ouvrir le tooltip manuellement
                 this.openTooltip();
             });
 
@@ -714,14 +829,12 @@ function initInteractiveMap() {
                     pin.style.zIndex = '999';
                     pin.style.background = '#F37C1F';
                 }
-                // Fermer le tooltip avec un délai pour éviter le scintillement
                 setTimeout(() => {
                     if (!this.isTooltipOpen()) return;
                     this.closeTooltip();
                 }, 100);
             });
 
-            // Événement de clic pour zoomer sur le pays
             marker.on('click', function () {
                 interactiveMap.fitBounds(country.bounds, {
                     padding: [50, 50],
@@ -730,7 +843,6 @@ function initInteractiveMap() {
             });
         });
 
-        // Ajouter des styles CSS dynamiques pour les tooltips
         const tooltipStyles = document.createElement('style');
         tooltipStyles.textContent = `
             .leaflet-custom-tooltip {
@@ -754,24 +866,19 @@ function initInteractiveMap() {
 
     } catch (error) {
         console.error('Erreur lors de l\'initialisation de la carte:', error);
-        // Fallback vers la carte statique
         showStaticMapFallback();
     }
 }
 
-// Fonction pour charger Leaflet depuis CDN et initialiser la carte
 function loadLeafletAndInitMap() {
-    // Charger le CSS de Leaflet
     const leafletCSS = document.createElement('link');
     leafletCSS.rel = 'stylesheet';
     leafletCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';
     document.head.appendChild(leafletCSS);
 
-    // Charger le JS de Leaflet
     const leafletJS = document.createElement('script');
     leafletJS.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
     leafletJS.onload = () => {
-        // Attendre un peu pour que tout soit chargé
         setTimeout(initInteractiveMap, 100);
     };
     leafletJS.onerror = () => {
@@ -781,7 +888,6 @@ function loadLeafletAndInitMap() {
     document.head.appendChild(leafletJS);
 }
 
-// Fonction de fallback vers la carte statique
 function showStaticMapFallback() {
     const mapContainer = document.getElementById('interactive-map');
     if (mapContainer) {
@@ -806,16 +912,13 @@ function showStaticMapFallback() {
     }
 }
 
-// Fonction pour mettre à jour les traductions de la carte
 function updateMapTranslations() {
     if (!interactiveMap) return;
 
-    // Mettre à jour les tooltips existants
     interactiveMap.eachLayer(layer => {
         if (layer.getTooltip) {
             const tooltip = layer.getTooltip();
             if (tooltip) {
-                // Recréer le contenu du tooltip avec la nouvelle langue
                 const countryData = operatingCountries.find(c =>
                     tooltip._content.includes(c.name) || tooltip._content.includes(c.nameEn)
                 );
@@ -841,7 +944,6 @@ function updateMapTranslations() {
     });
 }
 
-// Fonction pour copier le lien de la vidéo
 function copyVideoLink() {
     const videoUrl = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
@@ -856,7 +958,6 @@ function copyVideoLink() {
     }
 }
 
-// Fonction de sauvegarde pour copier le texte
 function fallbackCopyText(text) {
     const textArea = document.createElement('textarea');
     textArea.value = text;
@@ -875,7 +976,6 @@ function fallbackCopyText(text) {
     document.body.removeChild(textArea);
 }
 
-// Fonction pour afficher les notifications (ajustée pour le header fixe)
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.className = 'notification';
@@ -894,7 +994,7 @@ function showNotification(message) {
 }
 
 // ==============================================
-// KEY INDICATORS - Animation des compteurs optimisée
+// KEY INDICATORS
 // ==============================================
 
 function animateCountersOptimized() {
@@ -926,7 +1026,6 @@ function animateCountersOptimized() {
     });
 }
 
-// Observer pour déclencher l'animation des indicateurs
 function initIndicatorsAnimation() {
     const indicatorsSection = document.getElementById('indicators');
 
@@ -958,7 +1057,7 @@ function initIndicatorsAnimation() {
 }
 
 // ==============================================
-// ACHIEVEMENTS - Interactions optimisées
+// ACHIEVEMENTS
 // ==============================================
 
 function initAchievementsInteractions() {
@@ -1025,7 +1124,7 @@ function initAchievementsInteractions() {
 }
 
 // ==============================================
-// NEWS - Interactions et effets optimisés
+// NEWS
 // ==============================================
 
 function initNewsInteractions() {
@@ -1106,7 +1205,7 @@ function initNewsInteractions() {
 }
 
 // ==============================================
-// LAZY LOADING amélioré pour les images
+// LAZY LOADING
 // ==============================================
 
 function initLazyLoadingOptimized() {
@@ -1143,10 +1242,6 @@ function initLazyLoadingOptimized() {
     });
 }
 
-// ==============================================
-// FONCTION D'INITIALISATION OPTIMISÉE
-// ==============================================
-
 function initOptimizedSections() {
     initIndicatorsAnimation();
     initAchievementsInteractions();
@@ -1157,10 +1252,9 @@ function initOptimizedSections() {
 }
 
 // ==============================================
-// GESTION DE LA LANGUE - SYSTÈME BOOTSTRAP DROPDOWN
+// GESTION DE LA LANGUE
 // ==============================================
 
-// Fonction de traduction mise à jour
 function setLanguage(lang) {
     currentLanguage = lang;
     translations = translationsData[lang];
@@ -1191,7 +1285,10 @@ function setLanguage(lang) {
         }
     });
 
-    // Mettre à jour la carte si elle existe
+    // Mettre à jour la sidebar mobile si elle existe
+    applyTranslationsToSidebar();
+
+    // Mettre à jour la carte
     updateMapTranslations();
 
     document.documentElement.lang = lang;
@@ -1199,30 +1296,30 @@ function setLanguage(lang) {
     try {
         localStorage.setItem('mkba-language', lang);
     } catch (e) {
-        // Ignore si localStorage n'est pas disponible
+        // Ignore
     }
 
-    // Fermer le dropdown après sélection
-    const dropdowns = document.querySelectorAll('.dropdown-menu.show');
-    dropdowns.forEach(dropdown => {
-        const bsDropdown = bootstrap.Dropdown.getInstance(dropdown.previousElementSibling);
-        if (bsDropdown) {
-            bsDropdown.hide();
-        }
-    });
+    // Fermer les dropdowns SAUF si on est dans la sidebar mobile
+    if (!mobileSidebarActive) {
+        const dropdowns = document.querySelectorAll('.dropdown-menu.show');
+        dropdowns.forEach(dropdown => {
+            const bsDropdown = bootstrap.Dropdown.getInstance(dropdown.previousElementSibling);
+            if (bsDropdown) {
+                bsDropdown.hide();
+            }
+        });
+    }
 
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
 
     console.log(`Langue changée vers : ${lang}`);
 }
 
-
 // ==============================================
-// GESTION DE L'ÉTAT DE NAVIGATION
+// AUTRES FONCTIONS
 // ==============================================
 
 function updateNavigationState() {
-    // Mettre à jour l'état actif des liens de navigation
     const currentPage = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -1232,14 +1329,12 @@ function updateNavigationState() {
         if (currentPage.includes('we-are-mkba.html') && link.getAttribute('data-i18n') === 'nav_who_we_are') {
             link.classList.add('active');
         } else if (currentPage.includes('index.html') || currentPage === '/') {
-            // Logique pour la page d'accueil
             if (link.getAttribute('href') === '#home' || link.getAttribute('href') === 'index.html') {
                 link.classList.add('active');
             }
         }
     });
 
-    // Mettre à jour les liens du mega menu
     const megaMenuItems = document.querySelectorAll('.mega-menu-item');
     megaMenuItems.forEach(item => {
         item.classList.remove('active');
@@ -1254,7 +1349,6 @@ function updateNavigationState() {
     });
 }
 
-// Smooth scroll pour les liens d'ancrage (ajusté pour le header fixe)
 function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
@@ -1277,7 +1371,6 @@ function initSmoothScroll() {
     });
 }
 
-// Gestion des cards produits
 function initProductCards() {
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
@@ -1296,7 +1389,6 @@ function initProductCards() {
     });
 }
 
-// Gestion de la recherche
 function initSearch() {
     const searchInput = document.querySelector('.top-banner .search-input');
 
@@ -1324,27 +1416,23 @@ function initSearch() {
     }
 }
 
-// Gestion responsive du menu mobile
 function initMobileMenu() {
     const navbarToggler = document.querySelector('.navbar-toggler');
-    const navbarCollapse = document.querySelector('.navbar-collapse');
 
-    if (navbarToggler && navbarCollapse) {
-        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 992) {
-                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                    if (bsCollapse) {
-                        bsCollapse.hide();
-                    }
-                }
-            });
+    if (navbarToggler) {
+        navbarToggler.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (mobileSidebarActive) {
+                closeMobileSidebar();
+            } else {
+                openMobileSidebar();
+            }
         });
     }
 }
 
-// Animation typewriter améliorée
 function initTypewriterAnimation() {
     const animatedTextElement = document.getElementById('animatedText');
     if (!animatedTextElement) return;
@@ -1391,7 +1479,6 @@ function initTypewriterAnimation() {
     setTimeout(typeWriter, 1000);
 }
 
-// Gestion des erreurs d'images
 function initImageErrorHandling() {
     const images = document.querySelectorAll('img');
     images.forEach(img => {
@@ -1402,7 +1489,6 @@ function initImageErrorHandling() {
     });
 }
 
-// Gestion de performance optimisée
 function handlePerformanceOptimization() {
     if (window.requestIdleCallback) {
         window.requestIdleCallback(() => {
@@ -1413,9 +1499,7 @@ function handlePerformanceOptimization() {
     }
 }
 
-// Fonction d'initialisation globale mise à jour
 function initWebsite() {
-    // Charger la langue préférée
     try {
         const savedLanguage = localStorage.getItem('mkba-language') || 'fr';
         setLanguage(savedLanguage);
@@ -1423,7 +1507,9 @@ function initWebsite() {
         setLanguage('fr');
     }
 
-    // Initialiser les fonctionnalités de base
+    // Créer la sidebar mobile
+    createMobileSidebar();
+
     initSmoothScroll();
     initProductCards();
     initSearch();
@@ -1431,21 +1517,15 @@ function initWebsite() {
     initTypewriterAnimation();
     initImageErrorHandling();
 
-    // Initialiser le mega menu pour la page d'accueil
     initMegaMenuHomePage();
-
     initWhatWeDoMegaMenuHomePage();
 
-    // Initialiser la carte interactive
     initInteractiveMap();
 
-    // Initialiser les sections optimisées
     handlePerformanceOptimization();
 
-    // Event listeners mis à jour
     window.addEventListener('scroll', handleNavbarScroll);
 
-    // Fermer la recherche en cliquant à l'extérieur
     document.addEventListener('click', (e) => {
         const searchContainer = document.getElementById('searchContainer');
         if (searchExpanded && searchContainer && !searchContainer.contains(e.target)) {
@@ -1453,14 +1533,17 @@ function initWebsite() {
         }
     });
 
-    // Gérer l'échappement pour fermer la recherche
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && searchExpanded) {
-            toggleSearch();
+        if (e.key === 'Escape') {
+            if (searchExpanded) {
+                toggleSearch();
+            }
+            if (mobileSidebarActive) {
+                closeMobileSidebar();
+            }
         }
     });
 
-    // Support clavier pour la recherche
     const searchTrigger = document.querySelector('.top-banner .search-trigger');
     if (searchTrigger) {
         searchTrigger.addEventListener('keydown', (e) => {
@@ -1471,13 +1554,20 @@ function initWebsite() {
         });
     }
 
-    // Gestion du redimensionnement
     window.addEventListener('resize', () => {
         if (window.innerWidth < 768 && searchExpanded) {
             toggleSearch();
         }
+        
+        // Fermer la sidebar mobile si on passe en mode desktop
+        if (window.innerWidth > 991 && mobileSidebarActive) {
+            closeMobileSidebar();
+        }
 
-        // Redimensionner la carte si nécessaire
+        // Réinitialiser les mega menus selon la taille d'écran
+        initMegaMenuHomePage();
+        initWhatWeDoMegaMenuHomePage();
+
         if (interactiveMap) {
             setTimeout(() => {
                 interactiveMap.invalidateSize();
@@ -1488,7 +1578,6 @@ function initWebsite() {
     console.log('Site web MK BA initialisé avec succès');
 }
 
-// Utilitaires pour l'accessibilité
 function initAccessibility() {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {
@@ -1509,7 +1598,6 @@ function initAccessibility() {
     }
 }
 
-// Performance et optimisation
 function initPerformanceOptimizations() {
     const importantLinks = document.querySelectorAll('a[href*="contact"], a[href*="services"]');
     importantLinks.forEach(link => {
@@ -1528,7 +1616,6 @@ function initPerformanceOptimizations() {
 // EVENT LISTENERS GLOBAUX
 // ==============================================
 
-// Initialiser au chargement du DOM
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         initWebsite();
@@ -1541,7 +1628,6 @@ if (document.readyState === 'loading') {
     initPerformanceOptimizations();
 }
 
-// Réinitialiser si la langue change
 window.addEventListener('languageChanged', () => {
     const indicatorsSection = document.getElementById('indicators');
     if (indicatorsSection && indicatorsSection.classList.contains('animated')) {
@@ -1560,15 +1646,13 @@ window.MKBAWebsite = {
     performSearch,
     initOptimizedSections,
     animateCountersOptimized,
-    initInterPageNavigation,
-    initMegaMenuHomePage,
-    initWhatWeDoMegaMenuHomePage,
     updateNavigationState,
     initIndicatorsAnimation,
     initAchievementsInteractions,
     initNewsInteractions,
     handleTopBannerScroll,
     initInteractiveMap,
-    operatingCountries
-
-};             
+    operatingCountries,
+    openMobileSidebar,
+    closeMobileSidebar
+};
