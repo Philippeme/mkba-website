@@ -547,11 +547,11 @@
 }
 
 .carousel-control-prev.custom-carousel-control {
-    left: 5rem;
+    left: 1rem;
 }
 
 .carousel-control-next.custom-carousel-control {
-    right: 5rem;
+    right: 1rem;
 }
 
 /* ==============================================
