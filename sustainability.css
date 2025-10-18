@@ -285,7 +285,7 @@
     font-size: 1.25rem; /* 20px */
     color: var(--text-medium);
     line-height: 1.6;
-    width: 72%;
+    width: 66%;
     margin-bottom: -0.5rem;
     word-wrap: break-word;
     hyphens: auto;
@@ -350,7 +350,7 @@
     font-size: 1.25rem; /* 20px */
     color: var(--text-medium);
     line-height: 1.5;
-    width: 72%;
+    width: 66%;
     margin-bottom: 0.75rem;
     padding-left: 1.25rem; /* 20px */
     word-wrap: break-word;
@@ -373,7 +373,7 @@
     font-size: 1.25rem; /* 20px */
     color: var(--text-medium);
     line-height: 1.6;
-    width: 72%;
+    width: 66%;
     margin-bottom: 0;
     word-wrap: break-word;
     hyphens: auto;
