@@ -361,7 +361,23 @@ function createMobileSidebar() {
             const submenuId = 'submenu-' + this.getAttribute('data-submenu');
             const submenu = document.getElementById(submenuId);
             
-            // Toggle le sous-menu
+            // Fermer l'autre sous-menu s'il est ouvert
+            const allSubmenus = sidebar.querySelectorAll('.mobile-submenu');
+            const allLinks = sidebar.querySelectorAll('.mobile-nav-link.has-submenu');
+            
+            allSubmenus.forEach(otherSubmenu => {
+                if (otherSubmenu.id !== submenuId && otherSubmenu.classList.contains('active')) {
+                    otherSubmenu.classList.remove('active');
+                }
+            });
+            
+            allLinks.forEach(otherLink => {
+                if (otherLink !== this && otherLink.classList.contains('active')) {
+                    otherLink.classList.remove('active');
+                }
+            });
+            
+            // Toggle le sous-menu actuel
             this.classList.toggle('active');
             submenu.classList.toggle('active');
         });
@@ -493,7 +509,7 @@ function initWhatWeDoMegaMenuHomePage() {
         if (dropdownToggle && dropdownMenu) {
             // Vérifier la taille de l'écran
             if (window.innerWidth > 991) {
-                // Desktop: survol
+                // Desktop: survol 
                 dropdownToggle.removeAttribute('data-bs-toggle');
                 
                 megaMenuDropdown.addEventListener('mouseenter', function() {

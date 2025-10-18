@@ -1862,8 +1862,8 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
     margin-top: 5px;
-    width: 144vw;
-    min-width: 144vw;
+    width: 150vw;
+    min-width: 150vw;
     left: 0 !important;
     right: 0 !important;
     transform: none;
