@@ -1,5 +1,5 @@
 /* ==============================================
-   STYLES COMPLETS POUR LA PAGE OUR TEAM - UPLOAD CORRIGÉ
+   STYLES COMPLETS POUR LA PAGE OUR TEAM - VERSION RESPONSIVE COMPLÈTE
    ============================================== */
 
 /* Variables CSS spécifiques */
@@ -13,6 +13,10 @@
     --highlighted-label-bg: #F5F5F5;
     --select-bg-color: #E8E8E8;
 }
+
+/* ==============================================
+   HEADER NAVIGATION - STYLES DE BASE
+   ============================================== */
 
 /* Header adapté - fond blanc avec liens bleus + EFFETS BLEUS UNIQUEMENT */
 .our-team-page .navbar.our-team-nav {
@@ -68,7 +72,42 @@
 }
 
 /* ==============================================
-   MEGA MENU "WHO WE ARE" POUR OUR TEAM
+   MENU HAMBURGER MOBILE
+   ============================================== */
+
+.our-team-page .navbar-toggler {
+    border-color: var(--primary-blue);
+    padding: 0.5rem 0.75rem;
+}
+
+.our-team-page .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 95, 172, 0.25);
+}
+
+.our-team-page .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(0, 95, 172)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.our-team-page .mobile-nav-link:hover {
+    color: var(--primary-blue);
+}
+
+.our-team-page .mobile-submenu-link:hover {
+    color: var(--primary-blue);
+}
+
+.our-team-page .mobile-language-btn.active {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.our-team-page .mobile-language-btn:not(.active):hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+/* ==============================================
+   MEGA MENU "WHO WE ARE"
    ============================================== */
 
 .who-we-are-mega-menu {
@@ -92,7 +131,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
-
 }
 
 .mega-menu-content {
@@ -222,7 +260,7 @@
 }
 
 /* ==============================================
-   BANNIÈRE FIL D'ARIANE
+   BANNIÈRE FIL D'ARIANE - UNE SEULE LIGNE
    ============================================== */
 
 .our-team-page .breadcrumb-banner {
@@ -232,6 +270,7 @@
     position: relative;
     z-index: 2;
     margin-top: 0;
+    overflow-x: auto;
 }
 
 .our-team-page .breadcrumb-nav {
@@ -247,11 +286,14 @@
     padding: 0;
     margin-bottom: 0;
     justify-content: flex-start;
+    flex-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .our-team-page .breadcrumb-item {
     font-size: 1rem;
     color: #565656;
+    white-space: nowrap;
 }
 
 .our-team-page .breadcrumb-item span {
@@ -910,7 +952,7 @@
 }
 
 /* ==============================================
-   SECTION UPLOAD DE FICHIERS - STYLE CONTACT ADAPTÉ
+   SECTION UPLOAD DE FICHIERS
    ============================================== */
 
 .file-upload-section {
@@ -933,7 +975,6 @@
     background: var(--highlighted-label-bg);
     padding: 0.5rem 0.25rem;
     display: inline-block;
-    border-radius: 4px;
 }
 
 .upload-specs {
@@ -947,7 +988,6 @@
     line-height: 1.4;
 }
 
-/* Zone de drop */
 .drop-zone {
     height: 153px;
     width: 100%;
@@ -999,7 +1039,7 @@
 }
 
 /* ==============================================
-   AFFICHAGE DES FICHIERS UPLOADÉS - STYLE CONTACT
+   AFFICHAGE DES FICHIERS UPLOADÉS
    ============================================== */
 
 .uploaded-files-display {
@@ -1135,317 +1175,6 @@
 }
 
 /* ==============================================
-   RESPONSIVE - PAGE OUR TEAM
-   ============================================== */
-
-@media (max-width: 768px) {
-    .our-team-page .navbar.our-team-nav {
-        background: rgba(0, 0, 0, 0.8) !important;
-    }
-
-    .our-team-page .breadcrumb-banner {
-        padding: 0.5rem 0;
-    }
-
-    .our-team-hero {
-        padding: 3rem 0;
-    }
-
-    .our-team-hero .hero-title1 {
-        font-size: 2.2rem;
-    }
-
-    .our-team-hero .hero-description {
-        font-size: 1rem;
-        max-width: 100%;
-        text-align: left;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    #expertise-passion .section-subtitle,
-    #join-us .join-us-description {
-        max-width: 100%;
-        text-align: left;
-    }
-
-    .section-title-with-badge {
-        font-size: 1.8rem;
-    }
-
-    .section-title-with-badge::after {
-        left: 2.5ch;
-        width: 40px;
-    }
-
-    .custom-carousel-control {
-        width: 35px;
-        height: 35px;
-        font-size: 0.8rem;
-    }
-
-    .carousel-control-prev.custom-carousel-control {
-        left: 10px;
-    }
-
-    .carousel-control-next.custom-carousel-control {
-        right: 10px;
-    }
-
-    .partner-logo {
-        min-width: 100px;
-    }
-
-    .partner-img {
-        max-height: 40px;
-        max-width: 120px;
-    }
-
-    .our-team-page .who-we-are-mega-menu {
-        min-width: 280px;
-        max-width: 320px;
-        left: 0 !important;
-        transform: none;
-        margin-left: 1rem;
-    }
-
-    .our-team-page .mega-menu-content {
-        flex-direction: column;
-        min-height: auto;
-        padding: 1rem 0;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .our-team-page .mega-menu-left {
-        border-right: none;
-        border-bottom: 1px solid var(--border-light);
-        padding: 1.5rem;
-    }
-
-    .our-team-page .mega-menu-right {
-        padding: 1rem 1.5rem;
-    }
-
-    .our-team-page .mega-menu-links {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-    }
-
-    .values-grid .row {
-        --bs-gutter-x: 1rem;
-        --bs-gutter-y: 1.5rem;
-    }
-
-    .application-form-container {
-        margin: 0 1rem;
-    }
-
-    .form-header,
-    .form-body {
-        padding: 1.5rem;
-    }
-
-    .form-title-with-badge {
-        font-size: 1.5rem;
-    }
-
-    .form-title-with-badge::after {
-        width: 35px;
-    }
-
-    .country-code-wrapper {
-        width: 100px;
-    }
-
-    .gender-options {
-        gap: 1rem;
-    }
-
-    .form-actions {
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .btn-cancel,
-    .btn-submit {
-        min-width: 180px;
-        padding: 15px 24px;
-        flex-shrink: 0;
-    }
-
-    .drop-zone {
-        height: 150px;
-    }
-
-    .upload-icon {
-        font-size: 2rem;
-    }
-
-    .flag-select {
-        padding: 10px 35px 10px 45px;
-        font-size: 0.9rem;
-    }
-
-    .file-item {
-        padding: 0.6rem 0.8rem;
-    }
-
-    .file-name {
-        font-size: 0.85rem;
-    }
-
-    .our-team-page .indicator-card {
-        margin-bottom: 1.5rem;
-        min-height: 100px;
-    }
-
-    .our-team-page .indicator-card::before {
-        width: 50px;
-        height: 50px;
-        margin-right: 1rem;
-    }
-
-    .our-team-page .indicator-number,
-    .our-team-page .indicator-suffix {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .our-team-hero .hero-title1 {
-        font-size: 1.8rem;
-    }
-
-    .section-title-with-badge {
-        font-size: 1.6rem;
-    }
-
-    .section-title-with-badge::after {
-        left: 2ch;
-        width: 30px;
-    }
-
-    .custom-carousel-control {
-        width: 30px;
-        height: 30px;
-        font-size: 0.7rem;
-    }
-
-    .carousel-control-prev.custom-carousel-control {
-        left: 5px;
-    }
-
-    .carousel-control-next.custom-carousel-control {
-        right: 5px;
-    }
-
-    .partner-logo {
-        min-width: 80px;
-    }
-
-    .partner-img {
-        max-height: 35px;
-        max-width: 100px;
-    }
-
-    .form-actions {
-        gap: 0.75rem;
-    }
-    
-    .btn-cancel,
-    .btn-submit {
-        min-width: 160px;
-        font-size: 16px;
-        padding: 12px 20px;
-    }
-
-    .form-header,
-    .form-body {
-        padding: 1rem;
-    }
-
-    .form-title-with-badge {
-        font-size: 1.3rem;
-    }
-
-    .upload-title {
-        font-size: 1rem;
-        padding: 0.3rem 0.5rem;
-    }
-
-    .upload-specs p {
-        font-size: 0.8rem;
-    }
-
-    .drop-zone {
-        height: 130px;
-    }
-
-    .upload-icon {
-        font-size: 1.8rem;
-    }
-
-    .drop-zone-text {
-        font-size: 0.9rem;
-    }
-
-    .flag-select {
-        padding: 8px 30px 8px 40px;
-        font-size: 0.85rem;
-    }
-
-    .select-wrapper .select-arrow {
-        right: 10px;
-        font-size: 0.6rem;
-    }
-
-    .our-team-page .who-we-are-mega-menu {
-        min-width: 260px;
-        max-width: 280px;
-    }
-
-    .our-team-page .mega-menu-title {
-        font-size: 1.1rem;
-    }
-
-    .our-team-page .mega-menu-description {
-        font-size: 0.85rem;
-    }
-
-    .our-team-page .indicator-card::before {
-        width: 40px;
-        height: 40px;
-        margin-right: 0.8rem;
-    }
-
-    .our-team-page .indicator-number,
-    .our-team-page .indicator-suffix {
-        font-size: 2rem;
-    }
-
-    .our-team-page .indicator-label {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 400px) {
-    .form-actions {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    
-    .btn-cancel,
-    .btn-submit {
-        width: auto;
-        min-width: 200px;
-    }
-}
-
-/* ==============================================
    ANIMATIONS ET TRANSITIONS
    ============================================== */
 
@@ -1493,6 +1222,17 @@
     }
 }
 
+@keyframes megaMenuSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
 .value-item {
     animation: slideInFromLeft 0.6s ease forwards;
 }
@@ -1516,14 +1256,671 @@
     animation: megaMenuSlideIn 0.3s ease forwards;
 }
 
-@keyframes megaMenuSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-10px);
+/* ==============================================
+   RESPONSIVE DESIGN - BREAKPOINTS DÉTAILLÉS
+   ============================================== */
+
+/* Large Desktop - 1200px to 1399px */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .mega-menu-content {
+        width: 75%;
     }
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
+
+    .our-team-page #indicators .row {
+        --bs-gutter-x: 15rem;
+    }
+}
+
+/* Desktop - 992px to 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .mega-menu-content {
+        width: 80%;
+    }
+
+    .mega-menu-links {
+        gap: 1rem 4rem;
+    }
+
+    .our-team-page #indicators .row {
+        --bs-gutter-x: 10rem;
+    }
+}
+
+/* Tablet - 768px to 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .our-team-page .navbar-toggler {
+        display: block;
+    }
+
+    .our-team-page .navbar-collapse {
+        display: none !important;
+    }
+
+    .our-team-page .navbar-brand {
+        position: static;
+        transform: none;
+    }
+
+    .our-team-page .breadcrumb-banner {
+        padding: 0.6rem 0;
+    }
+
+    .our-team-page .breadcrumb-item {
+        font-size: 0.95rem;
+    }
+
+    .our-team-page .breadcrumb-item + .breadcrumb-item::before {
+        margin: 0 0.75rem;
+    }
+
+    .our-team-hero {
+        padding: 3rem 0;
+    }
+
+    .our-team-hero .hero-title1 {
+        font-size: 2.5rem;
+    }
+
+    .our-team-hero .hero-description {
+        font-size: 0.95rem;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #collective-effort,
+    #expertise-passion,
+    #our-values,
+    #join-us {
+        padding: 3.5rem 0;
+    }
+
+    .section-title-with-badge {
+        font-size: 22px;
+    }
+
+    .section-title-with-badge::after {
+        width: 50px;
+    }
+
+    #expertise-passion .section-subtitle,
+    .join-us-description {
+        max-width: 100%;
+    }
+
+    .custom-carousel-control {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+    }
+
+    .carousel-control-prev.custom-carousel-control {
+        left: 10px;
+    }
+
+    .carousel-control-next.custom-carousel-control {
+        right: 10px;
+    }
+
+    .partner-img {
+        max-height: 40px;
+        max-width: 120px;
+    }
+
+    .values-grid .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 1.5rem;
+    }
+
+    .application-form-container {
+        margin: 0 1rem;
+    }
+
+    .form-header,
+    .form-body {
+        padding: 2rem;
+    }
+
+    .form-title-with-badge {
+        font-size: 24px;
+    }
+
+    .form-title-with-badge::after {
+        width: 40px;
+    }
+
+    .country-code-wrapper {
+        width: 110px;
+    }
+
+    .gender-options {
+        gap: 1.5rem;
+    }
+
+    .form-actions {
+        gap: 1.5rem;
+    }
+
+    .drop-zone {
+        height: 140px;
+    }
+
+    .upload-icon {
+        font-size: 2.5rem;
+    }
+
+    .our-team-page .who-we-are-mega-menu {
+        width: 100vw;
+        min-width: 100vw;
+        margin-top: 8px;
+    }
+
+    .our-team-page .mega-menu-content {
+        width: 90%;
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .our-team-page .mega-menu-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 1.5rem;
+    }
+
+    .our-team-page .mega-menu-right {
+        padding: 1.5rem;
+    }
+
+    .our-team-page .mega-menu-links {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .our-team-page .mega-menu-title {
+        font-size: 24px;
+    }
+
+    .our-team-page .mega-menu-description {
+        font-size: 14px;
+    }
+
+    .our-team-page .mega-menu-item {
+        font-size: 16px;
+    }
+
+    .our-team-page #indicators .row {
+        --bs-gutter-x: 3rem;
+    }
+
+    .our-team-page .indicator-card {
+        min-height: 100px;
+    }
+
+    .our-team-page .indicator-card::before {
+        width: 40px;
+        height: 40px;
+        margin-right: 1.2rem;
+    }
+
+    .our-team-page .indicator-number,
+    .our-team-page .indicator-suffix {
+        font-size: 26px;
+    }
+}
+
+/* Mobile - 576px to 767px */
+@media (min-width: 576px) and (max-width: 767px) {
+    .our-team-page .navbar-toggler {
+        display: block;
+    }
+
+    .our-team-page .navbar-collapse {
+        display: none !important;
+    }
+
+    .our-team-page .navbar-brand {
+        position: static;
+        transform: none;
+    }
+
+    .our-team-page .breadcrumb-banner {
+        padding: 0.5rem 0;
+    }
+
+    .our-team-page .breadcrumb-item {
+        font-size: 0.9rem;
+    }
+
+    .our-team-page .breadcrumb-item + .breadcrumb-item::before {
+        margin: 0 0.6rem;
+    }
+
+    .our-team-hero {
+        padding: 2.5rem 0;
+    }
+
+    .our-team-hero .hero-title1 {
+        font-size: 2.2rem;
+    }
+
+    .our-team-hero .hero-description {
+        font-size: 0.9rem;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    #collective-effort,
+    #expertise-passion,
+    #our-values,
+    #join-us {
+        padding: 3rem 0;
+    }
+
+    .section-title-with-badge {
+        font-size: 20px;
+    }
+
+    .section-title-with-badge::after {
+        width: 45px;
+    }
+
+    #expertise-passion .section-subtitle,
+    .join-us-description {
+        max-width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .custom-carousel-control {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .carousel-control-prev.custom-carousel-control {
+        left: 8px;
+    }
+
+    .carousel-control-next.custom-carousel-control {
+        right: 8px;
+    }
+
+    .partner-img {
+        max-height: 38px;
+        max-width: 110px;
+    }
+
+    .values-grid .row {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1.5rem;
+    }
+
+    .application-form-container {
+        margin: 0 0.75rem;
+    }
+
+    .form-header,
+    .form-body {
+        padding: 1.5rem;
+    }
+
+    .form-title-with-badge {
+        font-size: 20px;
+    }
+
+    .form-title-with-badge::after {
+        width: 35px;
+    }
+
+    .country-code-wrapper {
+        width: 100px;
+    }
+
+    .gender-options {
+        gap: 1rem;
+    }
+
+    .form-actions {
+        gap: 1rem;
+    }
+
+    .btn-cancel,
+    .btn-submit {
+        min-width: 180px;
+        padding: 15px 24px;
+    }
+
+    .drop-zone {
+        height: 130px;
+    }
+
+    .upload-icon {
+        font-size: 2rem;
+    }
+
+    .upload-title {
+        font-size: 18px;
+    }
+
+    .upload-specs p {
+        font-size: 11px;
+    }
+
+    .file-item {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .file-name {
+        font-size: 0.85rem;
+    }
+
+    .our-team-page .who-we-are-mega-menu {
+        width: calc(100vw - 2rem);
+        min-width: calc(100vw - 2rem);
+        left: 1rem !important;
+        right: 1rem !important;
+        margin-top: 5px;
+    }
+
+    .our-team-page .mega-menu-content {
+        width: 100%;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .our-team-page .mega-menu-left,
+    .our-team-page .mega-menu-right {
+        padding: 1rem;
+    }
+
+    .our-team-page .mega-menu-title {
+        font-size: 20px;
+    }
+
+    .our-team-page .mega-menu-description {
+        font-size: 13px;
+    }
+
+    .our-team-page .mega-menu-item {
+        font-size: 15px;
+        padding: 0.4rem 0;
+    }
+
+    .our-team-page #indicators .row {
+        --bs-gutter-x: 2rem;
+    }
+
+    .our-team-page .indicator-card {
+        margin-bottom: 1.5rem;
+        min-height: 90px;
+    }
+
+    .our-team-page .indicator-card::before {
+        width: 38px;
+        height: 38px;
+        margin-right: 1rem;
+    }
+
+    .our-team-page .indicator-number,
+    .our-team-page .indicator-suffix {
+        font-size: 24px;
+    }
+
+    .our-team-page .indicator-label {
+        font-size: 13px;
+    }
+}
+
+/* Mobile Small - Max 575px */
+@media (max-width: 575px) {
+    .our-team-page .navbar-toggler {
+        display: block;
+    }
+
+    .our-team-page .navbar-collapse {
+        display: none !important;
+    }
+
+    .our-team-page .navbar-brand {
+        position: static;
+        transform: none;
+    }
+
+    .our-team-page .breadcrumb-banner {
+        padding: 0.5rem 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .our-team-page .breadcrumb-banner::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    .our-team-page .breadcrumb-banner::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+    }
+
+    .our-team-page .breadcrumb {
+        font-size: 0.85rem;
+    }
+
+    .our-team-page .breadcrumb-item + .breadcrumb-item::before {
+        margin: 0 0.5rem;
+    }
+
+    .our-team-hero {
+        padding: 2rem 0;
+    }
+
+    .our-team-hero .hero-title1 {
+        font-size: 1.8rem;
+    }
+
+    .our-team-hero .hero-description {
+        font-size: 0.85rem;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    #collective-effort,
+    #expertise-passion,
+    #our-values,
+    #join-us {
+        padding: 2.5rem 0;
+    }
+
+    .section-title-with-badge {
+        font-size: 18px;
+    }
+
+    .section-title-with-badge::after {
+        width: 40px;
+    }
+
+    .bullet-point p,
+    .value-text h3,
+    .value-text p,
+    #expertise-passion .section-subtitle,
+    .join-us-description {
+        font-size: 0.85rem;
+    }
+
+    #expertise-passion .section-subtitle,
+    .join-us-description {
+        max-width: 100%;
+    }
+
+    .custom-carousel-control {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+
+    .carousel-control-prev.custom-carousel-control {
+        left: 5px;
+    }
+
+    .carousel-control-next.custom-carousel-control {
+        right: 5px;
+    }
+
+    .partner-img {
+        max-height: 35px;
+        max-width: 100px;
+    }
+
+    .values-grid .row {
+        --bs-gutter-x: 0.75rem;
+        --bs-gutter-y: 1.25rem;
+    }
+
+    .application-form-container {
+        margin: 0 0.5rem;
+    }
+
+    .form-header,
+    .form-body {
+        padding: 1rem;
+    }
+
+    .form-title-with-badge {
+        font-size: 18px;
+    }
+
+    .form-title-with-badge::after {
+        width: 30px;
+    }
+
+    .country-code-wrapper {
+        width: 90px;
+    }
+
+    .gender-options {
+        gap: 0.75rem;
+    }
+
+    .form-actions {
+        flex-direction: row;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-cancel,
+    .btn-submit {
+        min-width: 160px;
+        padding: 12px 20px;
+    }
+
+    .drop-zone {
+        height: 120px;
+    }
+
+    .upload-icon {
+        font-size: 1.8rem;
+    }
+
+    .drop-zone-text {
+        font-size: 0.9rem;
+    }
+
+    .upload-title {
+        font-size: 16px;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .upload-specs p {
+        font-size: 10px;
+    }
+
+    .file-item {
+        padding: 0.5rem 0.7rem;
+    }
+
+    .file-name {
+        font-size: 0.8rem;
+    }
+
+    .file-remove {
+        font-size: 0.8rem;
+    }
+
+    .our-team-page .who-we-are-mega-menu {
+        width: calc(100vw - 1rem);
+        min-width: calc(100vw - 1rem);
+        left: 0.5rem !important;
+        right: 0.5rem !important;
+        margin-top: 3px;
+    }
+
+    .our-team-page .mega-menu-content {
+        width: 100%;
+        flex-direction: column;
+        padding: 0.75rem;
+    }
+
+    .our-team-page .mega-menu-left,
+    .our-team-page .mega-menu-right {
+        padding: 0.75rem;
+    }
+
+    .our-team-page .mega-menu-title {
+        font-size: 18px;
+        margin-bottom: 0.75rem;
+    }
+
+    .our-team-page .mega-menu-description {
+        font-size: 12px;
+    }
+
+    .our-team-page .mega-menu-links {
+        gap: 0.5rem;
+    }
+
+    .our-team-page .mega-menu-item {
+        font-size: 14px;
+        padding: 0.4rem 0;
+    }
+
+    .our-team-page #indicators .row {
+        --bs-gutter-x: 1.5rem;
+    }
+
+    .our-team-page .indicator-card {
+        margin-bottom: 1.25rem;
+        min-height: 80px;
+    }
+
+    .our-team-page .indicator-card::before {
+        width: 35px;
+        height: 35px;
+        margin-right: 0.8rem;
+    }
+
+    .our-team-page .indicator-number,
+    .our-team-page .indicator-suffix {
+        font-size: 22px;
+    }
+
+    .our-team-page .indicator-label {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .form-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .btn-cancel,
+    .btn-submit {
+        width: auto;
+        min-width: 200px;
     }
 }
 
