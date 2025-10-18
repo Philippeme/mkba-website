@@ -949,11 +949,10 @@
 
 /* Zone de drop */
 .drop-zone {
-    height: 215px;
+    height: 153px;
     width: 100%;
     border: 1px dashed #707070;
     background: var(--select-bg-color);
-    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
