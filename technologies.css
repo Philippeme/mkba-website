@@ -306,8 +306,8 @@
     }
     
     .title-highlight::after {
-        width: calc(100% + 0.25rem);
-        left: 0.25rem;
+        width: calc(30% + 0.25rem);
+        left: 1rem;
     }
     
     .technologies-subtitle {
@@ -332,7 +332,6 @@
     
     .tech-sections-row {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
     }
     
     .tech-section {
@@ -348,7 +347,6 @@
     }
     
     .tech-rectangles-row {
-        gap: 0.375rem;
         flex-wrap: wrap;
     }
     
@@ -378,7 +376,7 @@
     }
     
     .technologies-subtitle {
-        font-size: 0.9rem;
+        font-size: 1.2rem;
     }
     
     .technologies-container {
@@ -398,10 +396,6 @@
     
     .tech-section-title {
         font-size: 1.125rem;
-    }
-    
-    .tech-rectangles-row {
-        gap: 0.25rem;
     }
     
     .tech-rectangle {
