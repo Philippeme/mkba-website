@@ -292,6 +292,31 @@
         width: 27rem; /* 4.5rem × 6 = 27rem */
         min-width: 27rem;
     }
+
+    /* SCROLLING HORIZONTAL EN RESPONSIVE - TABLETTE */
+    .technologies-container > .container {
+        overflow-x: auto;
+        overflow-y: visible;
+        padding-bottom: 1.5rem;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
 }
 
 /* Mobile - jusqu'à 767px */
@@ -355,6 +380,37 @@
         min-width: unset;
         max-width: 100%;
     }
+
+    /* SCROLLING HORIZONTAL EN RESPONSIVE - MOBILE */
+    .technologies-container > .container {
+        overflow-x: auto;
+        overflow-y: visible;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    /* Rendre la scrollbar plus visible sur mobile */
+    .technologies-container > .container::-webkit-scrollbar {
+        height: 8px;
+    }
 }
 
 /* Très petit mobile - jusqu'à 575px */
@@ -404,6 +460,32 @@
         padding: 0 0.5rem;
         font-size: 0.7rem;
     }
+
+    /* SCROLLING HORIZONTAL - TRÈS PETIT MOBILE */
+    .technologies-container > .container {
+        overflow-x: auto;
+        overflow-y: visible;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar-track {
+        background: #e0e0e0;
+        border-radius: 10px;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar-thumb {
+        background: #666;
+        border-radius: 10px;
+    }
+
+    .technologies-container > .container::-webkit-scrollbar-thumb:hover {
+        background: #444;
+    }
 }
 
 /* ==============================================
@@ -452,6 +534,10 @@
     .tech-rectangle:hover {
         transform: none;
     }
+
+    .technologies-container > .container {
+        scroll-behavior: auto;
+    }
 }
 
 /* Support clavier */
@@ -483,5 +569,9 @@
     
     .tech-rectangle-wide {
         page-break-inside: avoid;
+    }
+
+    .technologies-container > .container {
+        overflow: visible !important;
     }
 }

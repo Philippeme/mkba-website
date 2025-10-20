@@ -103,12 +103,15 @@
                                                         data-i18n="nav_our_team">
                                                         Our team
                                                     </a>
-                                                    <a class="mega-menu-item" href="our-commitment-to-sustainability.html" data-i18n="nav_sustainability">
+                                                    <a class="mega-menu-item"
+                                                        href="our-commitment-to-sustainability.html"
+                                                        data-i18n="nav_sustainability">
                                                         Our commitment to sustainability
                                                     </a>
                                                 </div>
                                                 <div class="mega-menu-column">
-                                                    <a class="mega-menu-item" href="technologies.html" data-i18n="nav_technologies">
+                                                    <a class="mega-menu-item" href="technologies.html"
+                                                        data-i18n="nav_technologies">
                                                         Technologies
                                                     </a>
                                                     <a class="mega-menu-item" href="#" data-i18n="nav_work_with_us">
@@ -123,7 +126,7 @@
                         </li>
                         <li class="nav-item dropdown mega-menu-dropdown what-we-do-dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="whatWeDoDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_what_we_do">
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav_what_we_do">
                                 Ce que nous faisons
                             </a>
                             <!-- NOUVEAU MEGA MENU CONFORME À LA MAQUETTE -->
@@ -131,21 +134,28 @@
                                 <div class="mega-menu-container">
                                     <div class="mega-menu-content">
                                         <div class="mega-menu-left">
-                                            <h5 class="mega-menu-title" data-i18n="what_we_do_mega_title">Ce que nous faisons</h5>
+                                            <h5 class="mega-menu-title" data-i18n="what_we_do_mega_title">Ce que nous
+                                                faisons</h5>
                                             <p class="mega-menu-description" data-i18n="what_we_do_mega_description">
-                                                Aliquam faucibus, odio nec commodo aliquam, neque felis placerat dui, a porta ante lectus dapibus est. Aliquam a bibendum mi, sed condimentum est. Mauris arcu odio, vestibulum quis imperdiet cursus, sodales vitae dui.
+                                                Aliquam faucibus, odio nec commodo aliquam, neque felis placerat dui, a
+                                                porta ante lectus dapibus est. Aliquam a bibendum mi, sed condimentum
+                                                est. Mauris arcu odio, vestibulum quis imperdiet cursus, sodales vitae
+                                                dui.
                                             </p>
                                         </div>
                                         <div class="mega-menu-right">
                                             <div class="mega-menu-links">
                                                 <div class="mega-menu-column">
-                                                    <a class="mega-menu-item" href="industries-served.html" data-i18n="nav_industries_served">
+                                                    <a class="mega-menu-item" href="industries-served.html"
+                                                        data-i18n="nav_industries_served">
                                                         Industries servies
                                                     </a>
-                                                    <a class="mega-menu-item" href="services.html" data-i18n="nav_services">
+                                                    <a class="mega-menu-item" href="services.html"
+                                                        data-i18n="nav_services">
                                                         Services
                                                     </a>
-                                                    <a class="mega-menu-item" href="solutions.html" data-i18n="nav_solutions">
+                                                    <a class="mega-menu-item" href="solutions.html"
+                                                        data-i18n="nav_solutions">
                                                         Solutions
                                                     </a>
                                                 </div>
@@ -156,8 +166,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="achievements.html"
-                                data-i18n="nav_achievements">Réalisations</a>
+                            <a class="nav-link" href="achievements.html" data-i18n="nav_achievements">Réalisations</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="actualites.html" data-i18n="nav_news">Actualités</a>
@@ -316,7 +325,7 @@
                 ability to deliver effectively.
             </p>
 
-            <!-- Carrousel Bootstrap avec auto-scroll continu -->
+            <!-- Carrousel Bootstrap (Affichage Standard) -->
             <div class="partners-carousel-container">
                 <div id="partnersCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                     <div class="carousel-inner">
@@ -376,6 +385,73 @@
                         <i class="fas fa-chevron-right" aria-hidden="true"></i>
                         <span class="visually-hidden">Next</span>
                     </button>
+                </div>
+            </div>
+
+            <!-- Carrousel Continu (Affichage Responsive) -->
+            <div class="partners-continuous-scroll">
+                <div class="scroll-track">
+                    <!-- Premier set de logos -->
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/cordaid.png" alt="Cordaid" loading="lazy"
+                            class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/cfi.png" alt="CFI Development" loading="lazy"
+                            class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/world-vision.png" alt="World Vision" loading="lazy"
+                            class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/invisible-children.png" alt="Invisible Children"
+                            loading="lazy" class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/solidarites.png" alt="Solidarités International"
+                            loading="lazy" class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/oxfam.png" alt="Oxfam" loading="lazy" class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/oag.png" alt="OAG" loading="lazy" class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/pnud.png" alt="PNUD" loading="lazy" class="partner-img">
+                    </div>
+
+                    <!-- Duplication pour effet de boucle infinie -->
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/cordaid.png" alt="Cordaid" loading="lazy"
+                            class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/cfi.png" alt="CFI Development" loading="lazy"
+                            class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/world-vision.png" alt="World Vision" loading="lazy"
+                            class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/invisible-children.png" alt="Invisible Children"
+                            loading="lazy" class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/solidarites.png" alt="Solidarités International"
+                            loading="lazy" class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/oxfam.png" alt="Oxfam" loading="lazy" class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/oag.png" alt="OAG" loading="lazy" class="partner-img">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="./assets/images/partners/pnud.png" alt="PNUD" loading="lazy" class="partner-img">
+                    </div>
                 </div>
             </div>
         </div>
@@ -567,7 +643,8 @@
 
                             <!-- Nationalité -->
                             <div class="col-lg-6 col-md-6">
-                                <label for="nationality" class="form-label" data-i18n="label_nationality">Quelle est votre
+                                <label for="nationality" class="form-label" data-i18n="label_nationality">Quelle est
+                                    votre
                                     nationalité</label>
                                 <div class="select-wrapper">
                                     <select class="form-select flag-select" id="nationality" name="nationality">
@@ -629,7 +706,8 @@
                             </div>
 
                             <!-- Zone d'affichage des fichiers uploadés -->
-                            <div class="uploaded-files-display" id="uploadedFilesDisplay" style="background: transparent;">
+                            <div class="uploaded-files-display" id="uploadedFilesDisplay"
+                                style="background: transparent;">
                                 <p class="uploaded-files-title" data-i18n="uploaded_files_title">Depuis l'appareil</p>
                                 <div class="file-list" id="fileList">
                                     <!-- Les fichiers uploadés apparaîtront ici -->
@@ -668,7 +746,8 @@
                     <ul class="footer-links" role="list">
                         <li><a href="we-are-mkba.html" data-i18n="footer_who_are_mkba">Who are MK BA</a></li>
                         <li><a href="our-team.html" data-i18n="footer_our_team">Our Team</a></li>
-                        <li><a href="our-commitment-to-sustainability.html" data-i18n="footer_sustainability">Our commitment to sustainability</a></li>
+                        <li><a href="our-commitment-to-sustainability.html" data-i18n="footer_sustainability">Our
+                                commitment to sustainability</a></li>
                         <li><a href="technologies.html" data-i18n="footer_technologies">Technologies</a></li>
                         <li><a href="#" data-i18n="footer_work_with_us">Work with us</a></li>
                     </ul>

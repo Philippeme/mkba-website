@@ -117,8 +117,8 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
     margin-top: 12px;
-    width: 146vw;
-    min-width: 146vw;
+    width: 1000vw;
+    min-width: 1000vw;
     left: 0 !important;
     right: 0 !important;
     transform: none;
@@ -594,6 +594,53 @@
 
 .carousel-control-next.custom-carousel-control {
     right: 1rem;
+}
+
+/* ==============================================
+   CARROUSEL CONTINU POUR RESPONSIVE - NOUVEAU
+   ============================================== */
+
+.partners-continuous-scroll {
+    display: none;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    padding: 2rem 0;
+    margin-top: -3.2rem;
+}
+
+.scroll-track {
+    display: flex;
+    width: fit-content;
+    animation: scroll-continuous 25s linear infinite;
+}
+
+.scroll-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-continuous {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.scroll-track .partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    padding: 0 2rem;
+    flex-shrink: 0;
+}
+
+.scroll-track .partner-img {
+    max-height: 50px;
+    max-width: 150px;
+    object-fit: contain;
 }
 
 /* ==============================================
@@ -1286,7 +1333,7 @@
     }
 }
 
-/* Tablet - 768px to 991px */
+/* Tablet - 768px to 991px - CARROUSEL CONTINU */
 @media (min-width: 768px) and (max-width: 991px) {
     .our-team-page .navbar-toggler {
         display: block;
@@ -1348,23 +1395,13 @@
         max-width: 100%;
     }
 
-    .custom-carousel-control {
-        width: 35px;
-        height: 35px;
-        font-size: 0.8rem;
+    /* ACTIVER CARROUSEL CONTINU */
+    .partners-carousel-container {
+        display: none !important;
     }
 
-    .carousel-control-prev.custom-carousel-control {
-        left: 10px;
-    }
-
-    .carousel-control-next.custom-carousel-control {
-        right: 10px;
-    }
-
-    .partner-img {
-        max-height: 40px;
-        max-width: 120px;
+    .partners-continuous-scroll {
+        display: block !important;
     }
 
     .values-grid .row {
@@ -1468,7 +1505,7 @@
     }
 }
 
-/* Mobile - 576px to 767px */
+/* Mobile - 576px to 767px - CARROUSEL CONTINU */
 @media (min-width: 576px) and (max-width: 767px) {
     .our-team-page .navbar-toggler {
         display: block;
@@ -1532,23 +1569,13 @@
         font-size: 0.9rem;
     }
 
-    .custom-carousel-control {
-        width: 32px;
-        height: 32px;
-        font-size: 0.75rem;
+    /* ACTIVER CARROUSEL CONTINU */
+    .partners-carousel-container {
+        display: none !important;
     }
 
-    .carousel-control-prev.custom-carousel-control {
-        left: 8px;
-    }
-
-    .carousel-control-next.custom-carousel-control {
-        right: 8px;
-    }
-
-    .partner-img {
-        max-height: 38px;
-        max-width: 110px;
+    .partners-continuous-scroll {
+        display: block !important;
     }
 
     .values-grid .row {
@@ -1672,7 +1699,7 @@
     }
 }
 
-/* Mobile Small - Max 575px */
+/* Mobile Small - Max 575px - CARROUSEL CONTINU */
 @media (max-width: 575px) {
     .our-team-page .navbar-toggler {
         display: block;
@@ -1754,23 +1781,13 @@
         max-width: 100%;
     }
 
-    .custom-carousel-control {
-        width: 30px;
-        height: 30px;
-        font-size: 0.7rem;
+    /* ACTIVER CARROUSEL CONTINU */
+    .partners-carousel-container {
+        display: none !important;
     }
 
-    .carousel-control-prev.custom-carousel-control {
-        left: 5px;
-    }
-
-    .carousel-control-next.custom-carousel-control {
-        right: 5px;
-    }
-
-    .partner-img {
-        max-height: 35px;
-        max-width: 100px;
+    .partners-continuous-scroll {
+        display: block !important;
     }
 
     .values-grid .row {
@@ -1979,5 +1996,9 @@
     .file-remove,
     .drop-zone {
         transition: none !important;
+    }
+    
+    .scroll-track {
+        animation: none !important;
     }
 }

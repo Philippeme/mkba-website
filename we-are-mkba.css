@@ -66,8 +66,8 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
     margin-top: 12px;
-    width: 146vw;
-    min-width: 146vw;
+    width: 1000vw;
+    min-width: 1000vw;
     left: 0 !important;
     right: 0 !important;
     transform: none;

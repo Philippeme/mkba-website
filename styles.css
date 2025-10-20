@@ -1862,8 +1862,8 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
     margin-top: 5px;
-    width: 150vw;
-    min-width: 150vw;
+    width: 1000vw;
+    min-width: 1000vw;
     left: 0 !important;
     right: 0 !important;
     transform: none;
@@ -1971,8 +1971,8 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     padding: 0;
     margin-top: 5px;
-    width: 143vw;
-    min-width: 143vw;
+    width: 1000vw;
+    min-width: 1000vw;
     left: 0 !important;
     transform: none;
     position: absolute;
@@ -2115,6 +2115,10 @@ body {
     .what-we-do-mega-menu .mega-menu-content {
         margin-left: calc(40vw - 50%);
     }
+
+    .who-we-are-mega-menu .mega-menu-content {
+        margin-left: calc(50vw - 25%);
+    }
     
     .search-section {
         margin-right: -8rem;
@@ -2151,6 +2155,10 @@ body {
 
     .what-we-do-mega-menu .mega-menu-content {
         margin-left: calc(40vw - 50%);
+    }
+
+    .who-we-are-mega-menu .mega-menu-content {
+        margin-left: calc(70vw - 25%);
     }
     
     .hero-title {
