@@ -334,20 +334,12 @@
         grid-template-columns: 1fr;
     }
     
-    .tech-section {
-        margin-bottom: 2rem;
-    }
-    
     .tech-section-title {
         font-size: 1.25rem;
     }
     
     .tech-subsection-title {
         font-size: 1rem;
-    }
-    
-    .tech-rectangles-row {
-        flex-wrap: wrap;
     }
     
     .tech-rectangle {
