@@ -820,20 +820,20 @@
     .industry-products-section .section-title-with-highlight,
     .industry-references-section .section-title {
         font-size: 2rem;
-        text-align: center;
+        text-align: left;
     }
     
     .healthcare-intro-section .section-title-with-highlight::after,
     .industry-services-section .section-title-with-highlight::after,
     .industry-products-section .section-title-with-highlight::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 3rem;
     }
     
     .healthcare-intro-text {
         font-size: 1rem;
-        text-align: center;
+        text-align: left;
     }
     
     .service-card2,
@@ -998,21 +998,21 @@
     .industry-products-section .section-title-with-highlight,
     .industry-references-section .section-title {
         font-size: 1.75rem;
-        text-align: center;
+        text-align: left;
         margin-bottom: 2rem;
     }
     
     .healthcare-intro-section .section-title-with-highlight::after,
     .industry-services-section .section-title-with-highlight::after,
     .industry-products-section .section-title-with-highlight::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2.5rem;
     }
     
     .healthcare-intro-text {
         font-size: 1rem;
-        text-align: center;
+        text-align: left;
     }
     
     .service-card2,
@@ -1212,21 +1212,21 @@
     .industry-products-section .section-title-with-highlight,
     .industry-references-section .section-title {
         font-size: 1.5rem;
-        text-align: center;
+        text-align: left;
         margin-bottom: 1.5rem;
     }
     
     .healthcare-intro-section .section-title-with-highlight::after,
     .industry-services-section .section-title-with-highlight::after,
     .industry-products-section .section-title-with-highlight::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2rem;
     }
     
     .healthcare-intro-text {
         font-size: 0.95rem;
-        text-align: center;
+        text-align: left;
     }
     
     .service-card2,
