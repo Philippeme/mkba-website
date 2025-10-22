@@ -82,7 +82,7 @@
     padding: 0;
     margin-bottom: 0;
     justify-content: flex-start;
-    flex-wrap: nowrap;        
+    flex-wrap: nowrap;
     white-space: nowrap;
     gap: 0.5rem;
 }
@@ -108,7 +108,7 @@
     font-weight: 500;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
     content: "|";
     color: var(--text-medium);
     margin: 0;
@@ -151,7 +151,8 @@
 
 .development-hero-title {
     font-family: 'Spectral', serif;
-    font-size: 3.125rem; /* 50px */
+    font-size: 3.125rem;
+    /* 50px */
     font-weight: 540;
     color: var(--white);
     margin: 0;
@@ -178,7 +179,8 @@
 
 .development-intro-text {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
+    /* 20px */
     color: #707070;
     line-height: 1.6;
     margin-bottom: 2.5rem;
@@ -194,7 +196,8 @@
 
 .development-description {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
+    /* 20px */
     color: #333333;
     line-height: 1.6;
     margin-bottom: 2rem;
@@ -214,7 +217,8 @@
     padding-left: 2rem;
     margin-bottom: 1.5rem;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
+    /* 20px */
     color: #333333;
     line-height: 1.6;
     word-wrap: break-word;
@@ -243,7 +247,8 @@
 }
 
 .development-why-choose-section .section-title-with-highlight {
-    font-size: 2.1875rem; /* 35px */
+    font-size: 2.1875rem;
+    /* 35px */
     font-weight: 600;
     color: #333333;
     margin-bottom: 3rem;
@@ -262,7 +267,8 @@
     padding-left: 2rem;
     margin-bottom: 2rem;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
+    /* 20px */
     color: #333333;
     line-height: 1.5;
     word-wrap: break-word;
@@ -291,7 +297,8 @@
 }
 
 .development-services-section .section-title-with-highlight {
-    font-size: 2.1875rem; /* 35px */
+    font-size: 2.1875rem;
+    /* 35px */
     font-weight: 600;
     color: #333333;
     margin-bottom: 3rem;
@@ -318,7 +325,8 @@
 
 .service-title {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.875rem; /* 30px */
+    font-size: 1.875rem;
+    /* 30px */
     font-weight: 600;
     color: var(--development-blue);
     margin-bottom: 1.5rem;
@@ -330,7 +338,8 @@
 
 .service-description {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
+    /* 18px */
     color: #565656;
     line-height: 1.5;
     text-align: center;
@@ -351,7 +360,8 @@
 }
 
 .development-additional-section .section-title-with-highlight {
-    font-size: 2.1875rem; /* 35px */
+    font-size: 2.1875rem;
+    /* 35px */
     font-weight: 600;
     color: #333333;
     margin-bottom: 3rem;
@@ -361,7 +371,8 @@
 
 .development-additional-text {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
+    /* 20px */
     color: #333333;
     line-height: 1.6;
     margin-bottom: 2rem;
@@ -381,7 +392,8 @@
     padding-left: 2rem;
     margin-bottom: 1.5rem;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
+    /* 20px */
     color: #333333;
     line-height: 1.6;
     word-wrap: break-word;
@@ -410,7 +422,8 @@
 }
 
 .development-references-section .section-title-with-highlight {
-    font-size: 2.1875rem; /* 35px */
+    font-size: 2.1875rem;
+    /* 35px */
     font-weight: 600;
     color: #333333;
     margin-bottom: 3rem;
@@ -465,10 +478,10 @@
     width: 64px;
     height: 43px;
     object-fit: cover;
-    background: #fff;          
-    border: 1px solid #ccc;    
-    padding: 4px;             
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .reference-content {
@@ -481,7 +494,8 @@
 
 .reference-description {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
+    /* 18px */
     color: #333333;
     line-height: 1.6;
     margin-bottom: 2rem;
@@ -534,7 +548,8 @@
 }
 
 .development-testimonials-section .section-title-with-highlight {
-    font-size: 2.1875rem; /* 35px */
+    font-size: 2.1875rem;
+    /* 35px */
     font-weight: 600;
     color: #333333;
     margin-bottom: 3rem;
@@ -651,12 +666,13 @@
     color: var(--development-quote-blue);
     margin: 0;
     line-height: 1;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .testimonial-text {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
+    /* 18px */
     color: #232323;
     line-height: 1.6;
     margin: 0;
@@ -674,7 +690,7 @@
     .development-hero-title {
         font-size: 2.875rem;
     }
-    
+
     .development-intro-text,
     .development-description {
         font-size: 1.1875rem;
@@ -691,38 +707,38 @@
     .development-hero-title {
         font-size: 2.625rem;
     }
-    
+
     .development-intro-text,
     .development-description {
         font-size: 1.125rem;
     }
-    
+
     .service-title {
         font-size: 1.625rem;
     }
-    
+
     .reference-item {
         flex-direction: column !important;
         min-height: auto;
     }
-    
+
     .reference-content {
         padding: 1.5rem;
     }
-    
+
     .testimonial-header {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .testimonial-left {
         width: 100%;
     }
-    
+
     .testimonial-content {
         margin-left: 0;
     }
-    
+
     .testimonial-rating {
         align-self: flex-end;
     }
@@ -730,6 +746,7 @@
 
 /* Tablet - 768px to 991px */
 @media (min-width: 768px) and (max-width: 991px) {
+
     /* Menu hamburger visible */
     .developpement-page .navbar-toggler {
         display: block;
@@ -781,7 +798,7 @@
         font-size: 0.95rem;
     }
 
-    .breadcrumb-item + .breadcrumb-item::before {
+    .breadcrumb-item+.breadcrumb-item::before {
         margin: auto;
     }
 
@@ -792,110 +809,120 @@
         padding: 3rem 0;
         background-attachment: scroll;
     }
-    
+
     .development-hero-title {
         font-size: 2.375rem;
         text-align: center;
     }
-    
+
     /* Sections */
     .development-intro-section,
-    .development-why-choose-section,
-    .development-services-section,
-    .development-additional-section,
-    .development-references-section,
-    .development-testimonials-section {
-        padding: 2.5rem 0;
+    .development-why-choose-section {
+        padding: 2rem 0;
     }
-    
+
+    .development-services-section,
+    .development-additional-section {
+        padding: 2.95rem 0 3.75rem;
+    }
+
+    /* Section avec un padding différent */
+    .development-references-section {
+        padding: 2rem 0 3.25rem;
+    }
+
+    .development-testimonials-section {
+        padding: 2rem 0;
+    }
+
     .section-title-with-highlight {
         font-size: 2rem;
         text-align: left;
     }
-    
+
     .section-title-with-highlight::after {
         left: 1ch;
         transform: none;
         width: 3rem;
     }
-    
+
     .development-intro-text,
     .development-description,
     .development-additional-text {
         font-size: 1.125rem;
         text-align: left;
     }
-    
+
     .development-list li,
     .development-why-list li,
     .development-additional-list li {
         font-size: 1.125rem;
     }
-    
+
     .service-card1 {
         padding: 1.75rem;
         margin-bottom: 1rem;
     }
-    
+
     .service-title {
         font-size: 1.5rem;
     }
-    
+
     .service-description {
         font-size: 1rem;
     }
-    
+
     .reference-item {
         flex-direction: column !important;
         gap: 0;
         min-height: auto;
     }
-    
+
     .reference-content {
         padding: 1.5rem;
     }
-    
+
     .reference-description {
         font-size: 1rem;
     }
-    
+
     .testimonial-card {
         padding: 1.5rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .testimonial-header {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .testimonial-left {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
     }
-    
+
     .testimonial-profile {
         width: 100%;
     }
-    
+
     .profile-avatar {
         width: 50px;
         height: 50px;
     }
-    
+
     .testimonial-logo {
         height: 45px;
     }
-    
+
     .testimonial-content {
         margin-left: 0;
     }
-    
+
     .testimonial-text {
         font-size: 1rem;
     }
-    
+
     .quote-icon {
         font-size: 1.5rem;
     }
@@ -903,6 +930,7 @@
 
 /* Mobile - 576px to 767px */
 @media (min-width: 576px) and (max-width: 767px) {
+
     /* Menu hamburger visible */
     .developpement-page .navbar-toggler {
         display: block;
@@ -954,7 +982,7 @@
         font-size: 0.9rem;
     }
 
-    .breadcrumb-item + .breadcrumb-item::before {
+    .breadcrumb-item+.breadcrumb-item::before {
         margin: auto;
     }
 
@@ -965,13 +993,13 @@
         padding: 2.5rem 0;
         background-attachment: scroll;
     }
-    
+
     .development-hero-title {
         font-size: 2rem;
         text-align: center;
         padding: 0 1rem;
     }
-    
+
     /* Sections */
     .development-intro-section,
     .development-why-choose-section,
@@ -981,95 +1009,95 @@
     .development-testimonials-section {
         padding: 2rem 0;
     }
-    
+
     .section-title-with-highlight {
         font-size: 1.75rem;
         text-align: left;
     }
-    
+
     .section-title-with-highlight::after {
         left: 1ch;
         transform: none;
         width: 2.5rem;
     }
-    
+
     .development-intro-text,
     .development-description,
     .development-additional-text {
         font-size: 1rem;
         text-align: left;
     }
-    
+
     .development-list li,
     .development-why-list li,
     .development-additional-list li {
         font-size: 1rem;
     }
-    
+
     .service-card1 {
         padding: 1.5rem;
         margin-bottom: 1rem;
     }
-    
+
     .service-title {
         font-size: 1.375rem;
     }
-    
+
     .service-description {
         font-size: 1rem;
     }
-    
+
     .reference-item {
         flex-direction: column !important;
         gap: 0;
         min-height: auto;
     }
-    
+
     .reference-content {
         padding: 1.25rem;
     }
-    
+
     .reference-description {
         font-size: 1rem;
     }
-    
+
     .testimonial-card {
         padding: 1.5rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .testimonial-header {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .testimonial-left {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
     }
-    
+
     .testimonial-profile {
         width: 100%;
     }
-    
+
     .profile-avatar {
         width: 50px;
         height: 50px;
     }
-    
+
     .testimonial-logo {
         height: 40px;
     }
-    
+
     .testimonial-content {
         margin-left: 0;
     }
-    
+
     .testimonial-text {
         font-size: 1rem;
     }
-    
+
     .quote-icon {
         font-size: 1.5rem;
     }
@@ -1077,6 +1105,7 @@
 
 /* Mobile Small - Max 575px */
 @media (max-width: 575px) {
+
     /* Menu hamburger visible */
     .developpement-page .navbar-toggler {
         display: block;
@@ -1137,7 +1166,7 @@
         font-size: 0.85rem;
     }
 
-    .breadcrumb-item + .breadcrumb-item::before {
+    .breadcrumb-item+.breadcrumb-item::before {
         margin: auto;
     }
 
@@ -1148,82 +1177,80 @@
         padding: 2rem 0;
         background-attachment: scroll;
     }
-    
+
     .development-hero-title {
         font-size: 1.75rem;
         text-align: center;
         padding: 0 0.75rem;
     }
-    
+
     /* Sections */
     .development-intro-section,
     .development-why-choose-section {
         padding: 2rem 0;
     }
 
-    .development-services-section {
-        padding: 2.95rem 0 3.75rem 0;
-    }
-
+    .development-services-section,
     .development-additional-section {
-        padding: 2.95rem 0 3.75rem 0;
+        padding: 2.95rem 0 3.75rem;
     }
 
+    /* Section avec un padding différent */
     .development-references-section {
-        padding: 2rem 0 3.25rem 0;
+        padding: 2rem 0 3.25rem;
     }
 
     .development-testimonials-section {
         padding: 2rem 0;
     }
-    
+
     .section-title-with-highlight {
         font-size: 1.5rem;
         text-align: left;
     }
-    
+
     .section-title-with-highlight::after {
         left: 1ch;
         transform: none;
         width: 2rem;
     }
-    
+
     .development-intro-text,
     .development-description,
     .development-additional-text {
         font-size: 0.95rem;
         text-align: left;
     }
-    
+
     .development-list li,
     .development-why-list li,
     .development-additional-list li {
         font-size: 0.95rem;
     }
-    
+
     .service-card1 {
         padding: 1rem;
         margin-bottom: 1rem;
     }
-    
+
     .service-title {
         font-size: 1.25rem;
     }
-    
+
     .service-description {
         font-size: 0.95rem;
     }
-    
+
     .reference-item {
         flex-direction: column !important;
         gap: 0;
         min-height: auto;
     }
-    
+
     .reference-content {
         padding: 1rem;
     }
-    
+
     .reference-description {
         font-size: 0.95rem;
     }
@@ -1238,16 +1265,16 @@
         height: 32px;
         padding: 3px;
     }
-    
+
     .testimonial-card {
         padding: 1rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .testimonial-text {
         font-size: 0.95rem;
     }
-    
+
     .quote-icon {
         font-size: 1.25rem;
     }
@@ -1256,7 +1283,7 @@
         flex-direction: column;
         gap: 0.75rem;
     }
-    
+
     .testimonial-left {
         flex-direction: column;
         align-items: flex-start;
@@ -1279,6 +1306,7 @@
 
 /* Support high contrast mode */
 @media (prefers-contrast: high) {
+
     .service-card1,
     .testimonial-card {
         border: 2px solid #333;
@@ -1287,17 +1315,18 @@
 
 /* Support reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
     .service-card1,
     .testimonial-card,
     .reference-item {
         transition: none;
     }
-    
+
     .service-card1:hover,
     .testimonial-card:hover {
         transform: none;
     }
-    
+
     .development-hero-section {
         background-attachment: scroll;
     }
@@ -1307,7 +1336,7 @@
 .reference-img,
 .reference-item,
 .testimonial-card {
-  cursor: auto;   
+    cursor: auto;
 }
 
 /* Focus states pour l'accessibilité */
@@ -1332,12 +1361,14 @@
 /* Assurer le rendu correct à tous niveaux de zoom */
 @supports (zoom: 1) {
     .development-hero-section {
-        min-height: 37.5rem; /* 600px en rem */
+        min-height: 37.5rem;
+        /* 600px en rem */
     }
-    
+
     .service-card1,
     .testimonial-card {
-        min-height: 15rem; /* Hauteur minimum adaptative */
+        min-height: 15rem;
+        /* Hauteur minimum adaptative */
     }
 }
 
@@ -1346,7 +1377,7 @@
     .development-hero-title {
         font-family: -apple-system, BlinkMacSystemFont, 'Spectral', serif;
     }
-    
+
     .development-intro-text,
     .development-description,
     .service-description,
