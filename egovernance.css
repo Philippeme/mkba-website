@@ -1679,12 +1679,18 @@
         padding: 2rem 0;
     }
 
-    .egovernance-clients-section,
-    .egovernance-details-section,
+    .egovernance-clients-section {
+        padding: 2rem 0;
+    }
+
+    .egovernance-details-section {
+        padding: 1rem 0;
+    }
+
     .egovernance-services-section,
     .egovernance-solutions-section,
     .egovernance-testimonials-section {
-        padding: 2rem 0;
+        padding: 0.5rem 0 2rem 0;
     }
 
     .egovernance-projects-section {
