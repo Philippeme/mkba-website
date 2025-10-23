@@ -223,7 +223,7 @@ function initDevelopmentInteractions() {
     const serviceCards = document.querySelectorAll('.service-card1');
     serviceCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
+            this.style.transform = 'translateY(-2px)';
         });
         
         card.addEventListener('mouseleave', function() {
