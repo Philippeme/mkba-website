@@ -357,7 +357,7 @@
     color: #707070;
     line-height: 1.6;
     margin-bottom: 1.2rem;
-    width: 97%;
+    width: 92%;
     text-align: justify;
     word-wrap: break-word;
     hyphens: auto;
@@ -372,6 +372,7 @@
 .content-list li {
     position: relative;
     padding-left: 2rem;
+    padding-right: 2rem;
     margin-bottom: 1.5rem;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.25rem; /* 20px */
@@ -1153,8 +1154,13 @@
         text-align: left;
     }
 
+    /* Bordure bleue pour tablette */
     .egovernance-content-section::after {
-        display: none;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: 0.5px solid #005FAC;
     }
     
     .egovernance-sidebar {
@@ -1171,7 +1177,8 @@
     }
     
     .egovernance-main-content {
-        padding-left: 0;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
     .content-title {
@@ -1187,6 +1194,7 @@
 
     .content-list li {
         font-size: 1.125rem;
+        padding-right: 0;
     }
 
     .video-container-egovernance {
@@ -1432,8 +1440,13 @@
         text-align: left;
     }
 
+    /* Bordure bleue pour mobile */
     .egovernance-content-section::after {
-        display: none;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: 0.5px solid #005FAC;
     }
     
     .egovernance-sidebar {
@@ -1450,7 +1463,8 @@
     }
     
     .egovernance-main-content {
-        padding-left: 0;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
     
     .content-title {
@@ -1466,6 +1480,7 @@
     
     .content-list li {
         font-size: 1rem;
+        padding-right: 0;
     }
 
     .video-container-egovernance {
@@ -1740,8 +1755,13 @@
         text-align: left;
     }
 
+    /* Bordure bleue pour très petits écrans */
     .egovernance-content-section::after {
-        display: none;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: 0.5px solid #005FAC;
     }
     
     .egovernance-sidebar {
@@ -1759,7 +1779,8 @@
     }
     
     .egovernance-main-content {
-        padding-left: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     
     .content-title {
@@ -1774,6 +1795,7 @@
     
     .content-list li {
         font-size: 0.95rem;
+        padding-right: 0;
     }
 
     .video-container-egovernance {
