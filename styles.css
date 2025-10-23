@@ -456,19 +456,19 @@ body {
 .mobile-sidebar {
     position: fixed;
     top: 0;
-    right: -100%;
+    left: -100%;
     width: 80%;
     max-width: 400px;
     height: 100%;
     background: var(--white);
     z-index: 1056;
-    transition: right 0.6s ease;
+    transition: left 0.6s ease;
     overflow-y: auto;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-sidebar.active {
-    right: 0;
+    left: 0;
 }
 
 .mobile-sidebar-header {
@@ -2876,7 +2876,7 @@ body {
     animation: megaMenuSlideIn 0.3s ease forwards;
 }
 
-@keyframes slideInFromRight {
+@keyframes slideInFromLeft {
     from {
         transform: translateX(100%);
     }
@@ -2886,7 +2886,7 @@ body {
 }
 
 .mobile-sidebar.active {
-    animation: slideInFromRight 0.3s ease forwards;
+    animation: slideInFromLeft 0.3s ease forwards;
 }
 
 @keyframes fadeIn {
