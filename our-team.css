@@ -605,8 +605,8 @@
     position: relative;
     overflow: hidden;
     background: #dee2e6;
-    padding: 2rem 0;
-    margin-top: -3.2rem;
+    padding: 0.25rem 0;
+    margin-top: -2.2rem;
 }
 
 .scroll-track {
