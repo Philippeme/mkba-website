@@ -407,7 +407,7 @@
     }
 }
 
-/* Tablet - 768px to 991px - AMÉLIORATION MENU HAMBURGER */
+/* Tablet - 768px to 991px - AMÉLIORATION MENU HAMBURGER + TITRES GAUCHE */
 @media (min-width: 768px) and (max-width: 991px) {
     /* Menu hamburger visible */
     .article-detail-page .navbar-toggler {
@@ -480,36 +480,37 @@
         margin: 0 auto;
     }
     
+    /* CORRECTION: Titres de section alignés à GAUCHE */
     .article-main-title {
         font-size: 2rem;
-        text-align: center;
+        text-align: left;
     }
     
     .article-main-title::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 3rem;
     }
     
     .section-title-decorated {
         font-size: 2rem;
-        text-align: center;
+        text-align: left;
     }
     
     .section-title-decorated::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 3rem;
     }
     
     .section-title-decorated-alt {
         font-size: 1.625rem;
-        text-align: center;
+        text-align: left;
     }
     
     .section-title-decorated-alt::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2.5rem;
     }
     
@@ -520,7 +521,7 @@
     
     .social-share-sidebar {
         position: static;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
     }
     
     .share-title {
@@ -540,7 +541,7 @@
     }
 }
 
-/* Mobile - 576px to 767px - AMÉLIORATION COMPLETE */
+/* Mobile - 576px to 767px - AMÉLIORATION COMPLETE + TITRES GAUCHE */
 @media (min-width: 576px) and (max-width: 767px) {
     /* Menu hamburger visible */
     .article-detail-page .navbar-toggler {
@@ -614,38 +615,39 @@
         padding: 0 1rem;
     }
     
+    /* CORRECTION: Titres de section alignés à GAUCHE */
     .article-main-title {
         font-size: 1.875rem;
-        text-align: center;
+        text-align: left;
         margin-bottom: 2rem;
     }
     
     .article-main-title::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2.75rem;
     }
     
     .section-title-decorated {
         font-size: 1.75rem;
-        text-align: center;
+        text-align: left;
         margin-bottom: 2rem;
     }
     
     .section-title-decorated::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2.5rem;
     }
     
     .section-title-decorated-alt {
         font-size: 1.5rem;
-        text-align: center;
+        text-align: left;
     }
     
     .section-title-decorated-alt::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2.25rem;
     }
     
@@ -669,7 +671,7 @@
     
     .social-share-sidebar {
         position: static;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
     }
     
     .share-title {
@@ -686,7 +688,7 @@
     }
 }
 
-/* Mobile Small - Max 575px - AMÉLIORATION COMPLETE */
+/* Mobile Small - Max 575px - AMÉLIORATION COMPLETE + TITRES GAUCHE */
 @media (max-width: 575px) {
     /* Menu hamburger visible */
     .article-detail-page .navbar-toggler {
@@ -768,38 +770,39 @@
         padding: 0 0.75rem;
     }
     
+    /* CORRECTION: Titres de section alignés à GAUCHE */
     .article-main-title {
         font-size: 1.625rem;
-        text-align: center;
+        text-align: left;
         margin-bottom: 1.5rem;
     }
     
     .article-main-title::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2.25rem;
     }
     
     .section-title-decorated {
         font-size: 1.5rem;
-        text-align: center;
+        text-align: left;
         margin-bottom: 1.5rem;
     }
     
     .section-title-decorated::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2rem;
     }
     
     .section-title-decorated-alt {
         font-size: 1.3125rem;
-        text-align: center;
+        text-align: left;
     }
     
     .section-title-decorated-alt::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2rem;
     }
     
@@ -823,7 +826,7 @@
     
     .social-share-sidebar {
         position: static;
-        margin-bottom: 1.25rem;
+        margin-bottom: 2.5rem;
     }
     
     .share-title {

@@ -553,6 +553,53 @@
 }
 
 /* ==============================================
+   CARROUSEL CONTINU POUR RESPONSIVE - COMME OUR TEAM
+   ============================================== */
+
+.partners-continuous-scroll {
+    display: none;
+    position: relative;
+    overflow: hidden;
+    background: #f8f9fa;
+    padding: 2rem 0;
+    margin-top: 1rem;
+}
+
+.scroll-track {
+    display: flex;
+    width: fit-content;
+    animation: scroll-continuous 25s linear infinite;
+}
+
+.scroll-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-continuous {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.scroll-track .partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    padding: 0 2rem;
+    flex-shrink: 0;
+}
+
+.scroll-track .partner-img {
+    max-height: 50px;
+    max-width: 150px;
+    object-fit: contain;
+}
+
+/* ==============================================
    SECTION PROJETS SIMILAIRES
    ============================================== */
 
@@ -704,9 +751,30 @@
     .project-image {
         height: 32rem;
     }
+    
+    /* Titres de section alignés à gauche */
+    .section-title-with-highlight {
+        text-align: left;
+    }
+    
+    .section-title-with-highlight::after {
+        left: 1ch;
+        transform: none;
+    }
 }
 
-/* Tablet - 768px to 991px - AMÉLIORATION MENU HAMBURGER */
+/* Écrans spécifiques iPad - 1024x1366 et 1024x600 */
+@media (min-width: 1024px) and (max-width: 1024px) {
+    .main-content {
+        padding-left: 3.5rem;
+    }
+    
+    .content-block {
+        margin-left: -15.95rem;
+    }
+}
+
+/* Tablet - 768px to 991px - ICÔNES VERTICALES + TITRES GAUCHE */
 @media (min-width: 768px) and (max-width: 991px) {
     /* Menu hamburger visible */
     .project-detail-page .navbar-toggler {
@@ -772,57 +840,59 @@
         background-attachment: scroll;
     }
     
+    /* Hero reste à gauche */
     .project-hero-title {
         font-size: 2.25rem;
-        text-align: center;
-        margin: 0 auto 1.5rem;
+        text-align: left;
         max-width: 90%;
     }
     
     .project-metadata {
-        text-align: center;
+        text-align: left;
     }
     
     .download-section {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
     }
     
+    /* CORRECTION: Titres de section alignés à gauche */
     .section-title-with-highlight {
         font-size: 2rem;
-        text-align: center;
+        text-align: left;
     }
     
     .section-title-with-highlight::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 3rem;
     }
     
-    .main-content {
-        padding-left: 0;
-        margin-top: 2rem;
-    }
-    
-    .content-block {
-        margin: 0 0 2rem 0;
-    }
-    
-    .text-content {
-        padding-left: 0;
-        margin-top: 2rem;
-    }
-    
+    /* CORRECTION: Icônes sociales VERTICALES pour iPad */
     .social-sidebar {
         position: static;
         margin-bottom: 2rem;
     }
     
     .social-icons {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
         margin-top: 0;
+    }
+    
+    .main-content {
+        padding-left: 2.5rem;
+        margin-top: 0;
+    }
+    
+    .content-block {
+        margin-left: -15.95rem;
+    }
+    
+    .text-content {
+        padding-left: 0;
+        margin-top: 2rem;
     }
     
     .project-image {
@@ -835,6 +905,15 @@
     
     .project-description {
         font-size: 1.375rem;
+    }
+    
+    /* ACTIVER CARROUSEL CONTINU */
+    .partners-carousel-container {
+        display: none !important;
+    }
+
+    .partners-continuous-scroll {
+        display: block !important;
     }
 }
 
@@ -944,15 +1023,16 @@
         font-size: 0.85rem;
     }
     
+    /* CORRECTION: Titres de section alignés à gauche */
     .section-title-with-highlight {
         font-size: 1.875rem;
-        text-align: center;
+        text-align: left;
         margin-bottom: 2rem;
     }
     
     .section-title-with-highlight::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2.75rem;
     }
     
@@ -963,6 +1043,10 @@
     .final-paragraph-text {
         font-size: 1.125rem;
         text-align: left;
+    }
+
+    .final-paragraph-text {
+        margin-top: -2.25rem;
     }
     
     .bullet-text {
@@ -1049,6 +1133,15 @@
     
     .project-content {
         padding: 1.375rem;
+    }
+    
+    /* ACTIVER CARROUSEL CONTINU */
+    .partners-carousel-container {
+        display: none !important;
+    }
+
+    .partners-continuous-scroll {
+        display: block !important;
     }
 }
 
@@ -1172,15 +1265,16 @@
         font-size: 0.75rem;
     }
     
+    /* CORRECTION: Titres de section alignés à gauche */
     .section-title-with-highlight {
         font-size: 1.625rem;
-        text-align: center;
+        text-align: left;
         margin-bottom: 1.5rem;
     }
     
     .section-title-with-highlight::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 1ch;
+        transform: none;
         width: 2.25rem;
     }
     
@@ -1191,6 +1285,10 @@
     .final-paragraph-text {
         font-size: 1rem;
         text-align: left;
+    }
+
+    .final-paragraph-text {
+        margin-top: -2.25rem;
     }
     
     .bullet-text {
@@ -1213,7 +1311,7 @@
     
     .social-sidebar {
         position: static;
-        margin-bottom: 1.25rem;
+        margin-bottom: 0.25rem;
         padding: 0.75rem 0;
     }
     
@@ -1287,6 +1385,15 @@
     
     .project-content {
         padding: 1.125rem;
+    }
+    
+    /* ACTIVER CARROUSEL CONTINU */
+    .partners-carousel-container {
+        display: none !important;
+    }
+
+    .partners-continuous-scroll {
+        display: block !important;
     }
 }
 
@@ -1371,6 +1478,10 @@
     
     .project-hero-section {
         background-attachment: scroll;
+    }
+    
+    .scroll-track {
+        animation: none !important;
     }
 }
 
