@@ -477,7 +477,7 @@ body {
     align-items: center;
     padding: 1.5rem;
     border-bottom: 1px solid var(--border-light);
-    background: var(--background-gray);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .mobile-sidebar-close {
