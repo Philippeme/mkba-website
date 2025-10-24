@@ -408,8 +408,65 @@
     }
 }
 
-/* Small-Medium screens - 768px to 991px */
+/* Tablet - 768px to 991px - AMÉLIORATION MENU HAMBURGER */
 @media (min-width: 768px) and (max-width: 991px) {
+    /* Menu hamburger visible */
+    .actualites-page .navbar-toggler {
+        display: block;
+        border-color: var(--primary-blue);
+    }
+
+    .actualites-page .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0, 95, 172, 0.25);
+    }
+
+    .actualites-page .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(0, 95, 172)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .actualites-page .navbar-collapse {
+        display: none !important;
+    }
+
+    .actualites-page .navbar-brand {
+        position: static;
+        transform: none;
+    }
+
+    /* Sidebar mobile - couleurs bleues */
+    .actualites-page .mobile-nav-link:hover {
+        color: var(--primary-blue);
+    }
+
+    .actualites-page .mobile-submenu-link:hover {
+        color: var(--primary-blue);
+    }
+
+    .actualites-page .mobile-language-btn.active {
+        background: var(--primary-blue);
+        border-color: var(--primary-blue);
+    }
+
+    .actualites-page .mobile-language-btn:not(.active):hover {
+        border-color: var(--primary-blue);
+        color: var(--primary-blue);
+    }
+
+    /* Breadcrumb amélioré */
+    .actualites-page .breadcrumb-banner {
+        padding: 0.6rem 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .actualites-page .breadcrumb-item {
+        font-size: 0.95rem;
+    }
+
+    .actualites-page .breadcrumb-item + .breadcrumb-item::before {
+        margin: 0 0.75rem;
+    }
+
     .actualites-hero-section {
         min-height: 300px;
         height: 300px;
@@ -422,7 +479,7 @@
     
     .section-title-simple {
         font-size: 2rem;
-        text-align: center;
+        text-align: left;
     }
     
     .actualites-grid .row {
@@ -446,8 +503,65 @@
     }
 }
 
-/* Mobile screens - jusqu'à 767px */
-@media (max-width: 767px) {
+/* Mobile - 576px to 767px - AMÉLIORATION COMPLETE */
+@media (min-width: 576px) and (max-width: 767px) {
+    /* Menu hamburger visible */
+    .actualites-page .navbar-toggler {
+        display: block;
+        border-color: var(--primary-blue);
+    }
+
+    .actualites-page .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0, 95, 172, 0.25);
+    }
+
+    .actualites-page .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(0, 95, 172)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .actualites-page .navbar-collapse {
+        display: none !important;
+    }
+
+    .actualites-page .navbar-brand {
+        position: static;
+        transform: none;
+    }
+
+    /* Sidebar mobile - couleurs bleues */
+    .actualites-page .mobile-nav-link:hover {
+        color: var(--primary-blue);
+    }
+
+    .actualites-page .mobile-submenu-link:hover {
+        color: var(--primary-blue);
+    }
+
+    .actualites-page .mobile-language-btn.active {
+        background: var(--primary-blue);
+        border-color: var(--primary-blue);
+    }
+
+    .actualites-page .mobile-language-btn:not(.active):hover {
+        border-color: var(--primary-blue);
+        color: var(--primary-blue);
+    }
+
+    /* Breadcrumb amélioré */
+    .actualites-page .breadcrumb-banner {
+        padding: 0.5rem 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .actualites-page .breadcrumb-item {
+        font-size: 0.9rem;
+    }
+
+    .actualites-page .breadcrumb-item + .breadcrumb-item::before {
+        margin: 0 0.6rem;
+    }
+
     .actualites-hero-section {
         min-height: 200px;
         height: 200px;
@@ -462,7 +576,7 @@
     
     .section-title-simple {
         font-size: 1.75rem;
-        text-align: center;
+        text-align: left;
         margin-bottom: 2rem;
     }
     
@@ -508,8 +622,74 @@
     }
 }
 
-/* Very small screens - jusqu'à 575px */
+/* Mobile Small - Max 575px - AMÉLIORATION COMPLETE */
 @media (max-width: 575px) {
+    /* Menu hamburger visible */
+    .actualites-page .navbar-toggler {
+        display: block;
+        border-color: var(--primary-blue);
+    }
+
+    .actualites-page .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0, 95, 172, 0.25);
+    }
+
+    .actualites-page .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(0, 95, 172)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .actualites-page .navbar-collapse {
+        display: none !important;
+    }
+
+    .actualites-page .navbar-brand {
+        position: static;
+        transform: none;
+    }
+
+    /* Sidebar mobile - couleurs bleues */
+    .actualites-page .mobile-nav-link:hover {
+        color: var(--primary-blue);
+    }
+
+    .actualites-page .mobile-submenu-link:hover {
+        color: var(--primary-blue);
+    }
+
+    .actualites-page .mobile-language-btn.active {
+        background: var(--primary-blue);
+        border-color: var(--primary-blue);
+    }
+
+    .actualites-page .mobile-language-btn:not(.active):hover {
+        border-color: var(--primary-blue);
+        color: var(--primary-blue);
+    }
+
+    /* Breadcrumb avec scroll horizontal */
+    .actualites-page .breadcrumb-banner {
+        padding: 0.5rem 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .actualites-page .breadcrumb-banner::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    .actualites-page .breadcrumb-banner::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+    }
+
+    .actualites-page .breadcrumb {
+        font-size: 0.85rem;
+    }
+
+    .actualites-page .breadcrumb-item + .breadcrumb-item::before {
+        margin: 0 0.5rem;
+    }
+
     .actualites-hero-section {
         min-height: 150px;
         height: 150px;
@@ -522,6 +702,7 @@
     
     .section-title-simple {
         font-size: 1.5rem;
+        text-align: left;
     }
     
     .actualite-image {
@@ -633,5 +814,4 @@
     .actualite-excerpt {
         font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
     }
-
 }
